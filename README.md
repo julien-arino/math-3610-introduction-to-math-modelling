@@ -1,1 +1,1 @@
-# math-3610-introduction-to-math-modelling
+# MATH 3610 - Introduction to mathematical modelling
