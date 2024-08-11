@@ -1,0 +1,61 @@
+\contentsline {part}{I\hspace {1em}Introduction}{2}
+\contentsline {part}{II\hspace {1em}Difference equations}{4}
+\contentsline {section}{\numberline {1}General definitions}{4}
+\contentsline {section}{\numberline {2}First-order linear difference equation}{5}
+\contentsline {section}{\numberline {3}Second-order and higher-order linear equations}{8}
+\contentsline {subsection}{\numberline {3.1}Second-order and higher-order linear homogeneous equations with constant coefficients}{9}
+\contentsline {subsection}{\numberline {3.2}Second-order and higher-order linear nonhomogeneous equations}{10}
+\contentsline {subsection}{\numberline {3.3}Qualitative analysis}{11}
+\contentsline {section}{\numberline {4}First-order Linear system}{12}
+\contentsline {subsection}{\numberline {4.1}Nonnegative matrices}{14}
+\contentsline {subsubsection}{\numberline {4.1.1}Leslie matrix model}{16}
+\contentsline {subsubsection}{\numberline {4.1.2}Markov chains}{20}
+\contentsline {section}{\numberline {5}Examples}{22}
+\contentsline {subsection}{\numberline {5.1}Bacteria population}{22}
+\contentsline {subsection}{\numberline {5.2}Insect populations}{23}
+\contentsline {subsection}{\numberline {5.3}Pharmacology}{24}
+\contentsline {subsection}{\numberline {5.4}Propagation of annual plants}{25}
+\contentsline {subsection}{\numberline {5.5}Red blood cell}{26}
+\contentsline {subsection}{\numberline {5.6}Structured model}{27}
+\contentsline {subsubsection}{\numberline {5.6.1}Killer whales}{27}
+\contentsline {subsubsection}{\numberline {5.6.2}Salmon population}{29}
+\contentsline {subsubsection}{\numberline {5.6.3}Human Population}{29}
+\contentsline {subsubsection}{\numberline {5.6.4}Insect population}{30}
+\contentsline {subsection}{\numberline {5.7}Genetic model}{31}
+\contentsline {section}{\numberline {6}Nonlinear difference equations}{32}
+\contentsline {subsection}{\numberline {6.1}Equilibrium solution - Periodic solution}{33}
+\contentsline {subsection}{\numberline {6.2}Local stability in first-order equations}{34}
+\contentsline {subsubsection}{\numberline {6.2.1}Cobwebbing method for first-order equation}{37}
+\contentsline {subsection}{\numberline {6.3}Global stability in first-order equations}{37}
+\contentsline {subsection}{\numberline {6.4}Bifurcation diagrams}{39}
+\contentsline {subsection}{\numberline {6.5}Systems of nonlinear equations}{40}
+\contentsline {subsubsection}{\numberline {6.5.1}Higher-order difference equations}{42}
+\contentsline {section}{\numberline {7}Examples}{43}
+\contentsline {subsection}{\numberline {7.1}Single species models}{43}
+\contentsline {subsubsection}{\numberline {7.1.1}Discrete logistic model}{43}
+\contentsline {subsubsection}{\numberline {7.1.2}Other examples of population models exhibiting chaotic behaviors}{46}
+\contentsline {subsection}{\numberline {7.2}Example of a 2-dimensional system}{47}
+\contentsline {subsection}{\numberline {7.3}Epidemic models}{48}
+\contentsline {subsubsection}{\numberline {7.3.1}SIR Model}{50}
+\contentsline {subsection}{\numberline {7.4}Predator-Prey models}{52}
+\contentsline {part}{III\hspace {1em}Differential equations}{53}
+\contentsline {section}{\numberline {8}Ordinary differential equations}{53}
+\contentsline {subsection}{\numberline {8.1}First order differential equations}{54}
+\contentsline {subsubsection}{\numberline {8.1.1}Analytical methods}{54}
+\contentsline {subsubsection}{\numberline {8.1.2}Local stability}{56}
+\contentsline {subsubsection}{\numberline {8.1.3}Phase line analysis}{56}
+\contentsline {subsection}{\numberline {8.2}Higher-order linear equations}{57}
+\contentsline {subsection}{\numberline {8.3}Systems of equations}{61}
+\contentsline {subsubsection}{\numberline {8.3.1}Systems of linear equations}{61}
+\contentsline {subsubsection}{\numberline {8.3.2}Tools to determine properties of eigenvalues}{63}
+\contentsline {subsubsection}{\numberline {8.3.3}Systems of nonlinear equations}{64}
+\contentsline {subsection}{\numberline {8.4}Bifurcations}{66}
+\contentsline {section}{\numberline {9}Examples}{67}
+\contentsline {subsection}{\numberline {9.1}SI model}{67}
+\contentsline {subsection}{\numberline {9.2}SIS model}{67}
+\contentsline {subsection}{\numberline {9.3}Prey-Predator model}{67}
+\contentsline {subsection}{\numberline {9.4}Growth of living organisms}{68}
+\contentsline {subsubsection}{\numberline {9.4.1}Michaelis-Menten enzyme kinetics}{68}
+\contentsline {subsubsection}{\numberline {9.4.2}Chemostat model}{68}
+\contentsline {subsection}{\numberline {9.5}Kinetic reactions}{69}
+\contentsline {subsection}{\numberline {9.6}Bifurcation}{69}

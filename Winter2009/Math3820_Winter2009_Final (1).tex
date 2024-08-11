@@ -1,0 +1,177 @@
+\documentclass[12pt]{exam}
+
+
+
+\usepackage{graphicx}% Include figure files
+\usepackage{dcolumn}% Align table columns on decimal point
+\usepackage{bm}% bold math
+\usepackage{latexsym}
+\usepackage{amsmath,amssymb,amsthm,amsfonts}
+\usepackage{subfigure}
+
+\begin{document}
+\pagestyle{head} \extraheadheight{1in}\runningheadrule
+\firstpageheader{$\mbox{}$\\DATE: April 14, 2009\\PAPER NO.: - \\
+DEPARTMENT $\&$ COURSE NO.: MATH 3820\\EXAMINATION: Intro. Math. Modelling}{\bf UNIVERSITY OF MANITOBA\\
+$\mbox{}$
+\\$\mbox{}$ \\ $\mbox{}$\\$\mbox{}$}{$\mbox{}$\\Final\\ PAGE NO.: \thepage\ of \numpages\\TIME: 180
+minutes\\ EXAMINER: J. Arino}\runningheadrule
+\runningheader{$\mbox{}$\\DATE: April 14, 2009\\PAPER NO.: - \\
+DEPARTMENT $\&$ COURSE NO.: MATH 3820\\EXAMINATION: Intro. Math. Modelling}{\bf UNIVERSITY OF MANITOBA\\
+$\mbox{}$
+\\$\mbox{}$ \\ $\mbox{}$\\$\mbox{}$}{$\mbox{}$\\Final\\ PAGE NO.: \thepage\ of \numpages\\TIME: 180
+minutes\\ EXAMINER: J. Arino} \vspace{-2.5cm}
+\begin{center}
+\begin{tabular}{cp{15.5cm}}
+\hline
+&\\
+\end{tabular}
+\end{center}
+%\footer{}{Page \thepage\ of \numpages}%
+%{\iflastpage{End of exam.}{Please go on to the next page\ldots}}
+
+\addpoints
+
+This is a 180 minutes exam, with \numquestions\ questions for a total of \numpoints\; marks. Lecture Notes are allowed.
+{\sc Please show your work clearly.} A correct answer without explanation will not get full marks.
+\vspace{0.1cm}
+
+\begin{center}
+\begin{tabular}{cp{15.5cm}}
+\hline
+&\\
+\end{tabular}
+\end{center}
+
+
+
+
+
+\begin{questions}
+
+\question[20]\textbf{(An arms race model)}
+Two countries are involved in an arms race. Let $x_i(t)$ be the defense expenditure of country $i$ at time $t$. For a given country $i=1,2$, in the absence of the other country, the expenditure tends to decrease at a rate $-a_{ii}$ proportional to the current expenditure. Each country also spends a fixed amount $p_i$ on military equipment. When other countries are present, country $i$ buys military equipment at a rate $a_{ij}$ proportional to the expenditure of country $j$.
+\begin{parts}
+\part Explain briefly why the model
+\begin{equation}\label{sys:arms_race}
+\begin{aligned}
+x_1' &= -a_{11}x_1+a_{12}x_2+p_1 \\
+x_2' &= a_{21}x_1-a_{22}x_2+p_2 
+\end{aligned}
+\end{equation}
+with $a_{ij}>0$, is an appropriate model for the arms race described above.
+\part Write \eqref{sys:arms_race} in vector form.
+\part Discuss the well-posedness of \eqref{sys:arms_race} (existence and uniqueness of solutions, nonnegativity, boundedness..).
+\part Suppose first that $p_i=0$ for $i=1,2$. Determine the equilibrium of \eqref{sys:arms_race}.
+\part From now on, assume that $p_i>0$. Determine the equilibrium of \eqref{sys:arms_race}.
+\part The matrix of the system in vector form is diagonalizable. Find this diagonal form, and express the general solution to \eqref{sys:arms_race}.
+\end{parts}
+
+
+\question[20]
+The probability that a machine functions without failure today is:
+\begin{enumerate}\renewcommand{\labelenumi}{\roman{enumi})}
+\item 0.7 if the machine functioned without failure yesterday and the day before yesterday,
+\item 0.5 if the machine functioned without failure yesterday, but not the day before yesterday,
+\item 0.4 if the machine functioned without failure the day before yesterday, but not yesterday,
+\item 0.2 if the machine had failures yesterday and the day before yesterday.
+\end{enumerate}
+Answer the following questions.
+\begin{parts}
+\part Explain why the chain with two states, ``machine functions without failure at day $n$'' and ``machine not functions without failure at day $n$'' is not a Markov chain.
+\part What states should you consider to have a Markov chain? From now on, consider the Markov chain with those states.
+\part Find the transition matrix associated to the Markov chain.
+\part Draw the transition graph associated to the Markov chain.
+\part Is the chain regular?
+\part Calculate the probability that the machine will function correctly tomorrow, given that it functioned correctly yesterday and the day before yesterday.
+\end{parts}
+
+\question[15]
+Consider a Markov chain with transition matrix
+\[
+P=
+\begin{pmatrix}
+1/2 & 1/4 & 1/4 \\
+\alpha & 1-\alpha & 0 \\
+0 & \alpha & 1-\alpha
+\end{pmatrix},
+\]
+where $0\leq\alpha\leq 1$. 
+\begin{parts}
+\part For what values of $\alpha$ is the Markov chain regular?
+\part Calculate the equilibrium probability distribution for the values of $\alpha$ found in (a).
+\end{parts}
+
+\question[10]
+Show that the two-dimensional system
+\begin{align*}
+x_{t+1} &= x_t(1+x_t+y_t)/3 \\
+y_{t+1} &= y_t(1-x_t+y_2)/2
+\end{align*}
+has four fixed points, but only one that is locally stable.
+
+\question[20]
+Consider the following competition model for two species with population sizes $x$ and $y$:
+\begin{equation}\label{sys:compet}
+\begin{aligned}
+x' &= 2x(1-3x-y) \\
+y' &= 6y(1-2x-4y).
+\end{aligned}
+\end{equation}
+\begin{parts}
+\part Discuss the well-posedness of \eqref{sys:compet}.
+\part Sketch the phase plane, including the nullclines and equilibria. Show the general direction of flow at different parts of the phase plane.
+\part Study the stability of the equilibria.
+\part If $x(0),y(0)>0$, find $\lim_{t\to\infty}(x(t),y(t))$, if this limit exists.
+\end{parts}
+
+
+\question[30] \textbf{(Spreading rumors)}
+Construct a model for spreading rumors making use of the following assumptions.  The total population size $N$ is
+constant with no one entering or leaving the population.  The population
+is split into three subgroups: the uncool (who have not heard the rumor),
+the rumor spreaders, and the cool (who have heard the rumor, but are no
+longer spreading it).  Let the sizes of these groups be given by $U$,
+$R$, and $C$ respectively.
+
+As soon as someone in the uncool group hears the rumor, they enter the
+group of rumor spreaders.  Each rumor spreader tells the rumor at rate
+$k$.  Thus, the rate at which the rumor is being told is $k$ times the
+number of rumor spreaders.  So, the rate at which uncool people hear the
+rumor is $k$ times the number of rumor spreaders times the \textit{fraction} of the population consisting of uncool people.
+
+When a rumor spreader tells the rumor to someone who has already heard
+it (i.e. someone in the rumor spreading group or the cool group), they
+stop spreading the rumor and enter the cool group.  Thus, the rate at
+which rumor spreaders enter the cool group is $k$ times the number of
+rumor spreaders times the \textit{fraction} of the population consisting
+of rumor spreaders and cool people.
+\begin{parts}
+\part Draw the transfer diagram.
+\part Write down the differential equations.
+\part Discuss the well-posedness of your system.
+\part Rewrite the equations for $U'$ and $R'$
+without using the variable $C$ by making the substitution $C=N-U-R$.
+\part Find the equilibria for the two dimensional system given in part (d).
+\part Suppose that when the rumor starts, it is initially known by a
+very small fraction (much less than half) of the population and that
+this group of people are all rumor spreaders.  Suppose that everyone
+else in the population is in the uncool group.  
+\begin{parts}
+\part Initially, this should give $R'>0$ and $R$ should increase. Check that your equations in part (d) support this.
+\part Then $U$ will decrease (from nearly $N$) until the rumor dies out.
+Check that your equations in part (d) support this.
+\part At what value of $U$ does $R$ stop increasing?
+\part Eventually the rumor will die out when $R$ goes to zero.
+When the rumor dies out, are there more people in the uncool
+group or in the cool group?
+\end{parts}
+\part For bonus marks, study the stability of the equilibria of the system found in part (d).
+\part Consider the state variables $u,r$ and $c$ representing the \emph{proportion} of $U,R$ and $C$ in the population. Write your system in terms of these variables.
+\end{parts}
+
+
+
+\end{questions}
+
+\end{document}

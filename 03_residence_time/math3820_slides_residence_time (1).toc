@@ -1,0 +1,5 @@
+\beamer@endinputifotherversion {3.07pt}
+\beamer@sectionintoc {1}{Time spent in a state}{1}{0}{1}
+\beamer@sectionintoc {2}{Exponential distribution}{13}{0}{2}
+\beamer@sectionintoc {3}{A cohort model}{16}{0}{3}
+\beamer@sectionintoc {4}{Sojourn times in an SIS disease transmission model}{21}{0}{4}

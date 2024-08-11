@@ -1,0 +1,1468 @@
+\documentclass{article}
+
+\usepackage{graphics}
+\usepackage{graphicx}
+\usepackage{amsmath,amssymb,amsthm}
+%\usepackage{subeqnarray}
+%\usepackage{easybmat}
+\usepackage{subfigure}
+
+
+
+%\usepackage{HA-prosper}
+%\usepackage[dvips,letterpaper]{geometry}
+
+\newtheorem{property}{Property}[section]
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+
+
+
+\def\R{\mathbb{R}}
+\def\Rzero{\mathcal{R}_0}
+\def\diag{\textrm{diag}}
+\def\tr{\textrm{tr}}
+\def\det{\textrm{det}}
+\def\sgn{\textrm{sgn}}
+\def\imply{$\Rightarrow$}
+
+\title{Lecture Notes: MATH 3530}
+\date{\today}
+\begin{document}
+\maketitle
+\tableofcontents
+%\newpage
+
+\part{Introduction}
+
+{\bf Mathematical modeling:} an idealization of the real-world problems and never a completely accurate representation
+\begin{itemize}
+\item Identify the most important processes governing the problem (Theoretical assumptions)
+\item Identify the state variables (quantities studied)
+\item Identify the basic principles that govern the state variables (Physical
+Laws, interactions, $\dots$)
+\item Express mathematically these principles in terms of state variables (Choice of the formalism)
+%\item Units for each state variable
+\item Identify and evaluate the values of parameters
+\item Make sure of the consistence of units
+\end{itemize}
+
+{\bf Different types of biological problems:} mathematical biology encompass several domains such that 
+\begin{itemize}
+\item Ecology (Predator-Prey system, Populations in competition $\dots$)
+\item Etology 
+\item Epidemiology (Propagation of infectious diseases)
+\item Physiology (Neuron, cardiac cells, muscular cells)
+\item Immunology
+\item Cell biology
+\item Structural biology
+\item Molecular biology
+\item Genetics (Spread of genes in a population)
+\item $\dots$
+\end{itemize}
+
+
+{\bf Different approaches exist to represent a problem:}
+How to represent a problem?
+\begin{itemize}
+\item Static vs dynamic
+\item Stochastic vs Deterministic
+\item Continous vs Discrete
+\item Homogeneous vs Detailed
+\end{itemize}
+{\bf Different formalisms}
+ODE, PDE, DDE, SDE, Integral equation, integro-differential equations, Markov Chains, Game theory, Graph theory, Cellular automata, L-systems $\dots$
+\begin{center}
+\includegraphics[width=.8\textwidth]{figs_steph/FigureMathBio}
+\end{center}
+
+
+\subsubsection{Markov chains}
+Suppose that we conduct some experiment with a set of $k$ states $S=\{s_1,\dots, s_k\}$. The experiment is repeated such that the probability $p_{ij}$ of the state $s_i$, $1\leq i\leq k$, occuring on the $(n+1)^{th}$ repetition depends only on the state $s_j$ occurring on the $n^{th}$ repetition of the experiment. The system has no memory: the future state depends only on the present state. The probability of $s_i$ ocurring on the next repetition, given that $s_j$ occurred on the last repetition is
+$$p_{ij}=p(s_i|s_j).$$
+Given that $s_j$ has occured in the last repetition, one of $s_1$, $s_2$, $\dots, s_k$ must occur in the next repetition, then
+$$p_{1j}+p_{2j}+p_{3j}+\dots+p_{kj}=1, \quad 1\leq j\leq k.$$
+Let $p_i(n)$ be the probability that the state $s_i$ will occur on the $n^{th}$ repetition of the experiment, $1\leq i\leq k$. Since one the states $s_i$ must occur on the $n^{th}$ repetition it follows that
+$$p_1(n)+p_2(n)+\dots+p_k(n)=1.$$
+The probability that the state $s_i$, $1\leq i\leq k$, occurs on the $(n+1)^{th}$ repetition of the experiment is $p_i(n+1)$. There are $k$ way to obtain this. The first case is where repetition $n$ gives us $s_1$, and the repetition $(n+1)$ produces $s_i$. Since the probability of getting $s_1$ on the $n^{th}$ repetition is $p_1(n)$, and the probability of having $s_i$ after $s_1$ is $p_{i1}$, it follows (by multiplication principle) that the probability of the first case occurring is $p_{i1}p_1(n)$. The second case is where we get $s_2$ on the repetition $n$ and $s_i$ on repetition $(n+1)$. The probability of the occurrence of the second case is $p_{i2}p_2(n)$. Similarly for $3,\dots k$, hence
+
+$$
+\begin{array}{ll}
+p_1(n+1)=& p_{11}p_1(n)+p_{12}p_2(n)+p_{13}p_3(n)+\dots+p_{1k}p_k(n)\\
+p_2(n+1)=& p_{21}p_1(n)+p_{22}p_2(n)+p_{23}p_3(n)+\dots+p_{2k}p_k(n)\\
+\vdots =&\\
+p_k(n+1)=& p_{k1}p_1(n)+p_{k2}p_2(n)+p_{k3}p_3(n)+\dots+p_{kk}p_k(n)
+\end{array}
+$$
+in matrix form
+\begin{equation}
+p(n+1)=S p(n), \quad n=1,2,3,\dots
+\end{equation}
+where $p(n)=(p_1(n),p_{2}(n),\dots , p_k(n))^T$ is the probability vector and $S=(p_{ij})$ is a $k\times k$ transition matrix.
+
+\begin{definition}
+The nonnegative $k\times k$ matrix $A$ is said to be stochastic if $\sum_{i=1}^ka_{ij}=1$ for all $j=1,2,\dots, k$.
+\end{definition}
+
+\begin{definition}
+A regular Markov chain is one in which $S^p$ is positive for some positive integer $p$.
+\end{definition}
+
+From Theorem \ref{Theo:NormRho}
+$$\rho(S)\leq \| S\| _1 =1$$
+then $|\lambda|\leq 1$ for all eigenvalues of a stochastic matrix. Furthermore, if $S$ is a stochastic matrix $\lambda =1$ is an eigenvalue of $S$; hence $\rho(S)=1$ and the dominant eigenvalue $\lambda _1 =1$. Then
+$$\lim_{n\rightarrow +\infty}p(n)=\lim_{n\rightarrow +\infty}S^np(0)=cV_1$$
+where $V_1=(v_1,v_2,\dots ,v_k)$ is the eigenvector that corresponds to the dominant eigenvalue $\lambda _1 =1$.
+
+Since $p(n)=(p_1(n),p_2(n),\dots , p_k(n))^T$, we have $\sum_{i=1}^k p_i(n)=1$, it follows that
+$$cv_1+cv_2+\dots cv_k=1.$$
+Therefore
+$$c=\frac{1}{v_1+v_2+\dots+v_k}.$$
+
+
+\begin{definition}
+A state $s_i$ in a Markov chain is said to be absorbing if whenever it occurs on the $n^{th}$ generation of the experiment, it then occurs on every subsequent repetition. In other word, if for some $p_{ii}=1$ then $p_{ij}=0$ for $i\not =j$.
+\end{definition}
+
+\begin{definition}
+A Markov chain is said to be absorbing if it has at least one absorbing state, and if from every state it is possible to go to an absorbing state.
+\end{definition}
+
+In an absorbing Markov chain, a state that is not absorbing is called transient.
+
+
+
+
+\subsubsection{Salmon population}
+Suppose a population of salmon live to three years of age. Each adult salmon produces 800 offspring. The
+probability of a salmon surviving the first year to live on to the second year is $5\%$, and the probability of a
+salmon surviving the second year to live on to the third year is $2.5\%$.
+\begin{itemize}
+\item Find the Leslie matrix for this population.
+\item If there are 10 females in each of the three age classes, find the initial age distribution vector. Use Matlab
+to find the population age distribution vectors for each of the first 100 years.
+\item Use Matlab to find the eigenvalues and eigenvectors of the Leslie Matrix. Is there a strictly dominant eigenvalue?
+\item Describe what happens to this population of salmon over time?
+\end{itemize}
+
+\subsubsection{Human Population}
+Suppose the population of the United States is broken up into ten 5-year age classes. The values for the
+reproduction rates $F_i$ and the survival rates $P_i$ for each age class are shown in the table below.
+
+
+\begin{tabular}{ccc}
+i &$F_i$ & $P_i$\\
+1 & 0 & 0.99670\\
+2 &0.00102 &0.99837\\
+3 &0.08515 &0.99780\\
+4 &0.30574 &0.99672\\
+5 &0.40002 &0.99607\\
+6 &0.28061 &0.99472\\
+7 &0.15260 &0.99240\\
+8 &0.06420 &0.98867\\
+9 &0.01483 &0.98274\\
+10 &0.00089 &0
+\end{tabular}
+\begin{itemize}
+\item Find the Leslie matrix for this population.
+\item  If there are 10 females in each of the ten age classes, find the initial age distribution vector. Use Matlab to
+find the population age distribution vectors for each of the first 100 years, and plot the age distribution
+vectors.
+\item  Use Matlab to find the eigenvalues and eigenvectors of the Leslie Matrix. What happens to this population
+over time?
+\item  After a long period of time, what is the relative number of females in each of the ten age classes?
+%\item  After a long period of time, by what percentage is the population growing or shrinking?
+\end{itemize}
+
+\subsubsection{Insect population}
+Insect Life cycle:
+\begin{description}
+\item[ADULT] 
+The life cycle description can be started with the adult insect. The adult may be a beetle, fly, moth, or midge. Regardless of their form, insects mate and most lay eggs.
+\item[EGG] 
+Eggs come in many shapes, sizes, and colors. They might be deposited on or in the ground, the roots, the stems, the leaves, or the flowers. When the eggs hatch the new insect is called a larva. 
+\item[LARVA]
+The larva seldom looks like the adult it will become. Some common larval forms are the maggot, grub worm, inchworm, and caterpillar. As the larva grows it must shed it’s old skin from time to time. This is called molting. From hatching to the first molt the larva is said to be in it’s 1st instar stage. After molting the first time the larva enters it’s second instar stage, and so on. The feeding activity of the larvae often inflicts more damage on the noxious weed than the adult form. Different insects have different numbers of instars, but eventually the larva is fully grown and ready to pupate.
+\item[PUPA] 
+The pupa is the life stage between larva and adult. In this stage the insect does not feed, and can be considered motionless. This metamorphic change is often profound. Unless the larva is in a stem or root tunnel it will usually construct some kind of shelter to pupate in. This "cocoon" might be made from soil particles, silk, chewed seeds, chewed plant material, ground litter, or combinations.
+Inside the "cocoon/shelter/chamber/capsule/case" the pupa is gradually transformed into an adult.
+\end{description}
+\begin{figure}
+\includegraphics[width=.4\textwidth]{figs_steph/insect_life_cycle}
+\caption{Example of insect life cycle}
+\end{figure}
+
+\subsection{Genetic model}
+The simplest type of genetic inheritance of traits in animals occurs when a certain trait is determined by a specific pair of genes, each of which may be two types, say $G$ and $g$. An individual may have a $GG$ combination, a $Gg$ (genetically equivalent to $gG$), or $gg$ combination. An individual with $GG$ is said to be dominant, a $gg$ individual is recessive and a $Gg$ is an hybrid.
+
+In the mating of two animals, the offspring inherits one gene of the pair from each parent: the basic assumption of genetics is that these genes are selected at
+random, independently of each other.
+
+
+This assumption determines the probability
+of occurrence of each type of offspring: The offspring
+\begin{itemize}
+\item of two purely dominant parents
+must be dominant, 
+\item of two recessive parents must be recessive,
+\item and of one dominant and one recessive parent must be hybrid.
+\end{itemize}
+In the mating of a dominant and a hybrid animal, each offspring must get a
+G gene from the former and has an equal chance of getting G or g from the latter.
+Hence there is an equal probability for getting a dominant or a hybrid offspring.
+Again, in the mating of a recessive and a hybrid, there is an even chance for getting
+either a recessive or a hybrid. In the mating of two hybrids, the offspring has an
+equal chance of getting G or g from each parent. Hence the probabilities are 1/4
+for GG, 1/2 for Gg, and 1/4 for gg.
+
+Consider a process of continued matings. We start with an individual of known
+genetic character and mate it with a hybrid. We assume that there is at least one
+offspring. An offspring is chosen at random and is mated with a hybrid and this
+process repeated through a number of generations. The genetic type of the chosen
+offspring in successive generations can be represented by a Markov chain. The states
+are dominant, hybrid, and recessive, and indicated by GG, Gg, and gg respectively:  3 possibles states $s_1=GG$, $s_2=Gg$ and $s_3=gg$.
+
+Let $p_i(n)$ represent the probability that state $s_i$ occurs in the $n^{th}$ generation.
+Let $p_{ij}$ be the probability that $s_i$ occurs in the $(n+1)^{th}$ generation given that $s_j$ occured in the $n^{th}$ generation.
+
+The difference equation system that models the Markov chain is
+
+$$
+\begin{array}{ll}
+p_1(n+1)=&p_{11}p_1(n)+p_{12}p_2(n)+p_{13}p_3(n)\\
+p_2(n+1)=&p_{21}p_1(n)+p_{22}p_2(n)+p_{23}p_3(n)\\
+p_3(n+1)=&p_{31}p_1(n)+p_{32}p_2(n)+p_{33}p_3(n)
+\end{array}
+$$
+
+
+The transition probabilities are
+
+$$S=\left (
+\begin{array}{ccc}
+0.5 & 0.25 & 0\\
+0.5 & 0.5 & 0.5\\
+0 & 0.25 & 0.5
+\end{array}\right )
+$$
+
+$S$ is a stochastic matrix (nonnegative + sum of column equal to 1) $\Rightarrow$ $\rho(S)=1$
+
+
+It is a regular Markov chain as $S^2>0$ (so $S$ is primitive).
+
+Then the dominant eigenvalue $\lambda _1 =1$
+and 
+
+$$\lim_{n\rightarrow \infty }p(n)=cV_1$$
+where $V_1=(0.41,0.82,0.41)^T$ is the eigenvector corresponding to $\lambda _1$, and is
+$$c=\frac{1}{0.41+0.82+0.41}=0.609$$
+Then
+$$\lim_{n\rightarrow \infty }p(n)=\left ( 
+\begin{array}{c}
+0.25\\
+0.5\\
+0.25
+\end{array}
+\right )$$
+
+As the number of repetitions approaches infinity, the probabilty of producing a purely dominant or purely recessive offspring is 0.25, and the probability of producing a hybrid offspring is $0.5$.
+
+
+
+
+\section{Examples}
+\subsection{Single species models}
+The population dynamics of single species with seasonal
+reproduction and first-order feedback are often modelled
+using a single difference equation.
+
+\subsubsection{Discrete logistic model}
+The logistic model (in differential equation formalism) is
+$$\frac{dN}{dt}=a(1-\frac{N}{K})N$$
+where $a$ is the intrinsic rate of growth of the population $N$ and $K$ represents the carrying capacity of the environment (the maximal number of individuals that the environment can support). For $N(0)>0$, $\lim _{t\rightarrow + \infty} N(t)=K$.
+
+To derive the discrete logistic equation:
+$$\frac{dN}{dt}=\frac{N(t+1)-N(t)}{\Delta t}$$
+as previuously $\Delta t=1$ then
+$$N(t+1)-N(t)=a(1-\frac{N(t)}{K})N(t)$$
+$$N(t+1)=(a+1)N(t)-\frac{aN(t)^2}{K}$$
+To study the discrete logistic model, we adimensionalize the model by using the change of variable $x_t=\frac{a}{K(1+a)}N(t)$ to obtain
+$$x_{t+1}=(1+a)x_t(1-x_t)$$
+and $1+a=\mu$.
+
+
+{\bf Study of the adimensionless logistic model:} 
+We consider the logistic growth function
+\begin{equation}\label{eq:logistic_map}
+f_\mu(x)=\mu x(1-x),
+\end{equation}
+used to define the discrete time logistic equation
+\begin{equation}
+x_{t+1}=f_\mu(x_t), \label{eq:logistic}
+\end{equation}
+the latter being considered with initial condition $x_0\in[0,1]$. It is assumed throughout that $0<\mu<4$.
+
+{\bf Fixed points: }
+ixed points of \eqref{eq:logistic_map} are found by solving the fixed point equation
+\[
+f_\mu(x)=x,
+\]
+that is,
+\[
+\mu x(1-x)=x.
+\]
+It is clear that there are two points that satisfy this equation, namely $x=0$ and $x=(\mu-1)/\mu$. We denote from now on $p=(\mu-1)/\mu$.
+
+Remember that we are modelling a population, so we want $p>0$ (or at least, nonnegative). If $p>0$, we say that $p$ is \emph{biologically relevant}. For this, we need $\mu>1$. In the case that $\mu<1$, then $p$ does exist, but we do not consider it, as it is not biologically relevant, and by abuse of language, say that $p$ does not exist.
+
+The fixed point $x=0$ always exists, and
+\begin{itemize}
+\item if $\mu\in(0,1)$, then $p$ does not exist,
+\item if $\mu>1$, then $p$ exists.
+\end{itemize}
+
+
+{\bf Stability of fixed points: }
+The derivative of the logistic growth function is
+\begin{equation}\label{eq:dlogistic_map}
+f_\mu'(x)=\mu-2\mu x=\mu(1-2x).
+\end{equation}
+To determine the stability of a fixed point $x^*$, we need to compare $|f'_\mu(x^*)|$ with the value 1. From \eqref{eq:dlogistic_map},
+\[
+|f_\mu'(0)|=|\mu|=\mu,
+\]
+and
+\begin{align*}
+|f_\mu'(p)| &= \left|\mu\left(1-2\frac{\mu-1}{\mu}\right)\right| \\
+&= |1-2\mu|.
+\end{align*}
+As a consequence, $x=0$ is locally asymptotically stable if $\mu<1$ and unstable otherwise, and $p=(\mu-1)/\mu$ is locally asymptotically stable if $1-2\mu<1$, that is, $\mu<3$, and unstable otherwise.
+
+\vskip0.5cm
+\noindent Therefore
+\begin{itemize}
+\item if $\mu\in(0,1)$, then $x=0$ is locally asymptotically stable, and the fixed point $x=p$ does not exist,
+\item if $\mu\in(1,3)$, then $x=0$ is unstable, and the fixed point $x=p$ exists and is locally asymptotically stable,
+\item if $\mu>3$, then $x=0$ is unstable, and the fixed point $x=p$ exists and is unstable.
+\end{itemize}
+
+
+{\bf $2-$cycle: }
+We now study the existence of periodic points period 2, that is, fixed points of $f_\mu^2(x)$:
+\begin{align}
+f_\mu^2(x) &= f_\mu(f_\mu(x)) =x \nonumber\\
+& \mu^2 x(1-x)(1-\mu x(1-x))=x. \label{eq:f_mu_2_a}
+\end{align}
+Simplifying, we obtain
+$$x(\mu x -(\mu -1))(\mu ^2x^2-\mu (\mu +1)x+\mu +1)=0.$$
+Remark that 0 and $p$ are points of period 1. Indeed, a fixed point $x^*$ of $f$ satisfies $f(x^*)=x^*$, and as a consequence, $f^2(x^*)=f(f(x^*))=f(x^*)=x^*$. The points of period 2, constituting the $2-$cycle are:
+$$\bar x_{1,2}=\frac{\mu +1\pm\sqrt{(\mu+1)^2-4(\mu+1)}}{2\mu}=\frac{\mu +1\pm\sqrt{(\mu -3)(\mu +1)}}{2\mu}$$
+The $2-$cycle exists if $\mu >3$.
+
+
+{\bf Stability of the $2-$cycle: }
+The $2-$cycle is locally asymptotically stable is 
+
+$|f_{\mu}'(\bar x_1)f_{\mu}'(\bar x_2)|<1$.
+
+From \eqref{eq:dlogistic_map}, we obtain
+$$|\left ( \mu -(\mu +1)+\sqrt{(\mu -3)(\mu +1)} \right )\left ( \mu-(\mu +1)-\sqrt{(\mu -3)(\mu +1)} \right )|<1$$
+or $$|1-(\mu -3)(\mu +1)|<1$$
+$$0<(\mu -3)(\mu +1)<2$$
+Then $0<\mu ^2 -2\mu -3<2$, these inequalities are satisfied if 
+$$3<\mu < 1+\sqrt{6}.$$
+The $2-$cycle is unstable if $\mu > 1 +\sqrt{6}$.
+
+{\bf Global stability}
+By theorem \ref{theo:2.9} the equilibrium $p$ is globally asymptotically stable for $1<\mu<3$.
+
+{\bf Bifurcation}
+At $\mu =1$, $\mu =3$ and $\mu =1 + \sqrt{6}$ there are changes in stability of equilibria. Then $\mu =1$, $\mu =3$ and $\mu =1 + \sqrt{6}$ are bifurcation values. At $\mu =1$, the bifurcation is called a transcritical bifurcation. At $\mu =3$ and $\mu =1 + \sqrt{6}$, the bifurcation is called a period-doubling bifurcation. 
+
+The analysis of the logistic growth can be continued to find bifurcation values:
+\begin{itemize}
+\item $\mu = 3.5441$ : for $1 + \sqrt{6}<\mu <3.5441$ there is a stable $4-$cycle
+\item $\mu = 3.5644$ : for the parameter $3.5441<\mu <3.5644$ there is a stable $8-$cycle
+\item $\mu = 3.5688$ : for the parameter $3.5644<\mu <3.5688$ there is a stable $16-$cycle
+\item ... other stable cycle of increasing period $2^n$
+\item $\mu > 3.57$ a cycle of period $3$ exits what is referred as chaotic solutions.
+\end{itemize}
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{cascade_full}
+\end{center}
+\caption{The cascade of bifurcation to chaos for the logistic growth.}
+\end{figure}
+
+
+{\bf Examples: Tumor cell growth }
+
+
+A population of tumor cells $N(t)$ growing in a container can be modeled by a logistic growth
+$$N(t+1)=rN(t)(1-N(t))$$
+$r$ is the rate of growth of the tumor cells. Normalization of $N(t)$ means that $N(t)$ represents the fraction of the total population of cells contained in the cell culture. The cell culture can support a maximal number of cells represented by 1. The main assumption of the model is that the growth rate is constant.
+
+
+\subsubsection{Other examples of population models exhibiting chaotic behaviors}
+
+
+{\bf Ricker model }
+another model for describing a population $N(t)$ in a limited environment
+$$N(t+1)=N(t)\exp\left (r (1-\frac{N(t)}{K}) \right )=f(N(t))$$
+where $r$ is the intrinsic growth rate and $K$ is the carrying capacity. The growth rate $f(N(t))$ is increasing  in $N(t)$ and the per capita growth $\frac{f(N)}{N}$ is decreasing in $N(t)$. The increase in population is not sufficient to compensate for the decrease in the per capita growth, then $\lim_{N(t)\rightarrow +\infty}f(N(t))=0$. Then the Ricker model can be referred as to overcompensatory.
+\begin{itemize}
+\item $r < 2$ Globally asymptotically stable equilibrium $\bar x=K$
+\item r = 2 Bifurcation into a stable 2-cycle
+\item r = 2.5 Bifurcation into a stable 4-cycle
+\item Then there is a series of cycle duplication: 8-cycle, 16-cycle, etc.
+\item r = 2.692 Chaos 
+\item For $r > 2.7$ there are some regions where dynamics returns to a cycle, e.g., r=3.15. 
+\end{itemize}
+
+
+
+{\bf Hassell model}
+a population $N(t)$ in a limited environment
+$$N(t+1)=\frac{rN(t)}{(1 + N(t))^b}$$
+where $r$ is the intrinsic growth rate for small populations and b represents the inhibitive density-dependent feedback, usually attributed to the environment. 
+
+
+
+%{\bf Beverton-Holt model}
+%$$N(t+1)=\frac{ e ^r K N(t)}{K + (e^r -1)N(t)}$$
+%with $r$ is the intrinsic growth rate, the carrying capacity is $K$.
+
+\subsection{Example of a 2-dimensional system}
+\begin{equation*}
+\begin{array}{cl}
+x(t+1)=&x(t)(a-x(t)-y(t)), \quad a>0\\
+y(t+1)=&y(t)(b+x(t)), \quad 0<b<1.
+\end{array}
+\end{equation*}
+
+
+{\bf Equilibria: }
+To find equilibria, solve for $x$ and $y$
+\begin{equation*}
+\begin{array}{cl}
+x=&x(a-x-y)\\
+y=&y(b+x)
+\end{array}
+\end{equation*}
+Then, we found 3 equilibria:
+$$(\bar x_1, \bar y_1)=(0,0), \quad  (\bar x_2, \bar y_2)=(a-1,0), \quad (\bar x_3, \bar y_3)=(1-b,a+b-2).$$
+
+{\bf Local asymptotic stability of equilibrium: }
+The Jacobian of the system is
+$$
+J=\left ( 
+\begin{array}{cc}
+a-2x-y & -x \\
+y & b+x
+\end{array}
+\right )
+$$
+The Jacobians evaluated at each equilibrium are:
+$$
+J_{(\bar x_1, \bar y_1)}=\left ( 
+\begin{array}{cc}
+a & 0 \\
+0 & b
+\end{array}
+\right ) \quad 
+J_{(\bar x_2, \bar y_2)}=\left ( 
+\begin{array}{cc}
+2-a & 1-a \\
+0 & b+a-1
+\end{array}
+\right ) \quad
+J_{(\bar x_3, \bar y_3)}=\left ( 
+\begin{array}{cc}
+b & -1+b \\
+a+b-2 & 1
+\end{array}
+\right )
+$$
+\begin{itemize}
+\item Eigenvalues of $J_{(\bar x_1, \bar y_1)}$ are $a$ and $b$. By definition $|b|<1$. If $a<1$, $(\bar x_1, \bar y_1)$ is L.A.S.
+\item $(\bar x_2, \bar y_2)=(a-1,0)$ exists only if $1<a$. Eigenvalues of $J_{(\bar x_2, \bar y_2)}$ are $2-a$ and $b+a-1$, then the stability of $(\bar x_2, \bar y_2)$ depends on $|2-a|<1$ and $|b+a-1|<1$. These inequalities lead to $1<a<2-b$.
+\item From Theorem \ref{theo:stable2dim}, $(\bar x_3, \bar y_3)$ is L.A.S. if 
+$$|1+b|<1+b-(-1+b)(a+b-2)<2.$$
+$(\bar x_3, \bar y_3)$ is positive if $b<1$ and $a+b>2$. Then the biological existence and the LAS of $(\bar x_3, \bar y_3)$ are possible for
+$$2<a+b<3.$$
+\end{itemize}
+
+
+\subsection{Epidemic models}
+To study the spread of a disease in a population.
+
+
+
+
+The population can be 
+\begin{itemize}
+\item closed (no immigration, no emigration, death and birth are neglected). 
+\item open
+\item homogeneous and homogeneously mixed (or not)
+\end{itemize}
+The population has a structure
+\begin{itemize}
+\item classification of individuals according to their disease status
+\begin{itemize}
+\item susceptible (S): individuals not infective but who are capable of contracting the disease
+\item latent or exposed (E): infected by the disease, but not yet infectious
+\item infective (I): infectious individual; an individual can be infectious before symptoms appear.
+\item removed (R): no longer infectious, whether by acquiring immunity or death...
+\item carrier: in some diseases, individual can remain infectious for long periods (e.g. for life), but do not show any symptoms of the disease themselves.
+\end{itemize}
+\item age
+\item sex
+\end{itemize}
+Types of models
+\begin{itemize}
+\item SI model: no recovery.
+\item SIS model: recovery but no immunity.
+\item SIR model: recovery with permanent immunity.
+\item SIRS model: recovery with temporary immunity.
+\item ...
+\end{itemize}
+Parameters:
+\begin{itemize}
+\item $\beta$ transmission rate
+\item $b$ rate of a birth
+\item $d$ rate of death 
+\item $\gamma$ rate of recovery; $1/\gamma $ is the average length of the infectious period when there are no death.
+\item $1/(\gamma +b)$ is the average length of the infectious period when deaths are included.
+\item $\nu$ rate of loss of immunity; $1/\nu$ average length of immunity.
+\end{itemize}
+
+\begin{definition}
+The incidence is the rate at which infections occur. The incidence function is defined as $f(I,S)=\lambda(I)S$ where $\lambda(I)$ is the force of infection (probability of a given susceptible contracts the disease).
+\end{definition}
+Some incidence functions
+\begin{itemize}
+\item Mass action: infectives and susceptible mixed completely with each other, $f(I,S)=\beta IS$.
+\item Proportional incidence (pseudo mass action): $f(I,S)=\beta \frac{I}{N}S$
+\item Refuge effect: $$f(I,S)=\left \{\begin{array}{cc}\beta I (N-I/q)& I <qN\\
+0 & I\geq qN\end{array}\right .$$
+where $0<q<1$ is the proportion of population potentially suceptible because of spatial or other heterogeneities.
+\item For vector-borne disease: Criss-cross infection (the vector infecting the host and the host then infecting another vector)
+\item ...
+\end{itemize}
+
+\begin{definition}
+The prevalence of a disease in a population is the fraction infected.
+\end{definition}
+
+\begin{definition}
+The basic reproduction number $\mathcal{R}_0$ is the average number of secondary infections caused by one infectious individual in a totally susceptible population during the individual's infectious period.
+\end{definition}
+\begin{figure}[h]
+\includegraphics[width=.8\textwidth]{rzero}
+\caption{Reproduction number $\mathcal{R}_0=2$.}
+\end{figure}
+Magnitude of the basic reproductive number gives an indication of the difficulty in controlling an epidemic or eradicating the disease: the larger the value of $\mathcal{R}_0$, the harder it is to control.
+
+\subsubsection{SIR Model}
+An example of SIR model using the difference equation formalism.
+\begin{figure}[h]
+\includegraphics[width=0.8\textwidth]{SIR}
+\caption{SIR model: disease with recovery and permanent immunity, here birth=death=b.}
+\end{figure}
+$$
+\begin{array}{cc}
+S(t+1)=&S(t)-\beta \dfrac{S(t)}{N}I(t) +b(I(t)+R(t))\\
+I(t+1)=&(1-\gamma -b)I(t)+\beta \dfrac{S(t)}{N}I(t)\\
+R(t+1)=& R(t)(1-b)+\gamma I(t)
+\end{array}
+$$
+where $N=S(0)+I(0)+R(0)$, parameters are:
+\begin{itemize}
+\item $\beta$ contact number, the average number of successful contacts made by one infected individual during the time $t$ and $t+1$
+\item $b=$ rate of a birth = rate of death 
+\item $\gamma$ rate of recovery; $1/\gamma $ is the average length of the infectious period when there are no death.
+\item $1/(\gamma +b)$ is the average length of the infectious period when deaths are included.
+%\item $\nu$ rate of loss of immunity; $1/\nu$ average length of immunity.
+\end{itemize}
+\begin{itemize}
+\item  Population is constant: $N=S(t)+I(t)+R(t)$.
+\item  Nonnegative solutions, if $b, \gamma >0$ and
+$$0<b+\gamma <1, \qquad 0<\beta <1$$.
+\item Reduced system: $R(t)=N-I(t)-S(t)$
+$$
+\begin{array}{cc}
+S(t+1)=&S(t)-\beta \dfrac{S(t)}{N}I(t) +b(N-S(t))\\
+I(t+1)=&(1-\gamma -b)I(t)+\beta \dfrac{S(t)}{N}I(t)
+\end{array}
+$$
+\item Two equilibria: disease-free equilibrium $(S_1,I_1)=(N,0)$; 
+
+and endemic equilibrium $(S_2,I_2)=\left (N\frac{(\gamma+b)}{\beta},bN\frac{\beta - (\gamma + b)}{\beta (\gamma +b)}\right )$
+\item {\bf Stability at disease free equilibrium $(S_1,I_1)$}
+
+The Jacobian evaluated at $(S_1,I_1)$ is
+$$
+J(S_1,I_1)=\left (
+\begin{array}{cc}
+1-b & -\beta \\
+0 & 1-b-\gamma +\beta 
+\end{array}
+\right )
+$$
+as the Jacobian is upper triangular its eigenvalues are
+$$\lambda _1 = 1-b , \quad \lambda _2= 1-b-\gamma +\beta  .$$
+$(S_1,I_1)$ is locally asymptotically stable if $|\lambda_{1,2}|<1$
+\begin{itemize}
+\item from assumptions, we have $0<\lambda _1 <1$
+\item if $\frac{\beta}{\gamma +b}<1$ (where $\mathcal{R}_0=\frac{\beta}{\gamma +b}$ is the basis reproduction number), $0<\lambda _2 <1$
+\end{itemize}
+\item if $\mathcal{R}_0 <1$, there exist only one (biologically plausible) equilibrium, the disease-free equilibrium, and it is L.A.S. (see Figure \ref{fig:SIRsimul})
+\item {\bf Stability of the endemic equilibrium $(S_2,I_2)$}
+
+The Jacobian evaluated at $(S_2,I_2)$ is
+$$
+J(S_2,I_2)=\left (
+\begin{array}{cc}
+1-b\mathcal{R}_0 & -\beta/\mathcal{R}_0 \\
+b(\mathcal{R}_0-1) & 1
+\end{array}
+\right )
+$$
+where $\tr(J(S_2,I_2))=2-b\mathcal{R}_0 $ (assume $ \tr(J(S_2,I_2))\geq 0$), and $\det(J(S_2,I_2))=1-b\mathcal{R}_0+\beta b (1-\frac{1}{\mathcal{R}_0})$.
+
+
+Condition for L.A.S (Theorem \ref{theo:stable2dim})
+$$2-b\mathcal{R}_0 <2-b\mathcal{R}_0+\beta b (1-\frac{1}{\mathcal{R}_0}) <2$$
+this condition is satified because
+$$\beta (1-1/\mathcal{R}_0)<1<\mathcal{R}_0$$
+\item If $1<\mathcal{R_0}\leq 2/b$, the endemic equilibrium  exists and it is L.A.S. (see Figure \ref{fig:SIRsimul}).
+\end{itemize}
+\begin{figure}[h]
+\includegraphics[width=.49\textwidth]{R1}
+\includegraphics[width=.49\textwidth]{R4}
+\label{fig:SIRsimul}
+\caption{SIR model: {\bf Left)} $R_0=0.75$ the disease-free equilibrium is L.A.S. {\bf Right)} $R_0=4$ the endemic equilibrium is L.A.S}
+\end{figure}
+
+\subsection{Predator-Prey models}
+{\bf Assumptions}
+\begin{itemize}
+\item the prey has unlimited resources
+\item the prey's only threat is the predator
+\item the predator is a specialist; i.e., the predator's only food supply is the prey
+\item predator growth depends on the prey it catches
+\end{itemize}
+{\bf Variables}
+\begin{itemize}
+\item $N(t)$ number of preys
+\item $P(t)$ number of predators
+\end{itemize}
+{\bf Parameters}
+\begin{itemize}
+\item $r$ intrinsic rate of growth of prey
+\item $d$ rate of death of predators
+\item $eP(t)$ per capita prey reduction due to predation
+\item $bN(t)$ per capita predator increase due to prey
+\end{itemize}
+\begin{equation*}
+\begin{array}{cl}
+N(t+1)=&(1+r)N(t)-e N(t)P(t)\\
+P(t+1)=&(1-d)P(t)+bN(t)P(t)
+\end{array}
+\end{equation*}
+
+{\bf Neubert and Kot model:}
+If the prey follows a logistic growth
+\begin{equation*}
+\begin{array}{cl}
+N(t+1)=&N(t)+rN(t)\left ( 1-\frac{N(t)}{K} \right ) -e N(t)P(t)\\
+P(t+1)=&(1-d)P(t)+bN(t)P(t)
+\end{array}
+\end{equation*}
+
+\part{Differential equations}
+\section{Ordinary differential equations}
+
+
+
+\begin{definition}
+The standard form of first order linear
+equations is
+$$\frac{dy}{dt}+p(t)y=g(t)$$
+$p$ and $g$ are given functions of the independent variable $t$.
+\end{definition}
+
+
+
+\vspace{1cm}
+
+Let define a system of $n$ autonomous differential equations
+\begin{equation}\label{eq:ODEGeneral}
+\frac{dY}{dt}=F(Y)
+\end{equation}
+where $Y=(y_1,y_2,\dots,y_n)^T$ and $F(Y)=(f_n(y_1,\dots,y_n),\dots,f_n(y_1,\dots,y_n))^T$, and $F$ does not depend explicit on $t$.
+\begin{definition}
+An equilibrium solution of equation \eqref{eq:ODEGeneral} is a constant solution $\bar Y$ satisfying $$F(\bar Y)=0.$$
+\end{definition}
+
+\begin{definition}(Locally stable)
+An equilibrium solution $\bar Y$ of \eqref{eq:ODEGeneral} is said to be locally stable if for each $\epsilon>0$ there exits a $\delta >0$ such that every solution $Y(t)$ of \eqref{eq:ODEGeneral} with the initial condition $Y(t_0)=Y_0$,
+$$\| Y_0-\bar Y\| _2< \delta,$$
+satisfies the condition that
+$$\| Y(t)-\bar Y\| _2< \epsilon$$
+for all $t \geq t_0$.
+
+If the equilibrium solution is not locally stable it is said to be unstable.
+\end{definition}
+
+Euclidian distance between two points $Y_1=(y_1^1,y_2^1,\dots,y_n^1)$ and $Y_2=(y_1^2,y_2^2,\dots,y_n^2)$ in $\mathbb{R}^n$ is $$\|Y_1-Y_2\|_2=\sqrt{\sum _{i=1}^n(y_i^1-y_i^2)^2}.$$
+
+\begin{definition}(Locally asymptotically stable) 
+An equilibrium solution $\bar Y$ of \eqref{eq:ODEGeneral} is said to be locally asymptotically stable if it is locally stable and if there exist $\gamma >0$ such that $\| Y_0-\bar Y\| _2< \gamma$ implies
+$$\lim_{t\rightarrow \infty}\| Y(t)-\bar Y\| _2=0.$$
+\end{definition}
+
+
+\begin{definition}(Periodic solution)
+A periodic solution of the system \eqref{eq:ODEGeneral} is a nonconstant solution $Y(t)$ satisfying $Y(t+T)=Y(t)$ for all $t$ on the interval of existence  for some $T>0$. The minimum value of $T$ is called the period of the solution.
+\end{definition}
+
+\subsection{First order differential equations}
+\subsubsection{Analytical methods}
+
+
+{\bf Linear equations: Integrating factors}
+
+
+
+To solve $1^{st}$ order linear equation with non-constant coefficients (this method can also be used for equation with constant coefficient).
+\begin{enumerate}
+\item Put the DE in the standard form
+\begin{equation}\frac{dy}{dt}+p(t)y=g(t)\label{eq:DE}\end{equation}
+\item Determine the integrating factor $\mu (t)$
+\begin{itemize}
+\item Multiply the DE (\ref{eq:DE}) by $\mu (t)$
+\begin{equation}\mu (t)\frac{dy}{dt}+\mu (t)p(t)y=\mu
+(t)g(t)\label{eq:DE1}\end{equation} 
+\item  State that the left side of (\ref{eq:DE1}) is equal to $\frac{d}{dt}(\mu (t)y)$
+$$\frac{d}{dt}(\mu (t)y)=\mu (t)\frac{dy}{dt}+y\frac{d \mu}{dt}=\mu (t)\frac{dy}{dt}+\mu
+(t)p(t)y$$
+\item Solve for $\mu (t)$
+$$\frac{d \mu }{dt}=\mu (t) p(t)$$
+\end{itemize}
+$$\Rightarrow \quad \mu(t)=e^{\int p(t)dt}$$
+\item Solve (\ref{eq:DE1}) for $y$ with $\mu(t)=e^{\int p(t)dt}$
+$$\left(\frac{d}{dt}e^{\int p(t)dt}y=\right)e^{\int p(t)dt}\frac{dy}{dt}+p(t)e^{\int p(t)dt}y=e^{\int p(t)dt}g(t)$$
+$$\frac{d}{dt}\mu(t)y=\mu(t)g(t)$$
+$$\mu(t)y=\int \mu(t)g(t)dt +c$$
+\end{enumerate}
+
+Hence the general solution of (\ref{eq:DE}) is
+$$y(t)=\frac{1}{\mu(t)}\left [\int_{t_0}^t \mu(s)g(s)ds +c\right ]
+\quad with \quad \mu(t)=e^{\int p(t)dt}$$
+
+
+
+
+{\bf Separable equations}
+
+
+
+\begin{definition}(Separable equations) A first order differential equation
+$$\frac{dy}{dx}=f(x,y)$$
+is said to be separable or to have separable variables if it can be
+expressed as follows
+$$\frac{dy}{dx}=g(x)h(y)$$
+(the rate function can be expressed as a product of a function of
+the independent variable times a function of the dependent variable
+).
+\end{definition}
+
+
+{\bf To solve separable equations: }
+$\frac{dy}{dx}=g(x)h(y)$
+\begin{enumerate}
+\item Express the separable equation as follows
+$$\frac{1}{h(y)}\frac{dy}{dx}=g(x)$$
+\item As $y$, $\frac{dy}{dx}$, and $g(x)$ are functions of $x$,
+apply the integral
+$$\int \frac{1}{h(y)}\frac{dy}{dx} dx=\int g(x) dx$$
+\item Use the Change of variable Theorem (if $u=v(x)$ $\int f(v(x))v'(x)dx=\int
+f(u)du$) for the left side with $u=y(x)$
+$$\int \frac{1}{h(u)}du=\int g(x) dx$$
+$$\int \frac{1}{h(y)}dy=\int g(x) dx$$
+\item Integrate
+\begin{equation}H(y)=G(x)+c\label{eq:GS}\end{equation} $c$ is the combination of the left
+and right integration constants, $H$ and $G$ are antiderivatives of
+$\frac{1}{h(y)}$ and $g(x)$ respectively. \item Solve equation
+(\ref{eq:GS}) for $y$ to obtain a explicit form of the general
+solution.
+\end{enumerate}
+
+
+
+\subsubsection{Local stability}
+A simple criterion for determining the L.A.S. of an equilibrium solution to a first order autonomous differential equation
+\begin{equation}
+\label{eq:ODE1Nonlin}
+\frac{dy}{dt}=f(y)
+\end{equation}
+having an equilibrium at $\bar y$.
+
+
+\begin{theorem}
+Suppose $f'$ is continuous on an open interval $I$ containing $\bar y$, where $\bar y$ is an equilibrium of $\frac{dy}{dt}=f(y)$. Then $\bar y$ is locally asymptotically stable if $$f'(\bar y)<0$$
+and unstable if $f'(\bar y)>0$.
+\end{theorem}
+
+The value $f'(\bar y)$ is know as the eigenvalue of the linearized equation.
+
+
+\begin{definition}
+The equilibrium $\bar y$ of $\frac{dy}{dt}=f(y)$ is called hyperbolic if $f'(\bar y)\not =0$. Otherwise, it is called nonhyperbolic.
+\end{definition}
+
+
+Nonhyperbolic equilibria have a zero eigenvalue, and hence their local stability is indeterminate.
+
+
+\subsubsection{Phase line analysis}
+Consider a first-order nonautonomous equation
+$$\frac{dy}{dt}=f(t,y).$$
+$f(t,y)$ represents the slope of the tangent to the solution $y(t)$ at the point $(t,y)$. Hence $f(t,y)$ can be used to construct a direction field in the $t,y-$plane.
+
+Consider a first-order autonomous equation
+$$\frac{dy}{dt}=f(y).$$
+Here the direction of flow does not change with $t$. Hence it is only necessary to determine the direction of flow on the $y-$axis (Phase line). If $\frac{dy}{dt}$ is positive, the direction of flow is in the positive direction, if it is negative, the flow is in negative direction.
+
+
+
+\subsection{Higher-order linear equations}
+The general solution to an $n^{th}-$order linear nonhomogeneous differential equation is the sum of two solutions, a general solution to the homogeneous differential equation and a particular solution to the nonhomogeneous differential equation
+$$y(t)=y_h(t)+y_p(t).$$ 
+
+
+
+{\bf $\bullet$} Methodology to find the general solution to the homogeneous equation is given for second-order linear equations, but it can be generalized to the $n^{th}-$order linear equations.
+
+
+\begin{theorem} (Principle of superposition)
+If $y_1$ and $y_2$ are two solutions of the homogeneous linear differential
+equation on an interval $I$
+
+
+$$y''+p(t)y'+q(t)y=0$$
+
+then the linear combination $$c_1y_1+c_2y_2$$ is also a solution for
+any values of the constants $c_1$ and $c_2$ on the interval.
+\end{theorem}
+
+\begin{definition}(Wronskian)
+Suppose each of the functions $f_1(t),
+f_2(t), \dots, f_n(t)$ has at least $n-1$ derivatives. The
+determinant
+
+$$W(f_1,f_2,\dots,f_n)=\left |
+\begin{array}{llll}
+f_1 & f_2 & \cdots & f_n\\
+f_1' & f_2' & \cdots & f_n'\\
+\vdots & \vdots & &\vdots\\
+f_1^{(n-1)} & f_2^{(n-1)} & \cdots & f_n^{(n-1)}\\
+\end{array}
+\right |$$ is called the Wronskian of the functions.
+\end{definition}
+
+
+\begin{theorem}
+Let $y_1$ and $y_2$ be solutions of the differential equation
+$$
+y''+p(t)y'+q(t)y=0$$ where $p$ and $q$ are continuous on an open
+interval $I$. Then $y_1$ and $y_2$ are linearly independent on $I$
+if and only if $W(y_1,y_2)(t)\not=0$ $\forall t \in I$.
+\end{theorem}
+
+\begin{definition}
+Any set $y_1$, $y_2$ of 2 linearly independent solutions of
+$$
+y''+p(t)y'+q(t)y=0$$ on an open interval $I$ is said to be {\bf a
+fundamental set of solutions} on $I$ of the differential equation.
+\end{definition} 
+
+
+\begin{definition}
+The general solution of
+$$y''+p(t)y'+q(t)y=0$$ on an open interval $I$ is the linear combination of 2 linearly independent solutions $y_1$ and $y_2$
+$$y(t)=c_1 y_1(t)+c_2y_2(t)$$
+with $c_1$ and $c_2$ constants. $y_1$ and $y_2$ form a fundamental set of solutions.
+\end{definition}
+
+
+{\bf Method for linear homogeneous
+second-order equations with constant coefficients}
+\begin{equation}
+ay''+by'+cy=0\label{eq:constant}
+\end{equation}
+Let assume that the solution can take the form of $$y(t)=e^{rt}.$$
+\vspace{-.2cm}
+ \begin{enumerate}
+\item Write the {\bf characteristic equation }
+$$ar^2+br+c=0$$
+\item Find the {\bf roots} $r_1$ and $r_2$ of the characteristic equation
+$$r_1=\frac{-b-\sqrt{\Delta}}{2a} , \qquad r_2=\frac{-b+\sqrt{\Delta}}{2a}, \quad \textrm{with} \quad \Delta=b^2-4ac $$
+\begin{description}
+\item[$\Delta >0$]: $r_1$, $r_2$ distinct and real,
+$y_1(t)=e^{r_1t}$ and $y_2(t)=e^{r_2t}$ are 2 linearly independent
+solutions of \eqref{eq:constant}. The general solution is
+$$y(t)=c_1 e^{r_1t}+c_2e^{r_2t}, \quad c_1, c_2\textrm{ arbitrary constants}$$
+\item[$\Delta =0$]: $r_1=r_2=r$ real, $y_1(t)=e^{rt}$ and $y_2(t)=te^{rt}$ are 2 linearly independent
+solutions of \eqref{eq:constant}. The general solution is
+$$y(t)=c_1 e^{rt}+c_2te^{rt} , \quad c_1, c_2\textrm{ arbitrary constants}$$
+\item[$\Delta <0$]: $r_1$, $r_2$ complex conjugates, $r_1=\alpha + i \mu$ and $r_2=\alpha - i
+\mu$. $y_1(t)=e^{\alpha t}\cos (\mu t)$ and $y_2(t)=e^{\alpha t}\sin
+(\mu t)$ are 2 linearly independent solutions of
+\eqref{eq:constant}. The general solution is
+$$y(t)=c_1 e^{\alpha t}\cos (\mu t)+c_2e^{\alpha t}\sin (\mu t) , \quad c_1, c_2\textrm{ arbitrary constants}$$
+\end{description}
+\end{enumerate}
+
+Note that an $n^{th}-$order linear homogeneous differential equation always has a solution equal to zero $y(t)\equiv 0$. When the equation has constant coefficients, the stability of the zero solution is stable (when a solution to an IVP will tend to zero). Stability of the zero solution depends on the eigenvalues, the roots of $\lambda_i$ of the characteristic equation.
+
+\begin{theorem}
+If all of the roots of the characteristic polynomial $P(\lambda)$ are negative or have negative real part, then given any solution $y(t)$ of the homogeneous differential equation $$\frac{d^n y}{dy^n}+a_1(t)\frac{d^{n-1}y}{dy^{n-1}}+\dots+a_{n-1}(t)\frac{dy}{dy}+a_n(t)y=0,$$ there exist positive constant $M$ and $b$ such that
+$$|y(t)|\leq Me^{-bt}\quad for \quad t>0$$
+and
+$$\lim _{t\rightarrow \infty} |x(t)|=0$$
+\end{theorem}
+
+
+
+
+Methodologies to find a particular solution to the nonhonogeneous differential equation:
+\begin{itemize}
+\item Undetermined coefficients
+\item Variation of parameters
+\end{itemize}
+
+
+{\bf Undetermined coefficients (to find
+a particular solution $Y(t)$)}
+\begin{itemize}
+\item Make an assumption about the form of the particular solution
+$Y(t)$ but with the coefficients unspecified
+\item The particular solution has to satisfy the nonhomogeneous
+equation $\Leftrightarrow$ Substitute the assumed expression of
+$Y(t)$ in the nonhomogeneous equation $\Rightarrow$ Coefficients to
+be determined
+\end{itemize}
+Conditions for application: 
+if $g(t)$ takes the form: constant function, exponential, polynomial, sine, cosine, any sum or products of such functions.
+$$y''+p(t)y'+q(t)y=g(t)$$
+\begin{itemize}
+\item Make an assumption about the form of the particular solution
+ $Y(t)$: if $g(t)$ is of the form in the left column or is the sum or product of such function, then check a particular solution $Y(t)$ of the corresponding form as indicated in the right column
+
+\begin{tabular}{l|l}
+$\mathbf{g(t)}$ & {\bf Assumed form of }$Y(t)$\\
+$\alpha e^{\beta t}$& $ae^{\beta t}$\\
+$\alpha \cos (\omega t) +\beta \sin (\omega t)$ & $a \cos (\omega t)
++b \sin (\omega t)$\\
+$\alpha$ & $a$\\
+$\alpha + \beta t$ & $a +bt$\\
+$\alpha + \beta t +\gamma t^2$ & $a +bt +ct^2$\\
+$\alpha + \beta t +\gamma t^2+ \cdots+\delta t^m$ & $a +bt +ct^2+ \cdots+d t^m$\\
+\end{tabular}
+\item If coefficients cannot be determined, then no solution of this
+form exists $\Rightarrow$ modify the assumption
+\item If $g(t)$ contains terms that duplicate any solutions of the corresponding homogeneous equation
+$\Rightarrow$ each such term must be multiplied by $t^s$
+($s$ the smallest natural number that eliminates the
+duplication).
+\end{itemize}
+
+
+{\bf Variation of parameters: }
+$y''+p(t)y'+q(t)y=g(t)$
+\begin{enumerate}
+\item Find the {\bf general solution of the homogeneous
+equation} $\Leftrightarrow$ Find 2 linearly independent solutions
+$y_1$ and $y_2$ of the homogeneous equation
+\item Check for the nonhomogeneous equation a solution of the form
+$$Y(t)=u_1(t)y_1(t)+u_2(t)y_2(t)$$
+where $u_1$ and $u_2$ are two functions of $t$ to be determined, and
+that satisfy the {\bf second condition}
+$$u_1'(t)y_1(t)+u_2'(t)y_2(t)=0$$
+\item Substitute $Y(t)$ in the nonhomogeneous equation and use the
+second condition to obtain
+$$u'_1(t)y_1'(t)+u_2'(t)y_2'(t)=g(t)$$
+\item Solve  the system of 2 linear algebraic
+equation for $u_1'$ and $u_2'$
+$$\left \{
+\begin{array}{ll}
+u_1'(t)y_1(t)+u_2'(t)y_2(t)&=0\\
+u'_1(t)y_1'(t)+u_2'(t)y_2'(t)&=g(t)
+\end{array}\right . \mathrm{or} \quad
+\left [
+\begin{array}{ll}
+y_1(t)&y_2(t)\\
+y_1'(t)&y_2'(t)
+\end{array}\right ]\left [
+\begin{array}{l}
+u_1'(t)\\
+u_2'(t)
+\end{array}\right ]=\left [
+\begin{array}{l}
+0\\
+g(t)
+\end{array}\right ]
+$$
+
+$$\Rightarrow u_1'(t)=\frac{-y_2(t)g(t)}{W(y_1,y_2)(t)}, \qquad u_2'(t)=\frac{y_1(t)g(t)}{W(y_1,y_2)(t)}$$
+\item Integrate, evaluate the integral omitting the integration
+constants
+$$\Rightarrow u_1(t)=-\int \frac{y_2(t)g(t)}{W(y_1,y_2)(t)}dt, \qquad u_2(t)=\int \frac{y_1(t)g(t)}{W(y_1,y_2)(t)}dt$$
+\item A {\bf particular solution} of the nonhomogeneous equation is
+$$Y(t)=-y_1(t)\int \frac{y_2(t)g(t)}{W(y_1,y_2)(t)}dt + y_2(t)\int \frac{y_1(t)g(t)}{W(y_1,y_2)(t)}dt$$
+\item The {\bf general solution} of the nonhomogeneous equation is
+$$y(t)=c_1y_1(t)+c_2y_2(t)+Y(t), \qquad c_1, \; c_2 \; \textrm{arbitrary constants}$$
+\end{enumerate}
+
+
+\begin{theorem}
+If the functions $p$, $q$ and $g$ are continuous on an open interval
+$I$, and if the functions $y_1$ and $y_2$ are linearly independent
+solutions of the homogeneous equation, $y''+p(t)y'+q(t)y=0$,
+corresponding to the nonhomogeneous equation
+$$y''+p(t)y'+q(t)y=g(t)$$
+then a particular solution of the nonhomogeneous equation is
+$$Y(t)=-y_1(t)\int_{t_0}^t \frac{y_2(s)g(s)}{W(y_1,y_2)(s)}ds+y_2(t)\int_{t_0}^t \frac{y_1(s)g(s)}{W(y_1,y_2)(s)}ds$$
+where $t_0$ is any point in $I$. The general solution is
+$$y(t)=c_1y_1(t)+c_2y_2(t)+Y(t).$$
+\end{theorem}
+
+\subsection{Systems of equations}
+\subsubsection{Systems of linear equations}
+A $n-$dimensional linear system
+$$\frac{dX}{dt}=A X$$
+where $A$ is a $n\times n$ constant matrix with real elements. The general solution of this system is
+$$X(t)=e^{At}C$$
+where $e^{At}$ is a $n\times n$ matrix known as the fundamental matrix and $C$ ia a $n\times 1$ vector. There exist many methods to compute the matrix exponential. To compute the general solution of the $n-$dimensional system, a straightforward method can be used (similar method used for higher-order constant coefficient DE).
+
+
+
+
+Here the case of a 2-dimensional linear system is studied. 
+Consider a system of first-order linear equations
+\begin{equation}
+\frac{dX}{dt}=A X
+\label{eq:SysLin}
+\end{equation}
+where $X=(x_1,x_2)^T$ and $A$ is a constant $2\times 2$ matrix. Note that the zero solution $X=0$ is solution of the differential equation. 
+
+Let $X=e^{\lambda t}V$ be a solution of \eqref{eq:SysLin}, then
+$$AV=\lambda V$$
+where $\lambda $ is the eigenvalue of $A$ and $V$ is the eigenvector corresponding to $\lambda$. The eigenvalues are solutions of $$\det (A-\lambda I)=0.$$
+Then
+$$\lambda ^2 -\tr (A) \lambda + \det (A)=0.$$
+Solutions of \eqref{eq:SysLin} can take 3 different forms
+\begin{itemize}
+\item if eigenvalues are real and distinct
+$$X(t)=c_1V_1 e^{\lambda _1t}+c_2V_2 e^{\lambda _2t}$$
+with $c_1$ and $c_2$ constant.
+\item if eigenvalues are real and equal
+$$X(t)=c_1V_1 e^{\lambda _1t}+c_2\left (V_1te^{\lambda _1t}+P e^{\lambda _1t}\right )$$
+with $c_1$ and $c_2$ constant. $P$ can be obtained by solving $(A-\lambda _1 I)P=V_1$.
+\item if eigenvalues are complex conjugate $\lambda _{1,2}=a\pm i b$
+$$X(t)=P_1 e^{at} \cos (bt) + P_2 e^{at}\sin (bt).$$
+\end{itemize}
+Behaviors of solutions:
+\begin{itemize}
+\item The origin is asymptotically stable if the eigenvalues of $A$ are negative or have negative real part.
+\item The origin is stable if the eigenvalues of $A$ are nonpositive or have nonpositive real part.
+\item The origin is unstable if the eigenvalues of $A$ are positive or have positive real part.
+\end{itemize}
+
+
+\begin{theorem}
+Suppose $\frac{dX}{dt}=A X$ where $A$ is a constant $2\times 2$ matrix with $\det (A) \not =0$. 
+
+The orign is asymptotically stable iff
+$$\tr(A)<0 \quad and \quad \det (A)>0.$$
+
+The orign is stable iff
+$$\tr(A)\leq 0 \quad and \quad \det (A)>0.$$
+
+
+The origin is unstable iff 
+$$\tr(A)> 0 \quad or \quad \det (A)<0.$$
+\end{theorem}
+
+
+In the case of real eigenvalues $\lambda _1$ and $\lambda _2$, the eigenvectors $V_1$ and $V_2$ are directions along which solutions travel toward or away the origin:
+\begin{itemize}
+\item if $\lambda _1$ is positive, solutions will travel along $V_1$ away from the origin.
+\item if $\lambda _2$ is negative, solutions will travel along $V_2$ toward the origin.
+\end{itemize}
+Hence solutions travel in a direction which corresponds to a linear combination of $V_1$ and $V_2$
+\begin{theorem}
+Consider a system of first order linear equations
+$$\frac{dX}{dt}=A X$$
+where $X=(x_1,x_2)^T$ and $A$ is a $2\times 2-$matrix.
+\begin{itemize}
+\item if $\det A >0$ and $\tr A ^2 -4 \det A\geq 0$ then the origin is a node (real eigenvalues having the same signs); a stable node if $\tr A <0$ (real $\lambda _{1,2}<0$), and an unstable node if $\tr A >0$ (real $\lambda _{1,2}>0$).
+\item if $\det A <0$ then the origin is a saddle (real eigenvalues have opposite signs, $\lambda _1 \lambda _2<0$).
+\item if $\det A >0$ and $\tr A ^2 -4 \det A < 0$ and $\tr A \not =0$, the origin is a spiral (complex conjugate with nonzero real part); it is stable if $\tr A <0$ (negative real part) and unstable if $\tr A >0$ (positive real part).
+\item if $\det A >0$ and $\tr A=0$ then the origin is a center (purely imaginary eigenvalues $\lambda _{1,2}=\pm ib$).
+\end{itemize}
+\end{theorem}
+
+
+\subsubsection{Tools to determine properties of eigenvalues}
+\begin{theorem}(Routh-Hurwitz Criteria)
+Given the polynomial,
+$$P(\lambda)=\lambda ^n + a_1 \lambda ^{n-1}+\dots + a_{n-1}\lambda +a_n$$
+where the coefficients $a_i$ are real constants, $i=1,\dots , n$ define the $n$ Hurwitz matrices using the coefficients $a_i$ of the characteristic polynomial:
+$$H_1=(a_1),\quad H_2=\left (\begin{array}{cc}a_1 & 1 \\ a_3 &a_2\end{array}\right), \quad H_3=\left (\begin{array}{ccc}a_1 & 1 & 0 \\ a_3 &a_2 &a_1 \\ a_5& a_4 & a_3\end{array}\right),$$
+and
+$$H_n=\left (\begin{array}{cccccc}a_1 & 1 & 0 & 0 & \dots &0\\ a_3& a_2 & a_1 & 1 & \dots & 0 \\ a_5 & a_4 & a_3 & a_2 & \dots &0\\\vdots & \vdots & \vdots & \vdots & \dots & \vdots \\ 0 & 0& 0& 0& \dots & a_n\end{array}\right )$$
+where $a_j=0$ if $j>n$. All of the roots of the polynomial $P(\lambda)$ are negative or have negative real part if and only if the determinants of all Hurwitz matrices are positive:
+$$\det H_i>0, \quad j=1,2,\dots, n.$$
+\end{theorem}
+
+
+
+\begin{theorem}(Corollary)
+Routh-Hurwitz criteria for $n=2,3,4,5$
+\begin{itemize}
+\item $n=2:$ $a_1>0$ and $a_2>0$.
+\item $n=3:$ $a_1>0,$ $a_3>0$ and $a_1a_2>a_3$.
+\item $n=4:$ $a_1>0,$ $a_3>0,$ $a_4>0$  and $a_1a_2a_3>a_3^2+a_1^2a_4$.
+\item $n=5:$ $a_i>0,$ $i=1,2,3,4,5,$ $a_1a_2a_3>a_3^2+a_1^2a_4$ and $(a_1a_4-a_5)(a_1a_2a_3-a_3^2-a_1^2a_4)>a_5(a_1a_2-a_3)^2+a_1a_5^2$
+\end{itemize}
+\end{theorem}
+
+
+
+\begin{theorem}(Gerhgorin's Theorem)
+Let $A$ be an $n\times n$ matrix. Let $D_i$ be the disk in the complex plane with the center at $a_{ii}$ and radius $r_i=\sum _{j=1,j\not =i}^n|a_{ij}|$. Then all eigenvalues of the matrix $A$ lie in the union of the disks $D_i$, $i=1,2,\dots, n$, $\cup_{i=1}^nD_i$. In particular, if $\lambda $ is an eigenvalue of $A$, then for some $i=1,2,\dots,n$
+$$|\lambda -a_{ii}|\leq r_i.$$
+\end{theorem}
+
+\begin{theorem}(Corollary)
+Let $A$ be an $n\times n$ matrix with real entries. If the diagonal elements of $A$ satisfy 
+$$a_{ii}<-r_{i} \quad where \quad r_i=\sum _{j=1,j\not =i}^n|a_{ij}|$$
+for $i=1,2,\dots,n$ then the eigenvalues of $A$ are negative or have have negative real part.
+\end{theorem}
+
+
+
+\subsubsection{Systems of nonlinear equations}
+\begin{theorem}(Existence and Uniqueness)
+Assume that $F$ and $\frac{\partial F}{\partial x_i}$ for $i=1,\dots, n$ are continuous functions of $(x_1,x_2,\dots , x_n)$ on $\mathbb{R}^n$. Then a unique solution exits to the initial value problem
+$$\frac{dX}{dt}=F(X), \quad X(t_0)=X_0$$
+for any initial value $X_0\in \mathbb{R}^n$.
+\end{theorem}
+
+\begin{theorem} (Hartman-Grobman)
+Assume that $(\bar x, \bar y)$ is a hyperbolic (all eigenvalues of the Jacobian matrix evaluated at $(\bar x,\bar y)$ have nonzero real part) equilibrium. Then, in a small neighborhood of $(\bar x, \bar y)$, the nonlinear system 
+behaves in a similar manner as the linearized system.
+\end{theorem}
+
+
+%Consider the first-order autonomous differential equation
+%$$
+%\begin{array}{ll}
+%\frac{dx}{dt}=& f(x,y),\\
+%\frac{dy}{dt}=& g(x,y).
+%\end{array}
+%$$
+\begin{theorem}
+Assume the first-order partial derivatives of $f$ and $g$ are continuous in some open set containing the equilibrium $(\bar x,\bar y)$ of the system
+$$
+\begin{array}{ll}
+\frac{dx}{dt}=& f(x,y),\\
+\frac{dy}{dt}=& g(x,y).
+\end{array}
+$$
+Then the equilibrium is locally asymptotically stable if
+$$\tr J <0 \quad and \quad \det J >0,$$
+where $J$ is the Jacobian matrix evaluated at the equilibrium $(\bar x,\bar y)$. In addition, the equilibrium is unstable if either $\tr J >0$ or $\det J<0$.
+\end{theorem}
+
+As the linearization is only an approximation of the nonlinear system, the nonlinear system may behave differently from the linear system in 3 cases:
+\begin{itemize}
+\item $\det (J)=0$: there exists at least one zero eigenvalue, then the equilibrium in the nonlinear system may be a node, a saddle or a spiral.
+\item $\tr(J)=0$ and $\det (J)>0$: eigenvalues are purely imaginary. The equilibrium in the nonlinear system may be a spiral or a center.
+\item $\tr (J)^2=4\det (J)$: in the nonlinear system the equilibrium may be a node or a spiral.
+\end{itemize}
+
+
+Theorem for $n-$dimensional system:
+\begin{theorem}
+Suppose $dX/dt=F(X)$ is a nonlinear first-order autonomous system with an equilibrium $\bar X$. Denote the Jacobian matrix of $F$ evaluated at $\bar X$ as $J(\bar X)$. If the characteristic equation of the Jacobian matrix $J(\bar X)$,
+$$\lambda ^n + a_1 \lambda ^{n-1}+\dots + a_{n-1}\lambda +a_n=0$$
+satisfies the conditions of the Routh-Hurwitz criteria, that is, the determinants of all the Hurwitz matrices are positive $\det (H_j)>0$, $j=1,\dots,n$ then the equilibrium $\bar X$ is L.A.S. If $\det (H_j)<0$ for some $j=1,\dots , n$ then the equilibrium $\bar X$ is unstable.
+\end{theorem}
+
+
+{\bf Phase Plane analysis: }
+To study the qualitative behavior of a system without solving it.
+$$
+\begin{array}{ll}
+\frac{dx}{dt}=& f(x,y),\\
+\frac{dy}{dt}=& g(x,y)
+\end{array}
+$$
+Solutions curves (trajectories) $(x(t),y(t))$ are parametric equations with $t$ as an parameter.
+
+At any point $(x,y)$, 
+$$\frac{dy}{dx}=\frac{g(x,y)}{f(x,y)}$$
+is the slope of the trajectory in the $xy-$plane and the tangent vector that gives the direction of the trajectory is $(f(x,y),g(x,y))$. The collection of vectors evaluated at any point of the $xy-$plane defines the direction field.
+
+
+\begin{definition}
+The $x-$nullcline for
+$$
+\begin{array}{ll}
+\frac{dx}{dt}=& f(x,y),\\
+\frac{dy}{dt}=& g(x,y)
+\end{array}
+$$
+is the set of all points in the $xy-$plane satisfying $f(x,y)=0$.
+
+The $y-$nullcline for
+$$
+\begin{array}{ll}
+\frac{dx}{dt}=& f(x,y),\\
+\frac{dy}{dt}=& g(x,y)
+\end{array}
+$$
+is the set of all points in the $xy-$plane satisfying $g(x,y)=0$.
+\end{definition}
+
+At any intersection of $x-$nullcline and $y-$nullcline, there is an equilibrium point.
+
+On the $x-$nullcline, all vectors are vertical. On the $y-$nullcline, all vectors are horizontal.
+We need to check if the direction of flow is up or down on the $x-$nullcline, and if the direction of flow is left or right on the $y-$nullcline.
+
+\subsection{Bifurcations}
+Mathematical models have many parameters. When parameter values change, a change in the behavior of the solution can be expected. If the variation of a parameter change the qualitative behavior of the solution, there is a bifurcation.
+
+
+Consider the differential equation
+$$\frac{dx}{dt}=f(x,\mu), \quad x\in \mathbb{R} \quad \mu \in \mathbb{R}.$$
+where $\mu$ is the parameter.
+
+\begin{definition}
+$\bar x$ is a bifurcation point and $\bar \mu$ is a bifurcation value if
+$$f(\bar x, \bar \mu)=0, \quad \textrm{and} \quad \frac{\partial }{\partial x}f(\bar x, \bar \mu)=0.$$
+\end{definition}
+
+
+Different types of bifurcations in the case of scalar differential equations:
+\begin{itemize}
+\item Saddle-node bifurcation
+\item Transcritical bifurcation
+\item Pitchfork bifurcation
+\end{itemize}
+These types of bifurcations also occur in higher-dimensional system.
+
+A fourth type of bifurcation can occurs in systems consisting of two or more equations: the Hopf bifurcation.
+
+Consider a system of autonomous DEs:
+\begin{align*}
+\frac{dx}{dt}=&f(x,y,r)\\
+\frac{dy}{dt}=&g(x,y,r)
+\end{align*}
+$f$ and $g$ depends on the parameter $r$. Assume that $(\bar x(r), \bar y(r))$ is an equilibrium and the Jacobian evaluated at this equilibrium has eigenvalues $\alpha(r)\pm i \beta (r)$.
+
+A change of stability occurs at $r=\bar r$ where $\alpha (\bar r)=0$. If $\alpha (r)<0$ for $r<\bar r$ and $\alpha (r)>0$ for $r>\bar r$ (with $\beta (r)\not =0$), then the equilibrium changes from a stable spiral to an unstable spiral when $r$ passes through $\bar r$. The Hopf Theorem states that there is a periodic orbit near $r=\bar r$ from any neighborhood of the equilibrium is $\mathbb{R}^2$. Then $r$ is the parameter of bifurcation and the bifurcation value is $\bar r$.
+
+
+\begin{theorem}(Hopf bifurcation)
+Consider the system
+\begin{align*}
+\frac{dx}{dt}=&f(x,y,r)\\
+\frac{dy}{dt}=&g(x,y,r)
+\end{align*}
+where $f(x,y,r)$ and $g(x,y,r)$ are continous and differentiable. The system has an equilibrium $(\bar x(r), \bar y(r))$, and the Jacobian of the system evaluated at this parameter-dependent equilibrium is $J(r)$. The Jacobian matrix $J(r)$ has eigenvalues $\alpha(r)\pm i \beta (r)$.
+
+Assume that there exists a value $\bar r$ called the bifurcation value, such that $\alpha (\bar r)=0$ and $\beta (\bar r)\not =0$, and as $r$ is varied through, $\bar r$, the real part of the eigenvalues change signs $$\frac{d \alpha}{d r}_{r=\bar r}\not =0.$$
+
+Given these following hypotheses, the following possibilities arise:
+\begin{itemize}
+\item At $r=\bar r$, a center is created at the equilibrium, and thus infinitely many neutrally stable concentric closed orbits surround $(\bar x(r), \bar y(r))$.
+\item There is a range of $r$ values that $\bar r <r<c$ for which a single closed orbit (a limit cycle) surround  $(\bar x(r), \bar y(r))$. As $r$ is varied the diameter of the limit cycle changes in proportion to $\sqrt{|r-\bar r|}$. There are no other closed orbits near  $(\bar x(r), \bar y(r))$. Since the limit cycle exists for values above $\bar r$, this phenomenon is called a supercritical bifurcation.
+\item There is a range of values such that $d<r<\bar r$ for which a single closed orbit (a limit cycle) surround  $(\bar x(r), \bar y(r))$. Since the limit cycle exists for values below $\bar r$, this phenomenon is called a supercritical bifurcation.
+\end{itemize}
+\end{theorem}
+
+
+
+
+%\begin{theorem}(Hopf bifurcation)
+%Let $x'=A(\mu)x+F(\mu,x)$ be a $C^k$ planar vector field, with $k\geq 0$, depending on the scalar parameter $\mu$ such that $F(\mu,0)=0$ and $D_xF(\mu,0)=0$ for all $\mu$ sufficiently close enough to the origin. Assume that the linear part $A(\mu)$ at the origin has the eigenvalue $\alpha(\mu)\pm i\beta(\mu)$, with $\alpha(0)=0$ and $\beta(0)\neq 0$. Furthermore, assume the eigenvalues cross the imaginary axis with nonzero speed, i.e.,
+%\[
+%\left.\frac{d}{d\mu}\alpha(\mu)\right|_{\mu=0}\neq 0.
+%\]
+%Then, in any neighborhood $\mathcal{U}\ni(0,0)$ in $\mathbb{R}^2$ and any given $\mu_0>0$, there exists a $\bar\mu$ with $|\bar\mu|<\mu_0$ such that the differential equation $x'=A(\bar\mu)x+F(\bar\mu,x)$ has a nontrivial periodic orbit in $\mathcal{U}$.
+%\end{theorem}
+
+
+
+%Consider
+%\[
+%\frac{d}{dt}
+%\begin{pmatrix}
+%x\\ y
+%\end{pmatrix}
+%=
+%\begin{pmatrix}
+%\alpha(r) & \beta(r) \\
+%-\beta(r) & \alpha(r)
+%\end{pmatrix}
+%\begin{pmatrix}
+%x\\ y
+%\end{pmatrix}
+%+
+%\begin{pmatrix}
+%f_1(x,y,r)\\
+%g_1(x,y,r)
+%\end{pmatrix}
+%=\begin{pmatrix}
+%f(x,y,r)\\
+%g(x,y,r)
+%\end{pmatrix}
+%\]
+%The Jacobian at the origin is
+%\[
+%J(r)=\begin{pmatrix}
+%\alpha(r) & \beta(r) \\
+%-\beta(r) & \alpha(r)
+%\end{pmatrix}
+%\]
+%and thus eigenvalues are $\alpha(r)\pm i\beta(r)$, and $\alpha(0)=0$ and $\beta(0)>0$.
+%
+%
+%Define
+%\begin{align*}
+%C &= f_{xxx}+f_{xyy}+g_{xxy}+g_{yyy} \\
+%& \quad+ \frac{1}{\beta(0)}\left(-f_{xy}\left(f_{xx}+f_{yy}\right)+g_{xy}\left(g_{xx}+g_{yy}\right)+f_{xx}g_{xx}-f_{yy}g_{yy}\right),
+%\end{align*}
+%evaluated at $(0,0)$ and for $r=0$.
+%Then, if $d\alpha(0)/dr>0$,
+%\begin{enumerate}
+%\item If $C<0$, then for $r<0$, the origin is a stable spiral, and for $r>0$, there exists a stable periodic solution and the origin is unstable ({\bf supercritical Hopf}).
+%\item If $C>0$, then for $r<0$, there exists an unstable periodic solution and the origin is stable, and for $r>0$, the origin is unstable ({\bf subcritical Hopf}).
+%\item If $C=0$, the test is inconclusive.
+%\end{enumerate}
+
+
+%\begin{theorem}(Poincar\'e - Bendixson Theorem)
+%If for $t\geq t_0$ a trajectory is bounded and does not approach any equilibrium point, then it is either a closed periodic orbit or approaches a closed periodic orbit for $t \rightarrow +\infty$.
+%\end{theorem}
+
+%
+%
+\section{Examples}
+\subsection{SI model}
+\subsection{SIS model}
+\subsection{Prey-Predator model}
+{\bf 1 prey:}
+
+
+$x(t)$ is the density of prey, and $y(t)$ is the density of predators
+$$
+\begin{array}{lll}
+\frac{dx}{dt}&=x(r-\frac{r}{K}x -ay)&r,K,a >0\\
+\frac{dy}{dt}&=y(-b+cx)& b,c>0
+\end{array}
+$$
+\begin{itemize}
+\item $ay$ is the per capita loss of prey to the predator.
+\item $cx$ is the per capita gain to the predator.
+\end{itemize}
+
+
+{\bf 2 preys:}
+\begin{itemize}
+\item $x$ is the predator, it dies out in the absence of prey
+\item $y$ is a prey, it grows exponentially in the absence of predators
+\item $z$ is a prey, it grows logistically in the absence of predators
+\end{itemize}
+
+
+$$
+\begin{array}{cl}
+\frac{dx}{dt}=&\alpha xz+\beta xy -\gamma x\\
+\frac{dy}{dt}=&\delta y-\epsilon xy\\
+\frac{dz}{dt}=&\mu z(\nu-z) - \chi xz
+\end{array}
+$$
+
+Equlibria:
+$$(0,0,0) \quad and \quad (\frac{\delta}{\epsilon},\frac{1}{\beta}(\gamma -\alpha \nu +\frac{\alpha\chi\delta}{\epsilon \mu}),\nu-\frac{\delta \chi}{\epsilon \mu})$$
+
+
+
+\subsection{Growth of living organisms}
+\subsubsection{Michaelis-Menten enzyme kinetics}
+Michaelis Menten dynamics: $e$ enzyme concentration, $s$ subtrate concentration, $c$ complexe concentration, $p$ product concentration
+\begin{align*}
+\frac{ds}{dt}=&-k_1se+k_{-1}c\\
+\frac{de}{dt}=&-k_1se+k_{-1}c+k_2c\\
+\frac{dc}{dt}=&k_1se-k_{-1}c-k_2c\\
+\frac{dp}{dt}=&k_2c
+\end{align*}
+\begin{itemize}
+\item quasi-equilibrium hypothesis ($\dfrac{dc}{dt}=0$) is valid when enzymes are efficient  $e_0<<s_0$ (small concentration of enzymes in comparison to concentration of substrate). 
+\item velocity of reaction $\dfrac{dp}{dt}=K_{max}\dfrac{s}{k_n+s}$, uptake in nutrient ($\dfrac{dS}{dt}=-K_{max}\dfrac{s}{k_n+s}$ where $K_{max}=k_2e_0$ and $k_n=\frac{k_{-1}+k_2}{k_1}$), 
+\item cooperative enzymes, Hill equation (generalization for n-subtrate complexes, $\dfrac{ds}{dt}=-K_{max}\dfrac{s^n}{k_n+s^n}$)
+\end{itemize}
+\subsubsection{Chemostat model}
+\begin{figure}[h]
+\includegraphics[width=1\textwidth]{MM}
+\caption{Cell with unbounded transmembranar receptor $x_0$, bounded transmembranar receptors $x_1$. Nutrient $n$ and $p$ product.}
+\end{figure}
+\begin{itemize}
+\item Michaelis-Menten dynamics can be used to describe the growth of bacteria from a given uptake of substrate.
+\item Inflow and outflow at a constant rate $D$ to keep a constant volume in the chemostat with a concentration $n_0$ of subtrate in the inflow.
+\end{itemize}
+\subsection{Kinetic reactions}
+Autocatalysis
+\subsection{Bifurcation}
+\begin{itemize}
+\item Saddle-node bifurcation:
+$$\frac{dx}{dt}=\mu  - x^2$$
+\item Transcritical bifurcation:
+$$\frac{dx}{dt}=\mu x - x^2$$
+\item Pitchfork bifurcation:
+$$\frac{dx}{dt}=\mu x - x^3$$
+\end{itemize}
+
+%An irreversible reaction in which reactants $A$ and $B$ produce $C$:
+%$$A+B\rightarrow C$$
+%where $k$ is the reaction constant.
+%
+%We are interested in the dynamics of the product $C$
+%\subsection{Host-Parasites}
+%\subsection{Genetic model}
+%\subsection{Physiology}
+
+\begin{thebibliography}{}
+\bibitem[Britton(2005)]{Britton2005}
+Britton, N.F. 2005. Essential mathematical biology. Springer Verlag.
+
+\bibitem[Keshet(1988)]{Keshet1988}
+Edelstein-Keshet, L. 1988. Mathematical models in biology. Birkhauser Mathematics Series.
+
+\end{thebibliography}
+
+
+\end{document}
+
+
+

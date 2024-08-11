@@ -1,0 +1,12 @@
+close all;
+clear all;
+
+% Fill up the p structure that contains the parameters
+% Demographic parameters
+p.Pi=1/100;
+p.d=1/(78*365);
+% Disease related parameters
+p.beta=0.5;
+p.gamma=1/7;
+p.nu=1/365;
+

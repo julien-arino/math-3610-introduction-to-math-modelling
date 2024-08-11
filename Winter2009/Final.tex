@@ -1,0 +1,104 @@
+\documentclass[12pt]{exam}
+
+
+
+\usepackage{graphicx}% Include figure files
+\usepackage{dcolumn}% Align table columns on decimal point
+\usepackage{bm}% bold math
+\usepackage{latexsym}
+\usepackage{amsmath,amssymb,amsthm,amsfonts}
+\usepackage{subfigure}
+
+\begin{document}
+\pagestyle{head} \extraheadheight{1in}\runningheadrule
+\firstpageheader{$\mbox{}$\\DATE: April 23, 2007\\PAPER NO.: - \\
+DEPARTMENT $\&$ COURSE NO.: MATH 3530\\EXAMINATION: Mathematical Problems in Biology  }{\bf UNIVERSITY OF MANITOBA\\
+$\mbox{}$
+\\$\mbox{}$ \\ $\mbox{}$\\$\mbox{}$}{$\mbox{}$\\Final Examination\\ PAGE NO.: \thepage\ of \numpages\\TIME: 3
+hours\\ EXAMINER: S. Portet}\runningheadrule
+\runningheader{$\mbox{}$\\DATE: April 23, 2007\\PAPER NO.: - \\
+DEPARTMENT $\&$ COURSE NO.: MATH 3530\\EXAMINATION: Mathematical Problems in Biology }{\bf UNIVERSITY OF MANITOBA\\
+$\mbox{}$
+\\$\mbox{}$ \\ $\mbox{}$\\$\mbox{}$}{$\mbox{}$\\Final Examination\\ PAGE NO.: \thepage\ of \numpages\\TIME: 3
+hours\\ EXAMINER: S. Portet} \vspace{-2.5cm}
+\begin{center}
+\begin{tabular}{cp{15.5cm}}
+\hline
+&\\
+\end{tabular}
+\end{center}
+%\footer{}{Page \thepage\ of \numpages}%
+%{\iflastpage{End of exam.}{Please go on to the next page\ldots}}
+
+\addpoints
+
+
+\vspace{0.1in} \hbox to \textwidth{NAME:\enspace\hrulefill}
+\vspace{0.2in} \hbox to \textwidth{STUDENT NUMBER:\enspace\hrulefill
+ SEAT NUMBER:\enspace\hrulefill} \vspace{0.2in} \hbox to
+\textwidth{SIGNATURE:\enspace\hrulefill}
+
+\vspace{.5in}
+
+This is a 3 hour exam. Lecture Notes are allowed.
+
+\vspace{.2in} This exam has 6 questions.
+
+\vspace{.2in} {\bf \Large PLEASE SHOW YOUR WORK CLEARLY.} A correct answer without explanation will not get full marks. \vspace{.5in}
+\begin{center}
+\gradetable[v]
+\end{center}
+
+
+
+\newpage
+
+
+
+\begin{questions}
+\question[15]
+Consider the system of linear differential equations
+\begin{align*}
+\frac{dx}{dt}=&-3x+y\\
+\frac{dy}{dt}=&100(2x-y)
+\end{align*}
+\begin{parts}
+\part What is the quasi-equilibrium hypothesis for this system?
+\part Use the quasi-equilibrium hypothesis to eliminate $y$ and show that the solution of the simplified system is
+\begin{align*}
+x(t)=& exp^{-t}\\
+y(t)=& 2 exp^{-t}
+\end{align*}
+\end{parts}
+
+
+\question[8]
+Assume that an insect population, $x(t)$, is controlled by a natural predator population, $y(t)$.
+\begin{parts}
+\part Write a model describing the interaction of the 2 populations.
+\part Assume that an insecticide is used to reduce the population of insects, but it is also toxic to the predators; hence, the poison kills both predatr and prey at rates proportional to their respective populations. Modify your model from \emph{(a)}.
+\end{parts}
+
+\question[6]
+Show that the $2-$cycle
+$$\bar x_{1,2}=\frac{1\pm \sqrt{4r-3}}{2}$$
+of the difference equation $x_{t+1}=r-x_t^2$ is unstable if $r> 5/4$.
+
+
+\question[8]
+Write down a differential equation model for the following reactions
+
+
+
+\question[10]
+Find the equilibrium points and determine their stabilities.
+$$x(n+1)=-x^3(n)-x(n)$$
+
+
+\question[10]
+Determine the stability of equilibrium point, and the oscillatory behavior of the solutions
+$$y(n+2)-2y(n+1)+2y(n)=0$$
+
+
+\end{questions}
+\end{document}

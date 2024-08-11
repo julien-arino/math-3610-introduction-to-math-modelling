@@ -1,0 +1,109 @@
+\chapter{A delayed model of traffic flow}
+\label{chap:dde_traffic}
+
+
+\section{A delayed model of traffic flow}
+In the traffic flow model \eqref{eq:ode_traffic_flow} of Chapter~\ref{chap:traffic_flow}, reaction time is instantaneous.
+In practice, this is known to be incorrect: reflexes and psychology play a role.
+It takes at least a few instants to acknowledge a change of speed in the car in front.
+If the change of speed is not threatening, then you may not want to react right away.
+When you press the accelerator or the brake, there is a delay between the action and the reaction..
+
+We consider the same setting as for system \eqref{eq:ode_traffic_flow}, except that now, for $t>0$,
+\begin{equation}\label{eq:dde_traffic_flow}
+u'_{n+1}(t)=\lambda(u_n(t-\tau)-u_{n+1}(t-\tau)),
+\end{equation}
+for $n=1,\ldots,N-1$. Here, $\tau\geq 0$ is called the \emph{time delay} (or \emph{time lag}), or for short, \emph{delay} (or \emph{lag}).
+If $\tau=0$, we are back to the model \eqref{eq:ode_traffic_flow}.
+
+\paragraph{Initial data}
+For a delay equation such as \eqref{eq:dde_traffic_flow}, initial data must be specified on an interval of length $N\tau$, left of zero.
+\vskip0.5cm
+This is easy to see by looking at the terms: $u(t-\tau)$ involves, at time $t$, the state of $u$ at time $t-\tau$. So if $t<\tau$, we need to know what happened for $t\in[-\tau,0]$.
+So, normally, we specify initial data as
+\[
+u_n(t)=\phi(t)\textrm{ for }t\in[-\tau,0],
+\]
+where $\phi$ is some function, that we assume to be continuous. We assume $u_1(t)$ is known.
+Here, we assume, for $n=1,\ldots,N$,
+\begin{equation}\label{sys:IC_DDE_traffic_flow}
+u_n(t)=0,\qquad t\leq (n-1)\tau.
+\end{equation}
+The explanation for this form of the initial data is simple. Since it takes $\tau$ units of time for each driver to adjust to changes in the speed of the car in front of them, car number 1 has to have moved for $\tau$ units of time before car number 2 makes any adjustment. In turn, car number 2 must have moved for $\tau$ units of time before car number 3 makes any adjustment. Repeating this, we obtain the form \eqref{sys:IC_DDE_traffic_flow}.
+
+\paragraph{Important remark}
+Although \eqref{eq:dde_traffic_flow} looks very similar to \eqref{eq:ode_traffic_flow}, you must keep in mind that it is in fact much more complicated.
+\begin{itemize}
+\item
+A solution to \eqref{eq:ode_traffic_flow} is a continuous function from $\IR$ to $\IR$ (or to $\IR^n$ if we consider the system).
+\item
+A solution to \eqref{eq:dde_traffic_flow} is a continuous function in the space of continuous functions.
+\item
+The space $\IR^n$ has dimension $n$. The space of continuous functions has dimension $\infty$.
+\end{itemize}
+We can use the Laplace transform to get some understanding of the nature of the solutions.
+
+
+
+
+\section{Laplace transform of the DDE traffic flow model}
+Let
+\[
+U_{k+1}(s)=\L\{u_{k+1}(t)\}=\int_0^\infty e^{-st}u_{k+1}(t)dt.
+\]
+Since we have assumed initial data of the form
+\[
+u_n(t)=0\qquad\textrm{for } t\leq(n-1)\tau,
+\]
+we have
+\[
+U_{k+1}(s)=\int_{k\tau}^\infty e^{-st}u_{k+1}(t)ds.
+\]
+Since $u_{n+1}(t)=0$ for $t\leq n\tau$,
+\begin{align*}
+\int_0^\infty e^{-st}u_{n+1}'(t)dt &= \left[u_{k+1}(t)e^{-st}\right]_{k\tau}^\infty +s\int_{k\tau}^\infty e^{-st}u_{k+1}(t)dt \\
+&= sU_{k+1}(s)
+\end{align*}
+and
+\begin{align*}
+\int_0^\infty e^{-st}u_{k+1}(t-\tau)dt &= \int_{(k-1)\tau}^\infty e^{-st}u_{k+1}(t-\tau)dt \\
+&= \int_{(k-2)\tau}^\infty e^{-s(t+\tau)}u_k(\tau)d\tau \\
+&= e^{-s\tau}U_k(s),
+\end{align*}
+since $e^{-st}u_{k+1}(t)\to 0$ for the improper integral to exist.
+Note that we could have obtained this directly using the properties of the Laplace transform.
+
+Multiply 
+\[
+u_{n+1}'(t)=\lambda(u_{n}(t-\tau)-u_{n+1}(t-\tau))
+\]
+by $e^{-st}$,
+\[
+e^{-st}u_{n+1}'(t)=\lambda e^{-st}(u_{n}(t-\tau)-u_{n+1}(t-\tau))
+\]
+integrate over $(0,\infty)$ (using the expressions found above),
+\[
+sU_{n+1}(s)=\lambda(e^{-s\tau}U_{n}(s)-e^{-s\tau}U_{n+1}(s))
+\]
+which is equivalent to
+\[
+U_{n+1}(s)=\frac{\lambda U_n(s)}{\lambda+se^{s\tau}}
+\]
+Thus, when $U_1(s)$ is known, we can deduce the values for all $U_n$.
+Suppose 
+\[
+u_1(t)=\alpha \sin(\omega t)
+\]
+From the table of Laplace transforms, it follows that 
+\[
+U_1(s)=\alpha\frac{\omega}{s^2+\omega^2}
+\]
+Therefore,
+\[
+U_2=\frac{\lambda U_1(s)}{\lambda+se^{st}}
+=\alpha\frac{\lambda}{\lambda+se^{st}}\;\frac{\omega}{s^2+\omega^2}
+\]
+and we can continue.. 
+\vskip0.5cm
+However, even though we know the solution in $s$-space, it is difficult to get the behavior in $t$-space, by hand, and maple does not help us either.
+

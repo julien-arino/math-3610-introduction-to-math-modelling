@@ -1,0 +1,4 @@
+\beamer@endinputifotherversion {3.07pt}
+\beamer@sectionintoc {1}{SIS model without vital dynamics}{1}{0}{1}
+\beamer@sectionintoc {2}{SIR model of Kermack and McKendrick}{10}{0}{2}
+\beamer@sectionintoc {3}{SIRS model with demography}{18}{0}{3}

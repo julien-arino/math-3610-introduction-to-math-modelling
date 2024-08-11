@@ -1,0 +1,36 @@
+\BOOKMARK [1][]{Outline1}{Mathematical techniques}{}
+\BOOKMARK [2][]{Outline1.1}{Regression}{Outline1}
+\BOOKMARK [2][]{Outline1.2}{Discrete time systems}{Outline1}
+\BOOKMARK [2][]{Outline1.3}{Systems of ODEs}{Outline1}
+\BOOKMARK [2][]{Outline1.4}{Linear systems of ODE -- Brief theory}{Outline1}
+\BOOKMARK [2][]{Outline1.5}{PDEs}{Outline1}
+\BOOKMARK [2][]{Outline1.6}{Some elementary probability}{Outline1}
+\BOOKMARK [2][]{Outline1.7}{Markov chains}{Outline1}
+\BOOKMARK [3][]{Outline1.7.1.57}{Regular Markov chains}{Outline1.7}
+\BOOKMARK [3][]{Outline1.7.2.63}{Absorbing Markov chains}{Outline1.7}
+\BOOKMARK [1][]{Outline2}{Modelling topics}{}
+\BOOKMARK [2][]{Outline2.8}{Single population dynamics and the logistic situation}{Outline2}
+\BOOKMARK [3][]{Outline2.8.1.71}{The data: US census}{Outline2.8}
+\BOOKMARK [3][]{Outline2.8.2.74}{A quadratic curve?}{Outline2.8}
+\BOOKMARK [3][]{Outline2.8.3.78}{Population growth -- Logistic equation}{Outline2.8}
+\BOOKMARK [3][]{Outline2.8.4.82}{Qualitative analysis of the logistic ODE}{Outline2.8}
+\BOOKMARK [3][]{Outline2.8.5.87}{The delayed logistic equation}{Outline2.8}
+\BOOKMARK [3][]{Outline2.8.6.92}{The logistic map}{Outline2.8}
+\BOOKMARK [2][]{Outline2.9}{Time of residence in a state -- Exponential distribution}{Outline2}
+\BOOKMARK [3][]{Outline2.9.1.111}{A cohort model}{Outline2.9}
+\BOOKMARK [3][]{Outline2.9.2.115}{Sojourn times in an SIS disease transmission model}{Outline2.9}
+\BOOKMARK [2][]{Outline2.10}{Epidemic models}{Outline2}
+\BOOKMARK [3][]{Outline2.10.1.124}{SIS model without vital dynamics}{Outline2.10}
+\BOOKMARK [3][]{Outline2.10.2.131}{SIR model of Kermack and McKendrick}{Outline2.10}
+\BOOKMARK [3][]{Outline2.10.3.136}{SIRS model with demography}{Outline2.10}
+\BOOKMARK [2][]{Outline2.11}{The chemostat}{Outline2}
+\BOOKMARK [3][]{Outline2.11.1.144}{Batch mode}{Outline2.11}
+\BOOKMARK [3][]{Outline2.11.2.151}{Continous flow mode}{Outline2.11}
+\BOOKMARK [2][]{Outline2.12}{Traffic flow}{Outline2}
+\BOOKMARK [3][]{Outline2.12.1.157}{ODE model}{Outline2.12}
+\BOOKMARK [3][]{Outline2.12.2.174}{DDE model}{Outline2.12}
+\BOOKMARK [2][]{Outline2.13}{Shallow water waves}{Outline2}
+\BOOKMARK [3][]{Outline2.13.1.182}{Traveling wave solutions}{Outline2.13}
+\BOOKMARK [2][]{Outline2.14}{A simple genetic model}{Outline2}
+\BOOKMARK [3][]{Outline2.14.1.195}{Continued matings with a Gg individual -- Regular chain}{Outline2.14}
+\BOOKMARK [3][]{Outline2.14.2.201}{Continued matings with a GG individual -- Absorbing chain}{Outline2.14}

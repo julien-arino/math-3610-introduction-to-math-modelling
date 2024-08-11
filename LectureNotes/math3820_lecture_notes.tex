@@ -1,0 +1,211 @@
+\documentclass[12pt]{report}
+
+\usepackage[active]{srcltx}
+
+\usepackage{amsmath,amsfonts,amssymb,amsthm,esint}
+\usepackage{easybmat}
+\usepackage{graphicx}
+%\usepackage[hypertex]{hyperref}
+%\usepackage[pdftex]{hyperref}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+\usepackage{subfigure}
+\usepackage{color}
+\usepackage{cancel}
+
+%\usepackage{makeidx}
+%\makeindex
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{atheorem}{Theorem}[chapter]
+\newtheorem{property}[theorem]{Property}
+\newtheorem{condition}[theorem]{Condition}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{axiom}[theorem]{Axiom}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+%%
+% % Make numbering specific to the Appendix
+% \newtheorem{Atheorem}{Theorem}[chapter]
+% \newtheorem{Aproperty}[Atheorem]{Property}
+% \newtheorem{Acondition}[Atheorem]{Condition}
+% \newtheorem{Aproposition}[Atheorem]{Proposition}
+% \newtheorem{Aaxiom}[Atheorem]{Axiom}
+% \newtheorem{Alemma}[Atheorem]{Lemma}
+% \newtheorem{Acorollary}[theorem]{Corollary}
+
+% Make definitions non italicized
+%\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+% Make numbering specific to the Appendix
+%\newtheorem{Adefinition}[Atheorem]{Definition}
+\newenvironment{defi}{\vskip0.2cm\addtocounter{theorem}{1}\par\noindent\bf Definition~\arabic{section}.\arabic{subsection}.\arabic{theorem}\rm.}{\hfill{$\circ$}\par\vskip0.25cm}
+
+
+%% Example environment and counter.
+\newcounter{cmpt_exercise}
+\newenvironment{exercise}{\addtocounter{cmpt_exercise}{1}\vskip0.2cm\par\noindent\begin{small}\bf Exercise~\arabic{cmpt_exercise}\,\,\rm --}{\hfill{$\circ$}\end{small}\par\vskip0.25cm}
+\newenvironment{problem}{\addtocounter{cmpt_exercise}{1}\vskip0.2cm\par\noindent{\Large\bf Problem~\arabic{cmpt_exercise}\,\,\rm --}}{\par\vskip0.25cm}
+
+
+\newenvironment{example}{\vskip0.2cm\par\noindent\begin{small}\bf Example\,\,\rm --}{\hfill{$\diamond$}\end{small}\par\vskip0.25cm}
+\newenvironment{remark}{\vskip0.2cm\par\noindent\begin{small}\bf Remark\,\,\rm --}{\hfill{$\circ$}\end{small}\par\vskip0.25cm}
+%\newenvironment{aparte}[1]{\vskip0.2cm\par\noindent\begin{quote}\begin{small}\bf Apart\'e : #1\,\,\rm --}{\hfill{$\circ$}\end{small}\end{quote}\par\vskip0.25cm}
+\newenvironment{aparte}[1]{\vskip0.3cm\par\begin{center}\begin{tabular}{|p{0.9\textwidth}|}\hline{\bf Apart\'e : #1}}{\\ \hline\end{tabular}\end{center}\par\vskip0.25cm}
+
+
+
+\renewcommand{\labelenumi}{\roman{enumi})}
+\renewcommand{\labelenumii}{\alph{enumii})}
+\newcommand{\espv}{\vspace{.5\baselineskip}}
+
+% Black board letters
+\def\IC{\mathbb{C}}
+\def\IF{\mathbb{F}}
+\def\II{\mathbb{I}}
+\def\IK{\mathbb{K}}
+\def\IN{\mathbb{N}}
+\def\IQ{\mathbb{Q}}
+\def\IR{\mathbb{R}}
+\def\IZ{\mathbb{Z}}
+% Caligraphic letters (math mode)
+\def\D{\mathcal{D}}
+\def\I{\mathcal{I}}
+\def\L{\mathcal{L}}
+\def\M{\mathcal{M}}
+\def\O{\mathcal{O}}
+\def\Q{\mathcal{Q}}
+\def\P{\mathcal{P}}
+\def\R{\mathcal{R}}
+\def\S{\mathcal{S}}
+\def\U{\mathcal{U}}
+
+\def\rank{\textrm{rank }}
+\def\Sp{\textrm{Sp }}
+\def\Span{\textrm{Span }}
+\def\Tr{\textrm{Tr }}
+\def\Mn{\mathcal{M}_n}
+\def\NN#1{\|#1\|}
+\def\N3#1{|\!|\!|#1|\!|\!|}
+\def\diag{\textrm{diag}}
+\def\tr{\textrm{tr}}
+\def\ker{\textrm{Ker }}
+\def\Proba#1{\P(#1)}
+\def\Rzero{\mathcal{R}_0}
+
+\def\red{\color[rgb]{1,0,0}}
+\def\nbOne{{\mathchoice {\rm 1\mskip-4mu l} {\rm 1\mskip-4mu l}
+{\rm 1\mskip-4.5mu l} {\rm 1\mskip-5mu l}}}
+
+\setlength{\textwidth}{17cm} 
+\addtolength{\oddsidemargin}{-1.5cm}
+\setlength{\textheight}{24cm}
+\addtolength{\topmargin}{-2cm} 
+\setlength{\headheight}{15pt}
+\setlength{\headsep}{8pt}
+
+%% Fancyhdr related stuff
+\pagestyle{fancy}
+\lhead{Arino \& Portet -- MATH 3530 \& 3820 -- Lecture Notes}
+\rhead{\thepage}
+\cfoot{}
+
+\usepackage[hang,small,bf]{caption}
+\setlength{\captionmargin}{20pt}
+
+\makeatletter
+\def\cleardoublepage{\clearpage\if@twoside \ifodd\c@page\else
+\hbox{}
+% \vspace*{\fill}
+% \begin{center}
+% This page intentionally contains only this sentence.
+% \end{center}% Make numbering specific to the Appendix
+\newtheorem{Atheorem}{Theorem}[chapter]
+\newtheorem{Aproperty}[Atheorem]{Property}
+\newtheorem{Acondition}[Atheorem]{Condition}
+\newtheorem{Aproposition}[Atheorem]{Proposition}
+\newtheorem{Aaxiom}[Atheorem]{Axiom}
+\newtheorem{Alemma}[Atheorem]{Lemma}
+\newtheorem{Acorollary}[theorem]{Corollary}
+
+% \vspace{\fill}
+\thispagestyle{empty}
+\newpage
+\if@twocolumn\hbox{}\newpage\fi\fi\fi}
+\makeatother
+
+
+%% Try to make it possible to include beamer without too much struggle
+\renewenvironment{frame}{}{}
+\def\frametitle#1{\paragraph{#1}}
+
+
+
+\author{Julien Arino}
+%\address{University of Manitoba}
+\title{MATH 3530 -- MATH 3820\\ Lecture Notes}
+\author{Julien Arino \& St\'ephanie Portet}
+
+%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%
+\begin{document}
+\maketitle
+
+\cfoot{}
+
+\section*{Foreword}
+These lecture notes are work in progress and therefore, far from complete. They regroup material taught in MATH 3530 (Mathematical Models in Biology) and  MATH 3820 (Introduction to Mathematical Modelling).
+They are derived from the slides shown in class, but some of the computations done in class do not appear here. The content of these lecture notes far exceeds the content of each of these courses.
+\vskip0.5cm
+We have tried to be mathematically rigorous, while not including too much theory. Therefore, a lot of the proofs of results we use are not shown. This does not mean that these proofs are not important, and those of you who intend to do some serious modelling work in the future should definitely try to get a better understanding of these results. A good modeller should know a fair bit of theory in multiple domains (algebra, analysis, graph theory..) and be able to use these results.
+\vskip0.5cm
+We will try to add a section at the end of each chapter to tell you where to get more information on the models, the underlying biological or physical phenomena, as well as leads of where to seek further mathematical explanations. But so far, this remains work to be done.
+\tableofcontents
+
+\rhead{\thepage}
+
+%\input{math3820_course_description}
+\part{A few introductory considerations}
+\input{math3820_intro_modelling}
+\input{math3820_matlab}
+\input{math3820_logistic}
+\input{math3820_residence_time}
+
+\part{Deterministic discrete time systems} 
+\input{math3820_discrete_time}
+\input{math3820_leslie_matrix}
+
+\part{Markov chains}
+\input{math3820_markov}
+\input{math3820_genetics}
+
+\part{Ordinary differential equations}
+\input{math3820_theory_ode}
+\input{math3820_epidemic_models}
+\input{math3820_chemostat}
+\input{math3820_traffic_flow}
+
+\part{Delay differential equations}
+\input{math3820_dde}
+\input{math3820_delay_traffic_flow}
+
+\part{Partial differential equations}
+\input{math3820_shallow_water}
+
+\addcontentsline{toc}{part}{Appendices}
+\appendix
+\input{math3820_tools}
+
+%%%%%%%%%%
+%%%%%%%%%%
+\bibliographystyle{plain}
+\bibliography{bib_lecture_notes}
+
+
+
+\end{document}

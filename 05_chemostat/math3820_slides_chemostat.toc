@@ -1,0 +1,6 @@
+\beamer@endinputifotherversion {3.07pt}
+\beamer@sectionintoc {1}{The chemostat}{1}{0}{1}
+\beamer@sectionintoc {2}{Batch mode}{8}{0}{2}
+\beamer@sectionintoc {3}{Continous flow mode}{16}{0}{3}
+\beamer@sectionintoc {4}{Stability}{28}{0}{4}
+\beamer@sectionintoc {5}{Conservation of mass}{30}{0}{5}

@@ -1,0 +1,511 @@
+\documentclass{beamer}
+
+\usepackage{graphics}
+\usepackage{graphicx}
+\usepackage{amsmath,amssymb,amsthm}
+%\usepackage{subeqnarray}
+%\usepackage{easybmat}
+%\usepackage{subfigure}
+
+
+
+%\usepackage{HA-prosper}
+%\usepackage[dvips,letterpaper]{geometry}
+
+
+\def\R{\mathcal{R}}
+\def\D{\mathcal{D}}
+\def\C{\mathcal{C}}
+\def\IC{\mathbb{C}}
+\def\IN{\mathbb{N}}
+\def\IR{\mathbb{R}}
+\def\Rzero{\mathcal{R}_0}
+\def\diag{\textrm{diag}}
+\def\tr{\textrm{tr}}
+\def\det{\textrm{det}}
+\def\sgn{\textrm{sgn}}
+\def\imply{$\Rightarrow$}
+\def\dbint{\int\!\!\!\int}
+\def\dbintb{\mathop{\int\!\!\!\!\int}}
+\def\tpint{\int\!\!\!\int\!\!\!\int}
+
+\newtheorem{proposition}{Proposition}
+
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{footline}
+{%
+\quad\insertsection\hfill p. \insertpagenumber\quad\mbox{}\vskip2pt
+}
+
+\title[Single population growth]{Single population growth models}
+\date{}
+
+\begin{document}
+\frame{\titlepage}
+%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%
+
+
+\section{Objectives}
+\frame{\frametitle{Objective}
+We are given a table with the population census at different time intervals between a date $a$ and a date $b$, and want to get an expression for the population. This allows us to: 
+\begin{itemize}
+\item compute a value for the population at any time between the date $a$ and the date $b$ (\emph{interpolation}),
+\item predict a value for the population at a date before $a$ or after $b$ (\emph{extrapolation}).
+\end{itemize}
+}
+
+\frame{
+\begin{center}
+\includegraphics[width=\textwidth]{titre_PearlReed1920PNAS6}
+\end{center}
+}
+
+\frame{
+\begin{center}
+\includegraphics[width=\textwidth]{table_PearlReed1920PNAS6}
+\end{center}
+}
+
+\frame{\frametitle{The US population from 1790 to 1910}
+\begin{center}
+\begin{tabular}[t]{cc}
+\begin{tabular}{cc}
+Year & Population\\
+& (millions) \\
+\hline
+1790 & 3.929 \\
+1800 & 5.308 \\
+1810 & 7.240 \\
+1820 & 9.638 \\
+1830 & 12.866 \\
+1840 & 17.069 \\
+1850 & 23.192
+\end{tabular} 
+&
+\begin{tabular}{cc}
+Year & Population \\
+& (millions) \\
+\hline
+1860 & 31.443 \\
+1870 & 38.558 \\
+1880 & 50.156 \\
+1890 & 62.948 \\
+1900 & 75.995 \\
+1910 & 91.972 
+\end{tabular}
+\end{tabular}
+\end{center}
+}
+
+
+\frame{\frametitle{PLOT THE DATA !!! (here, to 1910)}
+Using MatLab (or Octave), create two vectors using commands such as
+\vskip0.2cm
+{\tt t=1790:10:1910;}\\
+Format is
+\begin{center}
+Vector=Initial value:Step:Final value
+\end{center}
+(semicolumn hides result of the command.)\\[0.5cm]
+
+{\tt P=[3929214,5308483,7239881,9638453,12866020,...
+17069453,23191876,31443321,38558371,50155783,...
+62947714,75994575,91972266];}\\[0.5cm]
+
+Here, elements were just listed ({\tt ...} indicates that the line continues below).
+}
+
+
+\frame{
+Then plot using \\
+{\tt plot(t,P);}
+\begin{center}
+\includegraphics[width=0.9\textwidth]{USpop_to1910}
+\end{center}
+}
+
+\frame{
+To get points instead of a line \\
+{\tt plot(t,P,'*');}
+\begin{center}
+\includegraphics[width=0.9\textwidth]{USpop_to1910_points}
+\end{center}
+}
+
+\frame{\frametitle{First idea}
+The curve looks like a piece of a parabola. So let us fit a curve of the form
+\[
+P(t)=a+bt+ct^2.
+\]
+To do this, we want to minimize
+\[
+S=\sum_{k=1}^{13} \left(P(t_k)-P_k\right)^2,
+\]
+where $t_k$ are the known dates, $P_k$ are the known populations, and $P(t_k)=a+bt_k+ct_k^2$.
+}
+
+\frame{ 
+We proceed as in the notes (but note that the role of $a,b,c$ is reversed):
+\[
+S=S(a,b,c)=\sum_{k=1}^{13} \left(a+bt_k+ct_k^2-P_k\right)^2
+\]
+is maximal if (necessary condition) $\partial S/\partial a=\partial S/\partial b=\partial S/\partial c=0$, with
+\begin{align*}
+\frac{\partial S}{\partial a} &= 2\sum_{k=1}^{13}(a+bt_k+ct_k^2-P_k) \\
+\frac{\partial S}{\partial b} &= 2\sum_{k=1}^{13}(a+bt_k+ct_k^2-P_k)t_k \\
+\frac{\partial S}{\partial c} &= 2\sum_{k=1}^{13}(a+bt_k+ct_k^2-P_k)t_k^2
+\end{align*}
+}
+
+\frame{
+So we want
+\begin{align*}
+2\sum_{k=1}^{13}(a+bt_k+ct_k^2-P_k) &= 0\\
+2\sum_{k=1}^{13}(a+bt_k+ct_k^2-P_k)t_k &= 0 \\
+2\sum_{k=1}^{13}(a+bt_k+ct_k^2-P_k)t_k^2 &= 0,
+\end{align*}
+that is
+\begin{align*}
+\sum_{k=1}^{13}(a+bt_k+ct_k^2-P_k) &= 0\\
+\sum_{k=1}^{13}(a+bt_k+ct_k^2-P_k)t_k &= 0 \\
+\sum_{k=1}^{13}(a+bt_k+ct_k^2-P_k)t_k^2 &= 0.
+\end{align*}
+}
+
+\frame{
+Rearranging the system
+\begin{align*}
+\sum_{k=1}^{13}(a+bt_k+ct_k^2-P_k) &= 0\\
+\sum_{k=1}^{13}(a+bt_k+ct_k^2-P_k)t_k &= 0 \\
+\sum_{k=1}^{13}(a+bt_k+ct_k^2-P_k)t_k^2 &= 0,
+\end{align*}
+we get
+\begin{align*}
+\sum_{k=1}^{13}(a+bt_k+ct_k^2) &= \sum_{k=1}^{13}P_k\\
+\sum_{k=1}^{13}(at_k+bt_k^2+ct_k^3) &= \sum_{k=1}^{13}P_kt_k\\
+\sum_{k=1}^{13}(at_k^2+bt_k^3+ct_k^4) &= \sum_{k=1}^{13}P_kt_k^2.
+\end{align*}
+}
+
+\frame{
+\begin{align*}
+\sum_{k=1}^{13}(a+bt_k+ct_k^2) &= \sum_{k=1}^{13}P_k\\
+\sum_{k=1}^{13}(at_k+bt_k^2+ct_k^3) &= \sum_{k=1}^{13}P_kt_k\\
+\sum_{k=1}^{13}(at_k^2+bt_k^3+ct_k^4) &= \sum_{k=1}^{13}P_kt_k^2,
+\end{align*}
+after a bit of tidying up, takes the form
+\begin{align*}
+\left(\sum_{k=1}^{13}1\right)a+\left(\sum_{k=1}^{13}t_k\right)b+\left(\sum_{k=1}^{13}t_k^2\right)c &= \sum_{k=1}^{13}P_k \\
+\left(\sum_{k=1}^{13}t_k\right)a+\left(\sum_{k=1}^{13}t_k^2\right)b+\left(\sum_{k=1}^{13}t_k^3\right)c &= \sum_{k=1}^{13}P_kt_k \\
+\left(\sum_{k=1}^{13}t_k^2\right)a+\left(\sum_{k=1}^{13}t_k^3\right)b+\left(\sum_{k=1}^{13}t_k^4\right)c &= \sum_{k=1}^{13}P_kt_k^2.
+\end{align*}
+}
+
+\frame{
+So the aim is to solve the linear system
+\[
+\begin{pmatrix}
+13 & \sum\limits_{k=1}^{13}t_k & \sum\limits_{k=1}^{13}t_k^2 \\
+\sum\limits_{k=1}^{13}t_k & \sum\limits_{k=1}^{13}t_k^2 & \sum\limits_{k=1}^{13}t_k^3 \\
+\sum\limits_{k=1}^{13}t_k^2 & \sum\limits_{k=1}^{13}t_k^3 & \sum\limits_{k=1}^{13}t_k^4
+\end{pmatrix}
+\begin{pmatrix}
+a\\ b\\ c
+\end{pmatrix}
+=
+\begin{pmatrix}
+\sum\limits_{k=1}^{13}P_k \\
+\sum\limits_{k=1}^{13}P_kt_k \\
+\sum\limits_{k=1}^{13}P_kt_k^2
+\end{pmatrix}
+\]
+}
+
+\frame[containsverbatim]{
+With MatLab (or Octave), getting the values is easy.
+\begin{itemize}
+\item To apply an operation to every element in a vector or matrix, prefix the operation with a dot, hence
+\begin{verbatim}
+ t.^2;
+\end{verbatim}
+gives, for example, the vector with every element $t_k$ squared. 
+\item Also, the function {\tt sum} gives the sum of the entries of a vector or matrix.
+\item When entering a matrix or vector, separate entries on the same row by {\tt ,} and create a new row by using {\tt ;}.
+\end{itemize}
+}
+
+\frame[containsverbatim]{
+Thus, to set up the problem in the form of solving $Ax=b$, we need to do the following:
+\begin{verbatim}
+format long g;
+A=[13,sum(t),sum(t.^2);sum(t),sum(t.^2),sum(t.^3);...
+sum(t.^2),sum(t.^3),sum(t.^4)];
+b=[sum(P);sum(P.*t);sum(P.*(t.^2))];
+\end{verbatim}
+The {\tt format long g} command is used to force the display of digits (normally, what is shown is in ``scientific'' notation, not very informative here). 
+}
+
+\frame[containsverbatim]{
+Then, solve the system using
+\begin{verbatim}
+A\b
+\end{verbatim}
+We get the following output:
+\begin{verbatim}
+>> A\b
+Warning: Matrix is close to singular or badly scaled.
+         Results may be inaccurate. RCOND = 1.118391e-020.
+
+ans = 
+
+        22233186177.8195
+        -24720291.325476
+        6872.99686313725
+\end{verbatim}
+(note that here, Octave gives a solution that is not as good as this one, provided by MatLab).
+}
+
+\frame[containsverbatim]{
+Thus
+\[
+P(t)=22233186177.8195-24720291.325476t+6872.99686313725t^2
+\]
+To see what this looks like,
+\begin{verbatim}
+plot(t,22233186177.8195-24720291.325476.*t...
++6872.99686313725.*t.^2);
+\end{verbatim}
+(note the dots before multiplication and power, since we apply this function to every entry of $t$).
+In fact, to compare with original data:
+\begin{verbatim}
+plot(t,22233186177.8195-24720291.325476.*t...
++6872.99686313725.*t.^2,t,P,'*');
+\end{verbatim}
+}
+
+\frame{\frametitle{Our first guess, in pictures}
+\begin{center}
+\includegraphics[width=0.9\textwidth]{quadratic_fit}
+\end{center}
+}
+
+
+\frame[containsverbatim]{
+Now we want to generate the table of values, to compare with the true values and thus compute the error. To do this, we can proceed directly:
+\begin{verbatim}
+computedP=22233186177.8195-24720291.325476.*t...
++6872.99686313725.*t.^2;
+\end{verbatim}
+We get
+{\tiny
+\begin{verbatim}
+computedP =
+
+ Columns 1 through 4:
+
+      5633954.39552689      5171628.52739334      6083902.03188705      8370774.90901184
+
+ Columns 5 through 8:
+
+      12032247.1587601      17068318.7811356      23478989.7761383      31264260.1437798
+
+ Columns 9 through 12:
+
+       40424129.884037      50958598.9969215      62867667.4824371      76151335.3405762
+
+ Column 13:
+
+      90809602.5713463
+\end{verbatim}}
+}
+
+\frame[containsverbatim]{
+We can also create an \emph{inline} function
+{\footnotesize
+\begin{verbatim}
+f=inline('22233186177.8195-24720291.325476.*t+6872.99686313725.*t.^2')
+f =
+
+     Inline function:
+     f(t) = 22233186177.8195-24720291.325476.*t+6872.99686313725.*t.^2
+\end{verbatim}}
+This function can then easily be used for a single value
+\begin{verbatim}
+octave:24> f(1880)
+ans =     50958598.9969215
+\end{verbatim}
+as well as for vectors..
+}
+
+\frame[containsverbatim]{
+(Recall that $t$ has the dates; $t$ in the definition of the function is a dummy variable, we could have used another letter-.)
+\begin{verbatim}
+octave:25> f(t)
+\end{verbatim}
+{\tiny
+\begin{verbatim}
+ans =
+
+ Columns 1 through 4:
+
+      5633954.39552689      5171628.52739334      6083902.03188705      8370774.90901184
+
+ Columns 5 through 8:
+
+      12032247.1587601      17068318.7811356      23478989.7761383      31264260.1437798
+
+ Columns 9 through 12:
+
+       40424129.884037      50958598.9969215      62867667.4824371      76151335.3405762
+12186176863781.4
+ Column 13:
+
+      90809602.5713463
+\end{verbatim}}
+}
+
+\frame[containsverbatim]{
+Form the vector of errors, and compute sum of errors squared:
+\begin{verbatim}
+octave:26> E=f(t)-P;
+octave:27> sum(E.^2)
+ans =     12186176863781.4
+\end{verbatim}
+Quite a large error (12,186,176,863,781.4), which is normal since we have used actual numbers, not thousands or millions of individuals, and we are taking the square of the error.
+}
+
+\frame[containsverbatim]{
+To present things legibly, one way is to put everything in a matrix..
+\begin{verbatim}
+M=[P;f(t);E;E./P];
+\end{verbatim}
+This matrix will have each type of information as a row, so to display it in the form of a table, show its transpose, which is achieved using the function {\tt transpose} or the operator $'$.
+}
+
+\frame[containsverbatim]{
+\footnotesize
+\begin{verbatim}
+M'
+ans =
+ 3929214      5633954.39552689      1704740.39552689     0.433862954658842
+ 5308483      5171628.52739334     -136854.472606659   -0.0257803354756263
+ 7239881      6083902.03188705     -1155978.96811295    -0.159668227711608
+ 9638453      8370774.90901184     -1267678.09098816    -0.131522983095748
+12866020      12032247.1587601     -833772.841239929   -0.0648042550252471
+17069453      17068318.7811356     -1134.21886444092  -6.644728828e-05
+23191876      23478989.7761383      287113.776138306    0.0123799289086534
+31443321      31264260.1437798     -179060.856220245  -0.00569471832254123
+38558371       40424129.884037      1865758.88403702    0.0483879073635403
+50155783      50958598.9969215      802815.996921539    0.0160064492846526
+62947714      62867667.4824371     -80046.5175628662  -0.00127163502018304
+75994575      76151335.3405762      156760.340576172   0.00206278330494212
+91972266      90809602.5713463     -1162663.42865372    -0.012641456813228
+\end{verbatim}
+}
+
+\frame[containsverbatim]{\frametitle{Now for the big question...}
+How does our formula do for present times?
+\begin{verbatim}
+f(2006)
+ans =     301468584.066013
+\end{verbatim}
+Actually, quite well: 301,468,584, compared to the 298,444,215 July 2006 estimate, overestimates the population by 3,024,369, a relative error of approximately 1\%.
+}
+
+\frame{\frametitle{The US population from 1790 to 2000 (revised numbers)}
+\begin{center}
+\begin{tabular}[t]{ccc}
+\begin{tabular}{cc}
+Year & Population\\
+& (millions) \\
+\hline
+1790 & 3.929 \\
+1800 & 5.308 \\
+1810 & 7.240 \\
+1820 & 9.638 \\
+1830 & 12.866 \\
+1840 & 17.069 \\
+1850 & 23.192 \\
+1860 & 31.443 \\
+1870 & 38.558 \\
+1880 & 50.156 \\
+1890 & 62.948
+\end{tabular} 
+&\quad &
+\begin{tabular}{cc}
+Year & Population \\
+& (millions) \\
+\hline
+1900 & 76.212 \\
+1910 & 92.228 \\
+1920 & 106.021 \\
+1930 & 123.202 \\
+1940 & 132.164 \\
+1950 & 151.325 \\
+1960 & 179.323 \\
+1970 & 203.302 \\
+1980 & 226.542 \\
+1990 & 248.709 \\
+2000 & 281.421
+\end{tabular}
+\end{tabular}
+\end{center}
+}
+
+\frame{
+Pritchett, 1891:
+\[
+P=a+bt+ct^2+dt^3.
+\]
+Pearl, 1907:
+\[
+P(t)=a+bt+ct^2+d\ln t.
+\]
+Finds
+\[
+P(t)=9,064,900-6,281,430t+842,377t^2+19,829,500\ln t.
+\]
+}
+
+\frame{
+\begin{center}
+\includegraphics[width=0.95\textwidth]{table2_PearlReed1920PNAS6}
+\end{center}
+}
+
+
+\section{Population curves -- Logistic curve}
+
+\frame{\frametitle{The logistic curve}
+Pearl and Reed try
+\[
+P(t)=\frac{be^{at}}{1+ce^{at}}
+\]
+or
+\[
+P(t)=\frac{b}{e^{-at}+c}.
+\]
+They find
+\[
+P(t)=\frac{2,930.3009}{e^{-0.0313395t}+0.014854}.
+\]
+}
+
+\section{Population curves -- Gompertz}
+
+\frame{
+\begin{center}
+\includegraphics[width=0.95\textwidth]{title_Winsor1932PNAS18}
+\end{center}
+}
+
+\frame{
+\begin{center}
+\includegraphics[width=0.95\textwidth]{table_Winsor1932PNAS18}
+\end{center}
+}
+
+
+
+\end{document}

@@ -1,0 +1,35 @@
+\contentsline {part}{I\hspace {1em}Introduction}{2}
+\contentsline {subsubsection}{\numberline {0.0.1}Markov chains}{3}
+\contentsline {subsubsection}{\numberline {0.0.2}Salmon population}{5}
+\contentsline {subsubsection}{\numberline {0.0.3}Human Population}{5}
+\contentsline {subsubsection}{\numberline {0.0.4}Insect population}{6}
+\contentsline {subsection}{\numberline {0.1}Genetic model}{6}
+\contentsline {section}{\numberline {1}Examples}{8}
+\contentsline {subsection}{\numberline {1.1}Single species models}{8}
+\contentsline {subsubsection}{\numberline {1.1.1}Discrete logistic model}{8}
+\contentsline {subsubsection}{\numberline {1.1.2}Other examples of population models exhibiting chaotic behaviors}{12}
+\contentsline {subsection}{\numberline {1.2}Example of a 2-dimensional system}{12}
+\contentsline {subsection}{\numberline {1.3}Epidemic models}{13}
+\contentsline {subsubsection}{\numberline {1.3.1}SIR Model}{15}
+\contentsline {subsection}{\numberline {1.4}Predator-Prey models}{17}
+\contentsline {part}{II\hspace {1em}Differential equations}{17}
+\contentsline {section}{\numberline {2}Ordinary differential equations}{17}
+\contentsline {subsection}{\numberline {2.1}First order differential equations}{18}
+\contentsline {subsubsection}{\numberline {2.1.1}Analytical methods}{18}
+\contentsline {subsubsection}{\numberline {2.1.2}Local stability}{20}
+\contentsline {subsubsection}{\numberline {2.1.3}Phase line analysis}{21}
+\contentsline {subsection}{\numberline {2.2}Higher-order linear equations}{21}
+\contentsline {subsection}{\numberline {2.3}Systems of equations}{25}
+\contentsline {subsubsection}{\numberline {2.3.1}Systems of linear equations}{25}
+\contentsline {subsubsection}{\numberline {2.3.2}Tools to determine properties of eigenvalues}{27}
+\contentsline {subsubsection}{\numberline {2.3.3}Systems of nonlinear equations}{28}
+\contentsline {subsection}{\numberline {2.4}Bifurcations}{30}
+\contentsline {section}{\numberline {3}Examples}{31}
+\contentsline {subsection}{\numberline {3.1}SI model}{31}
+\contentsline {subsection}{\numberline {3.2}SIS model}{31}
+\contentsline {subsection}{\numberline {3.3}Prey-Predator model}{31}
+\contentsline {subsection}{\numberline {3.4}Growth of living organisms}{32}
+\contentsline {subsubsection}{\numberline {3.4.1}Michaelis-Menten enzyme kinetics}{32}
+\contentsline {subsubsection}{\numberline {3.4.2}Chemostat model}{32}
+\contentsline {subsection}{\numberline {3.5}Kinetic reactions}{33}
+\contentsline {subsection}{\numberline {3.6}Bifurcation}{33}

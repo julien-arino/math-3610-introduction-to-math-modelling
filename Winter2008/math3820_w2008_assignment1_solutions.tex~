@@ -1,0 +1,389 @@
+\documentclass[12pt]{article}
+
+\usepackage[active]{srcltx}
+
+\usepackage{amsmath,amsfonts,amssymb,amsthm}
+\usepackage{easybmat}
+\usepackage{graphicx}
+%\usepackage[hypertex]{hyperref}
+%\usepackage[pdftex]{hyperref}
+\usepackage{fancyhdr}
+\usepackage{subfigure}
+
+%\usepackage{makeidx}
+%\makeindex
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
+\newtheorem{property}[theorem]{Property}
+\newtheorem{condition}[theorem]{Condition}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{axiom}[theorem]{Axiom}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+%%
+% % Make numbering specific to the Appendix
+% \newtheorem{Atheorem}{Theorem}[chapter]
+% \newtheorem{Aproperty}[Atheorem]{Property}
+% \newtheorem{Acondition}[Atheorem]{Condition}
+% \newtheorem{Aproposition}[Atheorem]{Proposition}
+% \newtheorem{Aaxiom}[Atheorem]{Axiom}
+% \newtheorem{Alemma}[Atheorem]{Lemma}
+% \newtheorem{Acorollary}[theorem]{Corollary}
+
+% Make definitions non italicized
+%\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+% Make numbering specific to the Appendix
+%\newtheorem{Adefinition}[Atheorem]{Definition}
+\newenvironment{defi}{\vskip0.2cm\addtocounter{theorem}{1}\par\noindent\bf Definition~\arabic{section}.\arabic{subsection}.\arabic{theorem}\rm.}{\hfill{$\circ$}\par\vskip0.25cm}
+
+
+%% Example environment and counter.
+\newcounter{cmpt_exercise}
+\newenvironment{exercise}{\addtocounter{cmpt_exercise}{1}\vskip0.2cm\par\noindent\begin{small}\bf Exercise~\arabic{cmpt_exercise}\,\,\rm --}{\hfill{$\circ$}\end{small}\par\vskip0.25cm}
+\newenvironment{problem}{\addtocounter{cmpt_exercise}{1}\vskip0.2cm\par\noindent{\Large\bf Problem~\arabic{cmpt_exercise}\,\,\rm --}}{\par\vskip0.25cm}
+
+
+\newenvironment{example}{\vskip0.2cm\par\noindent\begin{small}\bf Example\,\,\rm --}{\hfill{$\diamond$}\end{small}\par\vskip0.25cm}
+\newenvironment{remark}{\vskip0.2cm\par\noindent\begin{small}\bf Remark\,\,\rm --}{\hfill{$\circ$}\end{small}\par\vskip0.25cm}
+%\newenvironment{aparte}[1]{\vskip0.2cm\par\noindent\begin{quote}\begin{small}\bf Apart\'e : #1\,\,\rm --}{\hfill{$\circ$}\end{small}\end{quote}\par\vskip0.25cm}
+\newenvironment{aparte}[1]{\vskip0.3cm\par\begin{center}\begin{tabular}{|p{0.9\textwidth}|}\hline{\bf Apart\'e : #1}}{\\ \hline\end{tabular}\end{center}\par\vskip0.25cm}
+
+\renewcommand{\labelenumi}{\roman{enumi})}
+\renewcommand{\labelenumii}{\alph{enumii})}
+\newcommand{\espv}{\vspace{.5\baselineskip}}
+\def\IR{\mathbb{R}}
+\def\IC{\mathbb{C}}
+\def\IN{\mathbb{N}}
+\def\IQ{\mathbb{Q}}
+\def\IZ{\mathbb{Z}}
+\def\rank{\textrm{rank }}
+\def\Sp{\textrm{Sp }}
+\def\Span{\textrm{Span }}
+\def\Tr{\textrm{Tr }}
+\def\D{\mathcal{D}}
+\def\I{\mathcal{I}}
+\def\U{\mathcal{U}}
+\def\R{\mathcal{R}}
+\def\Q{\mathcal{Q}}
+\def\O{\mathcal{O}}
+\def\Mn{\mathcal{M}_n}
+\def\NN#1{\|#1\|}
+\def\N3#1{|\!|\!|#1|\!|\!|}
+\def\diag{\textrm{diag}}
+\def\tr{\textrm{tr}}
+\def\ker{\textrm{Ker }}
+
+\def\M{\mathcal{M}}
+
+\setlength{\textwidth}{17cm} 
+\addtolength{\oddsidemargin}{-1.5cm}
+\setlength{\textheight}{22cm}
+\addtolength{\topmargin}{-2cm} 
+\setlength{\headheight}{25.3pt}
+
+%% Fancyhdr related stuff
+\pagestyle{fancy}
+\lhead{MATH 3820 -- Intro Math Modelling -- Assignment 1}
+\rhead{\thepage}
+\cfoot{}
+
+\usepackage[hang,small,bf]{caption}
+\setlength{\captionmargin}{20pt}
+
+\makeatletter
+\def\cleardoublepage{\clearpage\if@twoside \ifodd\c@page\else
+\hbox{}
+% \vspace*{\fill}
+% \begin{center}
+% This page intentionally contains only this sentence.
+% \end{center}% Make numbering specific to the Appendix
+\newtheorem{Atheorem}{Theorem}[chapter]
+\newtheorem{Aproperty}[Atheorem]{Property}
+\newtheorem{Acondition}[Atheorem]{Condition}
+\newtheorem{Aproposition}[Atheorem]{Proposition}
+\newtheorem{Aaxiom}[Atheorem]{Axiom}
+\newtheorem{Alemma}[Atheorem]{Lemma}
+\newtheorem{Acorollary}[theorem]{Corollary}
+
+% \vspace{\fill}
+\thispagestyle{empty}
+\newpage
+\if@twocolumn\hbox{}\newpage\fi\fi\fi}
+\makeatother
+
+%\author{Julien Arino}
+%\address{University of Manitoba}
+%\title{MATH 8430\\ Lecture Notes}
+\title{University of Manitoba\\ Math 38200 -- Winter 2008}
+\author{Assignment 1}
+\date{Solutions}
+
+\renewcommand{\abstractname}{Remarks}
+%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%
+\begin{document}
+
+\maketitle
+\begin{abstract}
+The maximum mark was 55. Please look carefully at the method in exercises 4 and
+5, for the existence. You had all the tools, just not the experience.. But from
+now on, you will be expected to be able to tackle such a problem (of reasonable
+difficulty).
+
+Several of you (obviously, not the Math 3740 crowd) used the notation
+$\because$ and $\therefore$. Be warned: these are taboo symbols for me. Taboo
+means that I have to shut my eyes to avoid seeing them. And I don't usually see
+what is located next to them either, since my eyes are closed, so I might
+overlook your work.
+\end{abstract}
+
+
+\vskip1cm
+\noindent
+The Ricker model of growth of a single population takes the form
+\begin{equation}\label{eq:Ricker}
+N_{t+1}=N_t e^{r\left(1-\frac{N_t}K\right)},
+\end{equation}
+with $r,K>0$ and initial condition $N_0>0$.
+
+\vskip1cm
+\noindent
+{\bf 1. (5 points)} 
+Setting $x_t=N_t/K$ is similar to saying that $N_t=Kx_t$. Substituting this value into \eqref{eq:Ricker}, we get
+\begin{align*}
+Kx_{t+1} &= Kx_t e^{r\left(1-\frac{Kx_t}K\right)} \\
+&= Kx_t e^{r(1-x_t)},
+\end{align*}
+and therefore,
+\begin{equation}\label{eq:Ricker_dimless}
+x_{t+1}=x_t e^{r(1-x_t)}.
+\end{equation}
+Note that $N$ has units \emph{number of individuals}, $K$ has units \emph{number of individuals}, and therefore $N/K$ is dimensionless.
+
+\vskip0.4cm
+\noindent
+{\bf 2. (5 points)} 
+Suppose that $x_0>0$. Then $x_1>0$, since $e^{r(1-x_0)}>0$ and $x_0>0$. Now suppose that $x_k>0$. Then $x_{k+1}>0$, since $e^{r(1-x_k)}>0$ and $x_k>0$. Therefore, by induction, $x_t>0$ for all $t$.
+
+\vskip0.4cm
+\noindent
+{\bf 3. (15 points)} 
+We set
+\[
+f(x)=xe^{r(1-x)}
+\]
+and seek $p$ such that $p=f(p)$. We have
+\begin{align*}
+p=f(p) &\Leftrightarrow p=pe^{r(1-p)} \\
+&\Leftrightarrow p=0\textrm{ or }1=e^{r(1-p)} \\
+&\Leftrightarrow p=0\textrm{ or }0=r(1-p)\qquad\textrm{(taking the $\ln$ of both sides)} \\
+&\Leftrightarrow p=0\textrm{ or }p=1.
+\end{align*}
+So there are two fixed points, $0$ and $1$. To study the stability, we compute
+\[
+f'(x)=(1-rx)e^{r(1-x)}.
+\]
+Then
+\[
+|f'(0)|=|e^r|=e^r,
+\]
+so that $0$ is attracting if $r<0$ and repelling if $r>0$. Since it is assumed that $r>0$, $0$ is always repelling.
+Also,
+\[
+|f'(1)|=|1-r|.
+\]
+So
+\begin{align*}
+|f'(1)|<1 &\Leftrightarrow |1-r|<1 \\
+&\Leftrightarrow -1<1-r<1 \\
+&\Leftrightarrow -2<-r<0 \\
+&\Leftrightarrow 0<r<2.
+\end{align*}
+Therefore, if $0<r<2$, $1$ is attracting, and if $r>2$, $1$ is repelling.
+\vskip0.2cm\noindent
+To summarize: for all $r>0$, the fixed point 0 is repelling; for $0<r<2$, the fixed point 1 is attracting, while for $r>2$, it is repelling.
+\vskip0.4cm
+\noindent
+{\bf 4. (10 points)} 
+We have
+\begin{align*}
+f^2(x) &= f(f(x)) \\
+&= f(x)e^{r(1-f(x))} \\
+&= xe^{r(1-x)}e^{r(1-xe^{r(1-x)})}
+\end{align*}
+We have a period 2 point if $f^2(p)=p$ for some $p$, that is,
+\[
+p=pe^{r(1-p)}e^{r(1-pe^{r(1-p)})}.
+\]
+The first conclusion is that $p=0$ is a fixed point (but since 0 is also a fixed
+point, it is not a point with \emph{least} period 2). Supposing now that $p\neq
+0$, we thus must find $p$ such that
+\[
+1=e^{r(1-p)}e^{r(1-pe^{r(1-p)})}.
+\]
+Taking the $\ln$ of both sides of the equation, we have
+\[
+0=r(1-p)+r\left(1-pe^{r(1-p)}\right).
+\]
+Note that it is clear from this equation that $p=1$ is a fixed point of $f^2$
+but, as for $p=0$, it is not a point with \emph{least} period 2, since $p=1$ is
+also a fixed point.
+Therefore, we must solve (for $p$) the equation
+\[
+r(1-p)+r(1-pe^{r(1-p)})=0,
+\]
+that is,
+\[
+r\left\{p\left(e^{r(1-p)}+1\right)-2\right\}=0.
+\]
+Since $r>0$, solving this is equivalent to finding the roots of the equation
+\begin{equation}\label{eq:Gamma}
+\Gamma(p)=p\left(e^{r(1-p)}+1\right)-2.
+\end{equation}
+We have $\Gamma(0)=-2$, and $\lim_{p\to\infty}\Gamma(p)=\infty$, therefore,
+since $\Gamma$ is continuous, it must have at least one root. Clearly, $p=1$ is
+such a root, but are there others?
+We have
+\begin{equation}\label{eq:dGamma}
+\Gamma'(p)=1+(1-rp)e^{r(1-p)}
+\end{equation}
+and
+\[
+\Gamma''(p)=-r(2-rp)e^{r(1-p)}
+\]
+At $0$, $\Gamma''(0)=-2re^r<0$, that is, $\Gamma$ is concave down. It then changes concavity when $rp=2$, i.e., for $p=2/r$, and then remains concave up for all values of $p>r/2$. Now note that since $0<r<2$, it follows that $1<2/r<\infty$, so that the inflection point occurs after $p=1$.
+
+On the other hand, $\Gamma'(0)=1+e^r>0$, so $\Gamma$ is initially increasing, from the value $-2$. Putting all this together, we have that $\Gamma$ has the shape shown in Figures~\ref{fig:Gamma_1} and \ref{fig:Gamma_2}.
+
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[width=0.45\textwidth]{winter2008_assign1_fig1_a}
+\caption{One possibility for $\Gamma$ that would lead to two positive period 2 points for \eqref{eq:Ricker_dimless}.}
+\label{fig:Gamma_1}
+\end{center}
+\end{figure}
+
+
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[width=0.45\textwidth]{winter2008_assign1_fig1_b}
+\caption{One possibility for $\Gamma$ that would lead to $x=1$ as a positive period 2 point for \eqref{eq:Ricker_dimless}.}
+\label{fig:Gamma_2}
+\end{center}
+\end{figure}
+
+To be able to exclude the possibility of the case of Figure~\ref{fig:Gamma_1}
+happening, we reason as follows. The main difference between
+Figures~\ref{fig:Gamma_1} and \ref{fig:Gamma_2} is that when the inflection
+point is reached, $\Gamma$ is increasing in Figure~\ref{fig:Gamma_2}. So a
+sufficient condition for period 2 point is that
+\[
+\Gamma'\left(\frac 2r \right)>0.
+\]
+(Note that this is only sufficient: in Figure~\ref{fig:Gamma_1}, we see that if
+$\Gamma$ is decreasing at the inflexion point, it is still possible for the
+graph of $\Gamma$ not to intersect the $p$-axis after the inflexion point.)
+We have
+\[
+\Gamma'\left(\frac 2r \right)=1-e^{r\left(1-\frac{2}{r}\right)}
+\]
+Recall that since $r<2$, we have $2/r>1$ and thus $1-2/r<0$. Therefore, since
+$r>0$,
+\[
+e^{r\left(1-\frac{2}{r}\right)}<1
+\]
+and thus it is always true that $\Gamma'(2/r)>0$ when $r<2$. This means that
+the sufficient condition we derived for there not to exist a point of least
+period 2 is always satisfied, when $0<r<2$, i.e., when $0<r<2$, it is the
+situation depicted in Figure~\ref{fig:Gamma_2} that prevails.
+
+Therefore, when $0<r<2$, there are no points of least period 2.
+
+
+
+
+
+\vskip0.4cm
+\noindent
+{\bf 5.  (10 points)} 
+We use the same reasoning as in question 4, but here, we assume that $r>2$. The
+first conclusion is that the inflection point $p=2/r<1$. At $p=2/r$,
+\[
+\Gamma\left(\frac 2r\right)=\frac 2r\left(e^{r-2}+1-r\right).
+\]
+This is clearly positive for $r>2$, since the function $\Theta(r)=e^{r-2}+1-r$
+is such that $\Theta(2)=0$ and $\Theta'(r)=e^{r-2}-1>0$ for all $r>2$. It
+follows that $\Gamma(2/r)>0$, that is, $\Gamma>0$ at the inflection point
+$2/r$. As a consequence, since $\Gamma$ is continuous, there is a point $p_1^*\in(0,2/r)$ such that $\Gamma(p_1^*)=0$, i.e., a period 2 point $p_1^*$ in $(0,2/r)$.
+
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[width=0.45\textwidth]{winter2008_assign1_fig1_c}
+\caption{One possibility for $\Gamma$ that leads to the existence of positive
+period 2 points for \eqref{eq:Ricker_dimless}. (Case of Exercise 5, the
+inflexion point $2/r$ of $\Gamma$ lies to the left of $p=1$.)}
+\label{fig:Gamma_2b}
+\end{center}
+\end{figure}
+
+The curve $\Gamma$ then decreases and hits the $p$-axis for $p=1$. (Recall that
+it was shown in Exercise 4 that $\Gamma(1)=0$.) Now, at the point $p=1$, we have
+\[
+\Gamma'(1)=2-r,
+\]
+which is negative since $r>2$. It follows, by continuity of $\Gamma$, that
+there exists $\varepsilon>2$ such that $\Gamma(\varepsilon)<0$. There is no
+other change of concavity of $\Gamma$ after $2/r$, $\Gamma$ is thus concave up
+for $p>2/r$. As $\Gamma(\varepsilon)<0$ and
+$\lim_{p\to\infty}\Gamma(p)=\infty$, this implies that there exists a unique
+$p_2^*>1$ such that $\Gamma(p_2^*)=0$.
+
+Therefore, for $r>2$, there exists $p_1^*\in(0,2/r)$ and $p_2^*>1$, period 2
+points of $f$.
+To study the stability of these period two points, we need to compute the
+derivative of 
+\[
+f^2(x) = xe^{r(1-x)}e^{r(1-xe^{r(1-x)})},
+\]
+which is given by
+\[
+\frac{d}{dx}f^2(x) = (1-rx)e^{r(1-x)}
+\left(
+1-rxe^{r(1-x)}
+\right)
+e^{r\left(1-xe^{r(1-x)}\right)}.
+\]
+In principle, at this point we must substitute the value of the period 2 point in this equation, and check if the absolute value of this quantity is less or greater than 1. 
+
+Let us illustrate the complexity of this approach using $x=p_1^*$. Since
+\[
+0<p_1^*<\frac 2r,
+\]
+we have
+\[
+1-\frac 2r<1-p_1^*<1
+\]
+and thus
+\[
+r\left(1-\frac 2r\right)<r(1-p_1^*)<r.
+\]
+As the exponential is an increasing function on $\IR$, this order is preserved when exponentiating this inequality, giving
+\[
+e^{r\left(1-\frac 2r\right)}<e^{r(1-p_1^*)}<e^r.
+\]
+
+
+
+
+\vskip0.4cm
+\noindent
+{\bf 6. (10 points)} 
+Using numerical software, draw a bifurcation diagram for \eqref{eq:Ricker_dimless}, for $r$ varying in $(0,5]$. What do you observe?
+
+\end{document}

@@ -1,0 +1,198 @@
+\documentclass[12pt]{exam}
+
+\input xy
+\xyoption{all}
+
+
+%\usepackage{graphicx}% Include figure files
+%\usepackage{dcolumn}% Align table columns on decimal point
+%\usepackage{bm}% bold math
+\usepackage{latexsym}
+\usepackage{amsmath,amssymb,amsthm,amsfonts}
+%\usepackage{subfigure}
+
+%\usepackage{titlefoot}
+
+%\usepackage[displaymath]{lineno}
+
+%
+
+%\usepackage{fancyhdr}
+%
+%\setlength{\textwidth}{6.9in} \setlength{\textheight}{9.4in}
+%\addtolength{\oddsidemargin}{-3cm} \addtolength{\topmargin}{-0.2in}
+%\setlength{\headheight}{5pt} \setlength{\headsep}{10pt}
+
+\def\IR{\mathbb{R}}
+\def\dxdt{\frac{dx}{dt}}
+\def\dydt{\frac{dy}{dt}}
+
+\begin{document}
+\pagestyle{head} \extraheadheight{1in}\runningheadrule
+\firstpageheader{$\mbox{}$\\DATE: April 16, 2008\\PAPER NO.: 249 \\
+DEPARTMENT $\&$ COURSE NO.: MATH 3820 \\EXAMINATION: Intro. Math. Model.}{\bf
+UNIVERSITY OF MANITOBA\\
+$\mbox{}$
+\\$\mbox{}$ \\ $\mbox{}$\\$\mbox{}$}{$\mbox{}$\\FINAL EXAMINATION\\ PAGE NO.:
+\thepage\ of \numpages\\TIME: 3
+hours\\ EXAMINER: J. Arino}\runningheadrule
+\runningheader{$\mbox{}$\\DATE: April 16, 2008\\PAPER NO.: 249 \\
+DEPARTMENT $\&$ COURSE NO.: MATH 3820 \\EXAMINATION: Intro. Math. Model.}{\bf
+UNIVERSITY OF MANITOBA\\
+$\mbox{}$
+\\$\mbox{}$ \\ $\mbox{}$\\$\mbox{}$}{$\mbox{}$\\FINAL EXAMINATION\\ PAGE NO.:
+\thepage\ of \numpages\\TIME: 3
+hours\\ EXAMINER: J. Arino} \vspace{-2.5cm}
+\begin{center}
+\begin{tabular}{cp{15.5cm}}
+\hline
+&\\
+\end{tabular}
+\end{center}
+%\footer{}{Page \thepage\ of \numpages}%
+%{\iflastpage{End of exam.}{Please go on to the next page\ldots}}
+
+\addpoints
+%\bibliographystyle{plain}
+%\pagestyle{fancy} \chead{} \lhead{} \rhead{} \cfoot{}
+
+
+
+
+%\vspace{.2cm}
+%
+%{\bf NAME:} \vspace{0.5cm}
+%
+%{\bf STUDENT \#:}
+
+
+This is a 3 hours exam. Cell phones are
+not allowed. Calculators and notes are allowed; books are {\bf not} allowed.
+
+\vspace{.1in} This exam has \numquestions\;questions for a total of \numpoints\;marks.
+
+\vspace{.2in} \textbf{ANSWER IN THE BOOKLET AND SHOW YOUR WORK CLEARLY.}
+A correct but unclear answer will not get full marks, nor will a correct answer
+that does not give some detail of the method used to obtain the solution.
+\begin{center}
+\begin{tabular}{cp{15.5cm}}
+\hline
+&\\
+\end{tabular}
+\end{center}
+
+
+
+\begin{questions}
+\question[20]
+Consider the following Lotka-Volterra model for competition
+\begin{equation*}
+\begin{aligned}
+\dxdt &= \alpha x (1 - 2 x -   y)			\\
+\dydt &= \beta  y \left(1 - \frac 15 x - \frac 19 y\right)
+\end{aligned}
+\end{equation*}
+where $\alpha$ and $\beta$ are positive constants.
+\begin{parts}
+\item Find the (biologically meaningful) equilibria.
+\item By considering the Jacobian matrix, determine whether each
+equilbrium is stable or unstable.
+\item Sketch the phase plane including the nullclines, equilibria
+and the general direction of flow at different points.
+\end{parts}
+\question[10]
+Consider the general Lotka-Volterra model for competition
+between two species:
+\begin{equation*}
+\begin{aligned}
+\dxdt &= r_1 x (1 - a_{11} x - a_{12} y)	\\
+\dydt &= r_2 y (1 - a_{21} x - a_{22} y).
+\end{aligned}
+\end{equation*}
+Modify the above equations to produce a model for the situation
+where species $x$ and $y$ help each other but there is intraspecific competition for both species.
+
+
+\question[20]
+Consider an infectious disease for which the population is
+to be divided into four subgroups: susceptibles, exposed (but
+not yet infectious), infectious and recovered.  Let the sizes of
+these four groups be given by $S$, $E$, $I$, and $R$, respectively.
+Assume that the average number of contacts that each susceptible
+has with infectives is $c$ times the number of infectives.  Let the
+probability that a contact between an infective and a susceptible
+be given by $\beta$.  Suppose that the average durations spent in
+the exposed and infectious classes are $1/\epsilon$ and $1/\gamma$
+respectively.  Assume that there is a constant rate birth rate
+$B$, with all newborns entering the susceptible class.  Assume
+that the death rate (not directly related to the disease is)
+for each population subgroup is proportional to the size of
+that subgroup.
+\begin{parts}
+\item Draw the transfer diagram.
+\item Give differential equations which describe the rate of change
+of the number of susceptibles and the number of infectives.
+\item Find the disease-free equilibrium ($I=0$).
+\item Find the endemic equilibrium ($I>0$) and the basic reproduction number $\mathcal{R}_0$. [Hint: the latter is such that the disease free equilibrium undergoes a bifurcation at $\mathcal{R}_0=1$.]
+\end{parts}
+
+
+\question[20]
+Consider the $SIR$ model where a fraction $p$ of all
+newborns are successfully vaccinated, given by the transfer
+diagram below.  Assume that the model is for a town of size
+$50,000$ and that the total population size is constant.
+Suppose $c=.01$ contacts per month per infective per susceptible,
+the probability of transmission given that a contact occurs is
+$\beta = .03$, the average duration of infectivity (before recovering)
+is $\frac 12$ month, the life expectancy is $70$ years.
+
+$$
+\xymatrix{
+\ar[d]_{(1-p)bN} &&&& \ar[d]^{pbN}	\\
+S \ar[rr]^{c \beta SI} \ar[d]^{d S} & &
+I \ar[rr]^{\gamma I} \ar[d]^{d I} & &
+R \ar[d]^{d R} & &   \\
+&&&&&&
+}
+$$
+\begin{parts}
+\item Write down the differential equations for this model.
+\item Find the basic reproduction number $\mathcal{R}_0$ in the absence of vaccination (i.e. $p=0$).
+\item Find the reproduction number with vaccination $\mathcal{R}_{0,vac}$ (as a function of $p$).
+\item What fraction of newborns has to be {\it successfully}
+vaccinated in order to make $\mathcal{R}_{0,vac}$ less than one?
+\item Suppose the vaccine is successful in $95 \%$ of the cases in which it is used.  What fraction of newborns has to be vaccinated to make $\mathcal{R}_{0,vac}$ less than one?
+\end{parts}
+
+
+\question[20]
+A gambler plays repeatedly a game in which on each play he wins one dollar with probability $p$ and loses one dollar with probability $q=1-p$. 
+
+The \emph{Gambler's Ruin problem} consists in finding the probability $w_x$ of winning an amount $T$ before losing everything, starting with state $x$. 
+\begin{parts}
+\item Show that this problem may be considered to be an absorbing Markov chain with states $0,1,2,\ldots,T$ with $0$ and $T$ absorbing states.
+\item Show that $w_x$ satisfies the following conditions:
+\begin{itemize}
+\item[(i)] $w_x = pw_{x+1} + qw_{x-1}$ for $x=1,\ldots,T-1$.
+\item[(ii)] $w_0 = 0$.
+\item[(iii)] $w_T = 1$.
+\end{itemize}
+\item Show that conditions (i), (ii) and (iii) determine $w_x$.
+\item Show that, if $p=q=1/2$, then
+\[
+w_x = \frac xT
+\]
+satisfies (i), (ii), and (iii) and hence is the solution. 
+\item If $p\neq q$, show that
+\[
+w_x=\frac{(q/p)^x-1}{(q/p)^T-1}
+\]
+satisfies conditions (i), (ii) and (iii) and hence gives the probability of the gambler winning.
+\end{parts}
+
+ 
+
+
+\end{questions}
+\end{document}

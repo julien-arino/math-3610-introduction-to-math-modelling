@@ -1,0 +1,166 @@
+\documentclass[12pt]{article}
+
+\usepackage{url}
+
+\setlength{\textwidth}{17cm} 
+\addtolength{\oddsidemargin}{-1.5cm}
+\setlength{\textheight}{22cm}
+\addtolength{\topmargin}{-2cm} 
+
+\newcounter{cmpt_project}
+\newenvironment{exercise}{\addtocounter{cmpt_exercise}{1}\vskip0.2cm\par\noindent\begin{small}\bf Exercise~\arabic{cmpt_exercise}\,\,\rm --}{\hfill{$\circ$}\end{small}\par\vskip0.25cm}
+
+\def\project#1#2#3{\addtocounter{cmpt_project}{1}
+{\bf\arabic{cmpt_project}. }
+\begin{tabular}{|rcp{10cm}|}
+\hline
+Projet name & : & {\bf #1} \\
+Student name & : & #2 \\
+Project date & : & #3 \\
+\hline
+\end{tabular}\vskip0.5cm}
+
+
+%opening
+\title{Math 3820 Project}
+\author{Guidelines}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+These are some recommendations concerning the projects in Math 3820.
+\end{abstract}
+
+\section{Typeset or handwritten?}
+Handwritten reports \textbf{will not} be accepted. The overall legibility of your project is important, and will be part of my evaluation grid. The best legibility is obtained by using a computer. Also, consider the following facts:
+\begin{itemize}
+\item A computer file can be reorganized easily. If you suddenly decide that your section number 5 should in fact come before section number 4, a simple cut and paste does the trick.
+\item In your future professional life, whether academic or not, it is very likely that you will have to write reports. Of course, they might not include formula, but if you can do them with formula, you can do them without.. :)
+\end{itemize}
+To typeset mathematics, there are three major softwares:
+\begin{itemize}
+\item \LaTeX\ is by far the most powerful and the most adapted to mathematics. (The lecture notes and slides for this class are typeset in \LaTeX, for example.) However, \LaTeX\ is a compiled programming language and, as all programming languages, involves learning how to ``speak'' it. If you are familiar with html or other markup languages, you should be able to learn \LaTeX\ easily.\\
+If you intend to continue in mathematics or closely related fields, then it is probably worth your time to learn \LaTeX. On the other hand, if you do not want to continue in mathematics, learning \LaTeX\ is probably a waste of time (except if you want to do some web development).\\
+\LaTeX\ is a free software. It is included in Linux distributions. On Windows, it must be downloaded. If you choose to learn \LaTeX\ and need help to install it or to learn it, let me know.
+\item OpenOffice (\url{http://www.openoffice.org}) is a free equivalent to Microsoft Office. It incorporates a powerful equation editor. Compared to Microsoft Word, it has the advantage (besides being free) to allow edition of the formula in two modes: a graphical mode as in Word, but also using \LaTeX-like commands.
+\item Microsoft Word also has an equation editor.
+\end{itemize}
+
+
+%%%%%%%%%
+%%%%%%%%%
+\section{Things that your report should have, content-wise}
+Refer to the evaluation key on page~\pageref{sec:eval_key}. This will give you an indication of the things I will look at when marking your report. 
+
+Note that the content I describe now can be arranged in a different order. Nothing forbids you, for example, from presenting model A, its mathematical analysis, some simulations, then do the same for model B.. or present models A and B, then their mathematical analysis, then some simulations.
+
+%%%%%%%%%
+\subsection{An introduction}
+The introduction should describe the problem that you are going to present. You should explain what makes the topic interesting and give a brief overview of what you are going to do in the rest of the manuscript.
+
+\subsection{A modelling section}
+In this section, you will detail some of the most important aspects of your work: the hypotheses, variables, parameters, and the resulting model. If you can, include drawing/schemas.
+
+\subsection{A mathematical analysis section}
+Here, you must show me that you know how to analyze the model that you have written. Be clear, short, complete {\bf and} correct. 
+
+It is always difficult to strike a balance between a complete derivation and a short one. Show the important steps, hide the obvious ones. If you are using a trick, show me how you do it, the first time you use it. Subsequent uses need not be as detailed. The same is true in general: give more details the first time you do something, and refer to this later. Be careful, however, not to get tricked into generalizing lower dimensional results.. For example, the analysis of a scalar equation and of a system of two equations have some similarities, but a statement like ``for the 2d system, we proceed as for the 1d one'' is in general false.
+
+\subsection{A numerical section}
+To complement your mathematical analysis, you should include some numerical results. Be careful not to overload this section: a few carefully selected figures do a much better job than a profusion of almost random ones. A few points:
+\begin{itemize}
+\item I will not accept figures showing numerical results that you would not have produced yourself. Even if you are doing the same figure as in a book, you should produce the figure yourself.
+\item Do not present two figures of the same phenomenon under two different conditions: group them in a single figure. For example, suppose you want to show me that, depending on the value of $\beta$, the number of infectives in an epidemic model goes to zero or to a positive quantity. If this is the only curve you are drawing in each figure, then put them both in the same figure: it allows for better comparison. If the curves are order of magnitudes away, scale them (and in the legend of your figure, indicate that you did so).
+\item When running numerics, you should do so \emph{with a purpose}. Numerics should complement the mathematical analysis. It should allow you to answer questions that are difficult to answer using analysis. 
+\end{itemize}
+A word of caution: a numerical result is {\bf not} a proof.
+
+\subsection{A conclusion}
+First, you should summarize what you have done. You should also indicate what are, in your opinion, the following things to be considered about this system. If you were given more time to work on the topic (for example as a summer student or as a graduate student), what would be your next steps.
+
+\subsection{A bibliography}
+Cite your sources. Always!
+
+%%%%%%%%%
+%%%%%%%%%
+\section{Things that your report should have, style-wise}
+
+
+%%%%%%%%%
+\subsection{A title page}
+The title page should make it easy for me to see what and who I am dealing with. It should have, \emph{at least}:
+\begin{itemize}
+\item your name,
+\item your student number,
+\item the current session (Winter 2007),
+\item the precise title of your report.
+\end{itemize}
+You can add other things (photo, picture, etc.), but do not overload the first page.
+
+%%%%%%%%%
+\subsection{Numbered pages}
+Please make sure that your pages are numbered. To read your report, I might end up ``disassembling'' it. Accidents happen, and I would rather avoid spending an hour trying to figure out the page order.
+
+%%%%%%%%%
+\subsection{12 points font size}
+My eyes still work very well. Your help in keeping them that way is much appreciated.
+
+%%%%%%%%%
+\subsection{Single-sided pages}
+This is for my convenience too.
+
+%%%%%%%%%
+\subsection{No color}
+This is not absolute: you can use color if it really seems necessary. But keep in mind that, if one day you write articles (scientific or not), most of the people who will print them will do so on a monochrome laser printer (which remains the cheapest way to print). Or they will xerox them, also in monochrome. When designing your graphics, think about all these people who will curse you when they look for ``the red curve which shows the way to make 100 million dollars in 10 days'' among all those curves which all happen to be black on their xerox copy.
+
+Matlab, maple, etc., all permit to use different markers or line styles. Before you resort to using color, you should think about using those.
+
+%%%%%%%%%
+\subsection{Probably other things that I will add as they come}
+
+
+%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%
+\newpage
+\label{sec:eval_key}
+\noindent{\Large\bf GRADING SHEET -- MODELLING PROJECTS}\\
+
+\begin{center}
+\begin{tabular}{|p{3.5cm}|p{1cm}|p{7cm}|p{1cm}|}
+\hline
+Grammar,\newline Spelling & 5 & & \\
+\hline
+Legibility & 5 & & \\
+\hline
+Description of\newline problem & 5 & & \\
+\hline
+Identification of\newline variables and\newline parameters & 5 & & \\
+\hline
+Assumptions,\newline including reasons\newline and description & 10 & & \\
+\hline
+Mathematical\newline  analysis & 20 & & \\
+\hline
+Numerical work & 15 & & \\
+\hline
+Conclusions and\newline suggestions for\newline improvement & 5 & & \\
+\hline
+Example(s) & 5 & & \\
+\hline
+References & 5 & & \\
+\hline
+\multicolumn{2}{|l|}{Additional comments} & Total (out of 75) & \\
+\cline{3-4}
+\multicolumn{4}{|c|}{} \\
+\multicolumn{4}{|c|}{} \\
+\multicolumn{4}{|c|}{} \\
+\hline
+\end{tabular}
+
+\end{center}
+
+
+
+\end{document}

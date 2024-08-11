@@ -1,0 +1,339 @@
+\documentclass[reqno,12pt]{amsart}
+\usepackage{nopageno}
+
+\setlength{\oddsidemargin}{0.0in}
+\setlength{\evensidemargin}{0.0in}
+\setlength{\textwidth}{6.5in}
+
+\def\eee{\textrm{e}}
+\def \dNdt{\frac{dN}{dt}}
+\def \dxdt{\frac{dx}{dt}}
+\def \dydt{\frac{dy}{dt}}
+\def \dXdt{\frac{dX}{dt}}
+\def \dYdt{\frac{dY}{dt}}
+
+\begin{document}
+
+\begin{center}
+{\bf M2E03 - INTRODUCTION TO MODELLING - EXAM}
+\end{center}
+
+\vspace{.5cm}
+\noindent
+{\bf Time:} \hspace{.5cm} 3 Hours
+\hspace{7cm}
+{\bf Instructor:} \hspace{.5cm} C. McCluskey
+
+
+\vspace{.5cm}
+\noindent
+{\bf Please write your solutions in the answer booklet.}
+Notes, books and scrap paper are not allowed.
+CALCULATORS:  You may only use the McMaster Standard FX-991 Calculator.
+
+\vspace{.5cm}
+\noindent
+The exam consists of 8 questions.  Please make certain that your exam
+paper has all 8 questions.  You are responsible for ensuring that your
+copy of this paper is complete.  Bring any discrepancy to the attention
+of an invigilator.
+
+\vspace{.5cm}
+\noindent
+You must sign the class list.
+Please put out your Student Card for checking.
+
+
+
+
+\vspace{2cm}
+
+
+\noindent
+{\bf 1.}  Consider a species that lives for two years and may reproduce
+at the end of year one or year two.  Assume that the population is
+undergoing density independent growth.
+
+\noindent
+{\bf a.} Construct a model to describe the population size where
+
+- the mean number of offspring that 0-year olds have the following
+year is .5 
+
+- the mean number of offspring that 1-year olds have the following
+year is 4
+
+- the probability that a 0-year old survives to be a 1-year old
+is 0.2.
+
+\noindent
+{\bf b.}  Suppose that the initial population consists of fifty 0-year
+olds and ten 1-year olds.  How many 0-year olds and how many
+1-year olds will there be one year later.
+
+\noindent
+{\bf c.}  Find the growth rate and the stable age distribution.
+
+\vspace{3cm}
+
+\noindent
+{\bf 2.a.}  Construct a continuous time model for the population size
+$N$ of a country under the following circumstances.  The country
+allows immigrants to enter the country at a constant rate $B$.  Also,
+the birth rate $bN$ and the death rate $dN$ are proportional to the
+population size, where $d>b$.  (HINT: {\it It may be helpful to draw
+a flow diagram, similar to the transfer diagram that is used for an
+epidemic model.})
+
+\noindent
+{\bf b.}  Find the equilibria and determine the stability of each equilbrium.
+
+\noindent
+{\bf c.}  Suppose $b=.008$, $d=.013$, and $B=180,000$.  If the
+initial population is $30,000,000$, find
+$$
+\lim_{t \to \infty} N(t).
+$$
+
+
+\newpage
+\vspace{1cm}
+
+\noindent
+{\bf 3.}  Consider the following equations which model competition between
+two species whose population sizes (measured in millions) are given by $x$
+and $y$.
+$$
+\begin{aligned}
+\dxdt &= 2x (1 - 3x - 4y)	\\
+\dydt &= 4y (1 -  x -  y)
+\end{aligned}
+$$
+
+\noindent
+{\bf a.}  Sketch the phase plane, including the nullclines and the
+equilibria (clearly labeled).  Show the general direction of
+flow at different parts of the phase plane.
+
+\noindent
+{\bf b.}  Assuming $x(0), y(0) > 0$, find
+$$
+\lim_{t \to \infty} \bigl( x(t), y(t) \bigr).
+$$
+
+
+\vspace{3cm}
+
+\noindent
+{\bf 4.}  Consider the following equations which model a predator-prey
+relationship between two species whose population sizes (measured in
+thousands) are given by $X$ and $Y$.
+$$
+\begin{aligned}
+\dXdt &= X (  A - BX - CY)		\\
+\dYdt &= Y ( -D + EX).
+\end{aligned}
+$$
+Assume that $A$, $B$, $C$, $D$ and $E$ are positive constants.
+
+\vspace{.5cm}
+
+\noindent
+{\bf a.} Which variable represents the population size of the predator
+species?  Justify your answer.
+
+\noindent
+{\bf b.} Find positive constants $A$, $B$, $C$, $D$ and $E$ such that
+the following statements are true.
+
+- The intrinsic rate of growth of the prey is $3$.
+
+- The carrying capacity of the prey in the absence of the predator is $10$.
+
+- The impact that the predator has on the per capita growth rate of the prey
+
+\hspace{.2cm} is $4$ times as large as the impact of the prey.
+
+- In the absence of the prey, the predator undergoes exponential decay
+with
+
+\hspace{.2cm} decay function $\eee^{-2t}$.  (i.e. the predator has
+an intrinsic growth rate of $-2$.)
+
+- The rate of change of the predator is:
+
+\hspace{.4cm} positive if the population size of the prey is greater than $6$,
+
+\hspace{.4cm} and negative if the population size of the prey is less than $6$.
+
+\noindent
+{\bf c.}  Find the equilibria.
+
+\noindent
+{\bf d.}  Use the Jacobian matrix to determine the stability of the
+equilibrium for which each population size is positive.
+
+
+
+\newpage
+\vspace{1cm}
+
+\noindent
+{\bf 5.}  Consider an infectious disease for which each individual
+in the population is either susceptible ($S$) or infective ($I$).
+The total population size $N$ is {\bf not} assumed to be constant.
+Each individual in the population has (on average) $c N$ contacts.
+A fraction $\frac SN$ of these contacts are with susceptibles, and
+a fraction $\frac IN$ are with infectious individuals.  For a contact
+between an infectious individual and a susceptible individual, the
+probability that the disease is transmitted is $\beta$.
+
+The rate at which infectious individuals recover from the disease (becoming
+susceptible again) is $\gamma I$.  Births occur at a constant rate $B$
+({\it not $bN$.}) The death rate for each population subgroup is
+proportional to the size of that group, but with a higher death rate
+for the infective group.  Thus, the death rate for the susceptibles is
+$d S$ and the death rate for the infectives is $(d+\nu) I$.
+
+\noindent
+{\bf a.}  Draw the transfer diagram.
+
+\noindent
+{\bf b.}  Give the differential equations which describe the rate of
+change of the number of susceptibles and the number of infectives.
+
+\noindent
+{\bf c.}  Find the equilibria.
+
+\noindent
+{\bf d.}  What is the average amount of time spent in the infectious
+class?  Make sure to take into account recovery ($\gamma$), natural
+death ($d$), and disease-related death ($\nu$).
+
+\noindent
+{\bf e.}  Find $R_0$.
+
+\noindent
+{\bf f.}  Use the Jacobian matrix to determine the stability of
+the {\bf disease-free equilibrium} for $R_0 < 1$.
+
+\noindent
+{\bf g.}  Use the Jacobian matrix to determine the stability of
+the {\bf disease-free equilibrium} for $R_0 > 1$.
+
+
+\vspace{3cm}
+
+\noindent
+{\bf 6.}  For each of the following payoff matrices, determine which
+{\bf pure} strategies are evolutionarily stable.
+
+\noindent
+{\bf a.}
+$$
+\begin{matrix}
+  & \begin{matrix} A & B & C \end{matrix} 	\\
+\begin{matrix} A \\ B \\ C \end{matrix}		&
+\begin{bmatrix}
+1 & 4 & 1	\\
+8 & 7 & 1 	\\
+4 & 6 & 2
+\end{bmatrix}
+\end{matrix}
+$$
+
+\noindent
+{\bf b.}
+$$
+\begin{matrix}
+  & \begin{matrix} D & E \end{matrix} 	\\
+\begin{matrix} D \\ E \end{matrix}		&
+\begin{bmatrix}
+4 & 3 	\\
+2 & 3
+\end{bmatrix}
+\end{matrix}
+$$
+
+
+
+\newpage
+\vspace{1cm}
+
+\noindent
+{\bf 7.}  Consider the following game which can be used to model
+the behaviour of female lions hunting in pairs.  Suppose that the
+lions have killed an animal and that the animal is interpreted
+as having an energy value $v$.  Each lion can either share or be
+greedy.  If both lions share, then each lion will eat half of the
+animal.  If one is greedy and the other is willing to share, then
+the greedy lion will eat $4/5$ of the animal and leave the
+remaining $1/5$ for her partner.  If both lions are greedy,
+then they will each end up with half of the animal, but will
+have expended energy equal to $3v/4$.
+
+\noindent
+{\bf a.}  Give the payoff matrix.
+
+\noindent
+{\bf b.}  Find an evolutionarily stable strategy.
+
+
+\vspace{3cm}
+
+\noindent
+{\bf 8.}  Consider the following version of the Iterated Prisoner's
+Dilemma.  In each round, each player can choose to either Cooperate ($C$)
+or Defect ($D$).  The payoff matrix for each round is:
+$$
+\begin{matrix}
+  & \begin{matrix} C & D \end{matrix} 	\\
+\begin{matrix} C \\ D \end{matrix}		&
+\begin{bmatrix}
+3 & 0 	\\
+5 & 1
+\end{bmatrix}
+\end{matrix}
+$$
+
+\vspace{.3cm}
+
+We will consider two strategies which will play $2n$ rounds of the
+Prisoner's Dilemma.  In each round their payoffs will be given by
+the matrix above.
+
+\vspace{.3cm}
+
+One strategy is {Friendly-Tit-for-Tat} ($F$).  In the first round
+$F$ cooperates with the other player.  In each following round, $F$
+does whatever the other player did in the previous round.
+
+\vspace{.3cm}
+
+The other strategy is {Mean-Tit-for-Tat} ($M$).  In the first round
+$M$ defects.  In each following round, $M$ does whatever the other
+player did in the previous round.
+
+\vspace{.3cm}
+
+\noindent
+{\bf a.}  Give the $2 \times 2$ payoff matrix for the Iterated Prisoner's
+Dilemma for strategies $F$ and $M$ in which they play $2n$ rounds of the
+Prisoner's Dilemma.
+
+\vspace{.3cm}
+
+\noindent
+{\bf b.}  Find an evolutionarily stable strategy for this new payoff
+matrix.
+
+
+
+
+
+
+
+
+
+
+\end{document}

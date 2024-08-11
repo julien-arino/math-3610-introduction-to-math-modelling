@@ -1,0 +1,1342 @@
+% This file was created with JabRef 2.4b.
+% Encoding: Cp1252
+
+@BOOK{Allen2007,
+  title = {An Introduction to Mathematical Biology},
+  publisher = {Pearson},
+  year = {2007},
+  author = {Allen, L.J.S.},
+  owner = {jarino},
+  timestamp = {16.03.2008}
+}
+
+@BOOK{AndersonMay1991,
+  title = {Infectious Diseases of Humans},
+  publisher = {Oxford University Press},
+  year = {1991},
+  author = {Anderson, R. M. and May, R. M.}
+}
+
+@ARTICLE{ArinoWangWolkowicz2006,
+  author = {Arino, J. and Wang, L. and Wolkowicz, G.S.K.},
+  title = {An alternative formulation for a delayed logistic equation},
+  journal = {Journal of Theoretical Biology},
+  year = {2006},
+  owner = {jarino},
+  timestamp = {16.03.2008}
+}
+
+@ARTICLE{ArrigoniPugliese2002,
+  author = {Arrigoni, F. and Pugliese, A.},
+  title = {Limits of a multi-patch {SIS} epidemic model},
+  journal = {J. Math. Biol.},
+  year = {2002},
+  volume = {45},
+  pages = {419-440}
+}
+
+@ARTICLE{AuslanderOsterHuffaker1974,
+  author = {Auslander, D. and Oster, G.F. and Huffaker, C.},
+  title = {Dynamics of interacting populations},
+  journal = {J. Franklin Inst.},
+  year = {1974},
+  volume = {297},
+  pages = {345-375},
+  owner = {jarino},
+  timestamp = {16.03.2008}
+}
+
+@INPROCEEDINGS{Bailey1980,
+  author = {Bailey, N.~T.~J.},
+  title = {Spatial models in the epidemiology of infectious diseases},
+  booktitle = {Biological Growth and Spread},
+  year = {1980},
+  volume = {38},
+  series = {Lecture Notes in Biomathematics},
+  pages = {233-261},
+  publisher = {Springer-Verlag}
+}
+
+@INPROCEEDINGS{BallLyne2002,
+  author = {Ball, F.G. and Lyne, O.D.},
+  title = {Epidemics among a population of households},
+  booktitle = {Mathematical Approaches for Emerging and Reemerging Infectious Diseases:
+	Models, Methods, and Theory},
+  year = {2002},
+  editor = {Castillo-Chavez, C. and Blower, {\relax with S} and van den Driessche,
+	P. and Kirschner, D. and Yakubu, A.-A.},
+  volume = {126},
+  series = {IMA Volumes in Mathematics and its Applications},
+  pages = {115-142}
+}
+
+@BOOK{BangGutin2001,
+  title = {Digraphs: Theory, Algorithms and Applications},
+  publisher = {Springer-Verlag},
+  year = {2001},
+  author = {Bang-Jensen, J. and Gutin, G.}
+}
+
+@ARTICLE{BaroyanRvachev1967,
+  author = {Baroyan, V. O and Rvachev, L. A},
+  title = {Deterministic epidemic models for a territory with a transport network},
+  journal = {Kibernetica},
+  year = {1967},
+  volume = {3},
+  pages = {67-73}
+}
+
+@ARTICLE{BaroyanRvachev_etal1971,
+  author = {Baroyan, V. O. and Rvachev, L. A. and Basilevsky, U. V. and Ezmakov,
+	V. V. and Frank, K. D. and Rvachev, M. A. and Shaskov, V. A. },
+  title = {Computer modeling of influenza epidemics for the whole country ({USSR})},
+  journal = {Adv. App. Prob.},
+  year = {1971},
+  volume = {3},
+  pages = {224-226}
+}
+
+@ARTICLE{BeddingtonMay1975,
+  author = {Beddington, J.R. and May, R.M.},
+  title = {Time delays are not necessarily destabilizing},
+  journal = {Math. Biosci.},
+  year = {1975},
+  volume = {27},
+  pages = {109-117},
+  number = {1-2},
+  owner = {jarino},
+  timestamp = {16.03.2008}
+}
+
+@BOOK{BC,
+  title = {Differential-difference equations},
+  publisher = {Academic Press},
+  year = {1963},
+  author = {Bellman, R. and Cooke, K.L.},
+  address = {New York},
+  owner = {jarino},
+  timestamp = {16.03.2008}
+}
+
+@BOOK{BermanPlemmons1994,
+  title = {Nonnegative Matrices in the Mathematical Sciences},
+  publisher = {SIAM},
+  year = {1994},
+  author = {Berman, A. and Plemmons, R.~J.},
+  series = {Classics in Applied Mathematics},
+  owner = {jarino},
+  timestamp = {2008.03.18}
+}
+
+@BOOK{BermanPlemmons1979,
+  title = {Nonnegative Matrices in the Mathematical Sciences},
+  publisher = {Academic Press},
+  year = {1979},
+  author = {Berman, A. and Plemmons, R.~J.}
+}
+
+@ARTICLE{BlytheNisbetGurney1982,
+  author = {Blythe, S.P. and Nisbet, R.M. and Gurney, W.S.C.},
+  title = {Instability and complex dynamic behaviour in population models with
+	long time delays},
+  journal = {Theoret. Population Biol.},
+  year = {1982},
+  volume = {22},
+  pages = {147--176},
+  number = {2},
+  owner = {jarino},
+  timestamp = {16.03.2008}
+}
+
+@ARTICLE{Brauer2000,
+  author = {Brauer, F.},
+  title = {Time lag in disease models with recruitment},
+  journal = {Mathematics and Computer Modeling},
+  year = {2000},
+  volume = {31},
+  pages = {11-15}
+}
+
+@BOOK{BrauerCastillo2001,
+  title = {Mathematical Models in Population Biology and Epidemiology},
+  publisher = {Springer},
+  year = {2001},
+  author = {Brauer, F. and Castillo-Ch\'avez, C.}
+}
+
+@ARTICLE{Brault1993,
+  author = {Brault, S. and Caswell, H.},
+  title = {Pod-specific demography of killer whales},
+  journal = {Ecology},
+  year = {1993},
+  volume = {74},
+  pages = {1444-1454},
+  owner = {jarino},
+  timestamp = {2008.03.18}
+}
+
+@BOOK{BusenbergCooke1993,
+  title = {Vertically Transmitted Diseases},
+  publisher = {Springer-Verlag},
+  year = {1993},
+  author = {Busenberg, S. and Cooke, K.L.}
+}
+
+@ARTICLE{CastilloFeng1997,
+  author = {Castillo-Chavez, C. and Feng, Z.},
+  title = {To treat or not to treat: the case of tuberculosis},
+  journal = {J. Math. Biol.},
+  year = {1997},
+  volume = {35},
+  pages = {629--656},
+  optnumber = {6}
+}
+
+@ARTICLE{CookeVdD1996,
+  author = {Cooke, K. and van den Driessche, P.},
+  title = {Analysis of an {SEIRS} epidemic model with two delays},
+  journal = {J. Math. Biol.},
+  year = {1996},
+  volume = {35},
+  pages = {240--260}
+}
+
+@ARTICLE{CookeVdDZou1999,
+  author = {Cooke, K. and van den Driessche, P. and Zou, X.},
+  title = {Interaction of maturation delay and nonlinear birth in population
+	and epidemic models},
+  journal = {J. Math. Biol.},
+  year = {1999},
+  volume = {39},
+  pages = {332--352},
+  number = {4},
+  owner = {jarino},
+  timestamp = {16.03.2008}
+}
+
+@ARTICLE{CookeVdDZou1999,
+  author = {Cooke, K. and van den Driessche, P. and Zou, X.},
+  title = {Interaction of maturation delay and nonlinear birth in population
+	and epidemic models},
+  journal = {J. Math. Biol.},
+  year = {1999},
+  volume = {39},
+  pages = {332-352},
+  number = {4},
+  note = {{\it Erratum: }J. Math. Biol., 45:470, 2002},
+  eversion = {No}
+}
+
+@ARTICLE{Cunningham1954,
+  author = {Cunningham, W.J.},
+  title = {A nonlinear differential-difference equation of growth},
+  journal = {PNAS},
+  year = {1954},
+  volume = {40},
+  pages = {708-713},
+  owner = {jarino},
+  timestamp = {16.03.2008}
+}
+
+@ARTICLE{Cushing1978,
+  author = {Cushing, J.M.},
+  title = {Bifurcation of periodic oscillations due to delays in single species
+	growth models},
+  journal = {J. Math. Biology},
+  year = {1978},
+  volume = {6},
+  pages = {145-161},
+  owner = {jarino},
+  timestamp = {16.03.2008}
+}
+
+@ARTICLE{Cushing1977a,
+  author = {Cushing, J.M.},
+  title = {Stable positive periodic solutions of the time-dependent logistic
+	equation under possible hereditary influences},
+  journal = {J. Math. Anal. Appl.},
+  year = {1977},
+  volume = {60},
+  pages = {747-754},
+  owner = {jarino},
+  timestamp = {16.03.2008}
+}
+
+@ARTICLE{Cushing1977b,
+  author = {Cushing, J.M.},
+  title = {Time delays in single species growth models},
+  journal = {J. Math. Biology},
+  year = {1977},
+  volume = {4},
+  pages = {257-264},
+  owner = {jarino},
+  timestamp = {16.03.2008}
+}
+
+@BOOK{Cushing1977c,
+  title = {Integrodifferential Equations and Delay Models in Population Dynamics},
+  publisher = {Springer-Verlag},
+  year = {1977},
+  author = {Cushing, J.M.},
+  volume = {20},
+  series = {Lecture Notes in Biomathematics},
+  owner = {jarino},
+  timestamp = {16.03.2008}
+}
+
+@BOOK{DiekmannHeesterbeek2000,
+  title = {Mathematical Epidemiology of Infectious Diseases: Model Building,
+	Analysis and Interpretation},
+  publisher = {Wiley},
+  year = {2000},
+  author = {Diekmann, O. and Heesterbeek, J. A. P.}
+}
+
+@ARTICLE{Dietz1967,
+  author = {Dietz, K.},
+  title = {Epidemics and Rumours: A Survey},
+  journal = {Journal of the Royal Statistical Society. Series A (General)},
+  year = {1967},
+  volume = {130},
+  pages = {505-528},
+  number = {4},
+  abstract = {In this paper we review the recent mathematical contributions to the
+	description of the spread of epidemics and rumours. The most important
+	concepts of epidemiology are defined and the various models are classified
+	according to their assumptions.},
+  doi = {Dietz-1967-JRSSA130.pdf}
+}
+
+@INPROCEEDINGS{VdD2002,
+  author = {van den Driessche, P.},
+  title = {Time delay in epidemic models},
+  booktitle = {Mathematical Approaches for Emerging and Reemerging Infectious Diseases:
+	An Introduction},
+  year = {2002},
+  editor = {Castillo-Chavez, C. and Blower, with S. and van den Driessche, P.
+	and Kirschner, D. and Yakubu, A.-A.},
+  volume = {125},
+  series = {IMA Volumes in Mathematics and its Applications},
+  pages = {119-128},
+  eversion = {No}
+}
+
+@INCOLLECTION{VdD1996,
+  author = {van den Driessche, P.},
+  title = {Some epidemiological models with delays},
+  booktitle = {Differential Equations and Applications to Biology and to Industry
+	(Claremont, CA, 1994)},
+  publisher = {World Sci. Publishing},
+  year = {1996},
+  pages = {507--520},
+  address = {River Edge, NJ}
+}
+
+@ARTICLE{VdDWatmough2002,
+  author = {van den Driessche, P. and Watmough, J.},
+  title = {Reproduction numbers and sub-threshold endemic equilibria for compartmental
+	models of disease transmission},
+  journal = {Math. Biosci.},
+  year = {2002},
+  volume = {180},
+  pages = {29-48},
+  optnumber = {1-2}
+}
+
+@ARTICLE{VdDWatmough2000,
+  author = {van den Driessche, P. and Watmough, J.},
+  title = {A simple {SIS} epidemic model with a backward bifurcation},
+  journal = {J. Math. Biol.},
+  year = {2000},
+  volume = {40},
+  pages = {525-540},
+  optnumber = {6}
+}
+
+@ARTICLE{DushoffHuangCastillo1998,
+  author = {Dushoff, J. and Huang, W. and Castillo-Chavez, C.},
+  title = {Backwards bifurcations and catastrophe in simple models of fatal
+	diseases},
+  journal = {J. Math. Biol.},
+  year = {1998},
+  volume = {36},
+  pages = {227-248},
+  eversion = {No}
+}
+
+@ARTICLE{EarnRohaniBolkerGrenfell2000,
+  author = {Earn, J.~D. and Rohani, P. and Bolker, B.~M. and Grenfell, B.~T.},
+  title = {A simple model for complex dynamical transitions in epidemics},
+  journal = {Science},
+  year = {2000},
+  volume = {287},
+  pages = {667-670},
+  eversion = {No}
+}
+
+@BOOK{LEK,
+  title = {Mathematical models in biology},
+  publisher = {McGraw-Hill},
+  year = {1988},
+  author = {Edelstein-Keshet, L.},
+  address = {New York},
+  owner = {jarino},
+  timestamp = {16.03.2008}
+}
+
+@ARTICLE{Elaydi1998,
+  author = {Elaydi, S.N. and Harris, W.A.Jr},
+  title = {On the Computation of A$^N$},
+  journal = {SIAM Review},
+  year = {1998},
+  volume = {40},
+  pages = {965-971},
+  owner = {jarino},
+  timestamp = {2008.03.18}
+}
+
+@ARTICLE{FengThieme2000,
+  author = {Feng, Z. and Thieme, H.R.},
+  title = {Endemic Models with Arbitrarily Distributed Periods of Infection
+	{I}: Fundamental Properties of the Model},
+  journal = {SIAM J. Appl. Math.},
+  year = {2000},
+  volume = {61},
+  pages = { 803-833},
+  optnumber = {3}
+}
+
+@BOOK{Franklin2000,
+  title = {Matrix Theory},
+  publisher = {Dover},
+  year = {2000},
+  author = {Franklin, J.N.},
+  owner = {jarino},
+  timestamp = {16.03.2008}
+}
+
+@ARTICLE{FreedmanSoWaltman1989,
+  author = {Freedman, H.I. and So, J.W.-H. and Waltman, P.},
+  title = {Coexistence in a model of competition in the chemostat incorporating
+	discrete delays },
+  journal = {SIAM J. Appl. Math.},
+  year = {1989},
+  volume = {49},
+  pages = {859-870},
+  owner = {jarino},
+  timestamp = {16.03.2008}
+}
+
+@ARTICLE{FromontPontierLanglais2003,
+  author = {Fromont, E. and Pontier, D. and Langlais, M.},
+  title = {Disease propagation in connected host populations with density-dependent
+	dynamics: the case of the {F}eline {L}eukemia {V}irus},
+  journal = {J. Theor. Biol.},
+  year = {2003},
+  volume = {223},
+  pages = {465-475}
+}
+
+@ARTICLE{FulfordRobertsHeesterbeek2002,
+  author = {Fulford, G.~R. and Roberts, M.~G. and Heesterbeek, J.~A.~P.},
+  title = {The metapopulation dynamics of an infectious disease: tuberculosis
+	in possums},
+  journal = {Theoretical Population Biology},
+  year = {2002},
+  volume = {61},
+  pages = {15-29}
+}
+
+@ARTICLE{GenikVdD1998,
+  author = {Genik, L. and van den Driessche, P.},
+  title = {A model for disease without immunity in a variable size population},
+  journal = {Canadian Appl. Math. Quart.},
+  year = {1998},
+  volume = {6},
+  pages = {5--16},
+  optnumber = {1}
+}
+
+@BOOK{Glass1988,
+  title = {From clock to chaos},
+  publisher = {Princeton University Press},
+  year = {1988},
+  author = {Glass, L. and Mackey, M.},
+  owner = {jarino},
+  timestamp = {2008.03.18}
+}
+
+@BOOK{Gopalsamy1992,
+  title = {Stability and Oscillations in Delay Differential Equations of Population
+	Dynamics},
+  publisher = {Kluwer Academic Publishers},
+  year = {1992},
+  author = {Gopalsamy, K.},
+  owner = {jarino},
+  timestamp = {16.03.2008}
+}
+
+@ARTICLE{GraisEllisGlass2003,
+  author = {Grais, R.F. and Ellis, J.H. and Glass, G.E.},
+  title = {Assessing the impact of airline travel on the geographic spread of
+	pandemic influenza},
+  journal = {European Journal of Epidemiology},
+  year = {2003},
+  volume = {18},
+  pages = {1065-1072}
+}
+
+@ARTICLE{GreenhalghDiekmannDeJong2000,
+  author = {Greenhalgh, D. and Diekmann, O. and de Jong, M.~C.~M.},
+  title = {Subcritical endemic steady states in mathematical models for animal
+	infections with incomplete immunity},
+  journal = {Math. Biosci.},
+  year = {2000},
+  volume = {165},
+  pages = {1-25}
+}
+
+@ARTICLE{GreenhalghDoyleLewis2001,
+  author = {Greenhalgh, D. and Doyle, M.~T. and Lewis, F.},
+  title = {A mathematical treatment of {AIDS} and condom use},
+  journal = {IMA J. Math. Appl. Med. Biol.},
+  year = {2001},
+  volume = {18},
+  pages = {225-262}
+}
+
+@ARTICLE{Gyori1989,
+  author = {Gy\"ori, I.},
+  title = {Oscillation and comparison results in neutral differential equations
+	and their applications to the delay logistic equation},
+  journal = {Computers Math. Applic.},
+  year = {1989},
+  volume = {18},
+  pages = {893-906},
+  number = {10/11},
+  owner = {jarino},
+  timestamp = {16.03.2008}
+}
+
+@BOOK{GyoriLadas1991,
+  title = {Oscillation Theory of Delay Differential Equations With Applications},
+  publisher = {Oxford University Press},
+  year = {1991},
+  author = {Gy\"ori, I. and Ladas, G.},
+  owner = {jarino},
+  timestamp = {16.03.2008}
+}
+
+@ARTICLE{HadelerVdD1997,
+  author = {Hadeler, K.P. and van den Driessche, P.},
+  title = {Backward bifurcation in epidemic control},
+  journal = {Math. Biosci.},
+  year = {1997},
+  volume = {146},
+  pages = {15-35}
+}
+
+@ARTICLE{HadelerCastillo1995,
+  author = {Hadeler, K.~P. and Castillo-Chavez, C.},
+  title = {A core group model for disease transmission},
+  journal = {Math. Biosci.},
+  year = {1995},
+  volume = {128},
+  pages = {41-55}
+}
+
+@ARTICLE{Henderson1999,
+  author = {Henderson, D. A.},
+  title = {The looming threat of bioterrorism},
+  journal = {Science},
+  year = {1999},
+  volume = {283},
+  pages = {1279-1282}
+}
+
+@ARTICLE{Hethcote2000,
+  author = {Hethcote, H.~W.},
+  title = {The mathematics of infectious diseases},
+  journal = {SIAM Review},
+  year = {2000},
+  volume = {42},
+  pages = {599-653},
+  number = {4}
+}
+
+@ARTICLE{Hethcote1998,
+  author = {Hethcote, H.~W.},
+  title = {Oscillations in an endemic model for pertussis},
+  journal = {Canadian Appl. Math. Quart.},
+  year = {1998},
+  volume = {6},
+  pages = {61--88},
+  optnumber = {1}
+}
+
+@ARTICLE{Hethcote1978,
+  author = {Hethcote, H.~W.},
+  title = {An immunization model for a heterogeneous population},
+  journal = {Math. Biosci.},
+  year = {1978},
+  volume = {14},
+  pages = {338-349}
+}
+
+@ARTICLE{HethcoteVdD2000,
+  author = {Hethcote, H. W. and van den Driessche, P.},
+  title = {Two {SIS} epidemiologic models with delays},
+  journal = {J. Math. Biol.},
+  year = {2000},
+  volume = {40},
+  pages = {3-26},
+  optnumber = {1}
+}
+
+@ARTICLE{HethcoteThieme1985,
+  author = {Hethcote, H. W. and Thieme, H.},
+  title = {Stability of the endemic equilibrium in epidemic models with subpopulations},
+  journal = {Math. Biosci.},
+  year = {1985},
+  volume = {75},
+  pages = {205-227}
+}
+
+@BOOK{HethcoteYorke1984,
+  title = {Gonorrhea Transmission Dynamics and Control},
+  publisher = {Springer-Verlag},
+  year = {1984},
+  author = {Hethcote, H.~W. and Yorke, J.~A.},
+  volume = {56},
+  series = {Lecture Notes in Biomathematics}
+}
+
+@ARTICLE{HS,
+  author = {Hirsch, M.W. and Smith, H.L.},
+  title = {Generic quasi-convergence for strongly order preserving semiflows:
+	a new approach},
+  journal = {J. Dynam. Differential Equations},
+  year = {2004},
+  volume = {16},
+  pages = {433-439},
+  number = {2},
+  owner = {jarino},
+  timestamp = {16.03.2008}
+}
+
+@ARTICLE{HuangCookeCastillo1992,
+  author = {Huang, W. and Cooke, K.~L. and Castillo-Chavez, C.},
+  title = {Stability and bifurcation for a multiple-group model for the dynamics
+	of {HIV}/{AIDS} transmission},
+  journal = {SIAM J. Appl. Math.},
+  year = {1992},
+  volume = {52},
+  pages = {835-854}
+}
+
+@ARTICLE{Hutchinson1948,
+  author = {Hutchinson, G.E.},
+  title = {Circular causal systems in ecology},
+  journal = {Ann. N. Y. Acad. Sci.},
+  year = {1948},
+  volume = {50},
+  pages = {221-246},
+  owner = {jarino},
+  timestamp = {16.03.2008}
+}
+
+@ARTICLE{HymanLiStanley1999,
+  author = {Hyman, J. and Li, J. and Stanley, E.},
+  title = {The differential infectivity and staged progression models for the
+	transmission of {HIV}},
+  journal = {Math. Biosci.},
+  year = {1999},
+  volume = {155},
+  pages = {77--109}
+}
+
+@ARTICLE{Jones1962a,
+  author = {Jones, G.S.},
+  title = {On the nonlinear differential-difference equation $f'(x)=-\alpha
+	f(x-1)\{1+f(x)\}$},
+  journal = {J. Math. Anal. Appl.},
+  year = {1962},
+  volume = {4},
+  pages = {440-469},
+  owner = {jarino},
+  timestamp = {16.03.2008}
+}
+
+@ARTICLE{Jones1962b,
+  author = {Jones, G.S.},
+  title = {The existence of periodic solutions of $f'(x)=-\alpha f(x-1)\{1+f(x)\}$},
+  journal = {J. Math. Anal. Appl.},
+  year = {1962},
+  volume = {5},
+  pages = {435-450},
+  owner = {jarino},
+  timestamp = {16.03.2008}
+}
+
+@ARTICLE{Jones1961,
+  author = {Jones, G.S.},
+  title = {Asymptotic behavior and periodic solutions of a nonlinear differential-difference
+	equation},
+  journal = {PNAS},
+  year = {1961},
+  volume = {47},
+  pages = {879-882},
+  owner = {jarino},
+  timestamp = {16.03.2008}
+}
+
+@INCOLLECTION{KakutaniMarkus1958,
+  author = {Kakutani, S. and Markus, L.},
+  title = {On the non-linear difference-differential equation $y'(t)=[A-By(t-\tau)]y(t)$},
+  booktitle = {Contributions to the Theory of Nonlinear Oscillations, Volume IV},
+  publisher = {Princeton Univ. Press},
+  year = {1958},
+  number = {41},
+  series = {Annals of Mathematical Studies},
+  owner = {jarino},
+  timestamp = {16.03.2008}
+}
+
+@ARTICLE{KaplanYorke1975,
+  author = {Kaplan, J.L. and Yorke, J.A.},
+  title = {On the stability of a periodic solution of a differential delay equation},
+  journal = {SIAM J. Math. Anal.},
+  year = {1975},
+  volume = {6},
+  pages = {268-282},
+  number = {2},
+  owner = {jarino},
+  timestamp = {16.03.2008}
+}
+
+@ARTICLE{KermackMckendrick1933,
+  author = {Kermack, W.O. and McKendrick, A.G.},
+  title = {Contributions to the mathematical theory of epidemics. III. Further
+	studies of the problem of endemicity},
+  journal = {Proc. Roy. Soc. London, Ser. A},
+  year = {1933},
+  volume = {141},
+  pages = {94-122}
+}
+
+@ARTICLE{KermackMckendrick1932,
+  author = {Kermack, W.O. and McKendrick, A.G.},
+  title = {Contributions to the mathematical theory of epidemics. II. The problem
+	of endemicity},
+  journal = {Proc. Roy. Soc. London, Ser. A},
+  year = {1932},
+  volume = {138},
+  pages = {55-83}
+}
+
+@ARTICLE{KermackMckendrick1927,
+  author = {Kermack, W.O. and McKendrick, A.G.},
+  title = {A contribution to the mathematical theory of epidemics},
+  journal = {Proc. Roy. Soc. London, Ser. A},
+  year = {1927},
+  volume = {115},
+  pages = {700-721}
+}
+
+@ARTICLE{Kingsland1982,
+  author = {Kingsland, S.},
+  title = {The refractory model: the logistic curve and the history of population
+	ecology},
+  journal = {The Quarterly Review of Biology},
+  year = {1982},
+  volume = {57},
+  pages = {29-52},
+  number = {1},
+  owner = {jarino},
+  timestamp = {16.03.2008}
+}
+
+@INPROCEEDINGS{Kribs2002,
+  author = {Kribs-Zaleta, C.},
+  title = {Center manifolds and normal forms in epidemic models},
+  booktitle = {Mathematical Approaches for Emerging and Reemerging Infectious Diseases:
+	An Introduction},
+  year = {2002},
+  editor = {Castillo-Chavez, C. and Blower, with S. and van den Driessche, P.
+	and Kirschner, D. and Yakubu, A.-A.},
+  volume = {125},
+  series = {IMA Volumes in Mathematics and its Applications},
+  pages = {269-286}
+}
+
+@ARTICLE{KribsMartcheva2002,
+  author = {Kribs-Zaleta, C. and Martcheva, M.},
+  title = {Vaccination strategies and backward bifurcation in an age-since-infection
+	structured model},
+  journal = {Math. Biosci.},
+  year = {2002},
+  volume = {177\&178},
+  pages = {317-332}
+}
+
+@ARTICLE{KribsVelasco2000,
+  author = {Kribs-Zaleta, C. and Velasco-Hern\'andez, J.},
+  title = {A simple vaccination model with multiple endemic states},
+  journal = {Math. Biosci.},
+  year = {2000},
+  volume = {164},
+  pages = {183--201}
+}
+
+@BOOK{Kuang1993,
+  title = {Delay Differential Equations With Applications in Population Dynamics},
+  publisher = {Academic Press},
+  year = {1993},
+  author = {Kuang, Y.},
+  owner = {jarino},
+  timestamp = {16.03.2008}
+}
+
+@ARTICLE{LiGraefWangKarsai1999,
+  author = {Li, M.Y. and Graef, J.R. and Wang, L. and Karsai, J.},
+  title = {Global dynamics of a {SEIRS} model with varying total population
+	size},
+  journal = {Mathematical Biosciences},
+  year = {1999},
+  volume = {160},
+  pages = {191-213}
+}
+
+@ARTICLE{LiMuldowney1996,
+  author = {Li, M.~Y. and Muldowney, J.~S.},
+  title = {A geometric approach to global-stability problems},
+  journal = {SIAM J. Math. Anal.},
+  year = {1996},
+  volume = {27},
+  pages = {1070-1083}
+}
+
+@ARTICLE{LiMuldowney1995b,
+  author = {Li, M.~Y. and Muldowney, J.~S.},
+  title = {Global Stability for the {SEIR} Model in Epidemiology},
+  journal = {Math. Biosci.},
+  year = {1995},
+  volume = {125},
+  pages = {155-164}
+}
+
+@ARTICLE{LiMuldowneyVdD2000,
+  author = {Li, M.~Y. and Muldowney, J.~S. and van den Driessche, P.},
+  title = {Global stability of {SEIRS} models in epidemiology},
+  journal = {CAMQ},
+  year = {2000},
+  volume = {7},
+  pages = {409-425}
+}
+
+@ARTICLE{LiSmithWang2001,
+  author = {Li, M.~Y. and Smith, H.~L. and Wang, L.},
+  title = {Global dynamics of an {SEIR} epidemic model with vertical transmission},
+  journal = {SIAM J. Appl. Math.},
+  year = {2001},
+  volume = {62},
+  pages = {58-69},
+  number = {1}
+}
+
+@ARTICLE{Longini1988,
+  author = {Longini, I.M.},
+  title = {A mathematical model for predicting the geographic spread of new
+	infectious agents},
+  journal = {Math. Biosci.},
+  year = {1988},
+  volume = {90},
+  pages = {367-383}
+}
+
+@BOOK{MacDonald1978,
+  title = {Time Lags in Biological Models},
+  publisher = {Springer-Verlag},
+  year = {1978},
+  author = {MacDonald, N.},
+  volume = {27},
+  series = {Lecture Notes in Biomathematics},
+  owner = {jarino},
+  timestamp = {16.03.2008}
+}
+
+@ARTICLE{MacleanWillard1937,
+  author = {MacLean, M.C. and Willard Turner, A.},
+  title = {The logistic curve applied to {C}anada's population},
+  journal = {The Canadian Journal of Economics and Political Science},
+  year = {1937},
+  volume = {3},
+  pages = {241-248},
+  number = {2},
+  owner = {jarino},
+  timestamp = {16.03.2008}
+}
+
+@ARTICLE{MCHS1974,
+  author = {May, R.M. and Conway, G.R. and Hassell, M.P. and Southwood, T.R.E.},
+  title = {Time delays, density-dependence and single-species oscillations},
+  journal = {J. Anim. Ecol.},
+  year = {1974},
+  volume = {43},
+  pages = {747-770},
+  number = {3},
+  owner = {jarino},
+  timestamp = {16.03.2008}
+}
+
+@ARTICLE{McCallumBarlowHone2001,
+  author = {McCallum, H. and Barlow, N. and Hone, J.},
+  title = {How should pathogen transmission be modelled?},
+  journal = {Trends Ecol. Evol.},
+  year = {2001},
+  volume = {16},
+  pages = {295--300},
+  optnumber = {6}
+}
+
+@ARTICLE{McCluskey2002,
+  author = {McCluskey, C.},
+  title = {A model of {HIV}/{AIDS} with staged progression and amelioration},
+  journal = {Math. Biosci.},
+  year = {2002},
+  note = {To appear}
+}
+
+@ARTICLE{McleanBlower1995,
+  author = {McLean, A.R. and Blower, S.M.},
+  title = {Modelling {HIV} vaccination},
+  journal = {Trends in Microbiology},
+  year = {1995},
+  volume = {3},
+  pages = {458-463}
+}
+
+@ARTICLE{MukherjeeChattopadhyayTapaswi1993,
+  author = {Mukherjee, D. and Chattopadhyay, J. and Tapaswi, P.K.},
+  title = {Global stability results of epidemiological models with nonlinear
+	incidence rates},
+  journal = {Mathl. Comput. Modelling},
+  year = {1993},
+  volume = {18},
+  pages = {89-92},
+  number = {2}
+}
+
+@BOOK{NisbetGurney1982,
+  title = {Modelling fluctuating populations},
+  publisher = {Wiley},
+  year = {1982},
+  author = {Nisbet, R.M. and Gurney, W.S.C.},
+  owner = {jarino},
+  timestamp = {16.03.2008}
+}
+
+@ARTICLE{OsterTakahashi1974,
+  author = {Oster, G.F. and Takahashi, Y.},
+  title = {Models for age-specific interactions in a periodic environment},
+  journal = {Ecol. Monogr.},
+  year = {1974},
+  volume = {44},
+  pages = {483-501},
+  owner = {jarino},
+  timestamp = {16.03.2008}
+}
+
+@ARTICLE{PearlReed1930,
+  author = {Pearl, R. and Reed, L.J.},
+  title = {The logistic curve and the census count of 1930},
+  journal = {Science},
+  year = {1930},
+  volume = {72},
+  pages = {399-401},
+  number = {1868},
+  owner = {jarino},
+  timestamp = {16.03.2008}
+}
+
+@ARTICLE{PearlReed1920,
+  author = {Pearl, R. and Reed, L.J.},
+  title = {On the rate of growth of the population of the {U}nited {S}tates
+	since 1790 and its mathematical representation},
+  journal = {Proceedings of the National Academy of Science},
+  year = {1920},
+  volume = {6},
+  pages = {275-288},
+  owner = {jarino},
+  timestamp = {16.03.2008}
+}
+
+@ARTICLE{PearlReedFish1940,
+  author = {Pearl, R. and Reed, L.J. and Fish, J.F.},
+  title = {The logistic curve and the census count of 1940},
+  journal = {Science},
+  year = {1940},
+  volume = {92},
+  pages = {486-488},
+  number = {2395},
+  owner = {jarino},
+  timestamp = {16.03.2008}
+}
+
+@ARTICLE{PetersenRoehrig2001,
+  author = {Petersen, L. R. and Roehrig, J. T.},
+  title = {{W}est {N}ile Virus: A Reemerging Global Pathogen},
+  journal = {Emerg. Inf. Dis.},
+  year = {2001},
+  volume = {7},
+  pages = {611-614}
+}
+
+@BOOK{Pielou1977,
+  title = {Mathematical ecology},
+  publisher = {John Wiley},
+  year = {1977},
+  author = {Pielou, E.C.},
+  address = {New York},
+  owner = {jarino},
+  timestamp = {2008.03.18}
+}
+
+@ARTICLE{Pritchett1891,
+  author = {Pritchett, H.S.},
+  title = {A Formula for Predicting the Population of the United States},
+  journal = {Publications of the American Statistical Association},
+  year = {1891},
+  volume = {2},
+  pages = {278-286},
+  number = {14},
+  owner = {jarino},
+  timestamp = {23.03.2008}
+}
+
+@ARTICLE{ReadeBowersBegonGaskell1998,
+  author = {Reade, B. and Bowers, R.G. and Begon, M. and Gaskell, R.},
+  title = {A model of disease and vaccination for infections with acute and
+	chronic phases},
+  journal = {J. Theoret. Biol.},
+  year = {1998},
+  volume = {190},
+  pages = {355-367}
+}
+
+@ARTICLE{Rodriguez1998,
+  author = {Rodr\'iguez, D.J.},
+  title = {Time delays in density dependence are often not destabilizing},
+  journal = {J. theor. Biol.},
+  year = {1998},
+  volume = {191},
+  pages = {95-101},
+  owner = {jarino},
+  timestamp = {16.03.2008}
+}
+
+@INCOLLECTION{Ruan2005,
+  author = {Ruan, S.},
+  title = {Delay differential equations in single species dynamics},
+  booktitle = {Delay Differential Equations and Applications},
+  publisher = {Springer-Verlag},
+  year = {2005},
+  editor = {Arino, O. and Ait Dads, E. and Hbid, M.L.},
+  note = {To appear},
+  owner = {jarino},
+  timestamp = {16.03.2008}
+}
+
+@ARTICLE{RvachevLongini1985,
+  author = {Rvachev, L.A. and Longini, I.M.},
+  title = {A mathematical model for the global spread of influenza},
+  journal = {Math. Biosci.},
+  year = {1985},
+  volume = {75},
+  pages = {3:22}
+}
+
+@ARTICLE{SalmaniVdD2006,
+  author = {Salmani, M. and van den Driessche, P.},
+  title = {A model for disease transmission in a patchy environment},
+  journal = {DCDS-B},
+  year = {2006},
+  volume = {6},
+  pages = {185-202},
+  number = {1},
+  owner = {jarino},
+  timestamp = {14.11.2007}
+}
+
+@ARTICLE{SattenspielDietz1995,
+  author = {Sattenspiel, L. and Dietz, K.},
+  title = {A structured epidemic model incorporating geographic mobility among
+	regions},
+  journal = {Math. Biosci.},
+  year = {1995},
+  volume = {128},
+  pages = {71-91}
+}
+
+@ARTICLE{SattenspielHerring2003,
+  author = {Sattenspiel, L. and Herring, D.A.},
+  title = {Simulating the effect of quarantine on the spread of the 1918-19
+	flu in central {C}anada},
+  journal = {Bull. Math. Biol.},
+  year = {2003},
+  volume = {65},
+  pages = {1-26}
+}
+
+@ARTICLE{SattenspielHerring1998,
+  author = {Sattenspiel, L. and Herring, D. A.},
+  title = {Structured epidemic models and the spread of influenza in the central
+	{C}anadian subartic},
+  journal = {Human Biology},
+  year = {1998},
+  volume = {70},
+  pages = {91-115},
+  optnumber = {1}
+}
+
+@ARTICLE{SattenspielMobarryHerring2000,
+  author = {Sattenspiel, L. and Mobarry, A. and Herring, D.A.},
+  title = {Modeling the influence of settlement strucure on the spread of influenza
+	among communities},
+  journal = {Am. J. Human Biol.},
+  year = {2000},
+  volume = {12},
+  pages = {736-748}
+}
+
+@ARTICLE{SattenspielSimon1988,
+  author = {Sattenspiel, L. and Simon, C.P.},
+  title = {The spread and persistence of infectious diseases in structured populations},
+  journal = {Math. Biosci.},
+  year = {1988},
+  volume = {90},
+  pages = {341-366}
+}
+
+@ARTICLE{Seifert1987,
+  author = {Seifert, G.},
+  title = {On a delay-differential equation for single specie population variations},
+  journal = {Nonlinear Analysis, Theory, Methods \& Applications},
+  year = {1987},
+  volume = {11},
+  pages = {1051-1059},
+  number = {9},
+  owner = {jarino},
+  timestamp = {16.03.2008}
+}
+
+@BOOK{Smithbook,
+  title = {Monotone dynamical systems. An introduction to the theory of competitive
+	and cooperative systems},
+  publisher = {American Mathematical Society},
+  year = {1995},
+  author = {Smith, H.L.},
+  number = {41},
+  series = {Mathematical Surveys and Monographs},
+  address = {Providence, RI},
+  owner = {jarino},
+  timestamp = {16.03.2008}
+}
+
+@ARTICLE{Smith1996,
+  author = {Smith, H. L.},
+  title = {A discrete, size-structured model of microbial growth and competition
+	in the chemostat},
+  journal = {J. Math. Biol.},
+  year = {1996},
+  volume = {34},
+  pages = {734-754},
+  fjournal = {Journal of Mathematical Biology}
+}
+
+@INPROCEEDINGS{SongCastilloAparicio2002,
+  author = {Song, B. and Castillo-Chavez, C. and Aparicio, J.~P.},
+  title = {Global dynamics of tuberculosis models with density dependent demography},
+  booktitle = {Mathematical Approaches for Emerging and Reemerging Infectious Diseases:
+	Models, Methods, and Theory},
+  year = {2002},
+  editor = {Castillo-Chavez, C. and Blower, with S. and van den Driessche, P.
+	and Kirschner, D. and Yakubu, A.-A.},
+  volume = {126},
+  series = {IMA Volumes in Mathematics and its Applications},
+  pages = {275-294},
+  eversion = {No}
+}
+
+@INPROCEEDINGS{Thieme2002,
+  author = {Thieme, H.R.},
+  title = {The transition through stages with arbitrary length distributions,
+	and applications in epidemics},
+  booktitle = {Mathematical Approaches for Emerging and Reemerging Infectious Diseases:
+	Models, Methods, and Theory},
+  year = {2002},
+  editor = {Castillo-Chavez, C. and Blower, with S. and van den Driessche, P.
+	and Kirschner, D. and Yakubu, A.-A.},
+  volume = {126},
+  series = {IMA Volumes in Mathematics and its Applications},
+  pages = {45-84}
+}
+
+@BOOK{Thieme2003,
+  title = {Mathematics in Population Biology},
+  publisher = {Princeton University Press},
+  year = {2003},
+  author = {Thieme, H.R.},
+  series = {Princeton Series in Theoretical and Computational Biology}
+}
+
+@BOOK{Thieme2003,
+  title = {Mathematics in Population Biology},
+  publisher = {Princeton University Press},
+  year = {2003},
+  author = {Thieme, H.R.},
+  series = {Princeton Series in Theoretical and Computational Biology},
+  owner = {jarino},
+  timestamp = {16.03.2008}
+}
+
+@ARTICLE{TsoularisWallace2002,
+  author = {Tsoularis, A. and Wallace, J.},
+  title = {Analysis of logistic growth models},
+  journal = {Mathematical Biosciences},
+  year = {2002},
+  volume = {179},
+  pages = {21-55},
+  owner = {jarino},
+  timestamp = {16.03.2008}
+}
+
+@ARTICLE{Verhulst1845,
+  author = {Verhulst, P.F.},
+  title = {Recherches math\'{e}matiques sur la loi d'accroissement de la population},
+  journal = {Nouv. m\'{e}m. de l'Academie Royale des Sci. et Belles-Lettres de
+	Bruxelle},
+  year = {1845},
+  volume = {18},
+  pages = {1-41},
+  owner = {jarino},
+  timestamp = {16.03.2008}
+}
+
+@ARTICLE{Verhulst1838,
+  author = {Verhulst, P.F.},
+  title = {Notice sur la loi que la population suit dans son accroissement},
+  journal = {Correspondance Mathematique et Physique},
+  year = {1838},
+  volume = {10},
+  pages = {113-121},
+  owner = {jarino},
+  timestamp = {16.03.2008}
+}
+
+@ARTICLE{Walther1995,
+  author = {Walther, H.-O.},
+  title = {The 2-dimensional attractor of $x'(t)=-\mu x(t)+f(x(t-1))$},
+  journal = {Memoirs of the Am. Math. Soc.},
+  year = {1995},
+  volume = {113},
+  number = {544},
+  owner = {jarino},
+  timestamp = {16.03.2008}
+}
+
+@ARTICLE{WangMulone2003,
+  author = {Wang, W. and Mulone, G.},
+  title = {Threshold of disease transmission in a patch environment},
+  journal = {J. Math. Anal. Appl.},
+  year = {2003},
+  volume = {285},
+  pages = {321-335}
+}
+
+@UNPUBLISHED{WangZhao2002,
+  author = {Wang, W. and Zhao, X.-Q.},
+  title = {An epidemic model in a patchy environment},
+  note = {Submitted},
+  year = {2002}
+}
+
+@ARTICLE{WolkowiczXia1997,
+  author = {Wolkowicz, G.S.K. and Xia, H.},
+  title = {Global asymptotic behavior of a chemostat model with discrete delays},
+  journal = {SIAM J. Appl. Math.},
+  year = {1997},
+  volume = {57},
+  pages = {1019-1043},
+  number = {4},
+  owner = {jarino},
+  timestamp = {16.03.2008}
+}
+
+@ARTICLE{WHO2003,
+  author = {{World Health Organization}},
+  title = {A Multicentre Collaboration to Investigate the Cause of Severe Acute
+	Respiratory Syndrome},
+  journal = {Lancet},
+  year = {2003},
+  volume = {361},
+  pages = {1730-1733}
+}
+
+@ARTICLE{Wright1955,
+  author = {Wright, E.M.},
+  title = {A non-linear difference-differential equation},
+  journal = {J. Reine Angew. Math.},
+  year = {1955},
+  volume = {494},
+  pages = {66-87},
+  owner = {jarino},
+  timestamp = {16.03.2008}
+}
+
+@BOOK{Zinsser1935,
+  title = {Rats, Lice and History: A Chronicle Of Pestilence and Plagues},
+  publisher = {Little Brown \& Co.},
+  year = {1935},
+  author = {Zinsser, H.},
+  address = {Boston, MA.}
+}
+
+@BOOK{Chin2000,
+  title = {Control of Communicable Diseases Manual. 17$^\textrm{th}$ Edition},
+  publisher = {American Public Health Association},
+  year = {2000},
+  editor = {Chin, J.}
+}
+
+@BOOK{GrenfellDobson1995,
+  title = {Ecology of Infectious Diseases in Natural Populations},
+  publisher = {Cambridge University Press},
+  year = {1995},
+  editor = {Grenfell, B. T. and Dobson, A. P.},
+  address = {Cambridge}
+}
+
+@BOOK{IshamMedley1996,
+  title = {Models for Infectious Human Diseases: Their Structure and Relation
+	to Data},
+  publisher = {Cambridge University Press},
+  year = {1996},
+  editor = {Isham, V. and Medley, G.},
+  address = {Cambridge}
+}
+
+@BOOK{Mollison1995,
+  title = {Epidemic Models: Their Structure and Relation to Data},
+  publisher = {Cambridge University Press},
+  year = {1995},
+  editor = {Mollison, D.},
+  address = {Cambridge}
+}
+
+@ARTICLE{,
+  citeseerurl = {van den Driessche},
+  owner = {jarino},
+  timestamp = {22.10.2007}
+}
+

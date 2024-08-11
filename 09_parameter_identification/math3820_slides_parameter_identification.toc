@@ -1,0 +1,5 @@
+\beamer@endinputifotherversion {3.07pt}
+\beamer@sectionintoc {1}{Statement of the problem}{1}{0}{1}
+\beamer@sectionintoc {2}{Case of the logistic equation}{4}{0}{2}
+\beamer@sectionintoc {3}{Using nonlinear regression}{7}{0}{3}
+\beamer@sectionintoc {4}{Using simulations}{16}{0}{4}

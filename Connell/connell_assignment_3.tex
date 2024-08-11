@@ -1,0 +1,136 @@
+\documentclass[reqno,12pt]{amsart}
+%\documentclass[final,letter]{siamltex}
+%\documentstyle{amsppt}
+
+
+\usepackage{amssymb}
+\usepackage{amscd}
+\usepackage{graphicx}
+\usepackage{overcite}
+
+\setlength{\oddsidemargin}{0.0in}
+\setlength{\evensidemargin}{0.0in}
+\setlength{\textwidth}{6.5in}
+
+\def\eee{\textrm{e}}
+\def\dxdt{\frac{dx}{dt}}
+\def\dydt{\frac{dy}{dt}}
+\def\dHdt{\frac{dH}{dt}}
+\def\dLdt{\frac{dL}{dt}}
+
+\begin{document}
+\title{M2E03 - Introduction to Modelling - Assignment 3}
+\maketitle
+
+\begin{center}
+\pagestyle{myheadings} 
+\thispagestyle{empty}
+
+\bigskip
+
+\textsc{Due in class - 9:00 am, Wednesday, November 12}
+
+\bigskip
+
+\textsc{Late assignments will receive a grade of zero.}
+
+% \bigskip
+%
+% You do not have to answer the questions that are written in {\it italics}.
+
+\bigskip
+\bigskip
+\end{center}
+
+\noindent
+1.  Consider the following Lotka-Volterra model for competition
+\begin{equation*}
+\begin{aligned}
+\dxdt &= 3 x (1 -   x - 3 y)	\\
+\dydt &= 2 y (1 - 2 x - 2 y).
+\end{aligned}
+\end{equation*}
+
+\noindent
+a.  Find the (biologically meaningful) equilibria.
+
+\noindent
+b.  By considering the Jacobian matrix, determine whether each
+equilbrium is stable or unstable.
+
+\noindent
+c.  Sketch the phase plane including the nullclines, equilibria
+and the general direction of flow at different points.
+
+\vspace{1cm}
+
+\noindent
+2.  Consider the following Lotka-Volterra model for competition
+\begin{equation*}
+\begin{aligned}
+\dxdt &= \alpha x (1 - 2 x -   y)			\\
+\dydt &= \beta  y (1 - \frac 15 x - \frac 19 y)
+\end{aligned}
+\end{equation*}
+where $\alpha$ and $\beta$ are positive constants.
+
+\noindent
+a.  Find the (biologically meaningful) equilibria.
+
+\noindent
+b.  By considering the Jacobian matrix, determine whether each
+equilbrium is stable or unstable.
+
+\noindent
+c.  Sketch the phase plane including the nullclines, equilibria
+and the general direction of flow at different points.
+
+\vspace{1cm}
+
+\noindent
+3.  Consider the general Lotka-Volterra model for competition
+between two species:
+\begin{equation*}
+\begin{aligned}
+\dxdt &= r_1 x (1 - a_{11} x - a_{12} y)	\\
+\dydt &= r_2 y (1 - a_{21} x - a_{22} y).
+\end{aligned}
+\end{equation*}
+Modify the above equations to produce a model for the situation
+where species $x$ and $y$ help each other.
+
+\vspace{1cm}
+
+\noindent
+4.  Consider the following Lotka-Volterra model for a predator-prey
+interaction
+\begin{equation*}
+\begin{aligned}
+\dHdt &= H ( 6 -   H - 3 L)	\\
+\dLdt &= L (-2 + 2 H).
+\end{aligned}
+\end{equation*}
+
+\noindent
+a.  Find the (biologically meaningful) equilibria.
+
+\noindent
+b.  By considering the Jacobian matrix, determine whether each
+equilbrium is stable or unstable.
+
+\noindent
+c.  Sketch the phase plane including the nullclines, equilibria
+and the general direction of flow at different points.
+
+\vspace{1cm}
+
+
+
+
+
+
+
+
+
+
+\end{document}

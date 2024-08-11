@@ -1,0 +1,193 @@
+\documentclass[12pt]{exam}
+
+
+
+%\usepackage{graphicx}% Include figure files
+%\usepackage{dcolumn}% Align table columns on decimal point
+%\usepackage{bm}% bold math
+\usepackage{latexsym}
+\usepackage{amsmath,amssymb,amsthm,amsfonts}
+%\usepackage{subfigure}
+
+%\usepackage{titlefoot}
+
+%\usepackage[displaymath]{lineno}
+
+%
+
+%\usepackage{fancyhdr}
+%
+%\setlength{\textwidth}{6.9in} \setlength{\textheight}{9.4in}
+%\addtolength{\oddsidemargin}{-3cm} \addtolength{\topmargin}{-0.2in}
+%\setlength{\headheight}{5pt} \setlength{\headsep}{10pt}
+
+\def\IR{\mathbb{R}}
+
+\begin{document}
+\pagestyle{head} \extraheadheight{1in}\runningheadrule
+\firstpageheader{$\mbox{}$\\DATE: April 23, 2007\\PAPER NO.: 137 \\
+DEPARTMENT $\&$ COURSE NO.: MATH 3820 \\EXAMINATION: Intro. Math. Model.}{\bf
+UNIVERSITY OF MANITOBA\\
+$\mbox{}$
+\\$\mbox{}$ \\ $\mbox{}$\\$\mbox{}$}{$\mbox{}$\\FINAL EXAMINATION\\ PAGE NO.:
+\thepage\ of \numpages\\TIME: 2
+hours\\ EXAMINER: J. Arino}\runningheadrule
+\runningheader{$\mbox{}$\\DATE: April 23, 2007\\PAPER NO.: 137 \\
+DEPARTMENT $\&$ COURSE NO.: MATH 3820 \\EXAMINATION: Intro. Math. Model.}{\bf
+UNIVERSITY OF MANITOBA\\
+$\mbox{}$
+\\$\mbox{}$ \\ $\mbox{}$\\$\mbox{}$}{$\mbox{}$\\FINAL EXAMINATION\\ PAGE NO.:
+\thepage\ of \numpages\\TIME: 2
+hours\\ EXAMINER: J. Arino} \vspace{-2.5cm}
+\begin{center}
+\begin{tabular}{cp{15.5cm}}
+\hline
+&\\
+\end{tabular}
+\end{center}
+%\footer{}{Page \thepage\ of \numpages}%
+%{\iflastpage{End of exam.}{Please go on to the next page\ldots}}
+
+\addpoints
+%\bibliographystyle{plain}
+%\pagestyle{fancy} \chead{} \lhead{} \rhead{} \cfoot{}
+
+
+
+
+%\vspace{.2cm}
+%
+%{\bf NAME:} \vspace{0.5cm}
+%
+%{\bf STUDENT \#:}
+
+
+\vspace{0.1in} \hbox to \textwidth{NAME:\enspace\hrulefill}
+\vspace{0.2in} \hbox to \textwidth{STUDENT NUMBER:\enspace\hrulefill
+ SEAT NUMBER:\enspace\hrulefill} \vspace{0.2in} \hbox to
+\textwidth{SIGNATURE:\enspace\hrulefill}
+\hspace{1.75in}(I understand that cheating is a serious offense)
+\vspace{.5in}
+
+This is a 2 hours exam. Notes, books, cell phones and calculators are
+not allowed.
+
+\vspace{.1in} This exam has a title page, 7 pages of questions, and
+2 blank pages.
+
+\vspace{.2in} {\bf PLEASE SHOW YOUR WORK CLEARLY.}
+A correct but unclear answer will not get full marks, nor will a correct answer
+that does not give some detail of the method used to obtain the solution.
+
+If you need more space to finish a question, start by using the back of the page
+the question is on, indicating that you are doing so (for example, using $../..$
+or $\to$ at the bottom of the page).
+\vspace{.5in}
+\begin{center}
+\gradetable[v]
+\end{center}
+
+
+
+\begin{questions}
+\newpage
+\question[20] We want to model the survival of a population of whales. We assume
+that if the number of whales falls below a minimum survival level $m$, then the
+species becomes extinct. In addition, we assume that the population is limited
+by the carrying capacity $M$ of the environment, that is, if the population is
+above $M$, it will experience a decline because the environment cannot sustain
+that large a population level.
+\begin{parts}
+\part Let $a_t$ represent the whale population after $t$ years. Discuss the
+model
+\[
+a_{t+1}=a_t+k(M-a_t)(a_t-m),
+\]
+where $k>0$. Does it make sense in terms of the description above?
+\part Find the fixed points of the model, and determine their stability.
+\part Assume that $M=5000$, $m=100$ and $k=0.0001$. Perform a graphical
+stability analysis.
+\part Sketch the graph of $a_t$ versus $t$ for various initial conditions, with the
+parameter values used in (c).
+\part The model has two serious shortcomings. What are they? [Hint: Consider
+what happens when $a_0<m$, and when $a_0\gg M$.]
+\end{parts}
+
+\vskip1cm
+\question[10]
+We consider the partial differential equation
+\begin{equation}\label{eq:diffusion}
+u_t=Du_{xx},
+\end{equation}
+with $D>0$.
+\begin{parts}
+\part Show that the function
+\[
+g(x,t)=\frac{1}{2\sqrt{\pi Dt}}e^{-\frac{x^2}{4Dt}}
+\]
+is a solution to the diffusion equation \eqref{eq:diffusion}.
+\part Verify that $g(x,t)\geq 0$ for all $t\geq 0$ and $x\in\IR$. Investigate
+the limits as $x\to\pm\infty$ and $t\to\infty$.
+\end{parts}
+
+\vskip1cm
+\question[15]
+A forest ecosystem is observed for several years. When a tree dies, the type of
+tree that replaces it is recorded. The following table is obtained:
+\begin{center}
+\begin{tabular}{c||c|c|c|c|c|}
+& RO & HI & TU & RM & BE \\
+\hline
+Red oak (RO) & 0.12 & 0.12 & 0.12 & 0.42 & 0.22 \\
+Hickory (HI) & 0.14 & 0.05 & 0.10 & 0.53 & 0.18 \\
+Tulip tree (TU) & 0.12 & 0.08 & 0.10 & 0.32 & 0.38 \\
+Red maple (RM) & 0.12 & 0.28 & 0.05 & 0.20 & 0.35 \\
+Beech (BE) & 0.13 & 0.27 & 0.08 & 0.19 & 0.33
+\end{tabular}
+\end{center}
+\begin{parts}
+\part Is this a Markov chain?
+\part Assume that we start with a forest comprising only red oaks. What are the
+first 3 iterates of the process.
+\part Is this Markov chain regular?
+\part How would you obtain the equilibrium value of the distribution of trees?
+Do not do the computations.
+\end{parts}
+
+\vskip1cm
+\question[20]
+We consider models of a fishery. In the absence of fishing, the fish population
+grows logistically,
+\[
+N'=rN\left(1-\frac NK\right),
+\]
+with $r,K>0$. We add terms to this equation to represent the
+harvesting of the population by fishing. This gives us the following three
+models:
+\begin{equation}\label{eq:fish1}
+N'=rN\left(1-\frac NK\right)-H_1,
+\end{equation}
+\begin{equation}\label{eq:fish2}
+N'=rN\left(1-\frac NK\right)-H_2N,
+\end{equation}
+and
+\begin{equation}\label{eq:fish3}
+N'=rN\left(1-\frac NK\right)-H_3\frac{N}{A+N},
+\end{equation}
+where $H_1,H_2,H_3,A>0$.
+\begin{parts}
+\part For each model, give an interpretation of the fishing term. How do these
+terms differ? How do you interpret the parameters $H_1,H_2,H_3,A$?
+\part Why is \eqref{eq:fish1} not realistic?
+\part Which of \eqref{eq:fish2} and \eqref{eq:fish3} do you think is best?
+\end{parts}
+[Hint: In this exercise, although it is not asked explicitly, you may want to
+study the models \eqref{eq:fish1}, \eqref{eq:fish2} and \eqref{eq:fish3} more in
+detail (fixed points, stability, conditions leading to the extinction of the
+population).]
+
+
+
+
+\end{questions}
+\end{document}

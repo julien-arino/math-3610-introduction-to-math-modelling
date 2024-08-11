@@ -1,0 +1,574 @@
+\documentclass{beamer}
+
+\usepackage{graphics}
+\usepackage{graphicx}
+\usepackage{amsmath,amssymb,amsthm}
+%\usepackage{srcltx}
+%\usepackage{subeqnarray}
+%\usepackage{easybmat}
+%\usepackage{subfigure}
+
+
+
+%\usepackage{HA-prosper}
+%\usepackage[dvips,letterpaper]{geometry}
+
+\def\M{\mathcal{M}}
+\def\R{\mathcal{R}}
+\def\D{\mathcal{D}}
+\def\C{\mathcal{C}}
+\def\I{\mathcal{I}}
+\def\L{\mathcal{L}}
+\def\IC{\mathbb{C}}
+\def\IN{\mathbb{N}}
+\def\IR{\mathbb{R}}
+\def\IK{\mathbb{K}}
+\def\II{\mathbb{I}}
+\def\Rzero{\mathcal{R}_0}
+\def\diag{\textrm{diag}}
+\def\tr{\ensuremath{\mathsf{tr}}}
+\def\det{\ensuremath{\mathsf{det}}}
+\def\Span{\ensuremath{\mathsf{span}}}
+\def\sign{\ensuremath{\mathsf{sign}}}
+\def\sgn{\textrm{sgn}}
+\def\imply{$\Rightarrow$}
+\def\dbint{\int\!\!\!\int}
+\def\dbintb{\mathop{\int\!\!\!\!\int}}
+\def\tpint{\int\!\!\!\int\!\!\!\int}
+
+\newtheorem{proposition}{Proposition}
+
+%\setbeamertemplate{theorems}[numbered]
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{footline}
+{%
+\quad\insertsection\hfill p. \insertpagenumber\quad\mbox{}\vskip2pt
+}
+
+\title{Bifurcations}
+\date{}
+
+\begin{document}
+\maketitle
+%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%
+\section{General context}
+\frame[plain]{\tableofcontents[current]}
+
+\frame{\frametitle{The general context of bifurcations}
+Consider the discrete time system
+\[
+x_{t+1}=f(x_t)
+\]
+or the continuous time system
+\[
+x'=f(x).
+\]
+We start with a function $f:\IR^2\to\IR$, $C^r$ when a map is considered, $C^1$ when continuous time is considered.
+\vskip1cm
+In both cases, the function $f$ can depend on some parameters. We are interested in the differences of qualitative behavior, as one of these parameters, which we call $\mu$, varies.
+}
+
+
+\frame{
+So we write
+\begin{equation}\label{eq:DE}
+x_{t+1}=f(x_t,\mu)=f_\mu(x_t)
+\end{equation}
+and
+\begin{equation}\label{eq:ODE}
+x'=f(x,\mu)=f_\mu(x)
+\end{equation}
+for $\mu\in\IR$.
+}
+
+\frame{\frametitle{Bifurcations}
+\begin{definition}[Bifurcation]
+Let $f_\mu$ be a parametrized family of functions. Then there is a \emph{bifurcation} at $\mu=\mu_0$ (or $\mu_0$ is a bifurcation point) if there exists $\varepsilon>0$ such that, if $\mu_0-\varepsilon<a<\mu_0$ and $\mu_0<b<\mu_0+\varepsilon$, then the dynamics of $f_a(x)$ are ``different'' from the dynamics of $f_b(x)$.
+\end{definition}
+\vskip0.5cm
+An example of ``different'' would be that $f_a$ has a fixed point (that is, a 1-periodic point) and $f_b$ has a 2-periodic point.
+\vskip0.5cm
+Formally, $f_a$ and $f_b$ are \emph{topologically conjugate} to two different functions.
+}
+
+
+\frame{\frametitle{Topological conjugacy}
+\begin{definition}
+Let $f:D\to D$ and $g:E\to E$ be functions. Then $f$ \emph{topologically conjugate} to $g$ if there exists a homeomorphism $\tau:D\to E$, called a \emph{topological conjugacy}, such that $\tau\circ f=g\circ\tau$.
+\end{definition}
+}
+
+
+\section{Some bifurcations in discrete-time equations}
+\frame[plain]{\tableofcontents[current]}
+
+
+
+\frame{\frametitle{Types of bifurcations (discrete time)}
+Saddle-node (or tangent):
+\[
+x_{t+1}=\mu+x_t+x_t^2
+\]
+Transcritical:
+\[
+x_{t+1}=(\mu+1)x_t+x_t^2
+\]
+Pitchfork:
+\[
+x_{t+1}=(\mu+1)x_t-x_t^3
+\]
+Period doubling (or flip):
+\[
+x_{t+1}=\mu-x_t-x_t^2
+\]
+}
+
+
+\frame{\frametitle{Discrete-time saddle-node}
+\[
+x_{t+1}=\mu+x_t+x_t^2
+\]
+\underline{Fixed points (FP)}
+\begin{align*}
+x=\mu+x+x^2 &\Leftrightarrow x^2=-\mu \\
+&\Leftrightarrow x=\pm\sqrt{-\mu}
+\end{align*}
+So no real valued FP if $\mu>0$, 2 if $\mu<0$.
+\vskip0.5cm
+\underline{Stability of $\sqrt{-\mu}$}\quad $f'(x)=1+2x$, so, assuming $\mu<0$,
+\[
+f'(\sqrt{-\mu})=1+2\sqrt{-\mu}
+\]
+Thus
+\[
+|f'(\sqrt{-\mu})|<1\Leftrightarrow -1<1+2\sqrt{-\mu}<1\Leftrightarrow -1<\sqrt{-\mu}<0
+\]
+which is impossible. Therefore, $\sqrt{-\mu}$ is always repelling.
+}
+
+\frame{
+\underline{Stability of $\sqrt{-\mu}$}\quad assuming $\mu<0$,
+\[
+f'(-\sqrt{-\mu})=1-2\sqrt{-\mu}
+\]
+Thus
+\begin{align*}
+|f'(-\sqrt{-\mu})|<1 &\Leftrightarrow -1<1-2\sqrt{-\mu}<1 \\ 
+&\Leftrightarrow -1<-\sqrt{-\mu}<0 \\
+&\Leftrightarrow 0<\sqrt{-\mu}<1\\
+& \Leftrightarrow -1<\mu<0
+\end{align*}
+So, for $-1<\mu<0$, the FP $-\sqrt{-\mu}$ is attracting.
+}
+
+\frame{\frametitle{Summary: discrete-time saddle-node}
+}
+
+
+\frame{\frametitle{Discrete-time period doubling}
+\[
+x_{t+1}=\mu-x_t-x_t^2
+\]
+\underline{FP}:
+\[
+x=\mu-x-x^2 \Leftrightarrow x^2+2x-\mu=0
+\]
+Discriminant: $\Delta=4+4\mu=4(1+\mu)$. So we get
+\[
+x_{1,2}=\frac{-2\pm 2\sqrt{1+\mu}}{2}=-1\pm \sqrt{1+\mu}
+\]
+}
+
+\section{Some bifurcations in continuous equations}
+\frame[plain]{\tableofcontents[current]}
+
+
+
+\frame{\frametitle{Types of bifurcations (continuous time)}
+\begin{itemize}
+\item
+Saddle-node
+\[
+x'=\mu-x^2
+\]
+\item
+Transcritical
+\[
+x'=\mu x-x^2
+\]
+\item
+Pitchfork 
+\begin{itemize}
+\item supercritical
+\[
+x'=\mu x-x^3
+\]
+\item subcritical
+\[
+x'=\mu x+x^3
+\]
+\end{itemize}
+\end{itemize}
+}
+
+
+
+\section{Saddle-node}
+\frame[plain]{\tableofcontents[current]}
+
+
+\frame{\frametitle{Saddle-node for maps}
+\begin{theorem}
+Assume $f\in C^r$ with $r\geq 2$, for both $x$ and $\mu$. Suppose that
+\begin{enumerate}
+\item $f(x_0,\mu_0)=x_0$,
+\item $f'_{\mu_0}(x_0)=1$,
+\item $f''_{\mu_0}(x_0)\neq 0$ and
+\item $\dfrac{\partial f}{\partial \mu}(x_0,\mu_0)\neq 0$.
+\end{enumerate}
+Then $\exists I\ni x_0$ and $N\ni \mu_0$, and $m\in C^r(I,N)$, such that
+\begin{enumerate}
+\item $f_{m(x)}(x)=x$,
+\item $m(x_0)=\mu_0$,
+\item the graph of $m$ gives all the fixed points in $I\times N$.
+\end{enumerate}
+\end{theorem}
+}
+
+\frame{
+\begin{theorem}[cont.]
+Moreover, $m'(x_0)=0$ and
+\[
+m''(x_0)=\dfrac{-\dfrac{\partial^2f}{\partial x^2}(x_0,\mu_0)}{\dfrac{\partial f}{\partial\mu}(x_0,\mu_0)}\neq 0.
+\]
+These fixed points are attracting on one side of $x_0$ and repelling on the other.
+\end{theorem}
+}
+
+
+\frame{\frametitle{Saddle-node for continuous equations}
+Consider the system $x'=f(x,\mu)$, $x\in\IR$. Suppose that $f(x_0,\mu_0)=0$. Further, assume that the following nondegeneracy conditions hold:
+\begin{enumerate}
+\item $a_0=\frac 12 \frac{\partial^2 f}{\partial x^2}(x_0,\mu_0)\neq 0$,
+\item $\frac{\partial f}{\partial\mu}(x_0,\mu_0)\neq 0$.
+\end{enumerate}
+Then, in a neighborhood of $(x_0,\mu_0)$, the equation $x'=f(x,\mu)$ is topologically equivalent to the normal form
+\[
+x'=\gamma+\sign(a_0)x^2
+\]
+}
+
+\frame{\frametitle{Saddle-node for continuous systems}
+\begin{theorem}
+Consider the system $x'=f(x,\mu)$, $x\in\IR^n$. Suppose that $f(x,0)=x_0=0$. Further, assume that
+\begin{enumerate}
+\item The Jacobian matrix $A_0=Df(0,0)$ has a simple zero eigenvalue,
+\item $a_0\neq 0$, where
+\[
+a_0=\frac 12\langle p,B(q,q)\rangle =\left. \frac 12 \frac{d^2}{d\tau^2}\langle p,f(\tau q,0)\rangle \right|_{\tau=0}
+\]
+\item $f_\mu(0,0)\neq 0$.
+\end{enumerate}
+$B$ is the bilinear function with components
+\[
+B_j(x,y)=\sum_{k,\ell=1}^n \left.
+\dfrac{\partial^2f_j(\xi,0)}{\partial\xi_k\partial\xi_\ell}
+\right|_{\xi=0}x_ky_\ell,\quad j=1,\ldots,n
+\]
+and $\langle p,q\rangle=p^Tq$ the standard inner product.
+\end{theorem}
+}
+
+\frame{
+\begin{theorem}[cont.]
+Then, in a neighborhood of the origin, the system $x'=f(x,\mu)$ is topologically equivalent to the suspension of the normal form by the standard saddle,
+\begin{align*}
+y' &= \gamma+\sign(a_0)y^2 \\
+y_S' &= -y_S \\
+y_U' &= y_U
+\end{align*}
+with $y\in\IR$, $y_S\in\IR^{n_S}$ and $y_U\in\IR^{n_U}$, where $n_S+n_U+1=n$ and $n_S$ is number of eigenvalues of $A_0$ with negative real parts.
+\end{theorem}
+}
+
+
+\section{Pitchfork}
+\frame[plain]{\tableofcontents[current]}
+
+
+\frame{\frametitle{Pitchfork bifurcation}
+The ODE $x'=f(x,\mu)$, with the function $f(x,\mu)$ satisfying
+\[
+-f(x,\mu)=f(-x,\mu)
+\]
+(f is odd),
+\begin{gather*}
+\dfrac{\partial f}{\partial x}(0,\mu_0) = 0 , 
+\dfrac{\partial^2 f}{\partial x^2}(0,\mu_0) = 0, 
+\dfrac{\partial^3 f}{\partial x^3}(0,\mu_0) \neq 0, \\
+\dfrac{\partial f}{\partial r}(0,\mu_0) = 0, 
+\dfrac{\partial^2 f}{\partial r \partial x}(0,\mu_0) \neq 0.
+\end{gather*}
+has a pitchfork bifurcation at $(x,\mu)=(0,\mu_0)$. The form of the pitchfork is determined by the sign of the third derivative:
+\[
+\dfrac{\partial^3 f}{\partial x^3}(0,\mu_0)
+\left\{
+  \begin{matrix}
+    < 0, & \textrm{supercritical} \\
+    > 0, & \textrm{subcritical} 
+  \end{matrix}
+\right.
+\]
+}
+
+
+
+
+\section{Period doubling}
+\frame[plain]{\tableofcontents[current]}
+
+
+\frame{
+\begin{theorem}[Period doubling bifurcation]
+Assume $f$ is $C^r$ in $x$ and $\mu$, with $r\geq 3$, and that
+\begin{enumerate}
+\item $x_0$ is a fixed point for $\mu=\mu_0$, i.e., $f(x_0,\mu_0)=x_0$,
+\item $f'_{\mu_0}(x_0)=-1$ (so, since $\neq 1$, there is a curve of fixed points $x(\mu)$ for $\mu$ close to $\mu_0$),
+\item the derivative of $f'_\mu(x(\mu))$ with respect to $\mu$ is nonzero,
+\[
+\alpha=\left.\left[\frac{\partial^2f}{\partial\mu\partial x}+\frac 12\left(\frac{\partial f}{\partial \mu}\right)\left(\frac{\partial ^2f}{\partial x^2}\right)\right]\right|_{(x_0,\mu_0)}\neq 0,
+\]
+\item the graph of $f^2_{\mu_0}$ has nonzero cubic terms in its tangency with the diagonal (the quadratic term is zero):
+\[
+\beta=\left(\frac 1{3!}\;\frac{\partial^3 f}{\partial x^3}(x_0,\mu_0)\right)+\left(\frac 1{2!}\frac{\partial^2f}{\partial x^2}(x_0,\mu_0)\right)^2\neq 0
+\]
+\end{enumerate}
+\end{theorem}
+}
+
+\frame{
+\begin{theorem}[Period doubling bifurcation (cont.)]
+Then there is a period doubling bifurcation at $(x_0,\mu_0)$. More specifically,
+\begin{enumerate}
+\item there is a differentiable curve of fixed points, $x(\mu)$, passing through $(x_0,\mu_0)$, and the stability of the fixed point changes at $\mu_0$;
+\item which side of $\mu_0$ is attracting depends on the sign of $\alpha$;
+\item there is a differentiable curve $\gamma$ passing through $(x_0,\mu_0)$, such that $\gamma\setminus\{(x_0,\mu_0)\}$ is the union of hyperbolic period 2 orbits;
+\item $\gamma$ is tangent to $\IR\times\{\mu_0\}$ at $(x_0,\mu_0)$, so $\gamma$ is the graph of a function $\mu=m(x)$, with $m'(x_0)=0$ and $m''(x_0)=-2\beta/\alpha\neq 0$;
+\item the stability of the period 2 orbit depends on $\beta$: if $\beta>0$, it is attracting, if $\beta<0$, it is repelling.
+\end{enumerate}
+\end{theorem}
+}
+
+
+\section{Hopf}
+\frame[plain]{\tableofcontents[current]}
+
+\frame{\frametitle{Poincar\'e map}
+Consider
+\begin{equation}\label{eq:sys}
+x'=f(x)
+\end{equation} 
+If $\Gamma$ is a periodic orbit of \eqref{eq:sys} through $x_0$, and $\Sigma$ is a hyperplane perpendicular to $\Gamma$ at $x_0$, then for any point $x\in\Sigma$ close enough to $x_0$, the solution through $x$ at $t=0$, $\phi_t(x)$, crosses $\Sigma$ again at a point $P(x)$ near $x_0$.
+\vskip1cm
+The mapping $x\mapsto P(x)$ is the \emph{Poincar\'e map}.
+}
+
+\frame{
+\begin{theorem}
+Let $E$ be an open subset of $\IR^n$ and $f\in C^1(E)$. Suppose that $\phi_t(x_0)$ is a periodic solution of \eqref{eq:sys} of period $T$, and that
+\[
+\Gamma=\{x\in\IR^n:\quad x=\phi_t(x_0),\quad 0\leq t\leq T\}
+\]
+is contained in $E$. Let $\Sigma$ be the hyperplane orthogonal to $\Gamma$ at $x_0$, i.e.,
+\[
+\Sigma=\{x\in\IR^n:\quad (x-x_0)\cdot f(x_0)=0\}.
+\]
+Then there exists $\delta>0$ and a unique function $\tau(x)$, defined and continuously differentiable for $x\in\mathcal{N}_\delta(x_0)$, such that $\tau(x_0)=T$ and
+\[
+\phi_{\tau(x)}(x)\in\Sigma
+\]
+for all $x\in\mathcal{N}_\delta(x_0)$. For $x\in\mathcal{N}_\delta(x_0)\cap\sigma$,
+\[
+P(x)=\phi_{\tau(x)}(x)
+\]
+is the \emph{Poincar\'e map} for $\Gamma$ at $x_0$.
+\end{theorem}
+}
+
+
+\frame{\frametitle{Example}
+Consider the system
+\begin{align*}
+x' &= -y+x(\mu-x^2-y^2) \\
+y' &= x+y(\mu-x^2-y^2)
+\end{align*}
+Transform to polar coordinates:
+\begin{align*}
+r' &= r(\mu-r^2) \\
+\theta' &= 1
+\end{align*}
+}
+
+\frame{
+\begin{align*}
+r' &= r(\mu-r^2) \\
+\theta' &= 1
+\end{align*}
+has solution
+\[
+r(t)=\frac{\sqrt{(1+e^{-2\mu t}C\mu)\mu}}{1+e^{-2\mu t}C\mu}
+\]
+\[
+\theta(t)=t+\theta_0
+\]
+}
+
+
+\frame{\frametitle{Hopf bifurcation}
+\begin{theorem}[Hopf bifurcation theorem]
+Consider the system
+\begin{equation}\label{sys:hopf}
+\frac{d}{dt}
+\begin{pmatrix}
+x\\ y
+\end{pmatrix}
+=
+\begin{pmatrix}
+a_{11}(\mu) & a_{12}(\mu) \\
+a_{21}(\mu) & a_{22}(\mu)
+\end{pmatrix}
+\begin{pmatrix}
+x\\ y
+\end{pmatrix}
++
+\begin{pmatrix}
+f_1(x,y,\mu)\\
+f_2(x,y,\mu)
+\end{pmatrix},
+\end{equation}
+with $\mu\in\IR$ a parameter. Suppose $f_1,f_2\in C^3$, that the origin is an equilibrium of \eqref{sys:hopf}, and that the matrix
+\[
+J(\mu)=\begin{pmatrix}
+a_{11}(\mu) & a_{12}(\mu) \\
+a_{21}(\mu) & a_{22}(\mu)
+\end{pmatrix}
+\]
+is valid in a neighborhood of the origin. Additionally, suppose that the eigenvalues of $J(\mu)$ are $\alpha(\mu)+i\beta(\mu)$, with $\alpha(0)=0$ and $\beta(r)\neq 0$, satisfying the transversality condition 
+\[
+\left.\frac{d\alpha}{d\mu}\right|_{\mu=0}\neq 0.
+\]
+\end{theorem}
+}
+
+\frame{
+\begin{theorem}[Hopf bifurcation theorem, cont.]
+Then, in any open set $\mathcal{U}\ni(0,0)$ in $\IR^2$ and for any $\mu_0>0$, there exists $\bar\mu$, $|\bar\mu|<\mu_0$, such that \eqref{sys:hopf} has a periodic solution for $\mu=\bar\mu$ in $\mathcal{U}$ with approximate period $T=2\pi/\beta(0)$.
+\end{theorem}
+}
+
+\frame{\frametitle{Another formulation}
+\begin{theorem}[Hopf bifurcation]
+Let $x'=A(\mu)x+F(\mu,x)$ be a $C^k$ planar vector field, with $k\geq 0$, depending on the scalar parameter $\mu$ such that $F(\mu,0)=0$ and $D_xF(\mu,0)=0$ for all $\mu$ sufficiently close enough to the origin. Assume that the linear part $A(\mu)$ at the origin has the eigenvalue $\alpha(\mu)\pm i\beta(\mu)$, with $\alpha(0)=0$ and $\beta(0)\neq 0$. Furthermore, assume the eigenvalues cross the imaginary axis with nonzero speed, i.e.,
+\[
+\left.\frac{d}{d\mu}\alpha(\mu)\right|_{\mu=0}\neq 0.
+\]
+Then, in any neighborhood $\mathcal{U}\ni(0,0)$ in $\IR^2$ and any given $\mu_0>0$, there exists a $\bar\mu$ with $|\bar\mu|<\mu_0$ such that the differential equation $x'=A(\bar\mu)x+F(\bar\mu,x)$ has a nontrivial periodic orbit in $\mathcal{U}$.
+\end{theorem}
+}
+
+\frame{\frametitle{Supercritical or subcritical Hopf?}
+Transform the system into
+\[
+\frac{d}{dt}
+\begin{pmatrix}
+x\\ y
+\end{pmatrix}
+=
+\begin{pmatrix}
+\alpha(\mu) & \beta(\mu) \\
+-\beta(\mu) & \alpha(\mu)
+\end{pmatrix}
+\begin{pmatrix}
+x\\ y
+\end{pmatrix}
++
+\begin{pmatrix}
+f_1(x,y,\mu)\\
+g_1(x,y,\mu)
+\end{pmatrix}
+=\begin{pmatrix}
+f(x,y,\mu)\\
+g(x,y,\mu)
+\end{pmatrix}
+\]
+The Jacobian at the origin is
+\[
+J(\mu)=\begin{pmatrix}
+\alpha(\mu) & \beta(\mu) \\
+-\beta(\mu) & \alpha(\mu)
+\end{pmatrix}
+\]
+and thus eigenvalues are $\alpha(\mu)\pm i\beta(\mu)$, and $\alpha(0)=0$ and $\beta(0)>0$.
+}
+
+\frame{\frametitle{Supercritical or subcritical Hopf? (cont.)}
+Define
+\begin{align*}
+C &= f_{xxx}+f_{xyy}+g_{xxy}+g_{yyy} \\
+& \quad+ \frac{1}{\beta(0)}\left(-f_{xy}\left(f_{xx}+f_{yy}\right)+g_{xy}\left(g_{xx}+g_{yy}\right)+f_{xx}g_{xx}-f_{yy}g_{yy}\right),
+\end{align*}
+evaluated at $(0,0)$ and for $\mu=0$.
+Then, if $d\alpha(0)/d\mu>0$,
+\begin{enumerate}
+\item If $C<0$, then for $\mu<0$, the origin is a stable spiral, and for $\mu>0$, there exists a stable periodic solution and the origin is unstable ({\bf supercritical Hopf}).
+\item If $C>0$, then for $\mu<0$, there exists an unstable periodic solution and the origin is unstable, and for $\mu>0$, the origin is unstable ({\bf subcritical Hopf}).
+\item If $C=0$, the test is inconclusive.
+\end{enumerate}
+}
+
+\frame{\frametitle{Supercritical Hopf}
+Here, $y_1,y_2$ are the variables, $\beta$ is the bifurcation parameter.
+\begin{center}
+\includegraphics[width=0.8\textwidth]{SuperHopf}
+\end{center}
+}
+
+\frame{\frametitle{Subcritical Hopf}
+Here, $y_1,y_2$ are the variables, $\beta$ is the bifurcation parameter.
+\begin{center}
+\includegraphics[width=0.8\textwidth]{SubHopf}
+\end{center}
+}
+
+
+\frame{\frametitle{Example: predator-prey system}
+Predator-prey system:
+\begin{subequations}
+\begin{align}
+x' &= ax-bxy \\
+y' &= cxy -dy
+\end{align}
+\end{subequations}
+where $a,b,c,d>0$.
+}
+
+
+\frame{\frametitle{Example: a general chemostat}
+Chemostat:
+\begin{subequations}
+\begin{align}
+S' &= D(S^0-S)-u(S)x \\
+x' &= (g(S)-D_1)x
+\end{align}
+\end{subequations}
+with $u,g\in C^1$ such that
+\begin{enumerate}
+\item $u(0)=g(0)=0$,
+\item $\exists M_u,M_g\in\IR$ such that for all $S\in\IR_+$, $u(S)\leq M_u$ and $g(S)\leq M_g$.
+\end{enumerate}
+}
+
+
+
+\end{document}

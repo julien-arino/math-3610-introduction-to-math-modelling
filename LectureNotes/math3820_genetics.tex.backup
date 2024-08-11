@@ -1,0 +1,559 @@
+\chapter[Genetics]{Genetics\\[1.5cm] Markov chains}
+\label{chap:genetics}
+
+\section{Markov chains}
+
+We conduct an experiment with a set of $r$ outcomes,
+\[
+S=\{S_1,\dots, S_r\}.
+\]
+The experiment is repeated $n$ times (with $n$ large, potentially infinite). 
+The system has \underline{no memory}: the next state depends only on the present state. 
+The probability of $S_j$ occurring on the next step, given that $S_i$ occurred on the last step, is
+\[
+p_{ij}=p(S_j|S_i).
+\]
+Suppose that $S_i$ is the current state, then one of $S_1, \ldots,S_r$ must be the next state; therefore,
+\[
+p_{i1}+p_{i2}+\cdots+p_{ir}=1, \quad 1\leq i\leq r.
+\]
+(Note that some of the $p_{ij}$ can be zero, all that is needed is that $\sum_{j=1}^r p_{ij}=1$ for all $i$.)
+
+\begin{definition}
+An experiment with finite number of possible outcomes $S_1,\ldots,S_r$ is repeated. The sequence of outcomes is a \emph{Markov chain} if there is a set of $r^2$ numbers $\{p_{ij}\}$ such that the conditional probability of outcome $S_j$ on any experiment given outcome $S_i$ on the previous experiment is $p_{ij}$, i.e., for $1\leq i,j\leq r$, $n=1,\ldots$,
+\[
+p_{ij}=\mathsf{Pr}(S_j\textrm{ on experiment }n+1|S_i\textrm{ on experiment }n).
+\]
+The outcomes $S_1,\ldots,S_r$ are the \emph{states}, and the $p_{ij}$ are the \emph{transition probabilities}. The matrix $P=[p_{ij}]$ is the \emph{transition matrix}.
+\end{definition}
+The matrix 
+\[
+P=
+\begin{pmatrix}
+p_{11} & p_{12} & \cdots & p_{1r} \\
+p_{21} & p_{22} & \cdots & p_{2r} \\
+&&& \\
+p_{r1} & p_{r2} & \cdots & p_{rr}
+\end{pmatrix}
+\]
+is called the \emph{transition matrix} of the Markov chain. It has
+\begin{itemize}
+\item nonnegative entries, $p_{ij}\geq 0$
+\item entries less than 1, $p_{ij}\leq 1$
+\item row sum 1, which we write
+\[
+\sum_{j=1}^r p_{ij}=1,\quad i=1,\ldots,r
+\]
+or, using the notation $\nbOne^T=(1,\ldots,1)$,
+\[
+P\nbOne=\nbOne
+\]
+\end{itemize}
+
+
+
+\section{A simple genetic model}
+
+\frame{\frametitle{Simple Mendelian inheritance}
+A certain trait is determined by a specific pair of genes, each of which may be two types, say $G$ and $g$. 
+One individual may have:
+\begin{itemize}
+\item $GG$ combination (\emph{dominant})
+\item $Gg$ or $gG$, considered equivalent genetically (\emph{hybrid})
+\item $gg$ combination (\emph{recessive})
+\end{itemize}
+In sexual reproduction, offspring inherit one gene of the pair from each parent. 
+}
+
+\subsection{Basic assumption of Mendelian genetics}
+Genes inherited from each parent are selected at random, independently of each other.
+This determines probability
+of occurrence of each type of offspring. The offspring
+\begin{itemize}
+\item of two $GG$ parents must be $GG$, 
+\item of two $gg$ parents must be $gg$,
+\item of one $GG$ and one $gg$ parent must be $Gg$,
+\item other cases must be examined in more detail.
+\end{itemize}
+
+
+\frame{\frametitle{$GG$ and $Gg$ parents}
+\begin{center}
+\includegraphics[width=0.5\textwidth]{../figs_08_genetics/dominant_hybrid}
+\end{center}
+\vskip0.3cm
+Offspring has probability
+\begin{itemize}
+\item $\dfrac 12$ of being $GG$
+\item $\dfrac 12$ of being $Gg$
+\end{itemize}
+}
+
+
+\frame{\frametitle{$Gg$ and $Gg$ parents}
+\begin{center}
+\includegraphics[width=0.5\textwidth]{../figs_08_genetics/hybrid_hybrid}
+\end{center}
+\vskip0.3cm
+Offspring has probability
+\begin{itemize}
+\item $\dfrac 14$ of being $GG$
+\item $\dfrac 12$ of being $Gg$
+\item $\dfrac 14$ of being $gg$
+\end{itemize}
+}
+
+
+\frame{\frametitle{$gg$ and $Gg$ parents}
+\begin{center}
+\includegraphics[width=0.5\textwidth]{../figs_08_genetics/recessive_hybrid}
+\end{center}
+\vskip0.3cm
+Offspring has probability
+\begin{itemize}
+\item $\dfrac 12$ of being $Gg$
+\item $\dfrac 12$ of being $gg$
+\end{itemize}
+}
+
+
+\section{Repetition of the process}
+
+
+
+\subsection{General case}
+Let $p_i(n)$ be the probability that the state $S_i$ will occur on the $n^{th}$ repetition of the experiment, $1\leq i\leq r$. 
+Since one the states $S_i$ must occur on the $n^{th}$ repetition,
+\[
+p_1(n)+p_2(n)+\cdots+p_r(n)=1.
+\]
+Let $p_i(n+1)$ be the probability that state $S_i$, $1\leq i\leq r$, occurs on $(n+1)^{th}$ repetition of the experiment. 
+There are $r$ ways to be in state $S_i$ at step $n+1$:
+\begin{enumerate}
+\item Step $n$ is $S_1$. Probability of getting $S_1$ on $n^{th}$ step is $p_1(n)$, and probability of having $S_i$ after $S_1$ is $p_{1i}$. Therefore, by multiplication principle, $P(S_i|S_1)=p_{1i}p_1(n)$. 
+\item We get $S_2$ on step $n$ and $S_i$ on step $(n+1)$. Then $P(S_i|S_2)=p_{2i}p_2(n)$. 
+\item[..]
+\item[r.] Probability of occurrence of $S_i$ at step $n+1$ if $S_r$ at step $n$ is $P(S_i|S_r)=p_{ri}p_r(n)$.
+\end{enumerate}
+Therefore, $p_i(n+1)$ is sum of all these,
+\begin{align*}
+p_i(n+1) &= P(S_i|S_1)+\cdots+P(S_i|S_r) \\
+&= p_{1i}p_1(n)+\cdots+p_{ri}p_r(n)
+\end{align*}
+Therefore,
+\begin{equation}\label{eq:chain1}
+\begin{aligned}
+p_1(n+1) &= p_{11}p_1(n)+p_{21}p_2(n)+\dots+p_{r1}p_r(n) \\
+& \vdots\\
+p_k(n+1) &= p_{1k}p_1(n)+p_{2k}p_2(n)+\dots+p_{rk}p_r(n) \\
+& \vdots\\
+p_r(n+1) &= p_{1r}p_1(n)+p_{2r}p_2(n)+\dots+p_{rr}p_r(n)
+\end{aligned}
+\end{equation}
+In matrix form
+\begin{equation}
+p(n+1)=p(n)P, \quad n=1,2,3,\dots
+\end{equation}
+where $p(n)=(p_1(n),p_{2}(n),\dots , p_r(n))$ is a (row) probability vector and $P=(p_{ij})$ is a $r\times r$ \emph{transition matrix},
+\[
+P=
+\begin{pmatrix}
+p_{11} & p_{12} & \cdots & p_{1r} \\
+p_{21} & p_{22} & \cdots & p_{2r} \\
+&&& \\
+p_{r1} & p_{r2} & \cdots & p_{rr}
+\end{pmatrix}
+\]
+So, what we have is
+\[
+(p_1(n+1),\ldots,p_r(n+1))=
+(p_1(n),\ldots,p_r(n))
+\begin{pmatrix}
+p_{11} & p_{12} & \cdots & p_{1r} \\
+p_{21} & p_{22} & \cdots & p_{2r} \\
+&&& \\
+p_{r1} & p_{r2} & \cdots & p_{rr}
+\end{pmatrix}
+\]
+It is easy to check that this gives the same expression as \eqref{eq:chain1}.
+
+\paragraph{Long time behaviour}
+Let $p(0)$ be the initial distribution (row) vector. Then
+\begin{align*}
+p(1) &= p(0)P \\
+p(2) &= p(1)P\\
+&= (p(0)P)P \\
+&= p(0)P^2
+\end{align*}
+Iterating, we get that for any $n$,
+\[
+p(n)=p(0)P^n
+\]
+Therefore, 
+\begin{equation}\label{eq:limit_Markov_chain}
+\lim_{n\rightarrow +\infty}p(n)=\lim_{n\rightarrow +\infty}p(0)P^n=p(0)\lim_{n\rightarrow +\infty}P^n.
+\end{equation}
+So, to determine the long time behaviour of the Markov chain, it suffices to determine the limit of the $P^n$.
+
+\subsection{A first genetic model}
+Consider a process of continued matings with the following characteristics:
+\begin{itemize}
+\item Start with an individual of known or unknown
+genetic character and mate it with a hybrid. 
+\item Assume that there is at least one
+offspring; choose one of them at random and mate it with a hybrid.
+\item Repeat this process through a number of generations. 
+\end{itemize}
+The genetic type of the chosen
+offspring in successive generations can be represented by a Markov chain, with states $GG$, $Gg$ and $gg$. So there are 3 possibles states $S_1=GG$, $S_2=Gg$ and $S_3=gg$.
+We have
+\begin{center}
+\begin{tabular}{c|ccc}
+$\nearrow$ & GG & Gg & gg \\
+\hline
+GG & 0.5 & 0.5 & 0 \\
+Gg & 0.25 & 0.5 & 0.25 \\
+gg & 0 & 0.5 & 0.5
+\end{tabular}
+\end{center}
+The transition probabilities are thus
+\[
+P=\left (
+\begin{array}{ccc}
+\frac 12 & \frac 12 & 0 \\
+\frac 14 & \frac 12 & \frac 14 \\
+0 & \frac 12 & \frac 12
+\end{array}\right).
+\]
+
+\subsection{Stochastic matrices}
+One fundamental property of Markov chains is that the transition matrix $P$ has a very particular structure.
+\begin{definition}[Stochastic matrix]
+The nonnegative $r\times r$ matrix $M$ is \emph{stochastic} if $\sum_{j=1}^ra_{ij}=1$ for all $i=1,2,\dots, r$, i.e., the rows of $M$ all sum to 1.
+\end{definition}
+Note that a matrix that has column sums all equal to 1 is also called a stochastic matrix. Such a matrix arises if instead of representing transitions from rows to columns as we have done, transitions are represented from columns to rows. 
+If it is needed to distinguish between matrices that are stochastic by rows or by columns, we say that, say, a matrix is a (row) stochastic matrix.
+
+A matrix that that both rows and column sums equal to 1 is a \emph{doubly stochastic} matrix.
+Stochastic matrices over $\IR_+$ form a \emph{group}. This means in particular that the following holds true.
+\begin{theorem}
+If $M,N$ are stochastic matrices, then $MN$ is a stochastic matrix.
+\end{theorem}
+This is particularly interesting, as it means that powers of a stochastic matrix are also stochastic:
+\begin{theorem}
+If $M$ is a stochastic matrix, then for any $k\in\IN$, $M^k$ is a stochastic matrix.
+\end{theorem}
+A stochastic matrix has the property that all its eigenvalues are contained in the unit disk of $\IC$.
+\begin{theorem}
+Let $M$ be a stochastic matrix $M$. Then the following two properties hold.
+\begin{enumerate}
+\item The \emph{spectral radius} of $M$, $\rho(M)$, is such that $\rho(M)=1$. In other words, all eigenvalues $\lambda$ of $M$ are such that $|\lambda|\leq 1$. Furthermore, $\lambda =1$ is an eigenvalue of $M$.
+\item If $M$ is stochastic by rows, then $\lambda=1$ is associated to the eigenvector $\nbOne$, while if $M$ is stochastic by columns, then $\lambda=1$ is associated to the left eigenvector $\nbOne^T$.
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+To see that $1$ is an eigenvalue, write the definition of a stochastic matrix, i.e., $M$ has row sums 1. In vector form, $M\nbOne=\nbOne$. Now remember that $\lambda$ is an eigenvalue of $M$, with associated eigenvector $v$, iff $Mv=\lambda v$. So, in the expression $M\nbOne=\nbOne$, we read an eigenvector, $\nbOne$, and an eigenvalue, $1$.
+\end{proof}
+
+
+
+
+
+
+\section{Regular Markov chains}
+\begin{definition}[Regular Markov chain]
+A regular Markov chain is one in which $P^k$ is positive for some integer $k>0$, i.e., $P^k$ has only positive entries, no zero entries.
+\end{definition}
+In matrix theory, this property is called \emph{primitivity}.
+\begin{definition}
+A nonnegative matrix $M$ is primitive if, and only if, there is an integer $k>0$ such that $M^k$ is positive.
+\end{definition}
+Therefore, we have the following result.
+\begin{theorem}
+A Markov chain is regular if, and only if, the transition matrix $P$ is primitive.
+\end{theorem}
+Another way to check regularity will then be using a sufficient condition for primitivity, given here.
+\begin{theorem}\label{th:strong_conn_implies_primitive}
+A matrix $M$ is primitive if the associated connection graph is strongly connected, i.e., that there is a path between any pair $(i,j)$ of states, and that there is at least one positive entry on the diagonal of $M$.
+\end{theorem}
+This is checked directly on the digraph associated to the transition matrix, shown for our model in Figure~\ref{fig:Markov_graph1}. The digraph is here strongly connected, and as there are positive entries on the diagonal of the matrix (as evidenced by the self connecting loops on all vertices), the transition matrix associated to this graph is primitive, from Theorem~\ref{th:strong_conn_implies_primitive}.
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{../figs_08_genetics/graphe_hybride}
+\caption{Transition graph for the Markov chain for the genetics model with mating with an hybrid individual.}
+\label{fig:Markov_graph1}
+\end{center}
+\end{figure}
+
+
+
+\begin{theorem}
+\label{th:limit_Markov_regular}
+If $P$ is the transition matrix of a regular Markov chain, then
+\begin{enumerate}
+\item the powers $P^n$ approach a stochastic matrix $W$,
+\item each row of $W$ is the same (row) vector $w=(w_1,\ldots,w_r)$,
+\item the components of $w$ are positive.
+\end{enumerate}
+\end{theorem}
+So if the Markov chain is regular,
+\begin{equation}\label{eq:limit_Markov_regular}
+\lim_{n\rightarrow +\infty}p(n)=p(0)\lim_{n\rightarrow +\infty}P^n
+=p(0)W.
+\end{equation}
+
+
+\subsection{Left and right eigenvectors}
+Let $M$ be an $r\times r$ matrix, $u,v$ be two column vectors, $\lambda\in\IR$. Then, if  
+\[
+Mu=\lambda u,
+\]
+$u$ is the (right) eigenvector corresponding to $\lambda$, and if
+\[
+v^TM=\lambda v^T
+\]
+then $v$ is the left eigenvector corresponding to $\lambda$. Note that to a given eigenvalue there corresponds (to a multiple) one left and one right eigenvector.
+
+
+\paragraph{Application to Markov chains}
+We already know that the (right) eigenvector corresponding to the eigenvalue 1 is $\nbOne$.
+The vector $w$ in Theorem~\ref{th:limit_Markov_regular} is in fact the left eigenvector corresponding to the eigenvalue 1 of $P$.
+To see this, remark that, if $p(n)$ converges, then $p(n+1)=p(n)P$, so $w$ is a fixed point of the system. We thus write
+\[
+wP=w
+\]
+and solve for $w$, which amounts to finding $w$ as the left eigenvector corresponding to the eigenvalue 1.
+\vskip0.5cm
+Alternatively, we can find $w$ as the (right) eigenvector associated to the eigenvalue 1 for the transpose of $P$,
+\[
+P^Tw^T=w^T
+\]
+Now remember that when you compute an eigenvector, you get a result that is the eigenvector, to a multiple.
+So the expression you obtain for $w$ might have to be normalized (you want a probability vector). Once you obtain $w$, check that the norm $\|w\|$ defined by
+\[
+\|w\|=w_1+\cdots+w_r
+\]
+is equal to one. If not, use
+\[
+\frac{w}{\|w\|}.
+\]
+
+\subsection{Back to genetics..}
+The Markov chain is here regular. Indeed, take the matrix $P$,
+\[
+P=\left (
+\begin{array}{ccc}
+\frac 12 & \frac 12 & 0 \\
+\frac 14 & \frac 12 & \frac 14 \\
+0 & \frac 12 & \frac 12
+\end{array}\right)
+\]
+and compute $P^2$:
+\[
+P^2=\left (
+\begin{array}{ccc}
+\frac 38 & \frac 12 & \frac 18 \\
+\frac 14 & \frac 12 & \frac 14 \\
+\frac 18 & \frac 12 & \frac 38
+\end{array}\right)
+\]
+As all entries are positive, $P$ is primitive and the Markov chain is regular.
+Compute the left eigenvector associated to 1 by solving
+\[
+(w_1,w_2,w_3)
+\left (
+\begin{array}{ccc}
+\frac 12 & \frac 12 & 0 \\
+\frac 14 & \frac 12 & \frac 14 \\
+0 & \frac 12 & \frac 12
+\end{array}\right)=(w_1,w_2,w_3)
+\]
+\begin{subequations}
+\begin{align}
+\frac 12 w_1+\frac 14 w_2 &= w_1 \label{eq:l1} \\
+\frac 12 w_1+\frac 12 w_2+\frac 12 w_3 &= w_2 \label{eq:l2} \\
+\frac 14 w_2+\frac 12 w_3 &= w_3 \label{eq:l3} 
+\end{align}
+\end{subequations}
+From \eqref{eq:l1}, $w_1=w_2/2$, and from \eqref{eq:l3}, $w_3=w_2/2$. Substituting these values into \eqref{eq:l2},
+\[
+\frac 14 w_2+\frac 12 w_2 +\frac 14 w_2=w_2,
+\]
+that is, $w_2=w_2$, i.e., $w_2$ can take any value. So $w=(\frac 14,\frac 12,\frac 14)$.
+
+
+
+\section{Absorbing Markov chains}
+Suppose now that we conduct the same experiment, but mate the individual picked at random in each new generation with a $GG$ individual instead of a $Gg$ individual. The transition table is
+\begin{center}
+\begin{tabular}{c|ccc}
+$\nearrow$ & GG & Gg & gg \\
+\hline
+GG & 1 & 0 & 0 \\
+Gg & 0.5 & 0.5 & 0 \\
+gg & 0 & 1 & 0
+\end{tabular}
+\end{center}
+and the resulting transition probabilities are
+\[
+P=\left (
+\begin{array}{ccc}
+1 & 0 & 0 \\
+\frac 12 & \frac 12 & 0 \\
+0 & 1 & 0
+\end{array}\right)
+\]
+
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[width=0.45\textwidth]{../figs_08_genetics/graphe_dominant}
+\caption{Transition digraph for the Markov chain for the genetics model with mating with a dominant individual. This graph is not strongly connected; vertex $GG$ is a \emph{sink}, while vertex $gg$ is a \emph{source}, or, in Markov chain vocabulary, state $GG$ is absorbing and state $gg$ is repulsive.}
+\label{fig:Markov_graph2}
+\end{center}
+\end{figure}
+
+
+Clearly,
+\begin{itemize}
+\item the process leaves $gg$ after one iteration, and can never return,
+\item as soon as the process leaves $Gg$, it can never return there,
+\item and it can never leave $GG$ as soon as it gets there.
+\end{itemize}
+
+
+\begin{definition}
+A state $S_i$ in a Markov chain is \emph{absorbing} if whenever it occurs on the $n^{th}$ generation of the experiment, it then occurs on every subsequent step. In other words, $S_i$ is absorbing if $p_{ii}=1$ and $p_{ij}=0$ for $i\neq j$. A state that is not absorbing is called \emph{transient}.
+\end{definition}
+
+\begin{definition}
+A Markov chain is said to be absorbing if it has at least one absorbing state, and if from every state it is possible to go to an absorbing state.
+\end{definition}
+
+
+Suppose we have a chain like the following:
+\begin{center}
+\includegraphics[width=0.45\textwidth]{../figs_08_genetics/graphe_absorbant}
+\end{center}
+\begin{enumerate}
+\item Does the process eventually reach an absorbing state?
+\item Average number of times spent in a transient state, if starting in a transient state?
+\item Average number of steps before entering an absorbing state?
+\item Probability of being absorbed by a given absorbing state, when there are more than one, when starting in a given transient state?
+\end{enumerate}
+
+Answer to question 1:
+\begin{theorem}
+In an absorbing Markov chain, the probability of reaching an absorbing state is 1.
+\end{theorem}
+
+\frame{\frametitle{Standard form of the transition matrix}
+For an absorbing chain with $k$ absorbing states and $r-k$ transient states, the transition matrix can be written as
+\[
+P=\begin{pmatrix}
+\mathbb{I}_k & \mathbf{0} \\
+R & Q
+\end{pmatrix}
+\]
+with following meaning,
+\begin{center}
+\begin{tabular}{ccc}
+& Absorbing states & Transient states \\
+Absorbing states & $\mathbb{I}_k$ & $\mathbf{0}$ \\
+Transient states & $R$ & $Q$
+\end{tabular}
+\end{center}
+with $\mathbb{I}_k$ the $k\times k$ identity matrix, $\mathbf{0}$ an $k\times(r-k)$ matrix of zeros, $R$ an $(r-k)\times k$ matrix and $Q$ an $(r-k)\times(r-k)$ matrix.
+}
+
+\frame{
+The matrix $\mathbb{I}_{r-k}-Q$ is invertible. Let
+\begin{itemize}
+\item $N=(\mathbb{I}_{r-k}-Q)^{-1}$ be the \emph{fundamental matrix} of the Markov chain
+\item $T_i$ be the sum of the entries on row $i$ of $N$
+\item $B=NR$.
+\end{itemize}
+\vskip0.5cm
+Answers to our remaining questions:
+\begin{enumerate}
+\setcounter{enumi}{1}
+\item $N_{ij}$ is the average number of times the process is in the $j$th transient state if it starts in the $i$th transient state.
+\item $T_i$ is the average number of steps before the process enters an absorbing state if it starts in the $i$th transient state.
+\item $B_{ij}$ is the probability of eventually entering the $j$th absorbing state if the process starts in the $i$th transient state.
+\end{enumerate}
+}
+
+
+\subsection{Back to genetics..}
+The matrix is already in standard form,
+\[
+P=\left (
+\begin{array}{ccc}
+1 & 0 & 0 \\
+\frac 12 & \frac 12 & 0 \\
+0 & 1 & 0
+\end{array}\right)
+=\begin{pmatrix}
+\mathbb{I}_1 & \mathbf{0} \\
+R & Q
+\end{pmatrix},
+\]
+with $\mathbb{I}_1=1$, $\mathbf{0}=(0\;\; 0)$ and
+\[
+R=\begin{pmatrix}
+\frac 12\\ 0
+\end{pmatrix}
+\qquad
+Q=\begin{pmatrix}
+\frac 12 & 0\\
+1 & 0
+\end{pmatrix}.
+\]
+We have
+\[
+\mathbb{I}_2-Q=\begin{pmatrix}
+1 & 0 \\
+0 & 1
+\end{pmatrix}
+-\begin{pmatrix}
+\frac 12 & 0\\
+1 & 0
+\end{pmatrix}
+=\begin{pmatrix}
+\frac 12 & 0\\
+-1 & 1
+\end{pmatrix},
+\]
+so
+\[
+N=(\mathbb{I}_2-Q)^{-1}=
+2\begin{pmatrix}
+1 & 0 \\
+1 & \frac 12
+\end{pmatrix}=
+\begin{pmatrix}
+2 & 0 \\
+2 & 1
+\end{pmatrix}.
+\]
+Then
+\[
+T=N\nbOne=\begin{pmatrix}
+2\\
+3
+\end{pmatrix}
+\]
+and
+\[
+B=NR=
+\begin{pmatrix}
+2 & 0 \\
+2 & 1
+\end{pmatrix}
+\begin{pmatrix}
+\frac 12\\ 0
+\end{pmatrix}
+=
+\begin{pmatrix}
+1\\ 1
+\end{pmatrix}.
+\]

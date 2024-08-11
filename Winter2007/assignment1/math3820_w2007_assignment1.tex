@@ -1,0 +1,186 @@
+\documentclass[12pt]{article}
+
+\usepackage[active]{srcltx}
+
+\usepackage{amsmath,amsfonts,amssymb,amsthm}
+\usepackage{easybmat}
+\usepackage{graphicx}
+%\usepackage[hypertex]{hyperref}
+%\usepackage[pdftex]{hyperref}
+\usepackage{fancyhdr}
+\usepackage{subfigure}
+
+\usepackage{makeidx}
+\makeindex
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
+\newtheorem{property}[theorem]{Property}
+\newtheorem{condition}[theorem]{Condition}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{axiom}[theorem]{Axiom}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+%%
+% % Make numbering specific to the Appendix
+% \newtheorem{Atheorem}{Theorem}[chapter]
+% \newtheorem{Aproperty}[Atheorem]{Property}
+% \newtheorem{Acondition}[Atheorem]{Condition}
+% \newtheorem{Aproposition}[Atheorem]{Proposition}
+% \newtheorem{Aaxiom}[Atheorem]{Axiom}
+% \newtheorem{Alemma}[Atheorem]{Lemma}
+% \newtheorem{Acorollary}[theorem]{Corollary}
+
+% Make definitions non italicized
+%\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+% Make numbering specific to the Appendix
+%\newtheorem{Adefinition}[Atheorem]{Definition}
+\newenvironment{defi}{\vskip0.2cm\addtocounter{theorem}{1}\par\noindent\bf Definition~\arabic{section}.\arabic{subsection}.\arabic{theorem}\rm.}{\hfill{$\circ$}\par\vskip0.25cm}
+
+
+%% Example environment and counter.
+\newcounter{cmpt_exercise}
+\newenvironment{exercise}{\addtocounter{cmpt_exercise}{1}\vskip0.2cm\par\noindent\begin{small}\bf Exercise~\arabic{cmpt_exercise}\,\,\rm --}{\hfill{$\circ$}\end{small}\par\vskip0.25cm}
+\newenvironment{problem}{\addtocounter{cmpt_exercise}{1}\vskip0.2cm\par\noindent{\Large\bf Problem~\arabic{cmpt_exercise}\,\,\rm --}}{\par\vskip0.25cm}
+
+
+\newenvironment{example}{\vskip0.2cm\par\noindent\begin{small}\bf Example\,\,\rm --}{\hfill{$\diamond$}\end{small}\par\vskip0.25cm}
+\newenvironment{remark}{\vskip0.2cm\par\noindent\begin{small}\bf Remark\,\,\rm --}{\hfill{$\circ$}\end{small}\par\vskip0.25cm}
+%\newenvironment{aparte}[1]{\vskip0.2cm\par\noindent\begin{quote}\begin{small}\bf Apart\'e : #1\,\,\rm --}{\hfill{$\circ$}\end{small}\end{quote}\par\vskip0.25cm}
+\newenvironment{aparte}[1]{\vskip0.3cm\par\begin{center}\begin{tabular}{|p{0.9\textwidth}|}\hline{\bf Apart\'e : #1}}{\\ \hline\end{tabular}\end{center}\par\vskip0.25cm}
+
+\renewcommand{\labelenumi}{\roman{enumi})}
+\renewcommand{\labelenumii}{\alph{enumii})}
+\newcommand{\espv}{\vspace{.5\baselineskip}}
+\def\IR{\mathbb{R}}
+\def\IC{\mathbb{C}}
+\def\IN{\mathbb{N}}
+\def\IQ{\mathbb{Q}}
+\def\IZ{\mathbb{Z}}
+\def\rank{\textrm{rank }}
+\def\Sp{\textrm{Sp }}
+\def\Span{\textrm{Span }}
+\def\Tr{\textrm{Tr }}
+\def\D{\mathcal{D}}
+\def\I{\mathcal{I}}
+\def\U{\mathcal{U}}
+\def\R{\mathcal{R}}
+\def\Q{\mathcal{Q}}
+\def\O{\mathcal{O}}
+\def\Mn{\mathcal{M}_n}
+\def\NN#1{\|#1\|}
+\def\N3#1{|\!|\!|#1|\!|\!|}
+\def\diag{\textrm{diag}}
+\def\tr{\textrm{tr}}
+\def\ker{\textrm{Ker }}
+
+\def\M{\mathcal{M}}
+
+\setlength{\textwidth}{17cm} 
+\addtolength{\oddsidemargin}{-1.5cm}
+\setlength{\textheight}{22cm}
+\addtolength{\topmargin}{-2cm} 
+\setlength{\headheight}{25.3pt}
+
+%% Fancyhdr related stuff
+\pagestyle{fancy}
+\lhead{MATH 3820 -- Intro Math Modelling -- Assignment 1}
+\rhead{\thepage}
+\cfoot{}
+
+\usepackage[hang,small,bf]{caption2}
+\setlength{\captionmargin}{20pt}
+
+\makeatletter
+\def\cleardoublepage{\clearpage\if@twoside \ifodd\c@page\else
+\hbox{}
+% \vspace*{\fill}
+% \begin{center}
+% This page intentionally contains only this sentence.
+% \end{center}% Make numbering specific to the Appendix
+\newtheorem{Atheorem}{Theorem}[chapter]
+\newtheorem{Aproperty}[Atheorem]{Property}
+\newtheorem{Acondition}[Atheorem]{Condition}
+\newtheorem{Aproposition}[Atheorem]{Proposition}
+\newtheorem{Aaxiom}[Atheorem]{Axiom}
+\newtheorem{Alemma}[Atheorem]{Lemma}
+\newtheorem{Acorollary}[theorem]{Corollary}
+
+% \vspace{\fill}
+\thispagestyle{empty}
+\newpage
+\if@twocolumn\hbox{}\newpage\fi\fi\fi}
+\makeatother
+
+%\author{Julien Arino}
+%\address{University of Manitoba}
+%\title{MATH 8430\\ Lecture Notes}
+\title{University of Manitoba\\ Math 38200 -- Winter 2007}
+\author{Assignment 1}
+\date{Due Tuesday, February 20, 2007}
+
+\renewcommand{\abstractname}{Instructions}
+%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%
+\begin{document}
+
+\maketitle
+\begin{abstract}
+This assignment is due Tuesday, February 20. Note that I will accept files, so if you want to typeset or scan your answers, this is fine (pdf is preferred).
+
+Try to be clear in your answers. If you use a result in the course notes or from another source, please indicate clearly the reference. 
+\end{abstract}
+
+\vskip1cm
+\noindent
+The Ricker model of growth of a single population takes the form
+\begin{equation}\label{eq:Ricker}
+N_{t+1}=N_t e^{r\left(1-\frac{N_t}K\right)},
+\end{equation}
+with $r,K>0$ and initial condition $N_0>0$. The aim of this assignment is to study the behavior of \eqref{eq:Ricker}.
+
+\vskip1cm
+\noindent
+{\bf 1.} Define $x_t=N_t/K$, and show that the difference equation \eqref{eq:Ricker} then takes the form, as a function of the dimensionless variable $x_t$,
+\begin{equation}\label{eq:Ricker_dimless}
+x_{t+1}=x_t e^{r(1-x_t)},
+\end{equation}
+
+\vskip0.4cm
+\noindent
+{\bf 2.} Show that if $x_0>0$ (where $x_0=N_0/K$), there holds that $x_t>0$ for all $t$ in \eqref{eq:Ricker_dimless}.
+
+\vskip0.4cm
+\noindent
+{\bf 3.} 
+Determine the fixed points of \eqref{eq:Ricker_dimless}, as well as their stability as a function of the parameter $r$.
+
+\vskip0.4cm
+\noindent
+{\bf 4.} 
+Show that \eqref{eq:Ricker_dimless} has no points of period 2 for $0<r<2$. [Hint: use Theorem~\ref{th:nonexistFP2} with $I=(0,\infty)$.]
+
+\vskip0.4cm
+\noindent
+{\bf 5.} 
+Try to find 2-periodic points of \eqref{eq:Ricker_dimless} analytically (show your work). Then, do so using a numerical software. Under what conditions are these periodic points stable? Evaluate the stability of the points you found for a few sample values of $r$, using a numerical software.
+
+\vskip0.4cm
+\noindent
+{\bf 6.} 
+Using numerical software, draw a bifurcation diagram for \eqref{eq:Ricker_dimless}, for $r$ varying in $(0,5]$. What do you observe?
+
+
+\begin{center}
+\bf A useful result
+\end{center}
+\begin{theorem}\label{th:nonexistFP2}
+Consider the function $f:I\to I$, and assume that $f'$ is continuous on $I$. If $1+f'(x)\neq 0$ for all $x\in I$, then $x_{t+1}=f(x_t)$ has no periodic point of period 2 in $I$.
+\end{theorem}
+
+\end{document}

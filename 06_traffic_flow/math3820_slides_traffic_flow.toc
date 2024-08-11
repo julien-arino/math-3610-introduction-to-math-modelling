@@ -1,0 +1,7 @@
+\beamer@endinputifotherversion {3.06pt}
+\beamer@sectionintoc {1}{Traffic flow -- ODE model}{1}{0}{1}
+\beamer@sectionintoc {2}{Linear systems of ODE -- Brief theory}{10}{0}{2}
+\beamer@sectionintoc {3}{Linear systems -- Our case}{34}{0}{3}
+\beamer@sectionintoc {4}{Traffic flow -- DDE model}{48}{0}{4}
+\beamer@sectionintoc {5}{The Laplace transform}{53}{0}{5}
+\beamer@sectionintoc {6}{Laplace transform of our DDE traffic flow model}{60}{0}{6}

@@ -1,0 +1,100 @@
+\begin{thebibliography}{10}
+
+\bibitem{Allen2007}
+L.J.S. Allen.
+\newblock {\em An Introduction to Mathematical Biology}.
+\newblock Pearson, 2007.
+
+\bibitem{BermanPlemmons1979}
+A.~Berman and R.~J. Plemmons.
+\newblock {\em Nonnegative Matrices in the Mathematical Sciences}.
+\newblock Academic Press, 1979.
+
+\bibitem{BermanPlemmons1994}
+A.~Berman and R.~J. Plemmons.
+\newblock {\em Nonnegative Matrices in the Mathematical Sciences}.
+\newblock Classics in Applied Mathematics. SIAM, 1994.
+
+\bibitem{Elaydi1998}
+S.N. Elaydi and W.A.Jr Harris.
+\newblock On the computation of a$^n$.
+\newblock {\em SIAM Review}, 40:965--971, 1998.
+
+\bibitem{Franklin2000}
+J.N. Franklin.
+\newblock {\em Matrix Theory}.
+\newblock Dover, 2000.
+
+\bibitem{Glass1988}
+L.~Glass and M.~Mackey.
+\newblock {\em From clock to chaos}.
+\newblock Princeton University Press, 1988.
+
+\bibitem{Hutchinson1948}
+G.E. Hutchinson.
+\newblock Circular causal systems in ecology.
+\newblock {\em Ann. N. Y. Acad. Sci.}, 50:221--246, 1948.
+
+\bibitem{KermackMckendrick1927}
+W.O. Kermack and A.G. McKendrick.
+\newblock A contribution to the mathematical theory of epidemics.
+\newblock {\em Proc. Roy. Soc. London, Ser. A}, 115:700--721, 1927.
+
+\bibitem{KermackMckendrick1932}
+W.O. Kermack and A.G. McKendrick.
+\newblock Contributions to the mathematical theory of epidemics. ii. the
+  problem of endemicity.
+\newblock {\em Proc. Roy. Soc. London, Ser. A}, 138:55--83, 1932.
+
+\bibitem{KermackMckendrick1933}
+W.O. Kermack and A.G. McKendrick.
+\newblock Contributions to the mathematical theory of epidemics. iii. further
+  studies of the problem of endemicity.
+\newblock {\em Proc. Roy. Soc. London, Ser. A}, 141:94--122, 1933.
+
+\bibitem{PearlReed1920}
+R.~Pearl and L.J. Reed.
+\newblock On the rate of growth of the population of the {U}nited {S}tates
+  since 1790 and its mathematical representation.
+\newblock {\em Proceedings of the National Academy of Science}, 6:275--288,
+  1920.
+
+\bibitem{PearlReed1930}
+R.~Pearl and L.J. Reed.
+\newblock The logistic curve and the census count of 1930.
+\newblock {\em Science}, 72(1868):399--401, 1930.
+
+\bibitem{PearlReedFish1940}
+R.~Pearl, L.J. Reed, and J.F. Fish.
+\newblock The logistic curve and the census count of 1940.
+\newblock {\em Science}, 92(2395):486--488, 1940.
+
+\bibitem{Pielou1977}
+E.C. Pielou.
+\newblock {\em Mathematical ecology}.
+\newblock John Wiley, New York, 1977.
+
+\bibitem{Pritchett1891}
+H.S. Pritchett.
+\newblock A formula for predicting the population of the united states.
+\newblock {\em Publications of the American Statistical Association},
+  2(14):278--286, 1891.
+
+\bibitem{Verhulst1838}
+P.F. Verhulst.
+\newblock Notice sur la loi que la population suit dans son accroissement.
+\newblock {\em Correspondance Mathematique et Physique}, 10:113--121, 1838.
+
+\bibitem{Verhulst1845}
+P.F. Verhulst.
+\newblock Recherches math\'{e}matiques sur la loi d'accroissement de la
+  population.
+\newblock {\em Nouv. m\'{e}m. de l'Academie Royale des Sci. et Belles-Lettres
+  de Bruxelle}, 18:1--41, 1845.
+
+\bibitem{Wright1955}
+E.M. Wright.
+\newblock A non-linear difference-differential equation.
+\newblock {\em J. Reine Angew. Math.}, 494:66--87, 1955.
+
+\end{thebibliography}

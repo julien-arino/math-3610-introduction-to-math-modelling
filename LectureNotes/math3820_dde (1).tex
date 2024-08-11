@@ -1,0 +1,193 @@
+\chapter{A brief theory of delay differential equations}
+\label{chap:dde}
+
+We encountered a delay differential equation in Chapter~\ref{chap:single_pop_growth}, when we briefly discussed the delayed logistic equation \eqref{eq:logistic_dde}. Here, we give more detail about this type of equations. The general theory of delayed differential equations is however out of the scope of these notes, so we remain superficial in our exposition and in the mathematical details.
+
+\section{Formulation of the problem}
+\label{sec:dde_ivp}
+There are many types of delay differential equations (also called differential difference equations, or equations with deviating arguments). Our focus here will be on the simplest type, namely one for which the differential equation takes the form, for a given $\tau>0$,
+\begin{equation}
+\label{eq:dde}
+x' = f(x,x(t-\tau)),
+\end{equation}
+and the corresponding initial value problem is given by
+\begin{equation}
+\label{ivp:dde}
+\begin{aligned}
+x' &= f(x,x(t-\tau)) \\
+x(t) &= \phi(t),\quad \forall t\in[-\tau,0],
+\end{aligned}
+\end{equation}
+for some function $\phi\in C^0([-\tau,0])$ called the \textbf{initial data}. Such an equation is called an autonomous equation (or system, if $x\in\IR^n$) with \textbf{fixed time delay} $\tau$.
+In \eqref{ivp:dde}, $f$ depends on $x$ at time $t$ as well as $x$ at time $t-\tau$. 
+In the limit, if $\tau=0$, then \eqref{ivp:dde} reduces to an ordinary differential equation (this is a property that is used from time to time when analyzing a delay equation).
+
+Other types of delay equations are, for example, the nonautonomous version of \eqref{eq:dde},
+\[
+x' = f(t,x,x(t-\tau)),
+\]
+equations with \emph{distributed delay},
+\[
+x' = f\left(t,x,\int_{-\infty}^tx(t-s)ds\right)
+\]
+and equations with \emph{state dependent delay},
+\[
+x' = f(x,x(t-\tau(x(t)))).
+\]
+
+
+\section{Construction of the solution -- The method of steps}
+\label{sec:construct_sol_dde}
+The \textbf{method of steps} consists in considering \eqref{ivp:dde} as a
+nondelayed IVP on the interval $[0,\tau]$. Indeed, on this
+interval, we can consider the IVP
+\begin{equation}\label{ivp:dde_steps}
+\begin{aligned}
+x' &= f(x(t),\phi(t-\tau)) \\
+x(0) &= \phi(0),\quad 0\leq t\leq \tau.
+\end{aligned}
+\end{equation}
+That the latter is a nondelayed problem is obvious if we rewrite the differential equation
+as 
+\begin{equation}\label{eq:DDE_ODE}
+x'(t)=g(t,x(t))
+\end{equation}
+with
+\[
+g(t,x(t))=f(x(t),\phi(t-\tau)),
+\]
+which is well defined on the interval $[0,\tau]$ since for $t\in[0,\tau]$,
+$t-\tau\in[-\tau,0]$, on which the function $\phi$ is defined.
+
+We can then use the integral form of the solution to construct the solution on the
+interval $[0,\tau]$,
+\begin{align*}
+x(t)&=x(0)+\int_{0}^t g(s,x(s))ds \\
+&=\phi(0)+\int_{0}^t f(s,x(s),\phi(s-\tau))ds.
+\end{align*}
+Obviously, the nature of the solution depends on the function
+$f$. As problem \eqref{ivp:dde_steps} is an ordinary differential
+equations initial value problem, existence and uniqueness of solutions
+on the interval $[0,\tau]$ follow the usual scheme. To discuss
+the required properties on $f$ and $\phi$, the best is to use
+(\ref{eq:DDE_ODE}).
+Recall that a vector field has to be continuous both in $t$ and in $x$
+for solutions to exist. Thus to have existence of solutions to the
+equation (\ref{eq:DDE_ODE}), $g$ must be continuous in $t$ and $x$. This
+implies that $f(x,\phi(t-\tau))$ must be continuous in
+$t,x$. Thus $\phi$ has to be continuous on $[-\tau,0]$.
+
+Now, for uniqueness of solutions to (\ref{eq:DDE_ODE}), we need $g$ to
+be Lipschitz in $x$, \emph{i.e.}, we require the same property from
+$f$. Note that this does not imply either $\phi_0$ or the way $f$
+depends on $\phi_0$.
+
+Finally, remark that every successive integration raises the regularity of the
+solution: $x$ is $C^1$ on $[0,\tau]$, $C^2$ on
+$[\tau,2\tau]$, etc. Hence, $x$ is $C^n$ on
+$[(n-1)\tau,n\tau]$. 
+
+
+
+
+
+\subsection{An example}
+Consider the delay initial value problem
+\begin{equation}\label{eq:IVPDDE3}
+\begin{aligned}
+x'(t) &= a x(t-\tau) \\
+x(t) &= C, \quad t\in[-\tau,0]
+\end{aligned}
+\end{equation}
+with $a,C\in\IR$, $\tau\in\IR_+^*$. 
+Using the method of steps, we want to find the solution to
+(\ref{eq:IVPDDE3}) on the interval $[k\tau,(k+1)\tau]$,
+$k\in\IN$. 
+We proceed as previously explained. 
+To find the solution on the interval $[0,\tau]$, we consider the
+nondelayed IVP 
+\begin{align*}
+x_1'&= ax_0(t) \\
+x_1(0)&= C,
+\end{align*}
+where $x_0(t)=C$ for $t\in[0,\tau]$. The solution to this IVP is
+straightforward, $x_1(t)=C+aCt=C(1+at)$, defined on the interval
+$[0,\tau]$. To integrate on the second interval, we consider
+the IVP 
+\begin{align*}
+x_2'&= a[C(1+at)] \\
+x_2(\tau)&= x_1(\tau)=C+aC\tau.
+\end{align*}
+Hence we find the solution to the differential equation to be, on the
+interval $[\tau,2\tau]$,
+\[
+x_2(t)=C\left(1+at+\frac{1}{2}a^2t^2-\frac{1}{2}a^2\tau^2\right).
+\]
+Iterating this process one more time with the IVP
+\begin{align*}
+x_3'&= a\left[
+C\left(1+at+\frac{1}{2}a^2t^2-\frac{1}{2}a^2\tau^2\right)
+\right] \\
+x_3(2\tau)&= x_2(2\tau)=\frac{3}{2}a^2C\tau^2+2aC\tau+C.
+\end{align*}
+we find, on the interval $[2\tau,3\tau]$, the solution
+\[
+x_3(t)=C
+\left(1+at+\frac{1}{2}a^2t^2+\frac{1}{6}a^3t^3
+-\frac{1}{2}ta^3\tau^2-\frac{1}{3}a^3\tau^3
+-\frac{1}{2}a^2\tau^2\right).
+\]
+We develop the intuition that the solution at step $n$ (\emph{i.e.},
+on the interval $[(n-1)\tau,n\tau]$) must take the form
+\begin{equation}\label{eq:sol2}
+x_{n}(t)=
+C\sum_{k=0}^n a^k \frac{(t-(k-1)\tau)^k}{k!}.
+\end{equation}
+%This can be proved by induction (we will not do it here).
+To show this, we proceed by induction. First, we check that it holds
+for $n=1$, \emph{i.e.}, $x_1(t)=C(1+at)$ on the interval $[0,\tau]$.
+Now suppose that (\ref{eq:sol2}) holds for $n=j$, \emph{i.e.},
+\[
+x_j(t)=C\sum_{k=0}^j a^k \frac{(t-(k-1)\tau)^k}{k!}
+\]
+on the interval $[(j-1)\tau,j\tau]$. Then, we find the solution
+for the $(j+1)$th step by considering the nondelayed initial value
+problem,
+\begin{align*}
+x_{j+1}'(t) &= a x_j(t) \\
+x_{j+1}(j\tau) &= x_j(j\tau)
+\end{align*}
+This is equivalent to
+\begin{align*}
+x_{j+1}'(t) &= a C\sum_{k=0}^j a^k \frac{(t-(k-1)\tau)^k}{k!} \\
+x_{j+1}(j\tau) &= C\sum_{k=0}^j a^k
+\frac{((j\tau)-(k-1)\tau)^k}{k!}
+\end{align*}
+First, let us solve the differential equation. As the right hand side
+has an explicit form that does not involve $x$, it suffices to
+integrate the equation with respect to $t$. This gives, for
+$t\in[j\tau,(j+1)\tau]$, 
+\begin{align*}
+x_{j+1}(t) &= \int_{j\tau}^t 
+a C\sum_{k=0}^j a^k \frac{(s-(k-1)\tau)^k}{k!} ds
+\\
+&= aC \sum_{k=0}^j \int_{j\tau}^t a^k \frac{(s-(k-1)\tau)^k}{k!}
+ds\\
+&= C \sum_{k=0}^j 
+\left[a^{k+1} \frac{(s-(k-1)\tau)^{k+1}}{k!(k+1)}
+\right]_{s=j\tau}^{s=t}\\
+&= C \sum_{k=0}^j 
+a^{k+1} \left(\frac{(t-(k-1)\tau)^{k+1}}{(k+1)!}
+-\frac{(j\tau-(k-1)\tau)^{k+1}}{(k+1)!}\right)
+\\
+&= C \sum_{k=0}^{j+1}
+a^{k+1} \left(\frac{(t-(k-1)\tau)^{k+1}}{(k+1)!}
+-\frac{((j-k+1)\tau)^{k+1}}{(k+1)!}\right)
+\end{align*}
+
+\subsection{Consequences of the method of steps}
+From the method of steps, it is clear that the initial data $\phi(t)$ must be continuous on the interval $[-\tau,0]$. This is very different from ordinary differential equations, for which the initial condition is a single point.
+
+The main consequence of this is that a delay differential equation is an object living in infinite dimensional space (the space of continuous functions) rather that in $\IR^n$ as does a system of $n$ ordinary differential equations.
+
+Another interesting property that is the consequence of the method of steps is the increase of regularity of solutions with time.

@@ -1,0 +1,164 @@
+\BOOKMARK [-1][-]{part.1}{I A few introductory considerations}{}
+\BOOKMARK [0][-]{chapter.1}{Introduction to mathematical modelling}{part.1}
+\BOOKMARK [1][-]{section.1.1}{Steps of the modelling process}{chapter.1}
+\BOOKMARK [1][-]{section.1.2}{Example: biological problems}{chapter.1}
+\BOOKMARK [0][-]{chapter.2}{A gentle introduction to Maple and Matlab}{part.1}
+\BOOKMARK [1][-]{section.2.1}{Maple}{chapter.2}
+\BOOKMARK [1][-]{section.2.2}{Matlab}{chapter.2}
+\BOOKMARK [2][-]{subsection.2.2.1}{Computing iterates}{section.2.2}
+\BOOKMARK [2][-]{subsection.2.2.2}{Numerical simulation of differential equations}{section.2.2}
+\BOOKMARK [0][-]{chapter.3}{A single population growth model: the logistic curve/equation/map}{part.1}
+\BOOKMARK [1][-]{section.3.1}{Objectives}{chapter.3}
+\BOOKMARK [1][-]{section.3.2}{The data: US census}{chapter.3}
+\BOOKMARK [2][-]{subsection.3.2.1}{A quadratic curve?}{section.3.2}
+\BOOKMARK [2][-]{subsection.3.2.2}{Checking our results for the quadratic}{section.3.2}
+\BOOKMARK [2][-]{subsection.3.2.3}{Other similar approaches \205 The logistic curve}{section.3.2}
+\BOOKMARK [1][-]{section.3.3}{The ODE logistic equation}{chapter.3}
+\BOOKMARK [2][-]{subsection.3.3.1}{Solving the logistic as a separable equation}{section.3.3}
+\BOOKMARK [2][-]{subsection.3.3.2}{Solving the equation as a Bernoulli equation}{section.3.3}
+\BOOKMARK [2][-]{subsection.3.3.3}{Qualitative analysis of the logistic equation}{section.3.3}
+\BOOKMARK [1][-]{section.3.4}{The delayed logistic equation}{chapter.3}
+\BOOKMARK [1][-]{section.3.5}{The logistic map}{chapter.3}
+\BOOKMARK [2][-]{subsection.3.5.1}{Well-posedness}{section.3.5}
+\BOOKMARK [2][-]{subsection.3.5.2}{Fixed points of fr}{section.3.5}
+\BOOKMARK [2][-]{subsection.3.5.3}{Stability of the fixed points}{section.3.5}
+\BOOKMARK [2][-]{subsection.3.5.4}{Stable sets of the fixed points}{section.3.5}
+\BOOKMARK [2][-]{subsection.3.5.5}{Existence of points of period 2}{section.3.5}
+\BOOKMARK [2][-]{subsection.3.5.6}{Attractiveness of the periodic orbit}{section.3.5}
+\BOOKMARK [2][-]{subsection.3.5.7}{The cascade of bifurcation to chaos}{section.3.5}
+\BOOKMARK [1][-]{section.3.6}{Conclusion, extensions and further reading}{chapter.3}
+\BOOKMARK [0][-]{chapter.4}{Residence time}{part.1}
+\BOOKMARK [1][-]{section.4.1}{Time spent in a state \205 Some probability theory}{chapter.4}
+\BOOKMARK [1][-]{section.4.2}{The exponential distribution}{chapter.4}
+\BOOKMARK [1][-]{section.4.3}{A cohort model}{chapter.4}
+\BOOKMARK [1][-]{section.4.4}{Sojourn times in an SIS disease transmission model}{chapter.4}
+\BOOKMARK [1][-]{section.4.5}{Conclusion}{chapter.4}
+\BOOKMARK [-1][-]{part.2}{II Deterministic discrete time systems}{}
+\BOOKMARK [0][-]{chapter.5}{A brief theory of discrete time systems}{part.2}
+\BOOKMARK [1][-]{section.5.1}{Types of equations/systems}{chapter.5}
+\BOOKMARK [1][-]{section.5.2}{First-order linear difference equation}{chapter.5}
+\BOOKMARK [1][-]{section.5.3}{Higher-order linear equations}{chapter.5}
+\BOOKMARK [2][-]{subsection.5.3.1}{Homogeneous equations with constant coefficients}{section.5.3}
+\BOOKMARK [2][-]{subsection.5.3.2}{Nonhomogeneous equations}{section.5.3}
+\BOOKMARK [2][-]{subsection.5.3.3}{Qualitative analysis}{section.5.3}
+\BOOKMARK [1][-]{section.5.4}{First-order linear systems}{chapter.5}
+\BOOKMARK [2][-]{subsection.5.4.1}{Generality of first-order systems}{section.5.4}
+\BOOKMARK [2][-]{subsection.5.4.2}{Solutions of linear systems}{section.5.4}
+\BOOKMARK [1][-]{section.5.5}{Fixed points}{chapter.5}
+\BOOKMARK [2][-]{subsection.5.5.1}{Local stability of fixed points and periodic points}{section.5.5}
+\BOOKMARK [2][-]{subsection.5.5.2}{Bifurcations}{section.5.5}
+\BOOKMARK [2][-]{subsection.5.5.3}{Global stability}{section.5.5}
+\BOOKMARK [1][-]{section.5.6}{Nonlinear difference equations}{chapter.5}
+\BOOKMARK [2][-]{subsection.5.6.1}{Equilibrium solution - Periodic solution}{section.5.6}
+\BOOKMARK [2][-]{subsection.5.6.2}{Local stability in first-order equations}{section.5.6}
+\BOOKMARK [2][-]{subsection.5.6.3}{Global stability in first-order equations}{section.5.6}
+\BOOKMARK [2][-]{subsection.5.6.4}{Bifurcation diagrams}{section.5.6}
+\BOOKMARK [1][-]{section.5.7}{Systems of nonlinear equations}{chapter.5}
+\BOOKMARK [0][-]{chapter.6}{Deterministic discrete time models}{part.2}
+\BOOKMARK [1][-]{section.6.1}{Other applications of the logistic map}{chapter.6}
+\BOOKMARK [2][-]{subsection.6.1.1}{Tumor cell growth}{section.6.1}
+\BOOKMARK [1][-]{section.6.2}{Bacteria population}{chapter.6}
+\BOOKMARK [1][-]{section.6.3}{The Ricker model}{chapter.6}
+\BOOKMARK [1][-]{section.6.4}{The Hassell model}{chapter.6}
+\BOOKMARK [1][-]{section.6.5}{The Beverton-Holt model}{chapter.6}
+\BOOKMARK [1][-]{section.6.6}{Example of a 2-dimensional system}{chapter.6}
+\BOOKMARK [1][-]{section.6.7}{An SIR epidemic model}{chapter.6}
+\BOOKMARK [2][-]{subsection.6.7.1}{Stability of the disease free equilibrium \(S1,I1\)}{section.6.7}
+\BOOKMARK [2][-]{subsection.6.7.2}{Stability of the endemic equilibrium \(S2,I2\)}{section.6.7}
+\BOOKMARK [1][-]{section.6.8}{Predator-Prey models}{chapter.6}
+\BOOKMARK [1][-]{section.6.9}{Structured population models}{chapter.6}
+\BOOKMARK [1][-]{section.6.10}{Leslie matrix model}{chapter.6}
+\BOOKMARK [2][-]{subsection.6.10.1}{Salmon population}{section.6.10}
+\BOOKMARK [2][-]{subsection.6.10.2}{Human Population}{section.6.10}
+\BOOKMARK [2][-]{subsection.6.10.3}{Insect population}{section.6.10}
+\BOOKMARK [1][-]{section.6.11}{Insect populations}{chapter.6}
+\BOOKMARK [1][-]{section.6.12}{Pharmacology}{chapter.6}
+\BOOKMARK [1][-]{section.6.13}{Propagation of annual plants}{chapter.6}
+\BOOKMARK [1][-]{section.6.14}{Red blood cells}{chapter.6}
+\BOOKMARK [1][-]{section.6.15}{Killer whales}{chapter.6}
+\BOOKMARK [-1][-]{part.3}{III Markov chains}{}
+\BOOKMARK [0][-]{chapter.7}{A brief theory of Markov chains}{part.3}
+\BOOKMARK [1][-]{section.7.1}{Markov chains}{chapter.7}
+\BOOKMARK [1][-]{section.7.2}{Repetition of the process}{chapter.7}
+\BOOKMARK [2][-]{subsection.7.2.1}{Long time behaviour}{section.7.2}
+\BOOKMARK [2][-]{subsection.7.2.2}{Stochastic matrices}{section.7.2}
+\BOOKMARK [1][-]{section.7.3}{Regular Markov chains}{chapter.7}
+\BOOKMARK [0][-]{chapter.8}{Models using Markov chains}{part.3}
+\BOOKMARK [1][-]{section.8.1}{A simple genetic model}{chapter.8}
+\BOOKMARK [2][-]{subsection.8.1.1}{Basic assumption of Mendelian genetics}{section.8.1}
+\BOOKMARK [2][-]{subsection.8.1.2}{A first genetic model \205 Regular Markov chain}{section.8.1}
+\BOOKMARK [2][-]{subsection.8.1.3}{A second genetic model \205 Absorbing Markov chain}{section.8.1}
+\BOOKMARK [-1][-]{part.4}{IV Ordinary differential equations}{}
+\BOOKMARK [0][-]{chapter.9}{A brief theory of ordinary differential equations}{part.4}
+\BOOKMARK [1][-]{section.9.1}{First definitions}{chapter.9}
+\BOOKMARK [1][-]{section.9.2}{First-order differential equations}{chapter.9}
+\BOOKMARK [2][-]{subsection.9.2.1}{Analytical methods}{section.9.2}
+\BOOKMARK [2][-]{subsection.9.2.2}{Higher-order linear equations}{section.9.2}
+\BOOKMARK [1][-]{section.9.3}{Systems of linear equations}{chapter.9}
+\BOOKMARK [1][-]{section.9.4}{Linear systems of ODE}{chapter.9}
+\BOOKMARK [2][-]{subsection.9.4.1}{Exponential of a matrix}{section.9.4}
+\BOOKMARK [2][-]{subsection.9.4.2}{Computing the matrix exponential}{section.9.4}
+\BOOKMARK [2][-]{subsection.9.4.3}{Matrix exponential \205 Diagonalizable case}{section.9.4}
+\BOOKMARK [2][-]{subsection.9.4.4}{Matrix exponential \205 Nondiagonalizable case}{section.9.4}
+\BOOKMARK [1][-]{section.9.5}{The Laplace transform}{chapter.9}
+\BOOKMARK [1][-]{section.9.6}{Systems of nonlinear equations}{chapter.9}
+\BOOKMARK [1][-]{section.9.7}{Phase plane analysis}{chapter.9}
+\BOOKMARK [1][-]{section.9.8}{Bifurcations}{chapter.9}
+\BOOKMARK [0][-]{chapter.10}{Epidemic models}{part.4}
+\BOOKMARK [1][-]{section.10.1}{SIS model without vital dynamics}{chapter.10}
+\BOOKMARK [2][-]{subsection.10.1.1}{Behavior of the solutions}{section.10.1}
+\BOOKMARK [2][-]{subsection.10.1.2}{The basic reproduction number}{section.10.1}
+\BOOKMARK [1][-]{section.10.2}{SIR model of Kermack and McKendrick}{chapter.10}
+\BOOKMARK [1][-]{section.10.3}{SIRS models with demography}{chapter.10}
+\BOOKMARK [2][-]{subsection.10.3.1}{The SIRS model}{section.10.3}
+\BOOKMARK [2][-]{subsection.10.3.2}{Qualitative analysis}{section.10.3}
+\BOOKMARK [0][-]{chapter.11}{Chemostat}{part.4}
+\BOOKMARK [1][-]{section.11.1}{The chemostat}{chapter.11}
+\BOOKMARK [1][-]{section.11.2}{Batch mode}{chapter.11}
+\BOOKMARK [2][-]{subsection.11.2.1}{Model with no cell mortality}{section.11.2}
+\BOOKMARK [2][-]{subsection.11.2.2}{Equilibria}{section.11.2}
+\BOOKMARK [2][-]{subsection.11.2.3}{Model with organism death}{section.11.2}
+\BOOKMARK [1][-]{section.11.3}{Continous flow mode}{chapter.11}
+\BOOKMARK [2][-]{subsection.11.3.1}{Modelling principles}{section.11.3}
+\BOOKMARK [2][-]{subsection.11.3.2}{Model for continuous flow mode}{section.11.3}
+\BOOKMARK [2][-]{subsection.11.3.3}{Finding equilibria}{section.11.3}
+\BOOKMARK [2][-]{subsection.11.3.4}{Phase plane analysis}{section.11.3}
+\BOOKMARK [2][-]{subsection.11.3.5}{Stability of the equilibria}{section.11.3}
+\BOOKMARK [2][-]{subsection.11.3.6}{Conservation of mass}{section.11.3}
+\BOOKMARK [0][-]{chapter.12}{Traffic flow}{part.4}
+\BOOKMARK [1][-]{section.12.1}{An ODE model of traffic flow}{chapter.12}
+\BOOKMARK [2][-]{subsection.12.1.1}{Hypotheses}{section.12.1}
+\BOOKMARK [2][-]{subsection.12.1.2}{Modeling driver behavior}{section.12.1}
+\BOOKMARK [2][-]{subsection.12.1.3}{Solving using linear cascades}{section.12.1}
+\BOOKMARK [2][-]{subsection.12.1.4}{An example with known first driver behavior}{section.12.1}
+\BOOKMARK [1][-]{section.12.2}{Linear systems \205 Our case}{chapter.12}
+\BOOKMARK [2][-]{subsection.12.2.1}{General computations, case of 3 cars}{section.12.2}
+\BOOKMARK [2][-]{subsection.12.2.2}{Specialization to the case of the sin\(t\) driver}{section.12.2}
+\BOOKMARK [1][-]{section.12.3}{Prey-Predator model}{chapter.12}
+\BOOKMARK [1][-]{section.12.4}{Growth of living organisms}{chapter.12}
+\BOOKMARK [2][-]{subsection.12.4.1}{Michaelis-Menten enzyme kinetics}{section.12.4}
+\BOOKMARK [2][-]{subsection.12.4.2}{Kinetic reactions}{section.12.4}
+\BOOKMARK [2][-]{subsection.12.4.3}{Bifurcation}{section.12.4}
+\BOOKMARK [-1][-]{part.5}{V Delay differential equations}{}
+\BOOKMARK [0][-]{chapter.13}{A brief theory of delay differential equations}{part.5}
+\BOOKMARK [1][-]{section.13.1}{Formulation of the problem}{chapter.13}
+\BOOKMARK [1][-]{section.13.2}{Construction of the solution \205 The method of steps}{chapter.13}
+\BOOKMARK [2][-]{subsection.13.2.1}{An example}{section.13.2}
+\BOOKMARK [2][-]{subsection.13.2.2}{Consequences of the method of steps}{section.13.2}
+\BOOKMARK [0][-]{chapter.14}{A delayed model of traffic flow}{part.5}
+\BOOKMARK [1][-]{section.14.1}{A delayed model of traffic flow}{chapter.14}
+\BOOKMARK [1][-]{section.14.2}{Laplace transform of the DDE traffic flow model}{chapter.14}
+\BOOKMARK [-1][-]{part.6}{VI Partial differential equations}{}
+\BOOKMARK [0][-]{chapter.15}{Shallow water}{part.6}
+\BOOKMARK [1][-]{section.15.1}{Model formulation}{chapter.15}
+\BOOKMARK [1][-]{section.15.2}{Case of smooth solutions}{chapter.15}
+\BOOKMARK [1][-]{section.15.3}{Linearization}{chapter.15}
+\BOOKMARK [1][-]{section.15.4}{Traveling wave solutions}{chapter.15}
+\BOOKMARK [-1][-]{section*.137}{Appendices}{}
+\BOOKMARK [0][-]{appendix.A}{Descartes' rule of signs}{section*.137}
+\BOOKMARK [0][-]{appendix.B}{Some matrix theory}{section*.137}
+\BOOKMARK [1][-]{section.B.1}{Eigenvalues and eigenvectors}{appendix.B}
+\BOOKMARK [2][-]{subsection.B.1.1}{Left eigenvectors}{section.B.1}
+\BOOKMARK [1][-]{section.B.2}{Tools to determine properties of eigenvalues}{appendix.B}
+\BOOKMARK [1][-]{section.B.3}{Nonnegative matrices}{appendix.B}
+\BOOKMARK [2][-]{subsection.B.3.1}{Suggested reading}{section.B.3}
