@@ -1,5 +1,0 @@
-\beamer@endinputifotherversion {3.06pt}
-\beamer@sectionintoc {1}{Model formulation}{1}{0}{1}
-\beamer@sectionintoc {2}{Case of smooth solutions}{18}{0}{2}
-\beamer@sectionintoc {3}{Linearization}{23}{0}{3}
-\beamer@sectionintoc {4}{Traveling wave solutions}{25}{0}{4}

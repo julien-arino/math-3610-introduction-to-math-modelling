@@ -1,2 +1,0 @@
-\beamer@sectionintoc {1}{Least squares problems}{2}{0}{1}
-\beamer@sectionintoc {2}{Fitting something more complicated}{13}{0}{2}

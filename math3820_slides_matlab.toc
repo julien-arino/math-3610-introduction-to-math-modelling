@@ -1,2 +1,0 @@
-\beamer@endinputifotherversion {3.07pt}
-\beamer@sectionintoc {1}{Computing iterates}{2}{0}{1}

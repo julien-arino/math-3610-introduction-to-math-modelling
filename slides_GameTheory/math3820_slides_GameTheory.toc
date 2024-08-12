@@ -1,4 +1,0 @@
-\beamer@endinputifotherversion {3.07pt}
-\beamer@sectionintoc {1}{Static games}{2}{0}{1}
-\beamer@sectionintoc {2}{A few games}{13}{0}{2}
-\beamer@sectionintoc {3}{Evolutionary stable strategies}{20}{0}{3}

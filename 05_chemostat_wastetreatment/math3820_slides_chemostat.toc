@@ -1,4 +1,0 @@
-\beamer@endinputifotherversion {3.06pt}
-\beamer@sectionintoc {1}{The chemostat}{1}{0}{1}
-\beamer@sectionintoc {2}{Batch mode}{5}{0}{2}
-\beamer@sectionintoc {3}{Continous flow mode}{13}{0}{3}
