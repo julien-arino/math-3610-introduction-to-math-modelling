@@ -4,7 +4,7 @@
 \input{slides-setup-whiteBG.tex}
 
 
-\title[Epidemic models]{MATH 3610 -- 02 \\ A few epidemic models\\ Introduction to the analysis of nonlinear systems of ordinary differential equations}
+\title[Epidemic models]{MATH 3610 -- 04\\ A few epidemic models\\ Introduction to the analysis of nonlinear systems of ordinary differential equations}
 \author{\texorpdfstring{Julien Arino\newline University of Manitoba\newline\url{julien.arino@umanitoba.ca}}{Julien Arino}}
 \date{}
 
