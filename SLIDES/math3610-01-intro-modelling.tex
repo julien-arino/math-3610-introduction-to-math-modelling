@@ -10,21 +10,12 @@
 \author{\texorpdfstring{Julien Arino\newline University of Manitoba\newline\url{julien.arino@umanitoba.ca}}{Julien Arino}}
 \date{}
 
+\usepackage{Sweave}
 \begin{document}
 
-\SweaveOpts{concordance=TRUE}
-\SweaveOpts{prefix.string = FIGS/slides-02}
+\input{math3610-01-intro-modelling-concordance}
 
-<<set-options,echo=FALSE>>=
-# Are we plotting for a dark background
-plot_blackBG = FALSE
-# Load required libraries
-library(ggplot2)
-library(dplyr)
-library(tidyr)
-library(knitr)
-options(knitr.table.format = "latex")
-@
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

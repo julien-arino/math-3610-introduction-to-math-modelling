@@ -3,14 +3,13 @@
 
 \input{slides-setup-whiteBG.tex}
 
-
-\title[Single population growth]{MATH 3610 -- 01 -- Single population growth models}
+\title[Single population growth]{MATH 3610 -- 02 -- Single population growth models}
 \author{\texorpdfstring{Julien Arino\newline University of Manitoba\newline\url{julien.arino@umanitoba.ca}}{Julien Arino}}
 \date{}
 
 \begin{document}
 \SweaveOpts{concordance=TRUE}
-\SweaveOpts{prefix.string = FIGS/slides-01}
+\SweaveOpts{prefix.string = FIGS/slides-02}
 
 <<set-options,echo=FALSE>>=
 # Are we plotting for a dark background
@@ -172,7 +171,7 @@ plot_USA_census_to_1910 =
 print(plot_USA_census_to_1910)
 @
 
-\maxFrameImage{FIGS/slides-01-plot-census-1910-ggplot.pdf}
+\maxFrameImage{FIGS/slides-02-plot-census-1910-ggplot.pdf}
 
 
 
@@ -448,7 +447,7 @@ plot_USA_census =
 print(plot_USA_census)
 @
 
-\maxFrameImage{FIGS/slides-01-plot-census-ggplot.pdf}
+\maxFrameImage{FIGS/slides-02-plot-census-ggplot.pdf}
 
 
 
