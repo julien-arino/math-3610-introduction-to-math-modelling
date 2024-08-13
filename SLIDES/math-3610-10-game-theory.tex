@@ -1,0 +1,440 @@
+%\SweaveUTF8
+\documentclass[aspectratio=169]{beamer}
+
+\input{slides-setup-whiteBG.tex}
+
+\title[Game theory]{Game theory}
+\author{\texorpdfstring{Julien Arino\newline University of Manitoba\newline\url{julien.arino@umanitoba.ca}}{Julien Arino}}
+\date{}
+
+
+%%%%%%%%%%%%%%%%
+\usepackage{Sweave}
+\begin{document}
+\input{math-3610-10-game-theory-concordance}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% The title page
+\begin{frame}[noframenumbering,plain]
+  \begin{tikzpicture}[remember picture,overlay]
+    \node[above right,inner sep=0pt,opacity=0.2] at (current page.south west)
+    {
+        \includegraphics[height=\paperheight,width=\paperwidth]{FIGS/population-models-Gemini_Generated_Image_r55bcer55bcer55b.jpeg}
+    };
+    \node[anchor=north east,
+    inner sep=5pt,
+    opacity=0.9] at (current page.north east)
+    {
+        \includegraphics[width=0.2\textwidth]{FIGS/UM-logo-horizontal-CMYK.png}
+    };
+    \node[anchor=south, 
+    align=justify, 
+    text=black, 
+    text width=1.1\textwidth,
+    font=\footnotesize]  (land_acknowledgement)
+    at (current page.south) 
+    {The University of Manitoba campuses are located on original lands of Anishinaabeg, Ininew, Anisininew, Dakota and Dene peoples, and on the National Homeland of the Red River Métis.\\
+    We respect the Treaties that were made on these territories, we acknowledge the harms and mistakes of the past, and we dedicate ourselves to move forward in partnership with Indigenous communities in a spirit of Reconciliation and collaboration.};  
+    \node[align=center, anchor=south,
+    above=0.5cm of land_acknowledgement,
+    text=black,
+    font=\bfseries] {Fall 2024};
+\end{tikzpicture}
+  \setbeamercolor{title}{fg=subsub_header_section}
+  \setbeamercolor{author}{fg=subsub_header_section} 
+  \setbeamerfont{title}{size=\Large,series=\bfseries}
+  \setbeamerfont{author}{size=\Large,series=\bfseries}
+  \setbeamerfont{date}{series=\bfseries}
+	\titlepage
+\end{frame}
+\addtocounter{page}{-1}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% The outline page
+\begin{frame}[noframenumbering,plain]
+  \begin{tikzpicture}[remember picture,overlay]
+    \node[above right,inner sep=0pt,opacity=0.2] at (current page.south west)
+    {
+        \includegraphics[height=\paperheight,width=\paperwidth]{FIGS/population-models-Gemini_Generated_Image_r55bccr55bccr55b.jpeg}
+    };
+  \end{tikzpicture}
+  \setbeamercolor{section in toc}{fg=subsub_header_section}
+  \setbeamerfont{section in toc}{size=\Large,series=\bfseries}
+  \frametitle{\textcolor{blue}{\LARGE\bfseries Outline}}
+  \tableofcontents[hideallsubsections]
+\end{frame}
+\addtocounter{page}{-1}
+
+
+
+%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%
+\section{Static games}
+
+\frame{\frametitle{Static games}
+In a \emph{static game}, each player makes a single decision and has no knowledge of the decision made by the other players before making their own decision
+}
+
+\frame{\frametitle{Prisonner's Dilemma}
+Two accomplices are questioned by the police about a serious crime; the police have insufficient evidence to jail them about this. The accomplices have been caught on a lesser offense. They are interrogated in different rooms and cannot communicate. Each is made the following offer
+\begin{itemize}
+\item Turn your accomplice in (\emph{defect}), while he/she remains silent (\emph{cooperates}): walk free, your accomplice gets the full 5 years jail time
+\item Both remain silent: lower charge of 1 year each on a lesser charge
+\item If both betray, both get 3 years
+\end{itemize}
+}
+
+
+\frame{
+Denote $P_i$ player $i$, $D$ defection and $C$ cooperation. Then the game takes the form
+\begin{center}
+\begin{tabular}{c|c|c|c|}
+\multicolumn{2}{c}{} & \multicolumn{2}{c}{$P_2$} \\
+\cline{3-4}
+\multicolumn{2}{c|}{}& $C$ & $D$ \\
+\cline{2-4}
+$P_1$ & $C$ & -1,-1 & -5,0 \\
+\cline{2-4}
+& $D$ & 0,-5 & -3,-3 \\
+\cline{2-4}
+\end{tabular}
+\end{center}
+Payoffs are indicated as number of years of freedom lost for each player; e.g., -5,0 means $P_1$ looses 5 years and $P_2$ looses 0 years
+\vskip1cm
+What is the best strategy for each player?
+}
+
+\frame{\frametitle{Which strategy is better?}
+\begin{center}
+\begin{tabular}{c|c|c|c|}
+\multicolumn{2}{c}{} & \multicolumn{2}{c}{$P_2$} \\
+\cline{3-4}
+\multicolumn{2}{c|}{}& $C$ & $D$ \\
+\cline{2-4}
+$P_1$ & $C$ & -1,-1 & -5,0 \\
+\cline{2-4}
+& $D$ & 0,-5 & -3,-3 \\
+\cline{2-4}
+\end{tabular}
+\end{center}
+Look at the payoffs for a given individual, say, player 1. It is always advantageous for player 1 to defect (the payoff is greater). The same is true for player 2.
+}
+
+\frame{\frametitle{Standardised form of the Prisonner's Dilemma}
+Cooperation $C$, defection $D$
+\begin{center}
+\begin{tabular}{c|c|c|c|}
+\multicolumn{2}{c}{} & \multicolumn{2}{c}{$P_2$} \\
+\cline{3-4}
+\multicolumn{2}{c|}{}& $C$ & $D$ \\
+\cline{2-4}
+$P_1$ & $C$ & r,r & s,t \\
+\cline{2-4}
+& $D$ & t,s & p,p \\
+\cline{2-4}
+\end{tabular}
+\end{center}
+$t$ giving in to temptation, $r$ reward for cooperating, $p$ punishment for defecting and $s$ payoff for being a sucker and not giving in to temptation, with 
+\[
+t>r>p>s
+\]
+}
+
+\frame{\frametitle{General static games}
+\begin{itemize}
+\item Set of players $i=1,\ldots$
+\item Pure set of strategies $S_i$ for each player
+\item Payoffs for each player for each combination of pure strategies he/she can play with the other players
+\end{itemize}
+Two player games, write payoffs to player 1 as
+\[
+\pi_1(s_1,s_2),\quad \forall s_1\in S_1\textrm{ and }\forall s_2\in S_2
+\]
+and to player 2 as
+\[
+\pi_2(s_1,s_2),\quad \forall s_1\in S_1\textrm{ and }\forall s_2\in S_2
+\]
+}
+
+
+\frame{\frametitle{Back to the standardised PD}
+\begin{center}
+\begin{tabular}{c|c|c|c|}
+\multicolumn{2}{c}{} & \multicolumn{2}{c}{$P_2$} \\
+\cline{3-4}
+\multicolumn{2}{c|}{}& $C$ & $D$ \\
+\cline{2-4}
+$P_1$ & $C$ & r,r & s,t \\
+\cline{2-4}
+& $D$ & t,s & p,p \\
+\cline{2-4}
+\end{tabular}
+\end{center}
+Here, $S_1=S_2=\{C,D\}$ and for player 1,
+\[
+\pi_1(C,C)=r,\quad\pi_1(C,D)=s,\quad\pi_1(D,C)=t,\quad\pi(D,D)=p
+\]
+while for player 2,
+\[
+\pi_2(C,C)=r,\quad\pi_2(C,D)=t,\quad\pi_2(D,C)=s,\quad\pi_2(D,D)=p
+\]
+}
+
+\frame{\frametitle{Mixed strategies}
+A \emph{mixed strategy} for player $i$, denoted $\sigma_i$, gives probabilities that action $s\in S_i$ is played. Denote $\Sigma_i$ the set of all mixed strategies for player $i$
+\vskip1cm
+If $S=\{s_a,s_b,\ldots,\}$, then $\sigma=(p(s_a),p(s_b),\ldots)$ is a vector a probabilities.
+}
+
+\frame{\frametitle{Dominant strategies}
+Strategy $\sigma_1$ for player 1 is \emph{strictly dominated} by $\sigma_1'$ if
+\[
+\pi_1(\sigma_1',\sigma_2)>\pi_1(\sigma_1,\sigma_2),\quad \forall \sigma_2\in\Sigma_2
+\]
+Strategy $\sigma_1$ for player 1 is \emph{weakly dominated} by $\sigma_1'$ if
+\[
+\pi_1(\sigma_1',\sigma_2)\geq\pi_1(\sigma_1,\sigma_2),\quad \forall \sigma_2\in\Sigma_2
+\]
+and 
+\[
+\exists\sigma_2'\in\Sigma_2 \textrm{ s.t. }\pi_1(\sigma_1',\sigma_2')>\pi_1(\sigma_1,\sigma_2')
+\]
+
+}
+
+
+\frame{\frametitle{Nash equilibria}
+In a two player game, a pair of strategies $(\sigma_1^*,\sigma_2^*)$ such that
+\[
+\pi_1(\sigma_1^*,\sigma_2^*)\geq\pi_1(\sigma_1,\sigma_2^*),\quad \forall \sigma_1\in\Sigma_1
+\]
+and
+\[
+\pi_2(\sigma_1^*,\sigma_2^*)\geq\pi_2(\sigma_1^*,\sigma_2),\quad \forall \sigma_2\in\Sigma_2
+\]
+is called a \emph{Nash equilibrium}
+\vskip1cm
+Set of strategies (one per player) such that no player has incentive to unilaterally change their action. Players are in equilibrium if a change in strategies by any one of them would lead that player to earn less than if they remained with their current strategy
+}
+
+\frame{\frametitle{Pareto optimal solution}
+A solution is \emph{Pareto optimal} if no player playoff can be increased without decreasing the payoff to another player 
+\vskip1cm
+These solutions are also called \emph{socially efficient}
+\vskip1cm
+Often, a Nash Equilibrium is not Pareto Optimal implying that the players' payoffs can all be increased
+}
+
+
+\section{A few games}
+
+\frame{\frametitle{Describing games}
+Named after John Hicks, Hicks optimality is a measure of efficiency. An outcome of a game is Hicks optimal if there is no other outcome that results in greater total payoffs for the players. Thus, a Hicks optimal outcome is always the point at which total payoffs across all players is maximized. A Hicks optimal outcome is always Pareto optimal. 
+
+A strategy consisting of possible moves and a probability distribution (collection of weights) which corresponds to how frequently each move is to be played. A player would only use a mixed strategy when she is indifferent between several pure strategies, and when keeping the opponent guessing is desirable - that is, when the opponent can benefit from knowing the next move. 
+
+
+In a constant sum game, the sum of all players' payoffs is the same for any outcome. Hence, a gain for one participant is always at the expense of another, such as in most sporting events. Given the conflicting interests, the equilibrium of such games is often in mixed strategies. Since payoffs can always be normalized, constant sum games may be represented as (and are equivalent to) zero sum game in which the sum of all players' payoffs is always zero. 
+
+A zero sum game is a special case of a constant sum game in which all outcomes involve a sum of all player's payoffs of 0. Hence, a gain for one participant is always at the expense of another, such as in most sporting events. Given the conflicting interests, the equilibrium of such games is often in mixed strategies.
+}
+
+\frame{\frametitle{Battle of the sexes}
+A couple agreed to meet this evening, but cannot recall if they will be attending the opera or a football match. The husband would most of all like to go to the football game. The wife would like to go to the opera. Both would prefer to go to the same place rather than different ones. If they cannot communicate, where should they go?
+\begin{center}
+\begin{tabular}{c|c|c|}
+& Opera & Football \\
+\hline
+Opera & 3,2 & 0,0 \\
+\hline
+Football & 0,0 & 2,3 \\
+\hline
+\end{tabular}
+\end{center}
+There are two pure strategy equilibria. A different pure strategy equilibrium is preferred by each player. However, either equilibrium is preferred by both players to any of the non-equilibrium outcomes. Thus, both equilibria are Pareto optimal. A mixed strategy equilibrium also exists.
+}
+
+\frame{\frametitle{Chicken}
+Two drivers, both headed for a single lane bridge from opposite directions. The first to swerve away yields the bridge to the other. If neither player swerves, the result is a costly deadlock in the middle of the bridge, or a potentially fatal head-on collision
+\begin{center}
+\begin{tabular}{c|c|c|}
+& Swerve & Straight \\
+\hline
+Swerve & -100,-100 & -1,+1 \\
+\hline
+Straight & +1,-1 & 0,0 \\
+\hline
+\end{tabular}
+\end{center}
+There are two pure strategy equilibria. A different pure strategy equilibrium is preferred by each player. Both equilibria are Pareto optimal. A mixed strategy equilibrium also exists. 
+}
+
+
+\frame{\frametitle{Hawk and dove}
+Animal confrontations
+\begin{center}
+\begin{tabular}{c|c|c|}
+& Hawk & Dove \\
+\hline
+Hawk & $(V-C)/2,(V-C)/2$ & $V,0$ \\
+\hline
+Dove & $0,V$ & $V/2,V/2$ \\
+\hline
+\end{tabular}
+\end{center}
+}
+
+
+\frame{\frametitle{Rock, paper, scissors}
+To determine who is required to do the nightly chores, two people simultaneously make one of three symbols with their fists - a rock, paper, or scissors. Simple rules of "rock breaks scissors, scissors cut paper, and paper covers rock" dictate which symbol beats the other. If both symbols are the same, the game is a tie
+\begin{center}
+\begin{tabular}{c|c|c|c|}
+& Rock & Paper & Scissors \\
+\hline
+Rock & $0,0$ & $-1,1$ & $1,-1$ \\
+\hline
+Paper & $1,-1$ & $0,0$ & $-1,1$ \\
+\hline
+Scissors & $-1,1$ & $1,-1$ & $0,0$ \\
+\hline
+\end{tabular}
+\end{center}
+Zero sum game. The only equilibrium is in mixed strategies
+}
+
+
+\frame{\frametitle{Matching pennies}
+First select who will be represented by "same" and who will be represented by "different." Then, each player conceals in their palm a penny either with its face up or face down. Both coins are revealed simultaneously. If they match (both are heads or both are tails), "same" wins. If they are different (one heads and one tails), "different" wins
+\begin{center}
+\begin{tabular}{c|c|c|}
+& Heads & Tails \\
+\hline
+Heads & $-1,1$ & $1,-1$ \\
+\hline
+Tails & $1,-1$ & $-1,1$ \\
+\hline
+\end{tabular}
+\end{center}
+The game is zero sum. The only equilibrium is in mixed strategies. Each plays each strategy with equal probability, resulting in an expected payoff of zero for each player. 
+}
+
+
+\frame{\frametitle{Stag hunt}
+The French philosopher, Jean Jacques Rousseau, presented the following situation. Two hunters can either jointly hunt a stag (an adult deer and rather large meal) or individually hunt a rabbit (tasty, but substantially less filling). Hunting stags is quite challenging and requires mutual cooperation. If either hunts a stag alone, the chance of success is minimal. Hunting stags is most beneficial for society but requires a lot of trust among its members. 
+\begin{center}
+\begin{tabular}{c|c|c|}
+& Stag & Rabbit \\
+\hline
+Stag & $10,10$ & $0,8$ \\
+\hline
+Rabbit & $8,0$ & $7,7$ \\
+\hline
+\end{tabular}
+\end{center}
+There are two pure strategy equilibria. Both players prefer one equilibrium to the other - it is both Pareto optimal and Hicks optimal. However, the inefficient equilibrium is less risky as the payoff variance over the other player's strategies is lower. Specifically, one equilibrium is payoff-dominant while the other is risk-dominant.
+}
+
+
+\section{Evolutionary stable strategies}
+
+\frame{\frametitle{Hawk and dove}
+Animal confrontations. $G$ gain in fitness from a confrontation, $C$ the cost of the confrontation
+\begin{center}
+\begin{tabular}{c|c|c|}
+& Hawk & Dove \\
+\hline
+Hawk & $(G-C)/2,(G-C)/2$ & $G,0$ \\
+\hline
+Dove & $0,G$ & $G/2,G/2$ \\
+\hline
+\end{tabular}
+\end{center}
+\begin{itemize}
+\item If mostly dove population, hawks spread (their gain is $G$)
+\item If mostly hawk population, doves keep fitness unchanged while hawks loose on average $(G-C)/2$
+\end{itemize}
+}
+
+\frame{\frametitle{Evolutionary stability}
+\begin{definition}
+A behaviour is \emph{evolutionary stable} if, whenever all members of the population adopt it, no dissident behaviour could invade the population under the influence of natural selection
+\end{definition}
+Let $W(I,Q)$ be the fitness of an individual of type $I$ in a population of composition $Q$ and $xJ+(1-x)I$ be the mixed population with frequency of $J$-types $x$ and frequency $1-x$ of $I$-types. 
+\vskip1cm
+Population of $I$-types is evolutionary stable if, whenever a small amount of deviant $J$-types is introduced, $I$-type do better than the newcomers
+}
+
+
+\frame{
+Population of $I$-types is evolutionary stable 
+\vskip0.5cm
+``if, whenever a small amount of deviant $J$-types is introduced, $I$-type do better than the newcomers'' 
+\[\Leftrightarrow\]
+for all sufficiently small $\varepsilon>0$,
+\[
+\forall J\neq I,\quad W(J,\varepsilon J+(1-\varepsilon)I)<W(I,\varepsilon J+(1-\varepsilon)I)
+\]
+}
+
+\frame{
+Assume $W(I,Q)$ continuous in $Q$. Then, as $\varepsilon\to 0$,
+\[
+\forall J\neq I,\quad W(J,\varepsilon J+(1-\varepsilon)I)<W(I,\varepsilon J+(1-\varepsilon)I)
+\]
+becomes
+\[
+\forall J,\quad W(J,I)\leq W(I,I)
+\]
+}
+
+
+\frame{
+In hawk-dove, neither of the pure strategies is evolutionary stable: each can be invaded by the other. But ``escalating with probability $p=G/C$'' cannot be invaded by any other type, and thus is evolutionary stable
+}
+
+\frame{\frametitle{Sex ratio}
+Why is the sex ratio 1/2 so prevalent?
+\vskip1cm
+$p$ sex ratio of a given individual, $m$ the average sex ratio in the population. $N_1$ number of individuals in generation $1$:
+\[
+mN_1\textrm{ are male and }(1-m_1)N_1\textrm{ are female}
+\]
+$N_2$ number of individuals in generation $2$
+}
+
+\frame{
+Take an individual in generation $2$: it has one father and one mother. Probability that a given male in generation $1$ is its father is $\dfrac 1{mN_1}$. So the expected number of children produced by a generation $1$ male is (assume random mating)
+\[
+\frac{N_2}{mN_1}
+\]
+Similarly, a female in generation $1$ contributes an average
+\[
+\frac{N_2}{(1-m)N_1}
+\]
+children
+}
+
+\frame{
+Therefore, an individual in generation 0 with sex ratio $p$ has expected number of grandchildren in generation $2$
+\[
+p\frac{N_2}{mN_1}+(1-p)\frac{N_2}{(1-m)N_1}
+\]
+Another way to say this is to say that its fitness is proportional to
+\[
+w(p,m)=\frac pm +\frac{1-p}{1-m}
+\]
+Suppose $m\in(0,1)$ (otherwise extinction), then $p\mapsto w(m,p)$ has max at $p=1/2$
+}
+\end{document}

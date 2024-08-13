@@ -1,0 +1,215 @@
+%\SweaveUTF8
+\documentclass[aspectratio=169]{beamer}
+
+\input{slides-setup-whiteBG.tex}
+
+
+
+
+\title[Intro to math. modelling]{MATH 3610 -- 01 -- Introduction to mathematical modelling}
+\author{\texorpdfstring{Julien Arino\newline University of Manitoba\newline\url{julien.arino@umanitoba.ca}}{Julien Arino}}
+\date{}
+
+\usepackage{Sweave}
+\begin{document}
+
+\input{math-3610-01-intro-modelling-concordance}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% The title page
+\begin{frame}[noframenumbering,plain]
+  \begin{tikzpicture}[remember picture,overlay]
+    \node[above right,inner sep=0pt,opacity=0.2] at (current page.south west)
+    {
+        \includegraphics[height=\paperheight,width=\paperwidth]{FIGS/population-models-Gemini_Generated_Image_r55bcer55bcer55b.jpeg}
+    };
+    \node[anchor=north east,
+    inner sep=5pt,
+    opacity=0.9] at (current page.north east)
+    {
+        \includegraphics[width=0.2\textwidth]{FIGS/UM-logo-horizontal-CMYK.png}
+    };
+    \node[anchor=south, 
+    align=justify, 
+    text=black, 
+    text width=1.1\textwidth,
+    font=\footnotesize]  (land_acknowledgement)
+    at (current page.south) 
+    {The University of Manitoba campuses are located on original lands of Anishinaabeg, Ininew, Anisininew, Dakota and Dene peoples, and on the National Homeland of the Red River Métis.\\
+    We respect the Treaties that were made on these territories, we acknowledge the harms and mistakes of the past, and we dedicate ourselves to move forward in partnership with Indigenous communities in a spirit of Reconciliation and collaboration.};  
+    \node[align=center, anchor=south,
+    above=0.5cm of land_acknowledgement,
+    text=black,
+    font=\bfseries] {Fall 2024};
+\end{tikzpicture}
+  \setbeamercolor{title}{fg=subsub_header_section}
+  \setbeamercolor{author}{fg=subsub_header_section} 
+  \setbeamerfont{title}{size=\Large,series=\bfseries}
+  \setbeamerfont{author}{size=\Large,series=\bfseries}
+  \setbeamerfont{date}{series=\bfseries}
+	\titlepage
+\end{frame}
+\addtocounter{page}{-1}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% The outline page
+\begin{frame}[noframenumbering,plain]
+  \begin{tikzpicture}[remember picture,overlay]
+    \node[above right,inner sep=0pt,opacity=0.2] at (current page.south west)
+    {
+        \includegraphics[height=\paperheight,width=\paperwidth]{FIGS/population-models-Gemini_Generated_Image_r55bccr55bccr55b.jpeg}
+    };
+  \end{tikzpicture}
+  \setbeamercolor{section in toc}{fg=subsub_header_section}
+  \setbeamerfont{section in toc}{size=\Large,series=\bfseries}
+  \frametitle{\textcolor{blue}{\LARGE\bfseries Outline}}
+  \tableofcontents[hideallsubsections]
+\end{frame}
+\addtocounter{page}{-1}
+
+
+
+%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%
+\section{Course description}
+
+\frame{\frametitle{Math 3610 -- Introduction to Mathematical Modelling}
+\begin{description}
+\item[Lectures] Tuesday and Thursday, 13:00--14:15 @ 415 MH
+\item[Office hours] Unknown at present 
+\end{description}
+}
+
+
+\frame{\frametitle{Course objectives}
+The objective of the course is to introduce mathematical modelling, that is, the construction and analysis of mathematical models inspired by real life problems. The course will present several modelling techniques and the means to analyze the resulting systems.
+}
+
+\frame{\frametitle{Topics}
+Types of models (static, discrete time, continuous time, stochastic) with case studies chosen from population dynamics and other fields yet to be determined.
+}
+
+\frame{\frametitle{Evaluation}
+\begin{center}
+\begin{tabular}{r|l}
+Assignments & 20\% \\
+Midterm & 15\% \\
+Modelling project & 25\% \\
+Final examination & 40\%
+\end{tabular}
+\end{center}
+Midterm and Final will be open book exams, calculators are not allowed
+}
+
+\frame{\frametitle{Project}
+\begin{itemize}
+\item project subject must be decided before the end of February
+\item if you have a topic you are already working on, you are welcome to use it (but the report you produce must be specific to this course)
+\end{itemize}
+}
+
+
+\section{Mathematical modelling}
+
+\frame{\frametitle{Mathematical modelling}
+\begin{itemize}
+\item idealization of real-world problems
+\item try to help understand mechanisms
+\item never a completely accurate representation
+\end{itemize}
+Art vs math:
+\begin{itemize}
+\item a painting represents a model (reality)
+\item a mathematical model represents reality
+\end{itemize} 
+}
+
+
+\frame{\frametitle{Steps of the modelling process}
+\begin{itemize}
+\item identify the most important processes governing the problem (theoretical assumptions)
+\item identify the state variables (quantities studied)
+\item identify the basic principles that govern the state variables (physical
+laws, interactions, $\dots$)
+\item express mathematically these principles in terms of state variables (choice of formalism)
+\item make sure units are consistent
+\end{itemize}
+}
+
+\frame{\frametitle{Steps of the modelling process (2)}
+Once a model is obtained
+\begin{itemize}
+\item identify and evaluate the values of parameters
+\item identify the type of mathematical techniques required for the analysis of the model
+\item conduct numerical simulations of the model
+\item validate the model: it must represent accurately the real process
+\item verify the model: it must reproduce know states of the real process
+\end{itemize}
+}
+
+\frame{
+\begin{block}{How to represent a problem}
+\begin{itemize}
+\item static vs dynamic
+\item stochastic vs deterministic
+\item continous vs discrete
+\item homogeneous vs detailed
+\end{itemize}
+\end{block}
+\begin{block}{Formalism}
+ODE, PDE, DDE, SDE, integral equations, integro-differential equations, Markov Chains, game theory, graph theory, cellular automata, L-systems $\dots$
+\end{block}
+}
+
+
+
+\frame{\frametitle{Example: biological problems}
+\begin{itemize}
+\item ecology (predator-prey system, populations in competition $\dots$)
+\item etology 
+\item epidemiology (propagation of infectious diseases)
+\item physiology (neuron, cardiac cells, muscular cells)
+\item immunology
+\item cell biology
+\item structural biology
+\item molecular biology
+\item genetics (spread of genes in a population)
+\item $\dots$
+\end{itemize}
+}
+
+
+
+
+
+
+
+%\frame{\frametitle{Classification of models}
+%
+%\begin{itemize}
+%\item Stochastic versus Deterministic
+%\item
+%\end{itemize}
+%}
+%
+%\frame{\frametitle{Stochastic versus Deterministic}
+%\begin{itemize}
+%\item In some cases, the deterministic method expresses the average state of the actual stochastic process.
+%\item The larger the initial population, the better the agreement is between experimental values and values obtained from the deterministic method.
+%\end{itemize}
+%}
+
+
+
+\end{document}
