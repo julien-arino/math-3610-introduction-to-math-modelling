@@ -3,7 +3,7 @@
 
 \input{slides-setup-whiteBG.tex}
 
-\title[Genetics]{Genetics\\[1.5cm] Markov chains}
+\title[Genetics]{Genetics -- Markov chains}
 \author{\texorpdfstring{Julien Arino\newline University of Manitoba\newline\url{julien.arino@umanitoba.ca}}{Julien Arino}}
 \date{}
 
