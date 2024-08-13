@@ -24,63 +24,11 @@ options(knitr.table.format = "latex")
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% TITLE AND OUTLINE
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% The title page
-\begin{frame}[noframenumbering,plain]
-  \begin{tikzpicture}[remember picture,overlay]
-    \node[above right,inner sep=0pt,opacity=0.2] at (current page.south west)
-    {
-        \includegraphics[height=\paperheight,width=\paperwidth]{FIGS/population-models-Gemini_Generated_Image_r55bcer55bcer55b.jpeg}
-    };
-    \node[anchor=north east,
-    inner sep=5pt,
-    opacity=0.9] at (current page.north east)
-    {
-        \includegraphics[width=0.2\textwidth]{FIGS/UM-logo-horizontal-CMYK.png}
-    };
-    \node[anchor=south, 
-    align=justify, 
-    text=black, 
-    text width=1.1\textwidth,
-    font=\footnotesize]  (land_acknowledgement)
-    at (current page.south) 
-    {The University of Manitoba campuses are located on original lands of Anishinaabeg, Ininew, Anisininew, Dakota and Dene peoples, and on the National Homeland of the Red River Métis.\\
-    We respect the Treaties that were made on these territories, we acknowledge the harms and mistakes of the past, and we dedicate ourselves to move forward in partnership with Indigenous communities in a spirit of Reconciliation and collaboration.};  
-    \node[align=center, anchor=south,
-    above=0.5cm of land_acknowledgement,
-    text=black,
-    font=\bfseries] {Fall 2024};
-\end{tikzpicture}
-  \setbeamercolor{title}{fg=subsub_header_section}
-  \setbeamercolor{author}{fg=subsub_header_section} 
-  \setbeamerfont{title}{size=\Large,series=\bfseries}
-  \setbeamerfont{author}{size=\Large,series=\bfseries}
-  \setbeamerfont{date}{series=\bfseries}
-	\titlepage
-\end{frame}
-\addtocounter{page}{-1}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% The outline page
-\begin{frame}[noframenumbering,plain]
-  \begin{tikzpicture}[remember picture,overlay]
-    \node[above right,inner sep=0pt,opacity=0.2] at (current page.south west)
-    {
-        \includegraphics[height=\paperheight,width=\paperwidth]{FIGS/population-models-Gemini_Generated_Image_r55bccr55bccr55b.jpeg}
-    };
-  \end{tikzpicture}
-  \setbeamercolor{section in toc}{fg=subsub_header_section}
-  \setbeamerfont{section in toc}{size=\Large,series=\bfseries}
-  \frametitle{\textcolor{blue}{\LARGE\bfseries Outline}}
-  \tableofcontents[hideallsubsections]
-\end{frame}
-\addtocounter{page}{-1}
-
+\titlepagewithfigure{FIGS/population-models-Gemini_Generated_Image_r55bcer55bcer55b.jpeg}
+\outlinepage{FIGS/population-models-Gemini_Generated_Image_r55bccr55bccr55b.jpeg}
 
 
 %%%%%%%%%%%%%%%%%%%

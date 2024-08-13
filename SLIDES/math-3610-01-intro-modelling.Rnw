@@ -4,9 +4,7 @@
 \input{slides-setup-whiteBG.tex}
 
 
-
-
-\title[Intro to math. modelling]{MATH 3610 -- 01 -- Introduction to mathematical modelling}
+\title[Intro to math. modelling]{MATH 3610 -- 01\\ Introduction to mathematical modelling}
 \author{\texorpdfstring{Julien Arino\newline University of Manitoba\newline\url{julien.arino@umanitoba.ca}}{Julien Arino}}
 \date{}
 
@@ -28,70 +26,20 @@ options(knitr.table.format = "latex")
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% TITLE AND OUTLINE
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% The title page
-\begin{frame}[noframenumbering,plain]
-  \begin{tikzpicture}[remember picture,overlay]
-    \node[above right,inner sep=0pt,opacity=0.2] at (current page.south west)
-    {
-        \includegraphics[height=\paperheight,width=\paperwidth]{FIGS/population-models-Gemini_Generated_Image_r55bcer55bcer55b.jpeg}
-    };
-    \node[anchor=north east,
-    inner sep=5pt,
-    opacity=0.9] at (current page.north east)
-    {
-        \includegraphics[width=0.2\textwidth]{FIGS/UM-logo-horizontal-CMYK.png}
-    };
-    \node[anchor=south, 
-    align=justify, 
-    text=black, 
-    text width=1.1\textwidth,
-    font=\footnotesize]  (land_acknowledgement)
-    at (current page.south) 
-    {The University of Manitoba campuses are located on original lands of Anishinaabeg, Ininew, Anisininew, Dakota and Dene peoples, and on the National Homeland of the Red River Métis.\\
-    We respect the Treaties that were made on these territories, we acknowledge the harms and mistakes of the past, and we dedicate ourselves to move forward in partnership with Indigenous communities in a spirit of Reconciliation and collaboration.};  
-    \node[align=center, anchor=south,
-    above=0.5cm of land_acknowledgement,
-    text=black,
-    font=\bfseries] {Fall 2024};
-\end{tikzpicture}
-  \setbeamercolor{title}{fg=subsub_header_section}
-  \setbeamercolor{author}{fg=subsub_header_section} 
-  \setbeamerfont{title}{size=\Large,series=\bfseries}
-  \setbeamerfont{author}{size=\Large,series=\bfseries}
-  \setbeamerfont{date}{series=\bfseries}
-	\titlepage
-\end{frame}
-\addtocounter{page}{-1}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% The outline page
-\begin{frame}[noframenumbering,plain]
-  \begin{tikzpicture}[remember picture,overlay]
-    \node[above right,inner sep=0pt,opacity=0.2] at (current page.south west)
-    {
-        \includegraphics[height=\paperheight,width=\paperwidth]{FIGS/population-models-Gemini_Generated_Image_r55bccr55bccr55b.jpeg}
-    };
-  \end{tikzpicture}
-  \setbeamercolor{section in toc}{fg=subsub_header_section}
-  \setbeamerfont{section in toc}{size=\Large,series=\bfseries}
-  \frametitle{\textcolor{blue}{\LARGE\bfseries Outline}}
-  \tableofcontents[hideallsubsections]
-\end{frame}
-\addtocounter{page}{-1}
-
-
+\titlepagewithfigure{FIGS/sections-01-Gemini_Generated_Image_iq1bq9iq1bq9iq1b.jpeg}
+\outlinepage{FIGS/sections-01-Gemini_Generated_Image_d5g0rod5g0rod5g0.jpeg}
 
 %%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%
 \section{Course description}
+% The section page
+\newSectionSlide{FIGS/sections-01-Gemini_Generated_Image_io7k3wio7k3wio7k.jpeg}
+
 
 \frame{\frametitle{Math 3610 -- Introduction to Mathematical Modelling}
 \begin{description}
@@ -102,11 +50,15 @@ options(knitr.table.format = "latex")
 
 
 \frame{\frametitle{Course objectives}
-The objective of the course is to introduce mathematical modelling, that is, the construction and analysis of mathematical models inspired by real life problems. The course will present several modelling techniques and the means to analyze the resulting systems.
+The objective of the course is to introduce mathematical modelling, that is, the construction and analysis of mathematical models inspired by real life problems.
+\vfill
+The course will present several modelling techniques and the means to analyze the resulting systems.
 }
 
 \frame{\frametitle{Topics}
 Types of models (static, discrete time, continuous time, stochastic) with case studies chosen from population dynamics and other fields yet to be determined.
+\vfill
+Note that I am a math biologist, which may drive some of the topics..
 }
 
 \frame{\frametitle{Evaluation}
@@ -118,25 +70,35 @@ Modelling project & 25\% \\
 Final examination & 40\%
 \end{tabular}
 \end{center}
+\vfill
 Midterm and Final will be open book exams, calculators are not allowed
 }
 
 \frame{\frametitle{Project}
 \begin{itemize}
-\item project subject must be decided before the end of February
-\item if you have a topic you are already working on, you are welcome to use it (but the report you produce must be specific to this course)
+\item Project subject must be decided before the end of October
+\vfill
+\item If you have a topic you are already working on, you are welcome to use it (but the report you produce must be specific to this course)
 \end{itemize}
 }
 
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Mathematical modelling}
+% The section page
+\newSectionSlide{FIGS/sections-01-Gemini_Generated_Image_1shvis1shvis1shv.jpeg}
 
 \frame{\frametitle{Mathematical modelling}
 \begin{itemize}
-\item idealization of real-world problems
-\item try to help understand mechanisms
-\item never a completely accurate representation
+\item Idealisation of real-world problems
+\vfill
+\item Try to help understand mechanisms
+\vfill
+\item Never a completely accurate representation
 \end{itemize}
+\vfill
 Art vs math:
 \begin{itemize}
 \item a painting represents a model (reality)
@@ -176,6 +138,7 @@ Once a model is obtained
 \item homogeneous vs detailed
 \end{itemize}
 \end{block}
+\vfill
 \begin{block}{Formalism}
 ODE, PDE, DDE, SDE, integral equations, integro-differential equations, Markov Chains, game theory, graph theory, cellular automata, L-systems $\dots$
 \end{block}
