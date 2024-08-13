@@ -64,14 +64,13 @@ Note that I am a math biologist, which may drive some of the topics..
 \frame{\frametitle{Evaluation}
 \begin{center}
 \begin{tabular}{r|l}
-Assignments & 20\% \\
-Midterm & 15\% \\
-Modelling project & 25\% \\
-Final examination & 40\%
+Assignments & 30\% \\
+Midterm & 30\% \\
+Modelling project & 40\% \\
 \end{tabular}
 \end{center}
 \vfill
-Midterm and Final will be open book exams, calculators are not allowed
+Calculators are not allowed for the midterm
 }
 
 \frame{\frametitle{Project}
