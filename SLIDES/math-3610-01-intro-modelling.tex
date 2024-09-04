@@ -3,8 +3,10 @@
 
 \input{slides-setup-whiteBG.tex}
 
+\let\oldsection\section
+\renewcommand{\section}[2]{\oldsection[#1]\newSectionSlide[#2]}
 
-\title[Intro to math. modelling]{MATH 3610 -- 01\\ Introduction to mathematical modelling}
+\title[Intro to math. modelling]{MATH 3610 -- 01\\ Course information \& What is modelling about?}
 \author{\texorpdfstring{Julien Arino\newline University of Manitoba\newline\url{julien.arino@umanitoba.ca}}{Julien Arino}}
 \date{}
 
@@ -27,35 +29,54 @@
 %%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%
-\section{Course description}
-% The section page
-\newSectionSlide{FIGS/sections-01-Gemini_Generated_Image_io7k3wio7k3wio7k.jpeg}
-
+% \section{Course description}
+% % The section page
+% \newSectionSlide{FIGS/sections-01-Gemini_Generated_Image_io7k3wio7k3wio7k.jpeg}
+\section{Course description}{FIGS/sections-01-Gemini_Generated_Image_io7k3wio7k3wio7k.jpeg}
 
 \frame{\frametitle{Math 3610 -- Introduction to Mathematical Modelling}
 \begin{description}
-\item[Lectures] Tuesday and Thursday, 13:00--14:15 @ 415 MH
+\item[Lectures] Tuesday and Thursday, 13:00--14:15 @ TBD
 \item[Office hours] Unknown at present 
 \end{description}
 }
 
 
 \frame{\frametitle{Course objectives}
-The objective of the course is to introduce mathematical modelling, that is, the construction and analysis of mathematical models inspired by real life problems.
+The objective of the course is to introduce mathematical modelling, that is, the construction and analysis of mathematical models inspired by real life problems
 \vfill
-The course will present several modelling techniques and the means to analyze the resulting systems.
+The course will present several modelling techniques and the means to analyze the resulting systems
+\vfill
+There will also be an emphasis on the use of computational tools using the \code{R} programming language
 }
 
 \frame{\frametitle{Topics}
 Types of models (static, discrete time, continuous time, stochastic) with case studies chosen from population dynamics and other fields yet to be determined.
 \vfill
-Note that I am a math biologist, which may drive some of the topics..
+Note that I am a math biologist, which will drive some of the topics...
+\vfill
+However, this is not MATH 4380/7380 (Mathematical Biology) -- the aim is to learn how to model, not to learn mathematical biology
 }
+
+\begin{frame}\frametitle{Specific list of topics/techniques}
+(At the time of writing, so this may change)
+\begin{itemize}
+\item Population growth: curve fitting, writing a model using differential equations or difference equations, simple analysis, bifurcation analysis for a ``simple'' model
+\item Residence times: understanding the time spent in states in compartmental models
+\item Epidemiological models: 
+\item Chemostats: phase plane analysis
+\item Traffic flow models: large linear systems of ordinary or delay differential equations
+\item Shallow water waves: partial differential equations
+\item Genetics: Markov chains
+\item Parameter identification: fitting models to data
+\item Sensitivity analysis: how do parameters affect the model?
+\end{itemize}
+\end{frame}
 
 \frame{\frametitle{Evaluation}
 \begin{center}
 \begin{tabular}{r|l}
-Assignments & 30\% \\
+Assignments (6 @ 5\% each) & 30\% \\
 Midterm & 30\% \\
 Modelling project & 40\% \\
 \end{tabular}
@@ -64,21 +85,44 @@ Modelling project & 40\% \\
 Calculators are not allowed for the midterm
 }
 
+\begin{frame}\frametitle{Assignments}
+Handed out on Fridays, due the following Friday
+\vfill
+Comprises a mathematical and a computational part
+\vfill
+Both parts must be completed to receive full marks
+\vfill
+Each assignment is worth 5\% of the final mark
+\vfill
+No late assignments!
+\end{frame}
+
 \frame{\frametitle{Project}
 \begin{itemize}
 \item Project subject must be decided before the end of October
 \vfill
-\item If you have a topic you are already working on, you are welcome to use it (but the report you produce must be specific to this course)
+\item If you have a topic you are already working on, you are welcome to use it but the report you produce must be specific to this course
+\vfill
+\item There are specific guidelines for the project, which will be posted soon
 \end{itemize}
 }
+
+\begin{frame}\frametitle{Use of \code{R}}
+Both assignments and the project require the use of \code{R} and \code{R} notebooks (RMarkdown, jupyter notebook or Sweave)
+\vfill
+I will provide some basic tutorials on how to use \code{R} and \code{R} notebooks
+\vfill 
+I am also developing a set of lectures on \code{R}, which is available online together with videos
+\end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Mathematical modelling}
-% The section page
-\newSectionSlide{FIGS/sections-01-Gemini_Generated_Image_1shvis1shvis1shv.jpeg}
+% \section{Mathematical modelling}
+% % The section page
+% \newSectionSlide{FIGS/sections-01-Gemini_Generated_Image_1shvis1shvis1shv.jpeg}
+\section{Mathematical modelling}{FIGS/sections-01-Gemini_Generated_Image_1shvis1shvis1shv.jpeg}
 
 \frame{\frametitle{Mathematical modelling}
 \begin{itemize}
@@ -88,34 +132,43 @@ Calculators are not allowed for the midterm
 \vfill
 \item Never a completely accurate representation
 \end{itemize}
-\vfill
-Art vs math:
-\begin{itemize}
-\item a painting represents a model (reality)
-\item a mathematical model represents reality
-\end{itemize} 
 }
 
-
-\frame{\frametitle{Steps of the modelling process}
+\begin{frame}{Art versus Math}
 \begin{itemize}
-\item identify the most important processes governing the problem (theoretical assumptions)
-\item identify the state variables (quantities studied)
-\item identify the basic principles that govern the state variables (physical
+\item a painting represents a model (reality)
+\vfill
+\item a mathematical model represents reality
+\end{itemize} 
+\end{frame}
+
+
+\frame{\frametitle{Steps of the modelling process -- Formulating a model}
+\begin{itemize}
+\item Identify the most important processes governing the problem (theoretical assumptions)
+\vfill
+\item Identify the state variables (quantities studied)
+\vfill
+\item Identify the basic principles that govern the state variables (physical
 laws, interactions, $\dots$)
-\item express mathematically these principles in terms of state variables (choice of formalism)
-\item make sure units are consistent
+\vfill
+\item Express mathematically these principles in terms of state variables (choice of formalism)
+\vfill
+\item Make sure units are consistent
 \end{itemize}
 }
 
-\frame{\frametitle{Steps of the modelling process (2)}
-Once a model is obtained
+\frame{\frametitle{Steps of the modelling process -- Once model is formulated}
 \begin{itemize}
-\item identify and evaluate the values of parameters
-\item identify the type of mathematical techniques required for the analysis of the model
-\item conduct numerical simulations of the model
-\item validate the model: it must represent accurately the real process
-\item verify the model: it must reproduce know states of the real process
+\item Identify the values of parameters
+\vfill
+\item Identify the type of mathematical techniques required for the analysis of the model and conduct the analysis
+\vfill
+\item Conduct numerical simulations (computational analysis) of the model
+\vfill
+\item Validate the model: it must represent accurately the real process
+\vfill
+\item Verify the model: it must reproduce know states of the real process
 \end{itemize}
 }
 

@@ -11,7 +11,7 @@
 %%%%%%%%%%%%%%%%
 \begin{document}
 \SweaveOpts{concordance=FALSE}
-\SweaveOpts{prefix.string = FIGS/slides-03}
+\SweaveOpts{prefix.string = FIGS/slides-05}
 
 
 <<set-options,echo=FALSE>>=

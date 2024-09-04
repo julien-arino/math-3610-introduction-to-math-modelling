@@ -3,7 +3,7 @@
 
 \input{slides-setup-whiteBG.tex}
 
-\title[Single population growth]{MATH 3610 -- 02 -- Single population growth models}
+\title[Single population growth]{MATH 3610 -- 02\\ Single population growth models\\Introduction to modelling}
 \author{\texorpdfstring{Julien Arino\newline University of Manitoba\newline\url{julien.arino@umanitoba.ca}}{Julien Arino}}
 \date{}
 
@@ -30,6 +30,11 @@ options(knitr.table.format = "latex")
 \titlepagewithfigure{FIGS/population-models-Gemini_Generated_Image_r55bcer55bcer55b.jpeg}
 \outlinepage{FIGS/population-models-Gemini_Generated_Image_r55bccr55bccr55b.jpeg}
 
+\begin{frame}{Objective of this part}
+In this set of slides, we introduce some of the basic concepts of population growth models
+\vfill
+We introduce some of the basic concepts of mathematical modelling and some of the questions that will be considered during the course
+\end{frame}
 
 %%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%
