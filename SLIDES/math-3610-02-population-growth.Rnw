@@ -48,9 +48,11 @@ We introduce some of the basic concepts of mathematical modelling and some of th
 
 \begin{frame}\frametitle{Objective}
 We are given a table with the population census at different time intervals between a date $a$ and a date $b$, and want to get an expression for the population. This allows us to: 
+\vfill
 \begin{itemize}
-\item compute a value for the population at any time between the date $a$ and the date $b$ (\textbf{interpolation}),
-\item predict a value for the population at a date before $a$ or after $b$ (\textbf{extrapolation}).
+\item compute a value for the population at any time between the date $a$ and the date $b$ (\textbf{interpolation})
+\vfill
+\item predict a value for the population at a date before $a$ or after $b$ (\textbf{extrapolation})
 \end{itemize}
 \end{frame}
 
@@ -222,13 +224,13 @@ Thus, we want
 \frac{\partial S}{\partial b} = 0 &\iff
 2\sum\textstyle{_{k=1}^{13}}(a+bt_k+ct_k^2-P_k)t_k = 0 \\
 \frac{\partial S}{\partial c} = 0 &\iff
-2\sum\textstyle{_{k=1}^{13}}(a+bt_k+ct_k^2-P_k)t_k^2 = 0,
+2\sum\textstyle{_{k=1}^{13}}(a+bt_k+ct_k^2-P_k)t_k^2 = 0
 \end{align*}
 that is
 \begin{align*}
 \sum\textstyle{_{k=1}^{13}}(a+bt_k+ct_k^2-P_k) &= 0\\
 \sum\textstyle{_{k=1}^{13}}(a+bt_k+ct_k^2-P_k)t_k &= 0 \\
-\sum\textstyle{_{k=1}^{13}}(a+bt_k+ct_k^2-P_k)t_k^2 &= 0.
+\sum\textstyle{_{k=1}^{13}}(a+bt_k+ct_k^2-P_k)t_k^2 &= 0
 \end{align*}
 }
 
@@ -237,13 +239,13 @@ Rearranging the system
 \begin{align*}
 \sum\textstyle{_{k=1}^{13}}(a+bt_k+ct_k^2-P_k) &= 0\\
 \sum\textstyle{_{k=1}^{13}}(a+bt_k+ct_k^2-P_k)t_k &= 0 \\
-\sum\textstyle{_{k=1}^{13}}(a+bt_k+ct_k^2-P_k)t_k^2 &= 0,
+\sum\textstyle{_{k=1}^{13}}(a+bt_k+ct_k^2-P_k)t_k^2 &= 0
 \end{align*}
 we get
 \begin{align*}
 \sum\textstyle{_{k=1}^{13}}(a+bt_k+ct_k^2) &= \sum\textstyle{_{k=1}^{13}}P_k\\
 \sum\textstyle{_{k=1}^{13}}(at_k+bt_k^2+ct_k^3) &= \sum\textstyle{_{k=1}^{13}}P_kt_k\\
-\sum\textstyle{_{k=1}^{13}}(at_k^2+bt_k^3+ct_k^4) &= \sum\textstyle{_{k=1}^{13}}P_kt_k^2.
+\sum\textstyle{_{k=1}^{13}}(at_k^2+bt_k^3+ct_k^4) &= \sum\textstyle{_{k=1}^{13}}P_kt_k^2
 \end{align*}
 }
 
@@ -251,13 +253,13 @@ we get
 \begin{align*}
 \sum\textstyle{_{k=1}^{13}}(a+bt_k+ct_k^2) &= \sum\textstyle{_{k=1}^{13}}P_k\\
 \sum\textstyle{_{k=1}^{13}}(at_k+bt_k^2+ct_k^3) &= \sum\textstyle{_{k=1}^{13}}P_kt_k\\
-\sum\textstyle{_{k=1}^{13}}(at_k^2+bt_k^3+ct_k^4) &= \sum\textstyle{_{k=1}^{13}}P_kt_k^2,
+\sum\textstyle{_{k=1}^{13}}(at_k^2+bt_k^3+ct_k^4) &= \sum\textstyle{_{k=1}^{13}}P_kt_k^2
 \end{align*}
 after a bit of tidying up, takes the form
 \begin{align*}
 \left(\sum_{k=1}^{13}1\right)a+\left(\sum_{k=1}^{13}t_k\right)b+\left(\sum_{k=1}^{13}t_k^2\right)c &= \sum_{k=1}^{13}P_k \\
 \left(\sum_{k=1}^{13}t_k\right)a+\left(\sum_{k=1}^{13}t_k^2\right)b+\left(\sum_{k=1}^{13}t_k^3\right)c &= \sum_{k=1}^{13}P_kt_k \\
-\left(\sum_{k=1}^{13}t_k^2\right)a+\left(\sum_{k=1}^{13}t_k^3\right)b+\left(\sum_{k=1}^{13}t_k^4\right)c &= \sum_{k=1}^{13}P_kt_k^2.
+\left(\sum_{k=1}^{13}t_k^2\right)a+\left(\sum_{k=1}^{13}t_k^3\right)b+\left(\sum_{k=1}^{13}t_k^4\right)c &= \sum_{k=1}^{13}P_kt_k^2
 \end{align*}
 }
 
@@ -282,88 +284,95 @@ a\\ b\\ c
 }
 
 \frame[containsverbatim]{
-With \code{R}, this is easy to solve
+With \code{R}, this is easy to solve..?
+
+\footnotesize
+<<initial-setup-fit-quadratic>>=
+t = as.double(USA_census_to_1910$Year)
+pop = as.double(USA_census_to_1910$Population)
+A = matrix(c(13, sum(t), sum(t^2),
+             sum(t), sum(t^2), sum(t^3),
+             sum(t^2), sum(t^3), sum(t^4)),
+           nrow=3,byrow=TRUE)
+b = c(sum(pop),
+      sum(pop * t),
+      sum(pop * t^2))
+sol = try(solve(A,b))
+writeLines(sol)
+@
 }
+
 
 \frame[containsverbatim]{
-Thus, to set up the problem in the form of solving $Ax=b$, we need to do the following:
-\begin{verbatim}
-format long g;
-A=[13,sum(t),sum(t.^2);sum(t),sum(t.^2),sum(t.^3);...
-sum(t.^2),sum(t.^3),sum(t.^4)];
-b=[sum(P);sum(P.*t);sum(P.*(t.^2))];
-\end{verbatim}
-The {\tt format long g} command is used to force the display of digits (normally, what is shown is in ``scientific'' notation, not very informative here).
+So we need to do some ``time shifting'': the problem is that some of the entries are too large
+
+<<>>=
+t = t - 1790
+A = matrix(c(13, sum(t), sum(t^2),
+             sum(t), sum(t^2), sum(t^3),
+             sum(t^2), sum(t^3), sum(t^4)),
+           nrow=3,byrow=TRUE)
+b = c(sum(pop),
+      sum(pop * t),
+      sum(pop * t^2))
+sol = try(solve(A,b))
+print(sol)
+@
 }
-
-\frame[containsverbatim]{
-Then, solve the system using
-\begin{verbatim}
-A\b
-\end{verbatim}
-We get the following output:
-\begin{verbatim}
->> A\b
-Warning: Matrix is close to singular or badly scaled.
-         Results may be inaccurate. RCOND = 1.118391e-020.
-
-ans =
-
-        22233186177.8195
-        -24720291.325476
-        6872.99686313725
-\end{verbatim}
-(note that here, Octave gives a solution that is not as good as this one, provided by MatLab).
-}
-
-
-%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%
-\subsection{Checking our results for the quadratic}
-% The section page
-\newSubSectionSlide{FIGS/population-models-Gemini_Generated_Image_w3izoew3izoew3iz.jpeg}
 
 
 \frame[containsverbatim]{
 Thus
 \[
-P(t)=22233186177.8195-24720291.325476t+6872.99686313725t^2
+P(t)=\Sexpr{round(sol[1])}\Sexpr{round(sol[2])}t+\Sexpr{round(sol[3])}t^2
 \]
-To see what this looks like,
-\begin{verbatim}
-plot(t,22233186177.8195-24720291.325476.*t...
-+6872.99686313725.*t.^2);
-\end{verbatim}
-(note the dots before multiplication and power, since we apply this function to every entry of $t$).
-In fact, to compare with original data:
-\begin{verbatim}
-plot(t,22233186177.8195-24720291.325476.*t...
-+6872.99686313725.*t.^2,t,P,'*');
-\end{verbatim}
+(keeping in mind that time is here shifted and starts at 0)
+\vfill
+So we define the function
+<<>>=
+sol_plot = function(t, sol) {
+  t = t - 1790
+  return(sol[1] + sol[2]*t + sol[3]*t^2)
+}
+@
 }
 
-\maxFrameImage{FIGS/quadratic_fit}
+<<plot-census-1910-and-fit-ggplot,eval=TRUE,echo=FALSE,fig=TRUE,width=6,height=4,include=FALSE>>=
+plot_USA_census_to_1910 = 
+  ggplot(USA_census_to_1910, aes(x=Year, y=Population)) +
+  stat_function(fun = function(x) sol_plot(x, sol)) +
+  geom_point() +
+  labs(title="US population from 1790 to 1910",
+       x="Year",
+       y="Population") +
+  theme_minimal() +
+  scale_y_continuous(labels = label_comma())
+print(plot_USA_census_to_1910)
+@
 
+\maxFrameImage{FIGS/slides-02-plot-census-1910-and-fit-ggplot.pdf}
 
 
 
 \frame[containsverbatim]{
 Form the vector of errors, and compute sum of errors squared:
-\begin{verbatim}
-octave:26> E=f(t)-P;
-octave:27> sum(E.^2)
-ans =     12186176863781.4
-\end{verbatim}
-Quite a large error (12,186,176,863,781.4), which is normal since we have used actual numbers, not thousands or millions of individuals, and we are taking the square of the error.
+<<>>=
+t = USA_census_to_1910$Year
+P = USA_census_to_1910$Population
+E = sum((P - sol_plot(t, sol))^2)
+@
+\vfill
+Quite a large error (\Sexpr{format(round(E), digits=14, big.mark = ",")}), which is normal since we have used actual numbers, not thousands or millions of individuals, and we are taking the square of the error
 }
 
 \frame[containsverbatim]{\frametitle{Now for the big question...}
 How does our formula do for present times?
-\begin{verbatim}
-f(2006)
-ans =     301468584.066013
-\end{verbatim}
-Actually, quite well: 301,468,584, compared to the 298,444,215 July 2006 estimate, overestimates the population by 3,024,369, a relative error of approximately 1\%.
+\vfill
+<<>>=
+format(sol_plot(2024, sol), big.mark = ",")
+@
+\vfill
+Actually, quite well: \Sexpr{format(sol_plot(2024, sol), big.mark = ",")}, compared to the 345,786,196 September 2024 estimate, overestimates the population by \Sexpr{format(sol_plot(2024, sol)-345786196, big.mark = ",")}, a relative error of \Sexpr{round(100*(sol_plot(2024, sol)-345786196)/345786196,2)}\%
 }
 
 \frame{\frametitle{The US population from 1790 to 2020 (revised numbers)}
@@ -390,7 +399,6 @@ kable(tables,
 library(scales)
 plot_USA_census = 
   ggplot(USA_census, aes(x=Year, y=Population)) +
-  geom_line() +
   geom_point() +
   labs(title="US population from 1790 to 2020",
        x="Year",
@@ -403,6 +411,51 @@ print(plot_USA_census)
 \maxFrameImage{FIGS/slides-02-plot-census-ggplot.pdf}
 
 
+<<echo=FALSE>>=
+t = as.double(USA_census$Year)
+pop = as.double(USA_census$Population)
+t = t - 1790
+A = matrix(c(length(t), sum(t), sum(t^2),
+             sum(t), sum(t^2), sum(t^3),
+             sum(t^2), sum(t^3), sum(t^4)),
+           nrow=3,byrow=TRUE)
+b = c(sum(pop),
+      sum(pop * t),
+      sum(pop * t^2))
+sol_full = try(solve(A,b))
+@
+
+<<echo=FALSE>>=
+sol_plot = function(t, sol) {
+  t = t - 1790
+  return(sol[1] + sol[2]*t + sol[3]*t^2)
+}
+@
+
+<<plot-census-and-fit-ggplot,eval=TRUE,echo=FALSE,fig=TRUE,width=6,height=4,include=FALSE>>=
+plot_USA_census = 
+  ggplot(USA_census, aes(x=Year, y=Population)) +
+  stat_function(fun = function(x) sol_plot(x, sol_full)) +
+  geom_point() +
+  labs(title="US population from 1790 to 2020 (with fit)",
+       x="Year",
+       y="Population") +
+  theme_minimal() +
+  scale_y_continuous(labels = label_comma())
+print(plot_USA_census)
+@
+
+\maxFrameImage{FIGS/slides-02-plot-census-and-fit-ggplot.pdf}
+
+\frame[containsverbatim]{
+How does our formula do for present times?
+\vfill
+<<>>=
+format(sol_plot(2024, sol_full), big.mark = ",")
+@
+\vfill
+Actually, quite well: \Sexpr{format(sol_plot(2024, sol_full), big.mark = ",")}, compared to the 345,786,196 September 2024 estimate, underestimates the population by \Sexpr{format(sol_plot(2024, sol_full)-345786196, big.mark = ",")}, a relative error of \Sexpr{round(100*(sol_plot(2024, sol_full)-345786196)/345786196,2)}\%
+}
 
 %%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%
@@ -413,12 +466,13 @@ print(plot_USA_census)
 \frame{\frametitle{Other similar approaches}
 Pritchett, 1891:
 \[
-P=a+bt+ct^2+dt^3.
+P=a+bt+ct^2+dt^3
 \]
-(we have done this one, and found it to be quite good too).\\
+(we have done this one, and found it to be quite good too)
+\vfill
 Pearl, 1907:
 \[
-P(t)=a+bt+ct^2+d\ln t.
+P(t)=a+bt+ct^2+d\ln t
 \]
 Finds
 \[
@@ -430,13 +484,6 @@ P(t)=9,064,900-6,281,430t+842,377t^2+19,829,500\ln t.
 
 
 
-%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%
-\subsection{Other population curves}
-% The section page
-\newSubSectionSlide{FIGS/population-models-Gemini_Generated_Image_w3izofw3izofw3iz.jpeg}
-
-
 \frame{\frametitle{The logistic curve}
 Pearl and Reed try
 \[
@@ -444,19 +491,16 @@ P(t)=\frac{be^{at}}{1+ce^{at}}
 \]
 or
 \[
-P(t)=\frac{b}{e^{-at}+c}.
+P(t)=\frac{b}{e^{-at}+c}
 \]
-%They find
-%\[
-%P(t)=\frac{2,930.3009}{e^{-0.0313395t}+0.014854}.
-%\]
 }
 
 
 \frame{\frametitle{What is wrong with the logistic equation here?}
 \begin{itemize}
-\item The carrying capacity is constant.
-\item The model does not take immigration into account (for the US, this is an important component).
+\item The carrying capacity is constant
+\vfill
+\item The model does not take immigration into account (for the US, this is an important component)
 \end{itemize}
 }
 
@@ -472,6 +516,7 @@ P(t)=\frac{b}{e^{-at}+c}.
 %%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%
 \section{Least squares problems}
+\newSectionSlide{FIGS/population-models-Gemini_Generated_Image_w3izofw3izofw3iz.jpeg}
 
 \begin{frame}{A.k.a. if the Math Dept was less \#\$\%\&, you'd know this}
 	The following are a brief extract from MATH 2740 slides...
@@ -762,58 +807,71 @@ k_1
 \newSectionSlide{FIGS/population-models-Gemini_Generated_Image_gsewj8gsewj8gsew.jpeg}
 
 
+%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%
+\subsection{Formulating the logistic equation}
+% The section page
+\newSubSectionSlide{FIGS/population-models-Gemini_Generated_Image_w3izoew3izoew3iz.jpeg}
+
+
 \frame{\frametitle{The logistic equation}
 The logistic curve is the solution to the ordinary differential equation
 \[
-N'=rN\left(1-\frac NK\right),
+N\pprime=rN\left(1-\frac NK\right)
 \]
-which is called the \textbf{logistic equation}. $r$ is the \textbf{intrinsic growth rate}, $K$ is the \textbf{carrying capacity}.
-\vskip1cm
-This equation was introduced by Pierre-Fran\c{c}ois Verhulst (1804-1849), in 1844.
+which is called the \textbf{logistic equation}
+\vfill
+$r$ is the \textbf{intrinsic growth rate}, $K$ is the \textbf{carrying capacity}
+\vfill
+This equation was introduced by Pierre-Fran\c{c}ois Verhulst (1804-1849) in 1844
 }
 
 \frame{\frametitle{Deriving the logistic equation}
 The idea is to represent a population with the following components:
 \begin{itemize}
-\item birth, at the \textbf{per capita} rate $b$,
-\item death, at the \textbf{per capita} rate $d$,
-\item competition of individuals with other individuals reduces their ability to survive, resulting in death.
+\item birth, at the \textbf{per capita} rate $b$
+\item death, at the \textbf{per capita} rate $d$
+\item competition of individuals with other individuals reduces their ability to survive, resulting in death
 \end{itemize}
+\vfill
 This gives
 \[
-N'=bN-dN-\textrm{competition}.
+N\pprime=bN-dN-\textrm{competition}
 \]
 }
 
 \frame{\frametitle{Accounting for competition}
-Competition describes the mortality that occurs when two individuals meet.
+Competition describes the mortality that occurs when two individuals meet
 \begin{itemize}
 \item
-In chemistry, if there is a concentration $X$ of one product and $Y$ of another product, then $XY$, called \textbf{mass action}, describes the number of interactions of molecules of the two products.
+In chemistry, if there is a concentration $X$ of one product and $Y$ of another product, then $XY$, called \textbf{mass action}, describes the number of interactions of molecules of the two products
 \item
-Here, we assume that $X$ and $Y$ are of the same type (individuals). So there are $N^2$ contacts.
+Here, we assume that $X$ and $Y$ are of the same type (individuals). So there are $N^2$ contacts
 \item
-These $N^2$ contacts lead to death of one of the individuals at the rate $c$.
+These $N^2$ contacts lead to death of one of the individuals at the rate $c$
 \end{itemize}
+\vfill
 Therefore, the \textbf{logistic} equation is
 \[
-N'=bN-dN-cN^2.
+N\pprime=bN-dN-cN^2
 \]
 }
 
 \frame{\frametitle{Reinterpreting the logistic equation}
 The equation
 \[
-N'=bN-dN-cN^2
+N\pprime=bN-dN-cN^2
 \]
 is rewritten as
 \[
-N'=(b-d)N-cN^2.
+N\pprime=(b-d)N-cN^2
 \]
+\vfill
 \begin{itemize}
-\item $b-d$ represents the rate at which the population increases (or decreases) in the absence of competition. It is called the \textbf{intrinsic growth rate} of the population.
-\item $c$ is the rate of \textbf{intraspecific} competition. The prefix \textbf{intra} refers to the fact that the competition is occurring between members of the same species, that is, within the species.\newline
-[We will see later examples of \textbf{interspecific} competition, that is, between different species.]
+\item $b-d$ represents the rate at which the population increases (or decreases) in the absence of competition. It is called the \textbf{intrinsic growth rate} of the population
+\item $c$ is the rate of \textbf{intraspecific} competition. The prefix \textbf{intra} refers to the fact that the competition is occurring between members of the same species, that is, within the species
+\vfill
+[We will see later examples of \textbf{interspecific} competition, that is, between different species]
 \end{itemize}
 }
 
@@ -821,39 +879,43 @@ N'=(b-d)N-cN^2.
 \frame{\frametitle{Another (..) interpretation of the logistic equation}
 We have
 \[
-N'=(b-d)N-cN^2.
+N\pprime=(b-d)N-cN^2
 \]
+\vfill
 Factor out an $N$:
 \[
-N'=\bigl((b-d)-cN\bigr)N.
+N\pprime=\bigl((b-d)-cN\bigr)N
 \]
+\vfill
 This gives us another interpretation of the logistic equation. Writing
 \[
-\frac{N'}N=(b-d)-cN,
+\frac{N\pprime}N=(b-d)-cN
 \]
-we have $N'/N$, the \textbf{per capita growth rate} of $N$, given by a constant, $b-d$, minus a \textbf{density dependent inhibition} factor, $cN$.
+we have $N\pprime/N$, the \textbf{per capita growth rate} of $N$, given by a constant, $b-d$, minus a \textbf{density dependent inhibition} factor, $cN$
 }
 
 \frame{\frametitle{Equivalent equations}
 \begin{align*}
-N' &= (b-d)N-cN^2\\
+N\pprime &= (b-d)N-cN^2\\
 &= \bigl((b-d)-cN\bigr)N \\
-&= \left(r-\frac rr cN\right)N,\quad\textrm{with }r=b-d \\
+&= \left(r-\frac rr cN\right)N \qquad\textrm{with }r=b-d \\
 &= rN\left(1-\frac crN\right) \\
-&= rN\left(1-\frac NK\right),
+&= rN\left(1-\frac NK\right)
 \end{align*}
 with
 \[
-\frac cr=\frac 1K,
+\frac cr=\frac 1K
 \]
-that is, $K=r/c$.
+i.e., $K=r/c$
 }
 
 \frame{\frametitle{3 ways to tackle this equation}
 \begin{enumerate}
-\item The equation is separable. [explicit method]
-\item The equation is a Bernoulli equation. [explicit method]
-\item Use qualitative analysis.
+\item The equation is separable [explicit method]
+\vfill
+\item The equation is a Bernoulli equation [explicit method]
+\vfill
+\item Use qualitative analysis
 \end{enumerate}
 }
 
@@ -871,18 +933,19 @@ that is, $K=r/c$.
 \frame{\frametitle{Studying the logistic equation qualitatively}
 We study
 \begin{equation}\label{eq:logistic_ode}
-N'=rN\left(1-\frac NK\right).\tag{ODE1}
+N\pprime=rN\left(1-\frac NK\right) \tag{ODE1}
 \end{equation}
 For this, write
 \[
-f(N)=rN\left(1-\frac NK\right).
+f(N)=rN\left(1-\frac NK\right)
 \]
 Consider the initial value problem (IVP)
 \begin{equation}\label{ivp:logistic_ode}
-N'=f(N),\quad N(0)=N_0>0.\tag{IVP1}
+N\pprime=f(N),\quad N(0)=N_0>0 \tag{IVP1}
 \end{equation}
+\vfill
 \begin{itemize}
-\item $f$ is $C^1$ (differentiable with continuous derivative) so solutions to \eqref{ivp:logistic_ode} exist and are unique.
+\item $f$ is $C^1$ (differentiable with continuous derivative) so solutions to \eqref{ivp:logistic_ode} exist and are unique
 \end{itemize}
 }
 
@@ -890,18 +953,21 @@ N'=f(N),\quad N(0)=N_0>0.\tag{IVP1}
 \textbf{Equilibria} of \eqref{eq:logistic_ode} are points such that $f(N)=0$ (so that $N'=f(N)=0$, meaning $N$ does not vary). So we solve $f(N)=0$ for $N$. We find two points:
 \begin{itemize}
 \item $N=0$
-\item $N=K$.
+\item $N=K$
 \end{itemize}
-By uniqueness of solutions to \eqref{ivp:logistic_ode}, solutions cannot cross the lines $N(t)=0$ and $N(t)=K$.
+\vfill
+By uniqueness of solutions to \eqref{ivp:logistic_ode}, solutions cannot cross the lines $N(t)=0$ and $N(t)=K$
 }
 
-\frame{
-There are several cases.
+\frame{\frametitle{Several cases}
 \begin{itemize}
-\item $N=0$ for some $t$, then $N(t)=0$ for all $t\geq 0$, by uniqueness of solutions.
-\item $N\in(0,K)$, then $rN>0$ and $N/K<1$ so $1-N/K>0$, which implies that $f(N)>0$. As a consequence, $N(t)$ increases if $N\in(0,K)$.
-\item $N=K$, then $rN>0$ but $N/K=1$ so $1-N/K=0$, which implies that $f(N)=0$. As a consequence, $N(t)=K$ for all $t\geq 0$, by uniqueness of solutions.
-\item $N>K$, the $rN>0$ and $N/K>1$, implying that $1-N/K<0$ and in turn, $f(N)<0$. As a consequence, $N(t)$ decreases if $N\in(K,+\infty)$.
+\item $N=0$ for some $t$, then $N(t)=0$ for all $t\geq 0$, by uniqueness of solutions
+\vfill
+\item $N\in(0,K)$, then $rN>0$ and $N/K<1$ so $1-N/K>0$, which implies that $f(N)>0$. As a consequence, $N(t)$ increases if $N\in(0,K)$
+\vfill
+\item $N=K$, then $rN>0$ but $N/K=1$ so $1-N/K=0$, which implies that $f(N)=0$. As a consequence, $N(t)=K$ for all $t\geq 0$, by uniqueness of solutions
+\vfill
+\item $N>K$, the $rN>0$ and $N/K>1$, implying that $1-N/K<0$ and in turn, $f(N)<0$. As a consequence, $N(t)$ decreases if $N\in(K,+\infty)$
 \end{itemize}
 }
 
@@ -910,11 +976,11 @@ Therefore,
 \begin{theorem}
 Suppose that $N_0>0$. Then the solution $N(t)$ of \eqref{ivp:logistic_ode} is such that
 \[
-\lim_{t\to\infty} N(t)=K,
+\lim_{t\to\infty} N(t)=K
 \]
-so that $K$ is the number of individuals that the environment can support, the \textbf{carrying capacity} of the environment.
-
-If $N_0=0$, then $N(t)=0$ for all $t\geq 0$.
+so that $K$ is the number of individuals that the environment can support, the \textbf{carrying capacity} of the environment
+\vskip0.5cm
+If $N_0=0$, then $N(t)=0$ for all $t\geq 0$
 \end{theorem}
 }
 
@@ -933,48 +999,52 @@ If $N_0=0$, then $N(t)=0$ for all $t\geq 0$.
 \frame{\frametitle{The delayed logistic equation}
 Consider the equation as
 \[
-\frac{N'}{N}=(b-d)-cN,
+\frac{N'}{N}=(b-d)-cN
 \]
-that is, the per capita rate of growth of the population depends on the net growth rate $b-d$, and some density dependent inhibition $cN$ (resulting of competition).
-\vskip0.5cm
-Suppose that instead of instantaneous inhibition, there is some delay $\tau$ between the time the inhibiting event takes place and the moment when it affects the growth rate.
-\vskip0.5cm
-For example, two individuals fight for food, and one later dies of the injuries sustained during this fight.
+that is, the per capita rate of growth of the population depends on the net growth rate $b-d$, and some density dependent inhibition $cN$ (resulting of competition)
+\vfill
+Suppose that instead of instantaneous inhibition, there is some delay $\tau$ between the time the inhibiting event takes place and the moment when it affects the growth rate
+\vfill
+For example, two individuals fight for food, and one later dies of the injuries sustained during this fight
 }
 
 \frame{\frametitle{The delayed logistic equation}
 In the case of a time $\tau$ between inhibiting event and inhibition, the equation would be written as
 \[
-\frac{N'}N=(b-d)-cN(t-\tau).
+\frac{N\pprime}N=(b-d)-cN(t-\tau)
 \]
+\vfill
 Using the change of variables introduced earlier, this is written
 \begin{equation}\label{eq:logistic_dde}
-N'(t)=rN(t)\left(1-\frac{N(t-\tau)}K\right). \tag{DDE1}
+N\pprime(t)=rN(t)\left(1-\frac{N(t-\tau)}K\right) \tag{DDE1}
 \end{equation}
-Such an equation is called a \textbf{delay} differential equation. It is much more complicated to study than \eqref{eq:logistic_ode}. In fact, some things remain unknown about \eqref{eq:logistic_dde}.
+\vfill
+Such an equation is called a \textbf{delay} differential equation. It is much more complicated to study than \eqref{eq:logistic_ode}. In fact, some things remain unknown about \eqref{eq:logistic_dde}
 }
 
 \frame{\frametitle{Delayed initial value problem}
 The IVP takes the form
 \begin{equation}\label{ivp:logistic_dde}
 \begin{aligned}
-N'(t)&= rN(t)\left(1-\frac{N(t-\tau)}K\right),\\
-N(t) &= \phi(t)\textrm{ for }t\in[-\tau,0],
+N\pprime(t)&= rN(t)\left(1-\frac{N(t-\tau)}K\right)\\
+N(t) &= \phi(t)\textrm{ for }t\in[-\tau,0]
 \end{aligned} \tag{IVP2}
 \end{equation}
-where $\phi(t)$ is some continuous function. Hence, initial conditions (called initial data in this case) must be specified on an interval, instead of being specified at a point, to guarantee existence and uniqueness of solutions.
-
-We will not learn how to study this type of equation (this is graduate level mathematics). I will give a few results.
+where $\phi(t)$ is some continuous function
+\vfill
+Hence, initial conditions (called initial data in this case) must be specified on an interval, instead of being specified at a point, to guarantee existence and uniqueness of solutions
+\vfill
+We will not learn how to study this type of equation (this is graduate level mathematics). I will give a few results
 }
 
 \frame{
-To find equilibria, remark that delay should not play a role, since $N$ should be constant. Thus, equilibria are found by considering the equation with no delay, which is \eqref{eq:logistic_ode}.
+To find equilibria, remark that delay should not play a role, since $N$ should be constant. Thus, equilibria are found by considering the equation with no delay, which is \eqref{eq:logistic_ode}
+\vfill
 \begin{theorem}
-Suppose that $r\tau<\pi/2$. Then solutions of \eqref{ivp:logistic_dde} with positive initial data $\phi(t)$ starting close enough to $K$ tend to $K$. If $r\tau<37/24$, then all solutions of  \eqref{ivp:logistic_dde} with positive initial data $\phi(t)$ tend to $K$. If $r\tau>\pi/2$, then $K$ is an unstable equilibrium and all solutions of \eqref{ivp:logistic_dde} with positive initial data $\phi(t)$ on $[-\tau,0]$ are oscillatory.
+Suppose that $r\tau<\pi/2$. Then solutions of \eqref{ivp:logistic_dde} with positive initial data $\phi(t)$ starting close enough to $K$ tend to $K$. If $r\tau<37/24$, then all solutions of  \eqref{ivp:logistic_dde} with positive initial data $\phi(t)$ tend to $K$. If $r\tau>\pi/2$, then $K$ is an unstable equilibrium and all solutions of \eqref{ivp:logistic_dde} with positive initial data $\phi(t)$ on $[-\tau,0]$ are oscillatory
 \end{theorem}
-\vskip1cm
-
-There is a gray zone between $37/24$ ($\simeq 1.5417$) and $\pi/2$ ($\simeq 1.5708$). The global aspect was proved for $r\tau<37/24$ in 1945 by Wright. Although there is very strong numerical evidence that this is in fact true up to $\pi/2$, nobody has yet managed to prove it.
+\vfill
+There is a gray zone between $37/24$ ($\simeq 1.5417$) and $\pi/2$ ($\simeq 1.5708$). The global aspect was proved for $r\tau<37/24$ in 1945 by Wright. Although there is very strong numerical evidence that this is in fact true up to $\pi/2$, nobody has yet managed to prove it [Edit: now done!]
 }
 
 
@@ -992,10 +1062,10 @@ There is a gray zone between $37/24$ ($\simeq 1.5417$) and $\pi/2$ ($\simeq 1.57
 \frame{\frametitle{Discrete-time systems}
 So far, we have seen continuous-time models, where $t\in\IR_+$. Another way to model natural phenomena is by using a discrete-time formalism, that is, to consider equations of the form
 \[
-x_{t+1}=f(x_t),
+x_{t+1}=f\ (x_t)
 \]
-where $t\in\IN$ or $\IZ$, that is, $t$ takes values in a discrete valued (countable) set.
-\vskip0.5cm
+where $t\in\IN$ or $\IZ$, that is, $t$ takes values in a discrete valued (countable) set
+\vfill
 Time could for example be days, years, etc.
 }
 
@@ -1003,33 +1073,35 @@ Time could for example be days, years, etc.
 \frame{\frametitle{The logistic map}
 The logistic \textbf{map} is, for $t\geq 0$,
 \begin{equation}\label{eq:logistic_discrete}
-N_{t+1}=rN_t\left(1-\frac{N_t}K\right). \tag{DT1}
+N_{t+1}=rN_t\left(1-\frac{N_t}K\right) \tag{DT1}
 \end{equation}
-To transform this into an initial value problem, we need to provide an initial condition $N_0\geq 0$ for $t=0$.
+\vfill
+To transform this into an initial value problem, we need to provide an initial condition $N_0\geq 0$ for $t=0$
 }
 
 
 \frame{\frametitle{Some mathematical analysis}
 Suppose we have a system in the form
 \[
-x_{t+1}=f(x_t),
+x_{t+1}=f\ (x_t)
 \]
 with initial condition given for $t=0$ by $x_0$. Then,
 \begin{align*}
-x_1 &= f(x_0) \\
-x_2 &= f(x_1)= f(f(x_0))\stackrel{\Delta}{=} f^2(x_0) \\
-& \vdots \\
-x_k &= f^k(x_0).
+x_1 &= f\ (x_0) \\
+x_2 &= f\ (x_1)= f\ (f(x_0))\stackrel{\Delta}{=} f^{\ 2}(x_0) \\
+& \;\vdots \\
+x_k &= f^{\ k}(x_0)
 \end{align*}
-The $f^k=\underbrace{f\circ f\circ\cdots\circ f}_{k\textrm{ times}}$ are called the \textbf{iterates} of $f$.
+\vfill
+The $f^{\ k}=\underbrace{f\circ f\circ\cdots\circ f}_{k\textrm{ times}}$ are the \textbf{iterates} of $f$
 }
 
 \frame{\frametitle{Fixed points}
 \begin{definition}[Fixed point]
-Let $f$ be a function. A point $p$ such that $f(p)=p$ is called a \textbf{fixed point} of $f$.
+Let $f$ be a function. A point $p$ such that $f\ (p)=p$ is called a \textbf{fixed point} of $f$
 \end{definition}
 \begin{theorem}
-Consider the closed interval $I=[a,b]$. If $f:I\to I$ is continuous, then $f$ has a fixed point in $I$.
+Consider the closed interval $I=[a,b]$. If $f:I\to I$ is continuous, then $f$ has a fixed point in $I$
 \end{theorem}
 \begin{theorem}
 Let $I$ be a closed interval and $f:I\to\IR$ be a continuous function. If $f(I)\supset I$, then $f$ has a fixed point in $I$.
@@ -1291,24 +1363,17 @@ At this point, the system is said to be in a \textbf{chaotic regime}, or \textbf
 
 
 
-%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%
-\section{Conclusion}
-% The section page
-\newSectionSlide{FIGS/population-models-Gemini_Generated_Image_8z3li8z3li8z3li8.jpeg}
-
-
-
-\frame{\frametitle{A word of caution}
+\frame{\frametitle{\textbf{\textsc{Conclusion -- A word of caution}}}
 We have used three different modelling paradigms to describe the growth of a population in a \textbf{logistic} framework:
 \begin{itemize}
-\item The ODE version has monotone solutions converging to the carrying capacity $K$.
-\item The DDE version has oscillatory solutions, either converging to $K$ or, if the delay is too large, periodic about $K$.
-\item The discrete time version has all sorts of behaviors, and can be chaotic.
+\item The ODE version has monotone solutions converging to the carrying capacity $K$
+\vfill
+\item The DDE version has oscillatory solutions, either converging to $K$ or, if the delay is too large, periodic about $K$
+\vfill
+\item The discrete time version has all sorts of behaviors, and can be chaotic
 \end{itemize}
-It is important to be aware that the \textbf{choice of modelling method} is almost \textbf{as important} in the outcome of the model as the precise formulation/hypotheses of the \textbf{model}.
+\vfill
+The \textbf{choice of modelling method} is almost \textbf{as important} in the outcome of the model as the precise formulation/hypotheses of the \textbf{model}
 }
 
 
