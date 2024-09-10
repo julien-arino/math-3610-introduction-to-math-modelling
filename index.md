@@ -12,6 +12,8 @@ Feel free to use the material in these slides or in the folders. If you find thi
 
 ### Slides
 
+Note that, at present, the slides are work in progress and are only checked up to the point covered in lectures.
+
 <ul>
 {% for file in site.static_files %}
   {% if file.path contains 'SLIDES' %}
