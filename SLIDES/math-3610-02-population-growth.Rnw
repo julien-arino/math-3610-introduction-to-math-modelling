@@ -571,7 +571,7 @@ P(t)=\frac{b}{e^{-at}+c}
 
 \begin{frame}{The least squares problem (reformulated)}
 \begin{definition}[Least squares solutions]
-Consider a collection of points $(x_1,y_1),\ldots,(x_n,y_n)$, a matrix $A\in\M_{mn}$, $\bb\in\IR^m$. A \textbf{least squares solution} of $A\bx=\bb$ is a vector $\tilde \bx\in\IR^n$ s.t.
+Consider a collection of points $(x_1,y_1),\ldots,(x_n,y_n)$, a matrix $A\in\M_{mn}$, $\bb\in\IR^m$. A \defword{least squares solution} of $A\bx=\bb$ is a vector $\tilde \bx\in\IR^n$ s.t.
 \[
 \forall \bx\in\IR^n,\quad \|\bb-A\tilde\bx\|\leq \|\bb-A\bx\|
 \]
@@ -581,7 +581,7 @@ Consider a collection of points $(x_1,y_1),\ldots,(x_n,y_n)$, a matrix $A\in\M_{
 
 \begin{frame}{Needed to solve the problem}
 \begin{definition}[Best approximation]
-Let $V$ be a vector space, $W\subset V$ and $\mathbf{v}\in V$. The \textbf{best approximation} to $\mathbf{v}$ in $W$ is $\tilde{\mathbf{v}}\in W$ s.t.
+Let $V$ be a vector space, $W\subset V$ and $\mathbf{v}\in V$. The \defword{best approximation} to $\mathbf{v}$ in $W$ is $\tilde{\mathbf{v}}\in W$ s.t.
 \[
 \forall\mathbf{w}\in W, \mathbf{w}\neq\tilde{\mathbf{v}}, \quad
 \|\mathbf{v}-\tilde{\mathbf{v}}\| < \|\mathbf{v}-\mathbf{w}\|
@@ -595,7 +595,7 @@ Let $V$ be a vector space with an inner product, $W\subset V$ and $\mathbf{v}\in
 
 
 \begin{frame}{Let us find the least squares solution}
-$\forall \bx\IR^n$, $A\bx$ is a vector in the \textbf{column space} of $A$ (the space spanned by the vectors making up the columns of $A$)
+$\forall \bx\IR^n$, $A\bx$ is a vector in the \defword{column space} of $A$ (the space spanned by the vectors making up the columns of $A$)
 \vfill
 Since $\bx\in\IR^n$, $A\bx\in\mathsf{col}(A)$
 \vfill
@@ -664,7 +664,7 @@ A^T(\bb-A\tilde\bx) = \b0 &\iff A^T\bb - A^TA\tilde\bx = \b0 \\
 &\iff A^T\bb = A^TA\tilde\bx \\
 &\iff A^TA\tilde\bx = A^T\bb
 \end{align*}
-The latter system constitutes the \textbf{normal equations} for $\tilde\bx$
+The latter system constitutes the \defword{normal equations} for $\tilde\bx$
 \end{frame}
 
 
@@ -809,27 +809,188 @@ k_1
 
 %%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%
+\subsection{Ordinary differential equations 101}
+% The section page
+\newSubSectionSlide{FIGS/population-models-Gemini_Generated_Image_pp81iapp81iapp81.jpeg}
+
+
+
+\begin{frame}\frametitle{Ordinary differential equations}
+Let $t$ be an independent variable (often time) and $x(t)\in\IR^n$ a dependent variable
+\vfill
+An ordinary differential equation (ODE) is an equation of the form
+\[
+\frac{d}{dt}x(t) = f(t,x(t))
+\]
+where $f:\IR\times\IR^n\to\IR^n$ is a given function that describes how $x(t)$ changes with $t$
+\vfill
+Some equations involve higher order derivatives, but we will not consider any here so we do not present them
+\end{frame}
+
+\begin{frame}\frametitle{Initial value problems}
+An \defword{initial value problem} (IVP) is an ODE with an \defword{initial condition} (IC)
+\begin{subequations}
+\label{sys:IVP-nonautonomous}
+\begin{align}
+\frac{d}{dt}x(t) &= f(t,x(t))\label{sys:IVP-nonautonomous-ODE}\\
+x(t_0) &= x_0\label{sys:IVP-nonautonomous-IC}
+\end{align}
+\end{subequations}
+where $t_0\in\IR$ is the initial time and $x_0\in\IR^n$ is the initial value
+\vfill
+In practice, solutions to \eqref{sys:IVP-nonautonomous-ODE} form families of curves and the initial condition \eqref{sys:IVP-nonautonomous-IC} allows to pick one of these curves
+\end{frame}
+
+\begin{frame}\frametitle{Classification of ODEs}
+If $f(t,x(t))=f(x(t))$, i.e., the function $f$ does not depend on $t$, the ODE is \defword{autonomous}
+\vfill
+Most of what we consider here will be autonomous, so assume that for now
+\vfill
+If $f(x(t))$ is linear in $x(t)$, the ODE is \defword{linear}
+\end{frame}
+
+\begin{frame}\frametitle{Simplifying notation}
+We often drop the time dependence of $x$ on $t$ and write $'$ for $d/dt$. Further taking into account that $f$ is autonomous, we write \eqref{sys:IVP-nonautonomous} as
+\begin{subequations}
+\label{sys:IVP}
+\begin{align}
+x\pprime &= f(x)\label{sys:IVP-ODE}\\
+x(t_0) &= x_0\label{sys:IVP-IC}
+\end{align}
+\end{subequations}
+\end{frame}
+
+\begin{frame}\frametitle{Existence and uniqueness of solutions}
+There is a theory that studies the existence and uniqueness of solutions to \eqref{sys:IVP}; see, e.g., MATH 3440 (Ordinary Differential Equations)
+\vfill
+Here, we take a shortcut and use one of the easiest forms
+\vfill
+\begin{theorem}[Existence and uniqueness of solutions to IVPs]
+If $f$ is $C^1$ (has continuous first-order partials) in $x$, then there \emph{exists} a \emph{unique} solution to \eqref{sys:IVP} in some interval $[t_0-\varepsilon,t_0+\varepsilon]$ for some $\varepsilon>0$
+\end{theorem}
+\vfill
+(Also works for nonautonomous equations)
+\end{frame}
+
+\begin{frame}\frametitle{Studying ODE/IVP}
+In short, there are three non-mutually exclusive ways to tackle an IVP such as \eqref{sys:IVP-nonautonomous} or \eqref{sys:IVP}
+\vfill
+\begin{enumerate}
+\item Analytically: find a formula for $x(t)$
+\vfill
+\item Numerically: approximate $x(t)$
+\vfill
+\item Qualitatively: study the behaviour of $x(t)$ without finding $x(t)$
+\end{enumerate}
+\vfill
+Don't expect to be able to do 1 more than a few times in this course (or anywhere for that matter!); so we mention it but focus on 2 and 3
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%
 \subsection{Formulating the logistic equation}
 % The section page
 \newSubSectionSlide{FIGS/population-models-Gemini_Generated_Image_w3izoew3izoew3iz.jpeg}
 
-
-\frame{\frametitle{The logistic equation}
-The logistic curve is the solution to the ordinary differential equation
+\frame{\frametitle{Our goal: the logistic ODE}
+The logistic \emph{curve} mentioned by Pearl and Reed is the solution to the \defword{logistic} ODE
 \[
-N\pprime=rN\left(1-\frac NK\right)
+\frac{d}{dt}N(t) = rN(t)\left(1-\frac{N(t)}{K}\right)
 \]
-which is called the \textbf{logistic equation}
+often denoted without the time dependence and using $'$ for $d/dt$
+\begin{equation}
+\label{eq:logistic}
+N\pprime=rN\left(1-\frac NK\right)
+\end{equation}
 \vfill
-$r$ is the \textbf{intrinsic growth rate}, $K$ is the \textbf{carrying capacity}
+$r$ is the \defword{intrinsic growth rate}, $K$ is the \defword{carrying capacity}
 \vfill
 This equation was introduced by Pierre-Fran\c{c}ois Verhulst (1804-1849) in 1844
 }
 
+\begin{frame}\frametitle{Deriving the logistic equation}
+Our aim here is to derive \eqref{eq:logistic} from first principles
+\vfill
+This illustrates the mathematical modelling process when using a differential equations approach
+\end{frame}
+
+\begin{frame}\frametitle{The birth-death process}
+The simplest model for population growth is the \defword{birth-death} process
+\vfill
+Let $N(t)$ ($N$ for short if unambiguous) be the total number of individuals in an isolated population at time $t$
+\vfill
+Neglecting all other sources of change, $N$ is
+\begin{itemize}
+\item positively influenced (increases) because of births into the population
+\item negatively influenced (decreases) because of deaths in the population
+\end{itemize}
+\end{frame}
+
+\begin{frame}\frametitle{Where ODEs come in}
+We said $N$ increases/decreases because of births/deaths...
+\vfill
+This sounds a lot like what derivatives do. Remember first-year calculus: if $f(x)$ is a function $\IR\to\IR$, then $f$ is increasing at $x$ if $f'(x)>0$ and decreasing at $x$ if $f'(x)<0$
+\vfill
+Returning to $N(t)$, we thus should have $N'(t)>0$ because of births and $N'(t)<0$ because of deaths
+\vfill
+Intuitively, if births happen more often than deaths, the population should increase, while if deaths are more frequent than births, it should decrease
+\end{frame}
+
+
+\begin{frame}\frametitle{The birth-death equation}
+Assume that
+\vfill
+\begin{itemize}
+\item birth happens at the \defword{per capita} rate $b$
+\vfill
+\item death happens at the \emph{per capita} rate $d$
+\end{itemize}
+\end{frame}
+
+\begin{frame}\frametitle{Rates constant \emph{per capita} versus ``just'' constant}
+Birth increases the population, so
+\[
+N\pprime = b(N)
+\]
+with $b(N)$ the birth rate
+\vfill
+Two easiest choices, for $b\in\IR_+\setminus\{0\}$:
+\begin{enumerate}
+\item $b(N)=b$, a constant
+\item $b(N)=bN$, a linear function of $N$ (a \emph{per capita} rate, for which $N\pprime/N$ is constant)
+\end{enumerate}
+\end{frame}
+
+\begin{frame}\frametitle{An example (2022-06-01 to 2023-06-01)}
+Suppose time units are years. Consider \href{https://www.gov.mb.ca/health/population/pr2023.pdf}{data from regional health authorities} and assume that the number of kids under 1 year old is a good proxy for the number of births
+\vfill
+\begin{center}
+\begin{tabular}{ccc}
+\toprule
+& Portage la Prairie & Winnipeg\\
+\midrule
+Population & 16,389 & 832,214 \\
+Births (raw number) & 176 & 7,574 \\
+Births (\emph{per capita}) & 0.0107 & 0.0091 \\
+\end{tabular}
+\end{center}
+\vfill
+If $b(N)=b$, we should use $b=176$ for PlP and $b=7,574$ for Winnipeg. On the other hand, if $b(N)=bN$, we should use $b=0.0107$ for PlP and $b=0.0091$ for Winnipeg.. so could get by with $b=0.01$ for both
+\end{frame}
+
+\begin{frame}\frametitle{\emph{Per capita} is typically more realistic}
+It is more realistic to assume that the birth rate is proportional to the population size, because that means that the parameter $b$ is a property of the species more so than of where they are located
+\vfill
+Note that there are important differences, though: birth rates are generally consistent across a country (and even that varies), but differ from country to country
+\vfill
+We will see later in the course that using a constant birth rate can be feasible as well, once we understand its role on the model behaviour
+\end{frame}
+
 \frame{\frametitle{Deriving the logistic equation}
 The idea is to represent a population with the following components:
 \begin{itemize}
-\item birth, at the \textbf{per capita} rate $b$
+\item birth, at the \defword{per capita} rate $b$
 \item death, at the \textbf{per capita} rate $d$
 \item competition of individuals with other individuals reduces their ability to survive, resulting in death
 \end{itemize}
@@ -844,14 +1005,14 @@ N\pprime=bN-dN-\textrm{competition}
 Competition describes the mortality that occurs when two individuals meet
 \begin{itemize}
 \item
-In chemistry, if there is a concentration $X$ of one product and $Y$ of another product, then $XY$, called \textbf{mass action}, describes the number of interactions of molecules of the two products
+In chemistry, if there is a concentration $X$ of one product and $Y$ of another product, then $XY$, called \defword{mass action}, describes the number of interactions of molecules of the two products
 \item
 Here, we assume that $X$ and $Y$ are of the same type (individuals). So there are $N^2$ contacts
 \item
 These $N^2$ contacts lead to death of one of the individuals at the rate $c$
 \end{itemize}
 \vfill
-Therefore, the \textbf{logistic} equation is
+Therefore, the \defword{logistic} equation is
 \[
 N\pprime=bN-dN-cN^2
 \]
@@ -868,10 +1029,10 @@ N\pprime=(b-d)N-cN^2
 \]
 \vfill
 \begin{itemize}
-\item $b-d$ represents the rate at which the population increases (or decreases) in the absence of competition. It is called the \textbf{intrinsic growth rate} of the population
-\item $c$ is the rate of \textbf{intraspecific} competition. The prefix \textbf{intra} refers to the fact that the competition is occurring between members of the same species, that is, within the species
+\item $b-d$ represents the rate at which the population increases (or decreases) in the absence of competition. It is called the \defword{intrinsic growth rate} of the population
+\item $c$ is the rate of \defword{intraspecific} competition. The prefix \textbf{intra} refers to the fact that the competition is occurring between members of the same species, that is, within the species
 \vfill
-[We will see later examples of \textbf{interspecific} competition, that is, between different species]
+[We will see later examples of \defword{interspecific} competition, that is, between different species]
 \end{itemize}
 }
 
@@ -950,7 +1111,7 @@ N\pprime=f(N),\quad N(0)=N_0>0 \tag{IVP1}
 }
 
 \frame{
-\textbf{Equilibria} of \eqref{eq:logistic_ode} are points such that $f(N)=0$ (so that $N'=f(N)=0$, meaning $N$ does not vary). So we solve $f(N)=0$ for $N$. We find two points:
+\defword{Equilibria} of \eqref{eq:logistic_ode} are points such that $f(N)=0$ (so that $N'=f(N)=0$, meaning $N$ does not vary). So we solve $f(N)=0$ for $N$. We find two points:
 \begin{itemize}
 \item $N=0$
 \item $N=K$
@@ -979,7 +1140,7 @@ Suppose that $N_0>0$. Then the solution $N(t)$ of \eqref{ivp:logistic_ode} is su
 \lim_{t\to\infty} N(t)=K
 \]
 so that $K$ is the number of individuals that the environment can support, the \textbf{carrying capacity} of the environment
-\vskip0.5cm
+\vfill
 If $N_0=0$, then $N(t)=0$ for all $t\geq 0$
 \end{theorem}
 }
@@ -1019,7 +1180,7 @@ Using the change of variables introduced earlier, this is written
 N\pprime(t)=rN(t)\left(1-\frac{N(t-\tau)}K\right) \tag{DDE1}
 \end{equation}
 \vfill
-Such an equation is called a \textbf{delay} differential equation. It is much more complicated to study than \eqref{eq:logistic_ode}. In fact, some things remain unknown about \eqref{eq:logistic_dde}
+Such an equation is called a \defword{delay differential equation} (DDE). It is much more complicated to study than \eqref{eq:logistic_ode}. In fact, some things remain unknown about \eqref{eq:logistic_dde}
 }
 
 \frame{\frametitle{Delayed initial value problem}
@@ -1071,7 +1232,7 @@ Time could for example be days, years, etc.
 
 
 \frame{\frametitle{The logistic map}
-The logistic \textbf{map} is, for $t\geq 0$,
+The logistic \defword{map} is, for $t\geq 0$,
 \begin{equation}\label{eq:logistic_discrete}
 N_{t+1}=rN_t\left(1-\frac{N_t}K\right) \tag{DT1}
 \end{equation}
@@ -1093,12 +1254,12 @@ x_2 &= f\ (x_1)= f\ (f(x_0))\stackrel{\Delta}{=} f^{\ 2}(x_0) \\
 x_k &= f^{\ k}(x_0)
 \end{align*}
 \vfill
-The $f^{\ k}=\underbrace{f\circ f\circ\cdots\circ f}_{k\textrm{ times}}$ are the \textbf{iterates} of $f$
+The $f^{\ k}=\underbrace{f\circ f\circ\cdots\circ f}_{k\textrm{ times}}$ are the \defword{iterates} of $f$
 }
 
 \frame{\frametitle{Fixed points}
 \begin{definition}[Fixed point]
-Let $f$ be a function. A point $p$ such that $f\ (p)=p$ is called a \textbf{fixed point} of $f$
+Let $f$ be a function. A point $p$ such that $f\ (p)=p$ is called a \defword{fixed point} of $f$
 \end{definition}
 \begin{theorem}
 Consider the closed interval $I=[a,b]$. If $f:I\to I$ is continuous, then $f$ has a fixed point in $I$
@@ -1132,8 +1293,8 @@ Let $f$ be a continuously differentiable function (that is, differentiable with 
 \begin{definition}
 Suppose that $p$ is a $n$-periodic point of $f$, with $f\in C^1$.
 \begin{itemize}
-\item If $|\left(f^n\right)'(p)|<1$, then $p$ is an \textbf{attracting} periodic point of $f$.
-\item If $|\left(f^n\right)'(p)|>1$, then $p$ is an \textbf{repelling} periodic point of $f$.
+\item If $|\left(f^n\right)'(p)|<1$, then $p$ is an \defword{attracting} periodic point of $f$.
+\item If $|\left(f^n\right)'(p)|>1$, then $p$ is an \defword{repelling} periodic point of $f$.
 \end{itemize}
 \end{definition}
 }
@@ -1147,13 +1308,13 @@ where $r$ is a parameter in $\IR_+$, and $N$ will typically be taken in $[0,1]$.
 \[
 f_r(x)=rx(1-x).
 \]
-The function $f_r$ is called a \textbf{parametrized family} of functions.
+The function $f_r$ is called a \defword{parametrized family} of functions.
 }
 
 \frame{\frametitle{Bifurcations}
 \begin{definition}[Bifurcation]
 Let $f_\mu$ be a parametrized family of functions.
-Then there is a \textbf{bifurcation} at $\mu=\mu_0$ (or $\mu_0$ is a bifurcation point) if there exists $\varepsilon>0$ such that, if $\mu_0-\varepsilon<a<\mu_0$ and $\mu_0<b<\mu_0+\varepsilon$, then the dynamics of $f_a(x)$ are ``different'' from the dynamics of $f_b(x)$.
+Then there is a \defword{bifurcation} at $\mu=\mu_0$ (or $\mu_0$ is a bifurcation point) if there exists $\varepsilon>0$ such that, if $\mu_0-\varepsilon<a<\mu_0$ and $\mu_0<b<\mu_0+\varepsilon$, then the dynamics of $f_a(x)$ are ``different'' from the dynamics of $f_b(x)$.
 \end{definition}
 \vfill
 An example of ``different'' would be that $f_a$ has a fixed point (that is, a 1-periodic point) and $f_b$ has a 2-periodic point.
@@ -1324,9 +1485,9 @@ For $r>1$, the signed coefficients are $---$, so $R_2$ has no root $z>0$, implyi
 \frame{\frametitle{Summing up}
 \begin{itemize}
 \item If $0<r<1$, then $N=0$ is attracting, $p$ does not exist and there are no period 2 points.
-\item At $r=1$, there is a bifurcation (called a \textbf{transcritical} bifurcation).
+\item At $r=1$, there is a bifurcation (called a \defword{transcritical} bifurcation).
 \item If $1<r<3$, then $N=0$ is repelling, $N=p$ is attracting, and there are no period 2 points.
-\item At $r=3$, there is another bifurcation (called a \textbf{period-doubling} bifurcation).
+\item At $r=3$, there is another bifurcation (called a \defword{period-doubling} bifurcation).
 \item For $r>3$, both $N=0$ and $N=p$ are repelling, and there is a period 2 point.
 \end{itemize}
 }
@@ -1336,7 +1497,7 @@ For $r>1$, the signed coefficients are $---$, so $R_2$ has no root $z>0$, implyi
 \maxFrameImage{FIGS/bif_cascade_4}
 
 \frame{\frametitle{The period-doubling cascade to chaos}
-The logistic map undergoes a sequence of period doubling bifurcations, called the \textbf{period-doubling cascade}, as $r$ increases from 3 to 4.
+The logistic map undergoes a sequence of period doubling bifurcations, called the \defword{period-doubling cascade}, as $r$ increases from 3 to 4.
 
 \begin{itemize}
 \item Every successive bifurcation leads to a doubling of the period.
@@ -1355,7 +1516,7 @@ After a certain value of $r$, there are periodic points with all periods. In par
 \vskip1cm
 By a theorem (called \textbf{Sarkovskii's theorem}), the presence of period 3 points implies the presence of points of all periods.
 \vskip1cm
-At this point, the system is said to be in a \textbf{chaotic regime}, or \textbf{chaotic}.
+At this point, the system is said to be in a \defword{chaotic regime}, or \defword{chaotic}.
 }
 
 \maxFrameImage{FIGS/cascade_29_4}
