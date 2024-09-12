@@ -1194,12 +1194,9 @@ As a consequence, the sign of $f(N)$ is the same as the sign of $b-d$
 \newSubSectionSlide{FIGS/population-models-Gemini_Generated_Image_6fkcph6fkcph6fkc.jpeg}
 
 \frame{\frametitle{Deriving the logistic equation}
-The idea is to represent a population with the following components:
-\begin{itemize}
-\item birth, at the \defword{per capita} rate $b$
-\item death, at the \textbf{per capita} rate $d$
-\item competition of individuals with other individuals reduces their ability to survive, resulting in death
-\end{itemize}
+The birth-death model does not account for the fact that (competitive) interactions between individuals reduces their ability to survive, potentially resulting in death
+\vfill
+For instance, resources are limited
 \vfill
 This gives
 \[
@@ -1236,14 +1233,13 @@ N\pprime=(b-d)N-cN^2
 \vfill
 \begin{itemize}
 \item $b-d$ represents the rate at which the population increases (or decreases) in the absence of competition. It is called the \defword{intrinsic growth rate} of the population
-\item $c$ is the rate of \defword{intraspecific} competition. The prefix \textbf{intra} refers to the fact that the competition is occurring between members of the same species, that is, within the species
 \vfill
-[We will see later examples of \defword{interspecific} competition, that is, between different species]
+\item $c$ is the rate of \defword{intraspecific} competition. The prefix \textbf{intra} refers to the fact that the competition is occurring between members of the same species, that is, within the species
 \end{itemize}
 }
 
 
-\frame{\frametitle{Another (..) interpretation of the logistic equation}
+\frame{\frametitle{Yet aother interpretation of the logistic equation}
 We have
 \[
 N\pprime=(b-d)N-cN^2
@@ -1258,14 +1254,14 @@ This gives us another interpretation of the logistic equation. Writing
 \[
 \frac{N\pprime}N=(b-d)-cN
 \]
-we have $N\pprime/N$, the \textbf{per capita growth rate} of $N$, given by a constant, $b-d$, minus a \textbf{density dependent inhibition} factor, $cN$
+we have the \emph{per capita} growth rate $N\pprime/N$ given by a constant $b-d$ minus a \emph{density dependent inhibition} factor $cN$
 }
 
-\frame{\frametitle{Equivalent equations}
+\frame{\frametitle{Obtaining the well-known form \eqref{eq:logistic}}
 \begin{align*}
 N\pprime &= (b-d)N-cN^2\\
 &= \bigl((b-d)-cN\bigr)N \\
-&= \left(r-\frac rr cN\right)N \qquad\textrm{with }r=b-d \\
+&= \left(r-\frac rr cN\right)N \qquad\textrm{with }r=b-d\text{ the growth rate} \\
 &= rN\left(1-\frac crN\right) \\
 &= rN\left(1-\frac NK\right)
 \end{align*}
@@ -1273,7 +1269,7 @@ with
 \[
 \frac cr=\frac 1K
 \]
-i.e., $K=r/c$
+i.e., $K=r/c$ the carrying capacity
 }
 
 \frame{\frametitle{3 ways to tackle this equation}
