@@ -1261,7 +1261,7 @@ we have the \emph{per capita} growth rate $N\pprime/N$ given by a constant $b-d$
 \begin{align*}
 N\pprime &= (b-d)N-cN^2\\
 &= \bigl((b-d)-cN\bigr)N \\
-&= \left(r-\frac rr cN\right)N \qquad\textrm{with }r=b-d\text{ the growth rate} \\
+&= \left(r-\frac rr cN\right)N \qquad\textrm{with }r=b-d\text{ the \defword{growth rate}} \\
 &= rN\left(1-\frac crN\right) \\
 &= rN\left(1-\frac NK\right)
 \end{align*}
@@ -1269,16 +1269,31 @@ with
 \[
 \frac cr=\frac 1K
 \]
-i.e., $K=r/c$ the carrying capacity
+$K=r/c$ is the \defword{carrying capacity}
 }
 
-\frame{\frametitle{3 ways to tackle this equation}
+\begin{frame}\frametitle{Another interpretation of the logistic equation}
+Think in terms of the \emph{per capita} growth rate and rewrite slightly the equation
+\[
+N\pprime=rN\left(1-\frac NK\right)
+\]
+as
+\[
+\frac{N\pprime}N=r\ \frac{K-N}{K}
+\]
+\vfill 
+This gives a more intuitive understanding of the role of $K$ in regulating the population: when $N$ is smaller than $K$, the population grows, when $N$ is larger than $K$, the population decreases
+\end{frame}
+
+\frame{\frametitle{Several ways to tackle this equation}
 \begin{enumerate}
 \item The equation is separable [explicit method]
 \vfill
 \item The equation is a Bernoulli equation [explicit method]
 \vfill
 \item Use qualitative analysis
+\vfill
+\item Use numerical methods
 \end{enumerate}
 }
 
