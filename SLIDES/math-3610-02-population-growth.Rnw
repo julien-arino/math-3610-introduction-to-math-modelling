@@ -901,7 +901,7 @@ The logistic \emph{curve} mentioned by Pearl and Reed is the solution to the \de
 \]
 often denoted without the time dependence and using $'$ for $d/dt$
 \begin{equation}
-\label{eq:logistic}
+\label{eq:logistic-ode}
 N\pprime=rN\left(1-\frac NK\right)
 \end{equation}
 \vfill
@@ -911,7 +911,7 @@ This equation was introduced by Pierre-Fran\c{c}ois Verhulst (1804-1849) in 1844
 }
 
 \begin{frame}\frametitle{Deriving the logistic equation}
-Our aim here is to derive \eqref{eq:logistic} from first principles
+Our aim here is to derive \eqref{eq:logistic-ode} from first principles
 \vfill
 This illustrates the mathematical modelling process when using a differential equations approach
 \end{frame}
@@ -1039,7 +1039,7 @@ we easily find the explicit solution
 N(t)=N(t_0)e^{(b-d)(t-t_0)},\qquad t\geq t_0
 \end{equation}
 \vfill
-To check that \eqref{eq:birth-death-ODE-solution} is a solution to \eqref{sys:birth-death-ODE}, we differentiate it and check it satisfies and \eqref{sys:birth-death-ODE-IVP}:
+To check that \eqref{eq:birth-death-ODE-solution} is a solution to \eqref{sys:birth-death-ODE}, we differentiate it and check it satisfies \eqref{sys:birth-death-ODE-dN}; we also check it satisfies \eqref{sys:birth-death-ODE-IC}:
 \begin{align*}
 N\pprime(t) &= \frac{d}{dt}\left(N(t_0)e^{(b-d)(t-t_0)}\right) \\
 &= N(t_0) \frac{d}{dt}\left(e^{(b-d)(t-t_0)}\right) \\
@@ -1072,22 +1072,10 @@ This analysis is possible because we have the explicit solution \eqref{eq:birth-
 As remarked earlier, \eqref{sys:birth-death-ODE-dN} is a scalar first-order linear autonomous ODE, so the qualitative analysis is also super easy, but the ideas that follow are general and are used later in more complex models
 \vfill
 \begin{itemize}
+\item Check that the model ``makes sense'' (we sometimes say that the model is \emph{well-posed})
 \item Seek an \defword{equilibrium solution} (an \defword{equilibrium} for short), i.e., a constant solution $N(t)=N^*$ such that $N\pprime=0$ when $N(t)=N^*$
 \item Consider the sign of $N\pprime$ for $N<N^*$ and $N>N^*$ to determine the \emph{stability} of the equilibrium solution
 \end{itemize}
-\end{frame}
-
-\begin{frame}\frametitle{Equilibrium}
-An equilibrium solution $N^*$ satisfies $N^*\pprime=0$, i.e.,
-\[
-bN^*-dN^*=0
-\]
-\vfill
-This gives $N^*=0$ or $b=d$
-\vfill 
-If $b=d$, then \eqref{sys:birth-death-ODE-dN} reduces to $N\pprime=0$, which has the general solution $N(t)=C$ ($C$ the integration constant), so, with the initial condition \eqref{sys:birth-death-ODE-IC}, we have $N(t)=N_0$ for all $t\geq t_0$
-\vfill
-So let us now consider the case $b\neq d$ and $N^*=0$
 \end{frame}
 
 \begin{frame}\frametitle{First, a remark -- The model makes sense}
@@ -1122,21 +1110,18 @@ If there were, then at $t_\star$ we would have two solutions such that $N(t_\sta
 \end{center}  
 \end{frame}
 
-% \begin{frame}\frametitle{Stability of the equilibrium $N^*=0$}
-% For $N<N^*=0$, $N\pprime=bN-dN>0$, so $N(t)$ is increasing
-% \vfill
-% For $N>N^*=0$, $N\pprime=bN-dN<0$, so $N(t)$ is decreasing
-% \vfill
-% This means that $N^*=0$ is an \defword{unstable equilibrium}
-% \vfill
-% \begin{center}
-% \begin{tikzpicture}
-% \begin{axis}[xlabel=$N$,ylabel=$N\pprime$,axis lines=middle,grid=major]
-% \addplot[domain=-2:2,samples=100]{x*(1-x)};
-% \end{axis}
-% \end{tikzpicture}
-% \end{center}
-% \end{frame}
+\begin{frame}\frametitle{Equilibrium}
+An equilibrium solution $N^*$ satisfies $N^*\pprime=0$, i.e.,
+\[
+bN^*-dN^*=0
+\]
+\vfill
+This gives $N^*=0$ or $b=d$
+\vfill 
+If $b=d$, then \eqref{sys:birth-death-ODE-dN} reduces to $N\pprime=0$, which has the general solution $N(t)=C$ ($C$ the integration constant), so, with the initial condition \eqref{sys:birth-death-ODE-IC}, we have $N(t)=N_0$ for all $t\geq t_0$
+\vfill
+So let us now consider the case $b\neq d$ and $N^*=0$
+\end{frame}
 
 \begin{frame}\frametitle{Stability of the equilibrium $N^*=0$}
 Write the ODE \eqref{sys:birth-death-ODE-dN} as
@@ -1237,7 +1222,7 @@ This gives us another interpretation of the logistic equation. Writing
 we have the \emph{per capita} growth rate $N\pprime/N$ given by a constant $b-d$ minus a \emph{density dependent inhibition} factor $cN$
 }
 
-\frame{\frametitle{Obtaining the well-known form \eqref{eq:logistic}}
+\frame{\frametitle{Obtaining the well-known form \eqref{eq:logistic-ode}}
 \begin{align*}
 N\pprime &= (b-d)N-cN^2\\
 &= \bigl((b-d)-cN\bigr)N \\
@@ -1245,10 +1230,8 @@ N\pprime &= (b-d)N-cN^2\\
 &= rN\left(1-\frac crN\right) \\
 &= rN\left(1-\frac NK\right)
 \end{align*}
-with
-\[
-\frac cr=\frac 1K
-\]
+with $c/r=1/K$
+\vfill
 $K=r/c$ is the \defword{carrying capacity}
 }
 
@@ -1267,6 +1250,18 @@ This gives a more intuitive understanding of the role of $K$ in regulating the p
 The parameter $r$ sets how fast this regulation occurs
 \end{frame}
 
+\begin{frame}\frametitle{Units}
+It is important, especially later when we look at numerics, to understand the units of the parameters
+\vfill
+On the left, $dN(t)/dt$ has units of $N/t$ (or $\#/t$), i.e., population per unit time
+\vfill
+Consider three potential right hand sides, e.g., for death
+\[
+N\pprime = -d, \qquad N\pprime = -dN \quad\&\quad N\pprime = -dN^2
+\]
+First case: $d$ has units of $\#/t$. Second case, $d$ has units of $1/t$ (since $dN$ has units $\#/t$ with $N$ having units $\#$). Third case, $d$ has units of $1/(t\#)$ (since $N^2$ has units of $\#\#$)
+\end{frame}
+
 \frame{\frametitle{Several ways to tackle this equation}
 \begin{enumerate}
 \item The equation is separable [explicit method]
@@ -1282,8 +1277,6 @@ The parameter $r$ sets how fast this regulation occurs
 
 %%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%
 \subsection{Qualitative analysis of the logistic equation}
 % The section page
 \newSubSectionSlide{FIGS/population-models-Gemini_Generated_Image_8z3lj8z3lj8z3lj8.jpeg}
@@ -1292,31 +1285,35 @@ The parameter $r$ sets how fast this regulation occurs
 
 \frame{\frametitle{Studying the logistic equation qualitatively}
 We study
-\begin{equation}\label{eq:logistic_ode}
-N\pprime=rN\left(1-\frac NK\right) \tag{ODE1}
+\begin{equation}
+N\pprime=rN\left(1-\frac NK\right) \tag{\ref{eq:logistic-ode}}
 \end{equation}
 For this, write
 \[
 f(N)=rN\left(1-\frac NK\right)
 \]
-Consider the initial value problem (IVP)
-\begin{equation}\label{ivp:logistic_ode}
-N\pprime=f(N),\quad N(0)=N_0>0 \tag{IVP1}
+Consider the initial value problem consisting of \eqref{eq:logistic-ode} and an initial condition
+\begin{equation}\label{sys:logistic-ODE-IVP}
+N\pprime=f(N),\quad N(0)=N_0>0
 \end{equation}
 \vfill
 \begin{itemize}
-\item $f$ is $C^1$ (differentiable with continuous derivative) so solutions to \eqref{ivp:logistic_ode} exist and are unique
+\item $f$ is $C^1$ so solutions to \eqref{sys:logistic-ODE-IVP} exist and are unique
 \end{itemize}
 }
 
-\frame{
-\defword{Equilibria} of \eqref{eq:logistic_ode} are points such that $f(N)=0$ (so that $N'=f(N)=0$, meaning $N$ does not vary). So we solve $f(N)=0$ for $N$. We find two points:
+\frame{\frametitle{Equilibria of the logistic equation}
+Equilibria of \eqref{eq:logistic-ode} are points such that $f(N)=0$. So we solve $f(N)=0$ for $N$:
+\[
+rN\left(1-\frac NK\right)=0 \iff rN=0\text{ or }1-\frac NK=0
+\]
+So we find two points:
 \begin{itemize}
 \item $N=0$
 \item $N=K$
 \end{itemize}
 \vfill
-By uniqueness of solutions to \eqref{ivp:logistic_ode}, solutions cannot cross the lines $N(t)=0$ and $N(t)=K$
+By uniqueness of solutions to \eqref{sys:logistic-ODE-IVP}, solutions cannot cross the lines (solutions) $N(t)=0$ and $N(t)=K$
 }
 
 \frame{\frametitle{Several cases}
@@ -1331,18 +1328,56 @@ By uniqueness of solutions to \eqref{ivp:logistic_ode}, solutions cannot cross t
 \end{itemize}
 }
 
+\begin{frame}\frametitle{Stability of the equilibria}
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[xlabel=$N$,
+  ylabel=$N\pprime$,
+  axis lines=middle,
+  grid=major,
+  domain=-1:11,
+  xmin=-3, xmax=14, ymin=-2, ymax=5]
+\addplot[samples=200, very thick]{1.5*x*(1-x/10)};
+\addplot+[only marks] coordinates {(0,0) (10,0)};
+\draw[blue,-latex, ultra thick] (axis cs:-0.5,0) -- (axis cs:-3,0);
+\draw[blue,-latex, ultra thick] (axis cs:0.5,0) -- (axis cs:9.5,0);
+\draw[blue,-latex, ultra thick] (axis cs:13,0) -- (axis cs:10.5,0);
+\end{axis}
+\end{tikzpicture}
+\end{center}
+\end{frame}
+
 \frame{
-Therefore,
 \begin{theorem}
-Suppose that $N_0>0$. Then the solution $N(t)$ of \eqref{ivp:logistic_ode} is such that
+Consider the initial value problem \eqref{sys:logistic-ODE-IVP}.
+Then
+\begin{itemize}
+\item If $N_0=0$, then $N(t)=0$ for all $t\geq t_0$
+\item If $N_0>0$, then $N(t)$ is such that
 \[
 \lim_{t\to\infty} N(t)=K
 \]
 so that $K$ is the number of individuals that the environment can support, the \textbf{carrying capacity} of the environment
-\vfill
-If $N_0=0$, then $N(t)=0$ for all $t\geq 0$
+\end{itemize}
 \end{theorem}
+\vfill
+We could be more precise and break up the second case depending on whether $N_0<K$, $N_0=K$ or $N_0>K$, but the end result is the same
 }
+
+%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%
+\subsection{Computational analysis of the logistic equation}
+% The section page
+\newSubSectionSlide{FIGS/population-models-Gemini_Generated_Image_t4n5pst4n5pst4n5.jpeg}
+
+
+%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%
+\section{The continuous-time Markov chain logistic ``equation''}
+% The section page
+\newSectionSlide{FIGS/population-models-Gemini_Generated_Image_hc77fbhc77fbhc77.jpeg}
 
 
 %%%%%%%%%%%%%%%%%%%
