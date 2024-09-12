@@ -1201,16 +1201,48 @@ These $N^2$ contacts lead to death of one of the individuals at the rate $c$
 \end{itemize}
 \vfill
 Therefore, the \defword{logistic} equation is
-\[
+\begin{equation}
+\label{eq:logistic-ODE-birth-death-competition}
 N\pprime=bN-dN-cN^2
-\]
+\end{equation}
 }
+
+\begin{frame}\frametitle{Flow diagram(s) of the logistic equation}
+\begin{equation}
+\tag{\ref{eq:logistic-ODE-birth-death-competition}}
+N\pprime=bN-dN-cN^2
+\end{equation}
+\vfill
+\begin{center}
+\begin{tikzpicture}[auto]
+	%% Left diagram nodes
+	\node [cloud] at (0,0) (N1) {$N$};
+	\coordinate (birth1) at (-1.5,0);
+	\coordinate (death1) at (2.5,0);
+	%% Left diagram nodes flows
+	\path [line, very thick] (birth1) to node [midway, above] (TextNode) {$bN$} (N1);
+	\path [line, very thick] (N1) to node [midway, above] (TextNode) {$dN+cN^2$} (death1);
+	%% Right diagram nodes
+	\node [cloud] at (6,0) (N2) {$N$};
+	\coordinate (birth2) at (4.5,0);
+	\coordinate (death2) at (7.5,1);
+	\coordinate (compet2) at (7.5,-1);
+	%% Left diagram nodes flows
+	\path [line,very thick] (birth2) to node [midway,above] (TextNode) {$bN$} (N2);
+	\path [line,sloped,very thick] (N2) to node [midway,above] (TextNode) {$dN$} (death2);
+	\path [line,sloped,very thick] (N2) to node [midway,above] (TextNode) {$cN^2$} (compet2);
+\end{tikzpicture}
+\end{center}
+\vfill
+(Left is more compact. Right emphasises that there are two different ways to leave the compartment)
+\end{frame}
 
 \frame{\frametitle{Reinterpreting the logistic equation}
 The equation
-\[
+\begin{equation}
+\tag{\ref{eq:logistic-ODE-birth-death-competition}}
 N\pprime=bN-dN-cN^2
-\]
+\end{equation}
 is rewritten as
 \[
 N\pprime=(b-d)N-cN^2
@@ -1255,7 +1287,7 @@ with $c/r=1/K$
 $K=r/c$ is the \defword{carrying capacity}
 }
 
-\begin{frame}\frametitle{Another interpretation of the logistic equation}
+\begin{frame}\frametitle{Another interpretation of the logistic equation \eqref{eq:logistic-ode}}
 Think in terms of the \emph{per capita} growth rate and rewrite slightly the equation
 \[
 N\pprime=rN\left(1-\frac NK\right)
@@ -1397,7 +1429,7 @@ We could be more precise and break up the second case depending on whether $N_0<
 %%%%%%%%%%%%%%%%%%%
 \section{The continuous-time Markov chain logistic ``equation''}
 % The section page
-\newSectionSlide{FIGS/population-models-Gemini_Generated_Image_hc77fbhc77fbhc77.jpeg}
+\newSectionSlide{FIGS/population-models-Gemini_Generated_Image_ainmrnainmrnainm.jpeg}
 
 
 %%%%%%%%%%%%%%%%%%%
@@ -1434,7 +1466,7 @@ Using the change of variables introduced earlier, this is written
 N\pprime(t)=rN(t)\left(1-\frac{N(t-\tau)}K\right) \tag{DDE1}
 \end{equation}
 \vfill
-Such an equation is called a \defword{delay differential equation} (DDE). It is much more complicated to study than \eqref{eq:logistic_ode}. In fact, some things remain unknown about \eqref{eq:logistic_dde}
+Such an equation is called a \defword{delay differential equation} (DDE). It is much more complicated to study than \eqref{eq:logistic-ode}. In fact, some things remain unknown about \eqref{eq:logistic_dde}
 }
 
 \frame{\frametitle{Delayed initial value problem}
@@ -1453,7 +1485,7 @@ We will not learn how to study this type of equation (this is graduate level mat
 }
 
 \frame{
-To find equilibria, remark that delay should not play a role, since $N$ should be constant. Thus, equilibria are found by considering the equation with no delay, which is \eqref{eq:logistic_ode}
+To find equilibria, remark that delay should not play a role, since $N$ should be constant. Thus, equilibria are found by considering the equation with no delay, which is \eqref{eq:logistic-ode}
 \vfill
 \begin{theorem}
 Suppose that $r\tau<\pi/2$. Then solutions of \eqref{ivp:logistic_dde} with positive initial data $\phi(t)$ starting close enough to $K$ tend to $K$. If $r\tau<37/24$, then all solutions of  \eqref{ivp:logistic_dde} with positive initial data $\phi(t)$ tend to $K$. If $r\tau>\pi/2$, then $K$ is an unstable equilibrium and all solutions of \eqref{ivp:logistic_dde} with positive initial data $\phi(t)$ on $[-\tau,0]$ are oscillatory
@@ -1779,13 +1811,15 @@ At this point, the system is said to be in a \defword{chaotic regime}, or \defwo
 
 
 \frame{\frametitle{\textbf{\textsc{Conclusion -- A word of caution}}}
-We have used three different modelling paradigms to describe the growth of a population in a \textbf{logistic} framework:
+We have used four different modelling paradigms to describe the growth of a population in a \textbf{logistic} framework:
 \begin{itemize}
 \item The ODE version has monotone solutions converging to the carrying capacity $K$
 \vfill
+\item The CTMC version behaves like the ODE version, but with a stochastic component
+\vfill
 \item The DDE version has oscillatory solutions, either converging to $K$ or, if the delay is too large, periodic about $K$
 \vfill
-\item The discrete time version has all sorts of behaviors, and can be chaotic
+\item The discrete time version has all sorts of behaviours, including chaotic
 \end{itemize}
 \vfill
 The \textbf{choice of modelling method} is almost \textbf{as important} in the outcome of the model as the precise formulation/hypotheses of the \textbf{model}
