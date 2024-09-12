@@ -866,6 +866,7 @@ There is a theory that studies the existence and uniqueness of solutions to \eqr
 Here, we take a shortcut and use one of the easiest forms
 \vfill
 \begin{theorem}[Existence and uniqueness of solutions to IVPs]
+\label{th:existence-uniqueness-IVP}
 If $f$ is $C^1$ (has continuous first-order partials) in $x$, then there \emph{exists} a \emph{unique} solution to \eqref{sys:IVP} in some interval $[t_0-\varepsilon,t_0+\varepsilon]$ for some $\varepsilon>0$
 \end{theorem}
 \vfill
@@ -953,7 +954,7 @@ Birth increases the population, so
 \[
 N\pprime = b(N)
 \]
-with $b(N)$ the birth rate
+with $b(N):\IR_+\to\IR_+$ the birth rate function
 \vfill
 Two easiest choices, for $b\in\IR_+\setminus\{0\}$:
 \begin{enumerate}
@@ -986,6 +987,191 @@ Note that there are important differences, though: birth rates are generally con
 \vfill
 We will see later in the course that using a constant birth rate can be feasible as well, once we understand its role on the model behaviour
 \end{frame}
+
+\begin{frame}\frametitle{Modelling assumptions}
+Modelling is all about making assumptions and understanding the consequences of these assumptions
+\vfill
+Use the \emph{per capita} rate $bN$ for births and the \emph{per capita} rate $dN$ for deaths
+\vfill
+This gives the birth-death model
+\[
+N\pprime=bN-dN
+\]
+This model must be ``equiped'' with an initial condition, e.g. $N(t_0)=N_0\geq 0$
+\end{frame}
+
+\begin{frame}\frametitle{The birth-death model}
+All things considered, the model for the population with only birth and death is therefore
+\begin{subequations}
+\label{sys:birth-death-ODE}
+\begin{align}
+N\pprime &= bN-dN \label{sys:birth-death-ODE-dN} \\
+N(t_0) &= N_0 \label{sys:birth-death-ODE-IC}
+\end{align}
+\end{subequations}
+\end{frame}
+
+
+\begin{frame}\frametitle{Compartmental models and flow diagrams}
+The birth-death equation is a \defword{compartmental model} using a single compartment $N(t)$
+\vfill
+A \defword{compartment} is defined as a kinetically homogeneous group of individuals
+\vfill
+A \defword{flow diagram} is a graphical representation of a compartmental model
+\begin{center}
+\begin{tikzpicture}[auto]
+	\node [cloud] (N) {$N$};
+	\coordinate[left=of N] (birth);
+	\coordinate[right=of N] (death);
+	%% Flows
+	\path [line, very thick] (birth) to node [midway, above] (TextNode) {$bN$} (N);
+	\path [line, very thick] (N) to node [midway, above] (TextNode) {$dN$} (death);
+\end{tikzpicture}
+\end{center}
+\end{frame}
+
+\begin{frame}\frametitle{What can we say about model \eqref{sys:birth-death-ODE}?}
+\eqref{sys:birth-death-ODE-dN} is a scalar first-order linear autonomous ODE
+$\Rightarrow$
+we easily find the explicit solution
+\begin{equation}
+\label{eq:birth-death-ODE-solution}
+N(t)=N(t_0)e^{(b-d)(t-t_0)},\qquad t\geq t_0
+\end{equation}
+\vfill
+To check that \eqref{eq:birth-death-ODE-solution} is a solution to \eqref{sys:birth-death-ODE}, we differentiate it and check it satisfies and \eqref{sys:birth-death-ODE-IVP}:
+\begin{align*}
+N\pprime(t) &= \frac{d}{dt}\left(N(t_0)e^{(b-d)(t-t_0)}\right) \\
+&= N(t_0) \frac{d}{dt}\left(e^{(b-d)(t-t_0)}\right) \\
+&= N(t_0)(b-d)e^{(b-d)(t-t_0)} \\
+&= (b-d)N(t_0)e^{(b-d)(t-t_0)} \\
+&= (b-d)\left(N(t_0)e^{(b-d)(t-t_0)}\right) \\
+&= (b-d)N(t) \\
+N(t_0) &= N(t_0)e^{(b-d)(t_0-t_0)} = N(t_0)e^0 = N_0
+\end{align*}
+\end{frame}
+
+\begin{frame}\frametitle{So the behaviour is easy to understand}
+\begin{equation}
+\tag{\ref{eq:birth-death-ODE-solution}}
+N(t)=N(t_0)e^{(b-d)(t-t_0)},\qquad t\geq t_0
+\end{equation}
+\vfill
+For $t>t_0$, $t-t_0>0$, so the behaviour of \eqref{eq:birth-death-ODE-solution} is determined by the sign of $b-d$
+\vfill
+\begin{itemize}
+\item If $b>d$, then $N(t)$ grows exponentially
+\item If $b=d$, then $N(t)$ remains constant (and equal to $N(t_0)$)
+\item If $b<d$, then $N(t)$ decays exponentially to 0
+\end{itemize}
+\vfill
+This analysis is possible because we have the explicit solution \eqref{eq:birth-death-ODE-solution}. That is almost never the case, so what can we do?
+\end{frame}
+
+\begin{frame}\frametitle{Qualitative analysis}
+As remarked earlier, \eqref{sys:birth-death-ODE-dN} is a scalar first-order linear autonomous ODE, so the qualitative analysis is also super easy, but the ideas that follow are general and are used later in more complex models
+\vfill
+\begin{itemize}
+\item Seek an \defword{equilibrium solution} (an \defword{equilibrium} for short), i.e., a constant solution $N(t)=N^*$ such that $N\pprime=0$ when $N(t)=N^*$
+\item Consider the sign of $N\pprime$ for $N<N^*$ and $N>N^*$ to determine the \emph{stability} of the equilibrium solution
+\end{itemize}
+\end{frame}
+
+\begin{frame}\frametitle{Equilibrium}
+An equilibrium solution $N^*$ satisfies $N^*\pprime=0$, i.e.,
+\[
+bN^*-dN^*=0
+\]
+\vfill
+This gives $N^*=0$ or $b=d$
+\vfill 
+If $b=d$, then \eqref{sys:birth-death-ODE-dN} reduces to $N\pprime=0$, which has the general solution $N(t)=C$ ($C$ the integration constant), so, with the initial condition \eqref{sys:birth-death-ODE-IC}, we have $N(t)=N_0$ for all $t\geq t_0$
+\vfill
+So let us now consider the case $b\neq d$ and $N^*=0$
+\end{frame}
+
+\begin{frame}\frametitle{First, a remark -- The model makes sense}
+The model \eqref{sys:birth-death-ODE} makes sense only if its solutions exist uniquely and $N(t)\geq 0$ for all $t\geq t_0$
+\vfill
+The existence and uniqueness of solutions is guaranteed by Theorem~\ref{th:existence-uniqueness-IVP}, since the function $f(N)=bN-dN$ is $C^1$ (it is actually $C^\infty$)
+\vfill
+Now remark that if $N(t_0)=0$, then $N(t)=0$ for all $t\geq t_0$ because $N\pprime=bN-dN=0$ for $N=0$
+\vfill
+Now suppose that $N(t_0)>0$. Then there does not exist $t_\star>t_0$ such that $N(t_\star)=0$. 
+If there were, then at $t_\star$ we would have two solutions such that $N(t_\star)=0$: the one that is identically 0 and the one that starts with $N(t_0)>0$, contradicting uniqueness of solutions
+\end{frame}
+
+
+\begin{frame}
+\begin{center}
+\begin{tikzpicture}
+    % Draw axes
+    \draw[->] (0,0) -- (6,0) node[right] {$t$};
+    \draw[->] (0,0) -- (0,4) node[above] {$N(t)$};
+    % Draw t_0 line
+    \draw[dashed] (0.5,0) -- (0.5,4);
+    \node[below] at (0.5,0) {$t_0$};
+    % Plot N(t) = 0 for t >= t_0
+    \draw[thick,blue] (0.5,0) -- (6,0) node[right] {};
+    % Plot N(t) > 0 for t >= t_0
+    \draw[thick,red] (0.5,3) .. controls (3,2) and (4,0) .. (5,-1.5) node[right] {};
+    % Uniqueness of solutions
+    \draw[dashed] (4,0) -- (4,3.5);
+    \node[below] at (4,0) {$t_\star$};
+\end{tikzpicture}
+\end{center}  
+\end{frame}
+
+% \begin{frame}\frametitle{Stability of the equilibrium $N^*=0$}
+% For $N<N^*=0$, $N\pprime=bN-dN>0$, so $N(t)$ is increasing
+% \vfill
+% For $N>N^*=0$, $N\pprime=bN-dN<0$, so $N(t)$ is decreasing
+% \vfill
+% This means that $N^*=0$ is an \defword{unstable equilibrium}
+% \vfill
+% \begin{center}
+% \begin{tikzpicture}
+% \begin{axis}[xlabel=$N$,ylabel=$N\pprime$,axis lines=middle,grid=major]
+% \addplot[domain=-2:2,samples=100]{x*(1-x)};
+% \end{axis}
+% \end{tikzpicture}
+% \end{center}
+% \end{frame}
+
+\begin{frame}\frametitle{Stability of the equilibrium $N^*=0$}
+Write the ODE \eqref{sys:birth-death-ODE-dN} as
+\[
+N\pprime=f(N)
+\]
+to emphasise that $f(N)=bN-dN$ is the right-hand side of the ODE
+\vfill
+We have seen that if we start with $N(t_0)=0$, then $N(t)=0$ for all $t\geq t_0$ so assume $N(t_0)>0$. This means that $N(t)>0$ for all $t\geq t_0$
+\vfill
+As a consequence, the sign of $f(N)$ is the same as the sign of $b-d$
+\begin{itemize}
+\item If $b>d$, then $f(N)>0$
+\item If $b=d$, then $f(N)=0$
+\item If $b<d$, then $f(N)<0$
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}\frametitle{The situation}
+\begin{itemize}
+\item If $b>d$, then $f(N)>0$ $\Rightarrow$ $N(t)$ is increasing for all $t\geq t_0$ $\Rightarrow$ $N(t)\to\infty$ as $t\to\infty$
+\vfill
+\item If $b=d$, then $f(N)=0$ $\Rightarrow$ $N(t)=N_0$ for all $t\geq t_0$
+\vfill
+\item If $b<d$, then $f(N)<0$ $\Rightarrow$ $N(t)$ is decreasing for all $t\geq t_0$ $\Rightarrow$ $N(t)\to 0$ as $t\to\infty$, since we have also seen that $N(t)>0$ for all $t\geq t_0$ when $N(t_0)>0$
+\end{itemize}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%
+\subsection{From birth-death to the logistic}
+% The subsection page
+\newSubSectionSlide{FIGS/population-models-Gemini_Generated_Image_6fkcph6fkcph6fkc.jpeg}
 
 \frame{\frametitle{Deriving the logistic equation}
 The idea is to represent a population with the following components:
