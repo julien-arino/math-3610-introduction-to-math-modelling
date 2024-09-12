@@ -1263,6 +1263,8 @@ as
 \]
 \vfill 
 This gives a more intuitive understanding of the role of $K$ in regulating the population: when $N$ is smaller than $K$, the population grows, when $N$ is larger than $K$, the population decreases
+\vfill
+The parameter $r$ sets how fast this regulation occurs
 \end{frame}
 
 \frame{\frametitle{Several ways to tackle this equation}
