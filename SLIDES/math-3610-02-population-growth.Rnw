@@ -394,7 +394,6 @@ kable(tables,
 \end{center}
 }
 
-
 <<plot-census-ggplot,eval=TRUE,echo=FALSE,fig=TRUE,width=6,height=4,include=FALSE>>=
 library(scales)
 plot_USA_census = 
@@ -802,7 +801,7 @@ k_1
 %%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%
-\section{Population growth -- Logistic equation}
+\section{Population growth -- The logistic equation \& friends}
 % The section page
 \newSectionSlide{FIGS/population-models-Gemini_Generated_Image_gsewj8gsewj8gsew.jpeg}
 
@@ -1395,6 +1394,163 @@ so that $K$ is the number of individuals that the environment can support, the \
 \vfill
 We could be more precise and break up the second case depending on whether $N_0<K$, $N_0=K$ or $N_0>K$, but the end result is the same
 }
+
+%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%
+\subsection{Including an Allee effect}
+% The section page
+\newSubSectionSlide{FIGS/population-models-Gemini_Generated_Image_8xecht8xecht8xec.jpeg}
+
+
+\begin{frame}\frametitle{Including an Allee effect}
+Logistic equation assumes that when the population is less than the carrying capacity, the population grows. But what if the population is too small?
+\vfill
+There may not be enough individuals to find mates, or to find food, or to protect themselves from predators. This is an \textbf{Allee effect}
+\end{frame}
+
+\begin{frame}\frametitle{Logistic equation with an Allee effect}
+\begin{equation}\label{eq:logistic-ODE-with-Allee}
+N\pprime=rN\left(\frac{N}{A}-1\right)\left(1-\frac NK\right)
+\end{equation}
+\vfill
+\begin{itemize}
+\item $r>0$ growth rate
+\item $K>0$ carrying capacity
+\item $A>0$ Allee threshold
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}\frametitle{Stability of the equilibria}
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[xlabel=$N$,
+  ylabel=$N\pprime$,
+  axis lines=middle,
+  grid=major,
+  domain=-1:11,
+  xmin=-3, xmax=14, ymin=-2, ymax=4]
+\addplot[samples=200, very thick]{1*x*(x/3-1)*(1-x/10)};
+\addplot+[only marks] coordinates {(0,0) (3,0) (10,0)};
+\draw[blue,-latex, ultra thick] (axis cs:-3,0) -- (axis cs:-0.5,0);
+\draw[blue,latex-, ultra thick] (axis cs:0.5,0) -- (axis cs:2.5,0);
+\draw[blue,-latex, ultra thick] (axis cs:3.5,0) -- (axis cs:9.5,0);
+\draw[blue,-latex, ultra thick] (axis cs:13,0) -- (axis cs:10.5,0);
+\end{axis}
+\end{tikzpicture}
+\end{center}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%
+\subsection{Gompertz growth model}
+% The section page
+\newSubSectionSlide{FIGS/population-models-Gemini_Generated_Image_sy7ae2sy7ae2sy7a.jpeg}
+
+
+\begin{frame}\frametitle{Gompertz growth model}
+\begin{equation}\label{eq:Gompertz-ODE}
+N\pprime = rN\ln\left(\frac{K}{N}\right)
+\end{equation}
+\end{frame}
+
+\begin{frame}\frametitle{Stability of the equilibria}
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[xlabel=$N$,
+  ylabel=$N\pprime$,
+  axis lines=middle,
+  grid=major,
+  domain=-1:13,
+  xmin=-3, xmax=14, ymin=-2, ymax=4]
+\addplot[samples=200, very thick]{1*x*ln(10/x)};
+\addplot+[only marks] coordinates {(10,0)};
+\draw[blue,-latex, ultra thick] (axis cs:0.5,0) -- (axis cs:9.5,0);
+\draw[blue,-latex, ultra thick] (axis cs:13,0) -- (axis cs:10.5,0);
+\end{axis}
+\end{tikzpicture}
+\end{center}
+\end{frame}
+
+
+
+%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%
+\subsection{Tumor growth}
+% The section page
+\newSubSectionSlide{FIGS/population-models-Gemini_Generated_Image_h6volmh6volmh6vo.jpeg}
+
+
+\begin{frame}\frametitle{Tumor growth}
+\begin{equation}\label{eq:tuomr-growth-ODE}
+N\pprime=rNe^{-bN}
+\end{equation}
+\vfill
+\begin{itemize}
+\item $r>0$ growth rate
+\item $>0$ 
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}\frametitle{Stability of the equilibria}
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[xlabel=$N$,
+  ylabel=$N\pprime$,
+  axis lines=middle,
+  grid=major,
+  domain=-1:13,
+  xmin=-3, xmax=14, ymin=-2, ymax=4]
+\addplot[samples=200, very thick]{2*x*exp(-0.5*x)};
+\addplot+[only marks] coordinates {(0,0)};
+\draw[blue,-latex, ultra thick] (axis cs:0.5,0) -- (axis cs:9.5,0);
+\end{axis}
+\end{tikzpicture}
+\end{center}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%
+\subsection{Harvest model}
+% The section page
+\newSubSectionSlide{FIGS/population-models-Gemini_Generated_Image_jlgjlnjlgjlnjlgj.jpeg}
+
+
+\begin{frame}\frametitle{Logistic model with harvesting}
+\begin{equation}\label{eq:logistic-ODE-with-harvesting}
+N\pprime = rN\left(1-\frac{N}{K}\right)-H
+\end{equation}
+\vfill
+\begin{itemize}
+\item $r>0$ growth rate
+\item $K>0$ carrying capacity
+\item $H>0$ harvest rate
+\end{itemize}
+\end{frame}
+
+\begin{frame}\frametitle{Stability of the equilibria}
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[xlabel=$N$,
+  ylabel=$N\pprime$,
+  axis lines=middle,
+  grid=major,
+  domain=-1:13,
+  xmin=-3, xmax=14, ymin=-2, ymax=4]
+\addplot[samples=200, very thick]{2*x*(1-x/10)-3};
+\addplot+[only marks] coordinates {(1.83,0) (8.16,0)};
+\draw[blue,-latex, ultra thick] (axis cs:1.33,0) -- (axis cs:-3,0);
+\draw[blue,-latex, ultra thick] (axis cs:2.33,0) -- (axis cs:7.66,0);
+\draw[blue,-latex, ultra thick] (axis cs:13,0) -- (axis cs:8.66,0);
+\end{axis}
+\end{tikzpicture}
+\end{center}
+\end{frame}
+
+
 
 %%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%
