@@ -886,6 +886,20 @@ In short, there are three non-mutually exclusive ways to tackle an IVP such as \
 Don't expect to be able to do 1 more than a few times in this course (or anywhere for that matter!); so we mention it but focus on 2 and 3
 \end{frame}
 
+\begin{frame}\frametitle{Solutions to scalar autonomous ODE are monotone}
+\begin{theorem}
+\label{th:solutions-ODE-1storder-scalar-monotone}
+Consider an IVP of the form \eqref{sys:IVP} where $f:\IR\to\IR$, i.e., where the ODE is scalar autonomous.
+\vskip0.5cm
+Then solutions to \eqref{sys:IVP} are monotone, in the sense that if we denote $\phi_1(t)$ and $\phi_2(t)$ the solutions through $(t_0,x(t_0)=x_1)$ and $(t_0,x(t_0)=x_2)$, respectively, with $x_1\leq x_2$, then
+\[
+\phi_1(t)\leq \phi_2(t),\quad t\geq t_0
+\]
+\end{theorem}
+\vfill
+This is useful in the present slide set, since the ODEs we consider are scalar autonomous
+\end{frame}
+
 
 %%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%
@@ -1557,6 +1571,191 @@ N\pprime = rN\left(1-\frac{N}{K}\right)-H
 \subsection{Computational analysis of the logistic equation}
 % The section page
 \newSubSectionSlide{FIGS/population-models-Gemini_Generated_Image_t4n5pst4n5pst4n5.jpeg}
+
+\begin{frame}\frametitle{Motivation of the problem}
+Qualitative methods provide us with an understanding of the behaviour of an ODE model
+\vfill
+Typically, we obtain information about what happens as $t\to\infty$
+\vfill
+What happens during \emph{transients}? Much (much much!) harder mathematical problem. Even for such simple objects as ODEs, we don't know much
+\vfill
+$\Rightarrow$ It is useful to be able to approximate solutions numerically
+\end{frame}
+
+
+\begin{frame}\frametitle{Guiding principle}
+Let $\phi(t)$ be a solution to the IVP
+\begin{subequations}
+\begin{align}
+\frac{d}{dt}x(t) &= f(t,x(t)) 
+\tag{\ref{sys:IVP-nonautonomous-ODE}}\\
+x(t_0) &= x_0
+\tag{\ref{sys:IVP-nonautonomous-IC}}\\
+\end{align}
+\end{subequations}
+\vfill
+By construction, at each $(t,x)\in\IR\times\IR^n$, $\phi$ is tangent to $f(t,x)$, since $\phi'=f(t,x)$
+\vfill
+Use this to construct an approximation to the solution
+\end{frame}
+
+\begin{frame}\frametitle{Euler's method}
+Suppose $x(t)\in\IR$ and $f:\IR\times\IR\to\IR$, i.e., we have a scalar ODE. Then the derivative of $x(t)$ takes the form
+\vfill
+\[
+x'(t)=\frac{d}{dt}x(t) = \lim_{h\to 0}\frac{x(t+h)-x(t)}{h}
+\]
+\vfill
+This equals the right hand side, i.e.,
+\[
+\lim_{h\to 0}\frac{x(t+h)-x(t)}{h} = f(t,x(t))
+\]
+\vfill
+Instead of letting $h\to 0$, consider a set value of $h>0$
+\[
+\frac{x(t+h)-x(t)}{h} = f(t,x(t)) \iff
+x(t+h) = x(t) + h\ f(t,x(t))
+\]
+\end{frame}
+
+
+\begin{frame}\frametitle{Example for birth-death model}
+Model \eqref{sys:birth-death-ODE} is autonomous, so $f(t,x)\equiv f(x)$ for all $t$
+\vfill
+For simplicity, let $t_0=0$. Consider an IC $N(0)=N_0$. Fix $h>0$
+\vfill
+Solution is then a sequence of times $t_0, t_1=t_0+h$, $t_2=t_1+h=t_0+2h$, \ldots, and, for $i=0,1,\ldots$, of states 
+\begin{align*}
+N_{1+1} &= N_i+h\ f(N_i) \\
+&= N_i+h(bN_i-dN_i) \\
+&= (1+hb-hd)N_i
+\end{align*}
+\end{frame}
+
+<<birth-death-ODE-1,eval=TRUE,echo=FALSE,fig=TRUE,width=6,height=4,include=FALSE>>=
+t = c(0)
+N = c(1)
+b = 0.1
+d = 0.05
+h = 0.2
+t_f = 50
+while (t[length(t)] <= t_f) {
+  N = c(N, (1+h*b-h*d)*N[length(N)])
+  t = c(t, t[length(t)]+h)
+}
+plot(t,N, 
+     type = "l", lwd = 2,
+     main = "Solution of the birth-death ODE using Euler's method",
+     xlab = "Time (days)")
+@
+
+
+\begin{frame}[fragile]\frametitle{Example for birth-death model}
+\begin{lstlisting}
+t = c(0)
+N = c(1)
+b = 0.1
+d = 0.05
+h = 0.2
+t_f = 50
+while (t[length(t)] <= t_f) {
+  N = c(N, (1+h*b-h*d)*N[length(N)])
+  t = c(t, t[length(t)]+h)
+}
+plot(t,N, 
+     type = "l", lwd = 2,
+     main = "Solution of the birth-death ODE using Euler's method",
+     xlab = "Time (days)")
+\end{lstlisting}
+\end{frame}
+
+\maxFrameImage{FIGS/slides-02-birth-death-ODE-1.pdf}
+
+<<Euler-approximation-Malthus,eval=TRUE,echo=FALSE>>=
+Euler_approximation_Malthus = function(p, 
+                                       t_0 = 0, N_0 = 1, 
+                                       h = 0.5, t_f = 50) {
+  t = c(t_0)
+  N = c(N_0)
+  while (t[length(t)] <= t_f) {
+    N = c(N, (1+h*p$b-h*p$d)*N[length(N)])
+    t = c(t, t[length(t)]+h)
+  }
+  OUT = data.frame(t = t, N = N)
+  return(OUT)
+}
+p = list()
+p$b = 0.1
+p$d = 0.05
+@
+
+\begin{frame}\frametitle{The step-size is important}
+Clearly, we have the ``true'' solution if we let $h\to 0$. To show the influence of the step size, let us make a function that allows us to easily change all parameters involved in the numerical solution
+\vfill
+We will then call it with different values of $h$
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{Example for birth-death model}
+\begin{lstlisting}
+Euler_approximation_Malthus = function(p, 
+                                       t_0 = 0, N_0 = 1, 
+                                       h = 0.5, t_f = 50) {
+  t = c(t_0)
+  N = c(N_0)
+  while (t[length(t)] <= t_f) {
+    N = c(N, (1+h*p$b-h*p$d)*N[length(N)])
+    t = c(t, t[length(t)]+h)
+  }
+  OUT = data.frame(t = t, N = N)
+  return(OUT)
+}
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{Default values of function arguments in R}
+Note what we did when defining the function
+\vfill
+\begin{lstlisting}
+Euler_approximation_Malthus = function(p, 
+                                       t_0 = 0, N_0 = 1, 
+                                       h = 0.5, t_f = 50) {
+  ...
+}
+\end{lstlisting}
+\vfill
+This means that we have indicated \emph{default values} for some of the parameters. If such a default value is provided, then unless a value is specified, the default value is used
+\end{frame}
+
+
+\begin{frame}[fragile]\frametitle{Using lists in R}
+At this point, it not super important to do that, but when things become more complicated later in the course, it will be useful to pass parameters to the differential equation solvers using R \emph{lists}
+\vfill
+\begin{lstlisting}
+p = list()
+p$b = 0.1
+p$d = 0.05
+\end{lstlisting}
+\end{frame}
+
+<<birth-death-ODE-2,eval=TRUE,echo=FALSE,fig=TRUE,width=6,height=4,include=FALSE>>=
+sol1 = Euler_approximation_Malthus(p, h = 0.01)
+sol2 = Euler_approximation_Malthus(p)
+sol3 = Euler_approximation_Malthus(p, h = 1)
+sol4 = Euler_approximation_Malthus(p, h = 5)
+plot(sol1$t, sol1$N,
+     type = "l", lwd = 2,
+     main = "Solution of the birth-death ODE using Euler's method",
+     xlab = "Time (days)")
+lines(sol2$t, sol2$N, type = "l", lwd = 2, col = "red")
+lines(sol3$t, sol3$N, type = "l", lwd = 2, col = "darkgreen")
+lines(sol4$t, sol4$N, type = "l", lwd = 2, col = "blue")
+legend("topleft",
+       legend = c("h=0.01", "h=0.5", "h=1", "h=5"),
+       lty = 1, lwd = 2,
+       col = c("black", "red", "darkgreen", "blue"))
+@
+
+\maxFrameImage{FIGS/slides-02-birth-death-ODE-2.pdf}
 
 
 %%%%%%%%%%%%%%%%%%%
