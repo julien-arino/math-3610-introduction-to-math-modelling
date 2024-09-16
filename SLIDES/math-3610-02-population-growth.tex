@@ -1604,17 +1604,17 @@ $\Rightarrow$ It is useful to be able to approximate solutions numerically
 
 
 \begin{frame}\frametitle{Guiding principle}
-Let $\phi(t)$ be a solution to the IVP
+Let $x(t)$ be a solution to the IVP
 \begin{subequations}
 \begin{align}
 \frac{d}{dt}x(t) &= f(t,x(t)) 
 \tag{\ref{sys:IVP-nonautonomous-ODE}}\\
 x(t_0) &= x_0
-\tag{\ref{sys:IVP-nonautonomous-IC}}\\
+\tag{\ref{sys:IVP-nonautonomous-IC}}
 \end{align}
 \end{subequations}
 \vfill
-By construction, at each $(t,x)\in\IR\times\IR^n$, $\phi$ is tangent to $f(t,x)$, since $\phi'=f(t,x)$
+By construction, at each $(t,x)\in\IR\times\IR^n$, $x(t)$ is tangent to $f(t,x)$, since $x'=f(t,x)$
 \vfill
 Use this to construct an approximation to the solution
 \end{frame}
@@ -1725,8 +1725,150 @@ p$d = 0.05
 \end{frame}
 
 
+
+\begin{frame}[fragile]\frametitle{Plotting a few cases}
+\begin{lstlisting}
+sol1 = Euler_approximation_Malthus(p, h = 0.01)
+sol2 = Euler_approximation_Malthus(p)
+sol3 = Euler_approximation_Malthus(p, h = 1)
+sol4 = Euler_approximation_Malthus(p, h = 5)
+plot(sol1$t, sol1$N,
+     type = "l", lwd = 2,
+     main = "Solution of the birth-death ODE using Euler's method",
+     xlab = "Time (days)")
+lines(sol2$t, sol2$N, type = "l", lwd = 2, col = "red")
+lines(sol3$t, sol3$N, type = "l", lwd = 2, col = "darkgreen")
+lines(sol4$t, sol4$N, type = "l", lwd = 2, col = "blue")
+legend("topleft",
+       legend = c("h=0.01", "h=0.5", "h=1", "h=5"),
+       lty = 1, lwd = 2,
+       col = c("black", "red", "darkgreen", "blue"))
+\end{lstlisting}
+\end{frame}
+
 \maxFrameImage{FIGS/slides-02-birth-death-ODE-2.pdf}
 
+\begin{frame}\frametitle{There are more complex algorithms}
+Here, we have considered one of the simplest possible ODEs: a scalar linear autonomous one
+\vfill
+If there is more than one equation or if the equations are nonlinear, then the situation is more complex
+\vfill
+Euler often performs poorly in this case (see Logistic map later in these slides)
+\vfill
+There are many other algorithms that are more efficient and accurate
+\vfill
+The ``philosophy'' of the algorithms is the same, though: approximate the solution by taking small steps using the vector field
+\end{frame}
+
+\begin{frame}\frametitle{Numerical ODE ``solvers'' in R}
+There are many packages in R that can solve ODEs
+\vfill
+The most popular one is \texttt{deSolve}. Among other reasons:
+\vfill
+\begin{quote}
+Functions that solve initial value problems of a system of first-order ordinary differential equations ('ODE'), of partial differential equations ('PDE'), of differential algebraic equations ('DAE'), and of delay differential equations. The functions provide an interface to the FORTRAN functions 'lsoda', 'lsodar', 'lsode', 'lsodes' of the 'ODEPACK' collection, to the FORTRAN functions 'dvode', 'zvode' and 'daspk' and a C-implementation of solvers of the 'Runge-Kutta' family with fixed or variable time steps.
+\end{quote}
+\vfill
+This means you are using very efficient and well-tested algorithms. E.g., ODEPACK is LLNL's library for ODEs from ... 1982!
+\end{frame}
+
+
+\begin{frame}\frametitle{Side note -- Old $\neq$ bad (for numerics at least)}
+The fact that the algorithms are old does not mean they are bad. In fact, the opposite is true
+\vfill
+In days of yore, computers were much slower, had less memory, and were less reliable. This means that the algorithms had to be very efficient and robust
+\vfill
+\href{https://en.wikipedia.org/wiki/Apollo_Guidance_Computer}{Apollo Guidance Computer} (Lunar lander, 1966--1975): ran on a 2.048 MHz computer with 2,048 16-bits words RAM \& 36,864 16-bits words ROM
+\vfill
+Voyager 1 \& 2 (1977): now in interstellar space, still running on a computer with 250,000 instructions per second, 8 KB of RAM, and 64 KB of ROM
+\end{frame}
+
+\begin{frame}\frametitle{Using a numerical ODE solver}
+Process is almost always the same
+\vfill
+\begin{enumerate}
+\item Write a function that returns the value of $f(t,x,p)$ (where $p$ are the parameters of the model) at a given point $(t,x,p)$
+\item Set initial conditions and interval of time on which the solution (approximation) is desired
+\item Call solver with reference to the function, time interval and parameters
+\end{enumerate}
+\vfill
+Additionally, some solvers work better or faster if you also provide the Jacobian of your system (see later in the course)
+\end{frame}
+
+
+\begin{frame}\frametitle{Some considerations that will make more sense later}
+\textbf{Type of time step --}
+\begin{itemize}
+\item Fixed time step
+\item Variable (adaptive) time step
+\end{itemize}
+If you come from the MatLab world, you are used to adaptive time step: time output of \texttt{ode45} and other methods is usually the vector at which the solution was computed $\neq$ \texttt{deSolve} in R, where time (and resulting solution) is interpolated to desired output time points
+\vfill
+\textbf{Nonstiff versus stiff methods --}
+Some problems are \emph{stiff} (roughly: they don't handle numerical imprecision well) and require specific (and more computationally costly) methods. \texttt{lsoda}, the default method in \texttt{deSolve}, automatically switches between nonstiff and stiff algorithms
+\end{frame}
+
+
+\begin{frame}[fragile]\frametitle{The birth-death model}
+\begin{lstlisting}
+if (!require(deSolve)) {
+  install.packages("deSolve")
+  library(deSolve)
+}
+rhs_Malthus <- function(t, N, p) {
+  with(as.list(p), {
+    dN <- (b-d) * N
+    return(list(dN))
+  })
+}
+p = list()
+p$b = 0.1
+p$d = 0.05
+IC = c(N = 1)
+tspan = 0:100
+sol = ode(y = IC, times = tspan, func = rhs_Malthus, parms = p)
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{Explanation (1)}
+\begin{lstlisting}
+if (!require(deSolve)) {
+  install.packages("deSolve")
+  library(deSolve)
+}
+\end{lstlisting}
+\vfill 
+This loads the \texttt{deSolve} package. Another command could be \texttt{library(deSolve)}
+\vfill
+\texttt{require} is a little bit more flexible: it returns a logical value indicating whether the package was successfully loaded or not. This is useful in scripts, as used here: if the package is not installed, it will be installed and loaded
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{Explanation (2)}
+\begin{lstlisting}
+rhs_Malthus <- function(t, N, p) {
+  with(as.list(p), {
+    dN <- (b-d) * N
+    return(list(dN))
+  })
+}
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{Explanation (3)}
+\begin{lstlisting}
+p = list()
+p$b = 0.1
+p$d = 0.05
+IC = c(N = 1)
+tspan = 0:100
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{Explanation (4)}
+\begin{lstlisting}
+sol = ode(y = IC, times = tspan, func = rhs_Malthus, parms = p)
+\end{lstlisting}
+\end{frame}
 
 %%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%
