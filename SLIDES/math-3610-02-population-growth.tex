@@ -1852,6 +1852,12 @@ rhs_Malthus <- function(t, N, p) {
   })
 }
 \end{lstlisting}
+\vfill
+The right hand side function. For a given point $(t,N,p)$, returns $(b-d)N$, i.e., $N\pprime$
+\vfill
+Note the \texttt{as.list(p)} command. We could instead use \texttt{p\$b} and \texttt{p\$d}, but this ``unpacks'' the variable \texttt{p} into its components that can then be used without the \texttt{\$} sign
+\vfill
+Note also that in this case, the \code{return} command must occur within the \code{with} command
 \end{frame}
 
 \begin{frame}[fragile]\frametitle{Explanation (3)}
@@ -1862,13 +1868,124 @@ p$d = 0.05
 IC = c(N = 1)
 tspan = 0:100
 \end{lstlisting}
+\vfill
+Here, we setup the list of parameters, set initial conditions and the time span over which we want to solve the ODE
+\vfill
+Note that the initial condition is a \emph{named vector}, even if it is a single value. This is useful: if passed a named vector as IC, the solver will return a named matrix with the solution
 \end{frame}
 
 \begin{frame}[fragile]\frametitle{Explanation (4)}
 \begin{lstlisting}
 sol = ode(y = IC, times = tspan, func = rhs_Malthus, parms = p)
 \end{lstlisting}
+\vfill
+Finally, a call to the solver itself. There are many options to the call, but the most basic are those here: initial conditions, the time span, the function and the parameters (the latter is optional)
+\vfill
+\begin{Schunk}
+\begin{Sinput}
+> head(sol, 5)
+\end{Sinput}
+\begin{Soutput}
+     time        N
+[1,]    0 1.000000
+[2,]    1 1.051273
+[3,]    2 1.105172
+[4,]    3 1.161835
+[5,]    4 1.221404
+\end{Soutput}
+\end{Schunk}
 \end{frame}
+
+
+
+
+
+
+\begin{frame}[fragile]\frametitle{RHS -- logistic equation(s)}
+\begin{lstlisting}
+rhs_logistic <- function(t, N, p) {
+  with(as.list(p), {
+    dN <- r * N * (1 - N/K)
+    return(list(dN))
+  })
+}
+rhs_logistic_Allee <- function(t, N, p) {
+  with(as.list(p), {
+    dN <- r * N * (N/A - 1) * (1 - N/K)
+    return(list(dN))
+  })
+}
+rhs_logistic_harvesting <- function(t, N, p) {
+  with(as.list(p), {
+    dN <- r * N * (1 - N/K) - H
+    return(list(dN))
+  })
+}
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{RHS -- the other two}
+\begin{lstlisting}
+rhs_Gompertz <- function(t, N, p) {
+  with(as.list(p), {
+    dN <- r * N * log(K/N)
+    return(list(dN))
+  })
+}
+rhs_tumor_growth <- function(t, N, p) {
+  with(as.list(p), {
+    dN <- r * N * exp(-b * N)
+    return(list(dN))
+  })
+}
+\end{lstlisting}
+\end{frame}
+
+
+
+\begin{frame}[fragile]\frametitle{Parameters}
+\begin{lstlisting}
+p = list(
+  r = 0.1,
+  K = 100,
+  A = 50,
+  b = 0.1,
+  H = 0.05
+)
+IC = c(N = 1)
+tspan = 0:100
+sol = ode(y = IC, times = tspan, func = rhs_Malthus, parms = p)
+\end{lstlisting}
+\end{frame}
+
+
+\begin{frame}[fragile]\frametitle{Run a few models}
+\begin{lstlisting}
+sol_Malthus = 
+  ode(y = IC, times = tspan, func = rhs_Malthus, parms = p)
+sol_logistic =
+  ode(y = IC, times = tspan, func = rhs_logistic, parms = p)
+sol_logistic_Allee =
+  ode(y = IC, times = tspan, func = rhs_logistic_Allee, parms = p)
+sol_Gompertz =
+  ode(y = IC, times = tspan, func = rhs_Gompertz, parms = p)
+sol_tumor_growth =
+  ode(y = IC, times = tspan, func = rhs_tumor_growth, parms = p)
+sol_logistic_harvesting =
+  ode(y = IC, times = tspan, func = rhs_logistic_harvesting, parms = p)
+max_y = max(c(
+  max(sol_Malthus[,"N"]),
+  max(sol_logistic[,"N"]),
+  max(sol_logistic_Allee[,"N"]),
+  max(sol_Gompertz[,"N"]),
+  max(sol_tumor_growth[,"N"]),
+  max(sol_logistic_harvesting[,"N"])))
+\end{lstlisting}
+\end{frame}
+
+
+
+\maxFrameImage{FIGS/slides-02-plot-various-ODE.pdf}
 
 %%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%
