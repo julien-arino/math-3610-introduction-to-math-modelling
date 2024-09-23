@@ -2210,6 +2210,38 @@ legend("topleft",
 
 \maxFrameImage{FIGS/slides-02-plot-various-ODE.pdf}
 
+<<eps-logistic-harvesting,echo=FALSE>>=
+EPs_logistic_harvesting = function(p) {
+  OUT = list()
+  OUT$low = (p$r*p$K-sqrt(p$r*p$K*(p$r*p$K-4*p$H)))/(2*p$r)
+  OUT$high = (p$r*p$K+sqrt(p$r*p$K*(p$r*p$K-4*p$H)))/(2*p$r)
+  return(OUT)
+}
+@
+
+\begin{frame}[fragile]\frametitle{Investigating the logistic with harvesting}
+Let us dig a little deeper into the logistic model with harvesting..
+\vfill
+First of all, note that with the parameters we chose, we find the equilibria
+\Sexpr{round(EPs_logistic_harvesting(p)$low,2)} and \Sexpr{round(EPs_logistic_harvesting(p)$high,2)}. That's why in the previous plot, where the initial condition was 1, there were no problems
+\vfill
+Let us raise the value of $H$ a little, see what happens
+<<echo=TRUE>>=
+p$H = 0.5
+print(EPs_logistic_harvesting(p))
+@
+\end{frame}
+
+\begin{frame}[fragile]
+With this value of $N_{\text{min}}^\star$, we can expect things to go bad when we use the initial condition $N(0)=1$
+\vfill
+<<>>=
+sol_logistic_harvesting_bad =
+  ode(y = IC, times = tspan, func = rhs_logistic_harvesting, parms = p)
+tail(sol_logistic_harvesting_bad)
+@
+\end{frame}
+
 %%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%

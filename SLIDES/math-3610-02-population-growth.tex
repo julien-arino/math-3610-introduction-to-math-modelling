@@ -2063,6 +2063,111 @@ max_y = max(c(
 
 \maxFrameImage{FIGS/slides-02-plot-various-ODE.pdf}
 
+
+\begin{frame}[fragile]\frametitle{Investigating the logistic with harvesting}
+Let us dig a little deeper into the logistic model with harvesting..
+\vfill
+First of all, note that with the parameters we chose, we find the equilibria
+0.5 and 99.5. That's why in the previous plot, where the initial condition was 1, there were no problems
+\vfill
+Let us raise the value of $H$ a little, see what happens
+\begin{Schunk}
+\begin{Sinput}
+> p$H = 0.5
+> print(EPs_logistic_harvesting(p))
+\end{Sinput}
+\begin{Soutput}
+$low
+[1] 5.27864
+
+$high
+[1] 94.72136
+\end{Soutput}
+\end{Schunk}
+\end{frame}
+
+\begin{frame}[fragile]
+With this value of $N_{\text{min}}^\star$, we can expect things to go bad when we use the initial condition $N(0)=1$
+\vfill
+\begin{Schunk}
+\begin{Sinput}
+> sol_logistic_harvesting_bad =
++   ode(y = IC, times = tspan, func = rhs_logistic_harvesting, parms = p)
+\end{Sinput}
+\begin{Soutput}
+DLSODA-  Warning..Internal T (=R1) and H (=R2) are
+      such that in the machine, T + H = T on the next step  
+     (H = step size). Solver will continue anyway.
+In above message, R1 = 34.5102, R2 = 3.15199e-15
+ 
+DLSODA-  Warning..Internal T (=R1) and H (=R2) are
+      such that in the machine, T + H = T on the next step  
+     (H = step size). Solver will continue anyway.
+In above message, R1 = 34.5102, R2 = 3.15199e-15
+ 
+DLSODA-  Warning..Internal T (=R1) and H (=R2) are
+      such that in the machine, T + H = T on the next step  
+     (H = step size). Solver will continue anyway.
+In above message, R1 = 34.5102, R2 = 3.15199e-15
+ 
+DLSODA-  Warning..Internal T (=R1) and H (=R2) are
+      such that in the machine, T + H = T on the next step  
+     (H = step size). Solver will continue anyway.
+In above message, R1 = 34.5102, R2 = 2.5197e-15
+ 
+DLSODA-  Warning..Internal T (=R1) and H (=R2) are
+      such that in the machine, T + H = T on the next step  
+     (H = step size). Solver will continue anyway.
+In above message, R1 = 34.5102, R2 = 2.5197e-15
+ 
+DLSODA-  Warning..Internal T (=R1) and H (=R2) are
+      such that in the machine, T + H = T on the next step  
+     (H = step size). Solver will continue anyway.
+In above message, R1 = 34.5102, R2 = 2.08716e-15
+ 
+DLSODA-  Warning..Internal T (=R1) and H (=R2) are
+      such that in the machine, T + H = T on the next step  
+     (H = step size). Solver will continue anyway.
+In above message, R1 = 34.5102, R2 = 2.08716e-15
+ 
+DLSODA-  Warning..Internal T (=R1) and H (=R2) are
+      such that in the machine, T + H = T on the next step  
+     (H = step size). Solver will continue anyway.
+In above message, R1 = 34.5102, R2 = 2.08716e-15
+ 
+DLSODA-  Warning..Internal T (=R1) and H (=R2) are
+      such that in the machine, T + H = T on the next step  
+     (H = step size). Solver will continue anyway.
+In above message, R1 = 34.5102, R2 = 1.66847e-15
+ 
+DLSODA-  Warning..Internal T (=R1) and H (=R2) are
+      such that in the machine, T + H = T on the next step  
+     (H = step size). Solver will continue anyway.
+In above message, R1 = 34.5102, R2 = 1.66847e-15
+ 
+DLSODA-  Above warning has been issued I1 times.  
+     It will not be issued again for this problem.
+In above message, I1 = 10
+ 
+DLSODA-  At T (=R1), too much accuracy requested  
+      for precision of machine..  See TOLSF (=R2) 
+In above message, R1 = 34.5102, R2 = nan
+\end{Soutput}
+\begin{Sinput}
+> tail(sol_logistic_harvesting_bad)
+\end{Sinput}
+\begin{Soutput}
+          time          N
+[31,] 30.00000  -174.7190
+[32,] 31.00000  -237.2219
+[33,] 32.00000  -350.0509
+[34,] 33.00000  -613.1846
+[35,] 34.00000 -1910.5060
+[36,] 34.51016        NaN
+\end{Soutput}
+\end{Schunk}
+\end{frame}
+
 %%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%
