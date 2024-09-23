@@ -346,6 +346,28 @@ minimum height=2em]
 \addtocounter{page}{-1}
 }
 
+% Beginning of a section in which we also show subsections
+\newcommand{\newSectionWithSubsSlide}[1]{
+	\begin{frame}[noframenumbering,plain]
+		\begin{tikzpicture}[remember picture,overlay]
+			\node[above right,inner sep=0pt,opacity=0.2] at (current page.south west)
+			{
+				\includegraphics[height=\paperheight,width=\paperwidth]{#1}
+			};
+		\end{tikzpicture}
+		\setbeamercolor{section in toc}{fg=subsub_header_section}
+		\setbeamerfont{section in toc}{size=\Large,series=\bfseries}
+		\setbeamertemplate{section in toc shaded}[default][60]
+		%\setbeamercolor{background canvas}{bg=section_colour}
+		\tableofcontents[
+		currentsection,
+		sectionstyle=show/hide,
+		subsectionstyle=show/show/hide,
+		subsubsectionstyle=hide/hide/hide]
+	\end{frame}
+	\addtocounter{page}{-1}
+}
+
 % Beginning of a subsection
 \newcommand{\newSubSectionSlide}[1]{
 \begin{frame}[noframenumbering,plain]

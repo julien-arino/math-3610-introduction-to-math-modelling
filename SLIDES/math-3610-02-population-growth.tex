@@ -823,7 +823,7 @@ k_1
 %%%%%%%%%%%%%%%%%%%
 \section{Population growth -- The logistic equation \& friends}
 % The section page
-\newSectionSlide{FIGS/population-models-Gemini_Generated_Image_gsewj8gsewj8gsew.jpeg}
+\newSectionWithSubsSlide{FIGS/population-models-Gemini_Generated_Image_gsewj8gsewj8gsew.jpeg}
 
 
 %%%%%%%%%%%%%%%%%%%
@@ -1483,6 +1483,54 @@ N\pprime=rN\left(\frac{N}{A}-1\right)\left(1-\frac NK\right)
 \newSubSectionSlide{FIGS/population-models-Gemini_Generated_Image_sy7ae2sy7ae2sy7a.jpeg}
 
 
+\begin{frame}\frametitle{Deriving the Gompertz growth model -- Assumptions}
+Let us think for instance about the growth of a tumour
+\vfill
+Solid tunours grow by cell division, and the rate of cell division is proportional to the number of cells present
+\vfill
+Solid tumours do not grow exponentially with time
+\vfill
+As the tumour becomes larger, the doubling time of total tumour volume increases
+\end{frame}
+
+\begin{frame}\frametitle{The Gompertz growth model -- V1.0}
+Let $x(t)$ be the volume of dividing cells at time $t$, with $\alpha,k>0$ constants
+\vfill
+\begin{equation}\label{eq:Gompertz-ODE-V1}
+x' = k e^{-\alpha t}x
+\end{equation}
+\vfill
+This is a \emph{nonautonomous} ODE, harder to study than autonomous ODEs
+\end{frame}
+
+\begin{frame}\frametitle{Eliminating time-dependence}
+Remember what you have probably heard about General Relativity: time is just another dimension. Any nonautonomous ODE can be transformed into an autonomous one, just with one more dimension
+\vfill
+Let $\tau$ be the ``new time'', then \eqref{eq:Gompertz-ODE-V1} becomes
+\begin{align*}
+\frac{d}{d\tau}x &= ke^{-\alpha t}x\\
+\frac{d}{d\tau}t &= 1
+\end{align*}
+\end{frame}
+
+
+\begin{frame}\frametitle{Another method}
+Let $a(t)=k e^{-\alpha t}$, then \eqref{eq:Gompertz-ODE-V1} becomes
+\begin{subequations}
+\begin{align}
+\frac{d}{dt}x &= a(t)x \label{sys:Gompertz-ODE-V1-transformed-dx} \\
+\frac{d}{dt}a &= -\alpha a(t) \label{sys:Gompertz-ODE-V1-transformed-da}
+\end{align}
+\end{subequations}
+% \vfill
+% Solve \eqref{sys:Gompertz-ODE-V1-transformed-da} to get $a(t)$, then substitute into \eqref{sys:Gompertz-ODE-V1-transformed-dx} to get $x(t)$
+% \vfill
+% Solving \eqref{sys:Gompertz-ODE-V1-transformed-da} is easy: we get
+% \[
+% a(t) = a(0)e^{-\alpha t}
+% \]
+\end{frame}
+
 \begin{frame}\frametitle{Gompertz growth model}
 \begin{equation}\label{eq:Gompertz-ODE}
 N\pprime = rN\ln\left(\frac{K}{N}\right)
@@ -1545,6 +1593,12 @@ N\pprime=rNe^{-bN}
 \end{center}
 \end{frame}
 
+\begin{frame}
+Solutions are always increasing, so $N(t)\to\infty$ as $t\to\infty$
+\vfill
+However, the rate of growth decreases as $N$ increases
+\end{frame}
+
 
 %%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%
@@ -1585,6 +1639,28 @@ N\pprime = rN\left(1-\frac{N}{K}\right)-H
 \end{frame}
 
 
+\begin{frame}
+Solutions can become negative, so to make the model realistic, we want to ensure that the lower equilibrium (left red point in the plot) is nonpositive
+\vfill
+Solving for equilibria, we get 
+\[
+N^\star = \frac{Kr\pm \sqrt{rK(rK-4H)}}{2r}
+\]
+\vfill
+So we want $rK-4H\geq 0$ and $rK-\sqrt{rK(rK-4H)}\leq 0$
+\end{frame}
+
+\begin{frame}
+However
+\begin{align*}
+rK-\sqrt{rK(rK-4H)}\leq 0 &\iff rK\leq \sqrt{rK(rK-4H)}\\
+&\iff r^2K^2\leq rK(rK-4H)\\
+&\iff rK\leq rK-4H\\
+\end{align*}
+which is only true for $H=0$ when $H\geq 0$
+\vfill
+So the model always has some solutions that go to $-\infty$ as $t\to\infty$, even with positive initial conditions, when $H>0$ and $N(0)<N^\star_{\text{min}}$ (the smallest of the two equilibria)
+\end{frame}
 
 %%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%
