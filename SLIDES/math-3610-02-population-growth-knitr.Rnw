@@ -8,8 +8,22 @@
 \date{}
 
 \begin{document}
-\SweaveOpts{concordance=TRUE}
-\SweaveOpts{prefix.string = FIGS/slides-02}
+
+<<include=FALSE>>=
+library(knitr)
+opts_chunk$set(
+concordance=TRUE
+)
+@
+
+
+<<include=FALSE>>=
+library(knitr)
+opts_chunk$set(
+fig.path='FIGS/slides-02'
+)
+@
+
 
 <<set-options,echo=FALSE>>=
 # Are we plotting for a dark background
@@ -77,7 +91,7 @@ USA_census_to_1910 = USA_census %>%
 Although we have data up to 2020, we use the data up to 1910 like Pearl \& Reed (note that there were some corrections to the census since the paper of Pearl \& Reed)
 \vfill
 \begin{center}
-<<make-table-census-1910,echo=FALSE,results=tex>>=
+<<make-table-census-1910,echo=FALSE,results='asis'>>=
 tables = list()
 nb_tables = ceiling(dim(USA_census_to_1910)[1] / 5)
 for (i in 1:nb_tables) {
@@ -112,7 +126,7 @@ print(plot_USA_census_to_1910)
 \end{lstlisting}
 \end{frame}
 
-<<plot-census-1910-ggplot,eval=TRUE,echo=FALSE,fig=TRUE,width=6,height=4,include=FALSE>>=
+<<plot-census-1910-ggplot,eval=TRUE,echo=FALSE,fig.width=6,fig.height=4,include=FALSE>>=
 library(scales)
 plot_USA_census_to_1910 = 
   ggplot(USA_census_to_1910, aes(x=Year, y=Population)) +
@@ -159,7 +173,7 @@ This means we want to find coefficients $a,b,c$ such that the curve $P(t)$ is as
 
 \frame{\frametitle{The data points}
 \begin{center}
-<<make-table-census-1910,echo=FALSE,results=tex>>=
+<<make-table-census-1910,echo=FALSE,results='asis'>>=
 tables = list()
 nb_tables = ceiling(dim(USA_census_to_1910)[1] / 5)
 for (i in 1:nb_tables) {
@@ -337,7 +351,7 @@ sol_plot = function(t, sol) {
 @
 }
 
-<<plot-census-1910-and-fit-ggplot,eval=TRUE,echo=FALSE,fig=TRUE,width=6,height=4,include=FALSE>>=
+<<plot-census-1910-and-fit-ggplot,eval=TRUE,echo=FALSE,fig.width=6,fig.height=4,include=FALSE>>=
 plot_USA_census_to_1910 = 
   ggplot(USA_census_to_1910, aes(x=Year, y=Population)) +
   stat_function(fun = function(x) sol_plot(x, sol)) +
@@ -377,7 +391,7 @@ Actually, quite well: \Sexpr{format(sol_plot(2024, sol), big.mark = ",")}, compa
 
 \frame{\frametitle{The US population from 1790 to 2020 (revised numbers)}
 \begin{center}
-<<make-table-census-1910,echo=FALSE,results=tex>>=
+<<make-table-census-1910,echo=FALSE,results='asis'>>=
 tables = list()
 nb_tables = ceiling(dim(USA_census)[1] / 10)
 for (i in 1:nb_tables) {
@@ -394,7 +408,7 @@ kable(tables,
 \end{center}
 }
 
-<<plot-census-ggplot,eval=TRUE,echo=FALSE,fig=TRUE,width=6,height=4,include=FALSE>>=
+<<plot-census-ggplot,eval=TRUE,echo=FALSE,fig.width=6,fig.height=4,include=FALSE>>=
 library(scales)
 plot_USA_census = 
   ggplot(USA_census, aes(x=Year, y=Population)) +
@@ -431,7 +445,7 @@ sol_plot = function(t, sol) {
 }
 @
 
-<<plot-census-and-fit-ggplot,eval=TRUE,echo=FALSE,fig=TRUE,width=6,height=4,include=FALSE>>=
+<<plot-census-and-fit-ggplot,eval=TRUE,echo=FALSE,fig.width=6,fig.height=4,include=FALSE>>=
 plot_USA_census = 
   ggplot(USA_census, aes(x=Year, y=Population)) +
   stat_function(fun = function(x) sol_plot(x, sol_full)) +
@@ -803,7 +817,7 @@ k_1
 %%%%%%%%%%%%%%%%%%%
 \section{Population growth -- The logistic equation \& friends}
 % The section page
-\newSectionWithSubsSlide{FIGS/population-models-Gemini_Generated_Image_gsewj8gsewj8gsew.jpeg}
+\newSectionSlide{FIGS/population-models-Gemini_Generated_Image_gsewj8gsewj8gsew.jpeg}
 
 
 %%%%%%%%%%%%%%%%%%%
@@ -1463,54 +1477,6 @@ N\pprime=rN\left(\frac{N}{A}-1\right)\left(1-\frac NK\right)
 \newSubSectionSlide{FIGS/population-models-Gemini_Generated_Image_sy7ae2sy7ae2sy7a.jpeg}
 
 
-\begin{frame}\frametitle{Deriving the Gompertz growth model -- Assumptions}
-Let us think for instance about the growth of a tumour
-\vfill
-Solid tunours grow by cell division, and the rate of cell division is proportional to the number of cells present
-\vfill
-Solid tumours do not grow exponentially with time
-\vfill
-As the tumour becomes larger, the doubling time of total tumour volume increases
-\end{frame}
-
-\begin{frame}\frametitle{The Gompertz growth model -- V1.0}
-Let $x(t)$ be the volume of dividing cells at time $t$, with $\alpha,k>0$ constants
-\vfill
-\begin{equation}\label{eq:Gompertz-ODE-V1}
-x' = k e^{-\alpha t}x
-\end{equation}
-\vfill
-This is a \emph{nonautonomous} ODE, harder to study than autonomous ODEs
-\end{frame}
-
-\begin{frame}\frametitle{Eliminating time-dependence}
-Remember what you have probably heard about General Relativity: time is just another dimension. Any nonautonomous ODE can be transformed into an autonomous one, just with one more dimension
-\vfill
-Let $\tau$ be the ``new time'', then \eqref{eq:Gompertz-ODE-V1} becomes
-\begin{align*}
-\frac{d}{d\tau}x &= ke^{-\alpha t}x\\
-\frac{d}{d\tau}t &= 1
-\end{align*}
-\end{frame}
-
-
-\begin{frame}\frametitle{Another method}
-Let $a(t)=k e^{-\alpha t}$, then \eqref{eq:Gompertz-ODE-V1} becomes
-\begin{subequations}
-\begin{align}
-\frac{d}{dt}x &= a(t)x \label{sys:Gompertz-ODE-V1-transformed-dx} \\
-\frac{d}{dt}a &= -\alpha a(t) \label{sys:Gompertz-ODE-V1-transformed-da}
-\end{align}
-\end{subequations}
-% \vfill
-% Solve \eqref{sys:Gompertz-ODE-V1-transformed-da} to get $a(t)$, then substitute into \eqref{sys:Gompertz-ODE-V1-transformed-dx} to get $x(t)$
-% \vfill
-% Solving \eqref{sys:Gompertz-ODE-V1-transformed-da} is easy: we get
-% \[
-% a(t) = a(0)e^{-\alpha t}
-% \]
-\end{frame}
-
 \begin{frame}\frametitle{Gompertz growth model}
 \begin{equation}\label{eq:Gompertz-ODE}
 N\pprime = rN\ln\left(\frac{K}{N}\right)
@@ -1573,12 +1539,6 @@ N\pprime=rNe^{-bN}
 \end{center}
 \end{frame}
 
-\begin{frame}
-Solutions are always increasing, so $N(t)\to\infty$ as $t\to\infty$
-\vfill
-However, the rate of growth decreases as $N$ increases
-\end{frame}
-
 
 %%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%
@@ -1619,28 +1579,6 @@ N\pprime = rN\left(1-\frac{N}{K}\right)-H
 \end{frame}
 
 
-\begin{frame}
-Solutions can become negative, so to make the model realistic, we want to ensure that the lower equilibrium (left red point in the plot) is nonpositive
-\vfill
-Solving for equilibria, we get 
-\[
-N^\star = \frac{Kr\pm \sqrt{rK(rK-4H)}}{2r}
-\]
-\vfill
-So we want $rK-4H\geq 0$ and $rK-\sqrt{rK(rK-4H)}\leq 0$
-\end{frame}
-
-\begin{frame}
-However
-\begin{align*}
-rK-\sqrt{rK(rK-4H)}\leq 0 &\iff rK\leq \sqrt{rK(rK-4H)}\\
-&\iff r^2K^2\leq rK(rK-4H)\\
-&\iff rK\leq rK-4H\\
-\end{align*}
-which is only true for $H=0$ when $H\geq 0$
-\vfill
-So the model always has some solutions that go to $-\infty$ as $t\to\infty$, even with positive initial conditions, when $H>0$ and $N(0)<N^\star_{\text{min}}$ (the smallest of the two equilibria)
-\end{frame}
 
 %%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%
@@ -1708,7 +1646,7 @@ N_{1+1} &= N_i+h\ f(N_i) \\
 \end{align*}
 \end{frame}
 
-<<birth-death-ODE-1,eval=TRUE,echo=FALSE,fig=TRUE,width=6,height=4,include=FALSE>>=
+<<birth-death-ODE-1,eval=TRUE,echo=FALSE,fig.width=6,fig.height=4,include=FALSE>>=
 t = c(0)
 N = c(1)
 b = 0.1
@@ -1813,8 +1751,8 @@ p$d = 0.05
 \end{lstlisting}
 \end{frame}
 
-<<birth-death-ODE-2,eval=TRUE,echo=FALSE,fig=TRUE,width=6,height=4,include=FALSE>>=
-sol1 = Euler_approximation_Malthus(p, h = 1e-2)
+<<birth-death-ODE-2,eval=TRUE,echo=FALSE,fig.width=6,fig.height=4,include=FALSE>>=
+sol1 = Euler_approximation_Malthus(p, h = 0.01)
 sol2 = Euler_approximation_Malthus(p)
 sol3 = Euler_approximation_Malthus(p, h = 1)
 sol4 = Euler_approximation_Malthus(p, h = 5)
@@ -2180,7 +2118,7 @@ max_y = max(c(
 \end{frame}
 
 
-<<plot-various-ODE,eval=TRUE,echo=FALSE,fig=TRUE,width=6,height=4,include=FALSE>>=
+<<plot-various-ODE,eval=TRUE,echo=FALSE,fig.width=6,fig.height=4,include=FALSE>>=
 plot(sol_Malthus[,"time"], sol_Malthus[,"N"],
      type = "l", lwd = 2,
      main = "Solutions of a few ODE models",
@@ -2209,38 +2147,6 @@ legend("topleft",
 @
 
 \maxFrameImage{FIGS/slides-02-plot-various-ODE.pdf}
-
-<<eps-logistic-harvesting,echo=FALSE>>=
-EPs_logistic_harvesting = function(p) {
-  OUT = list()
-  OUT$low = (p$r*p$K-sqrt(p$r*p$K*(p$r*p$K-4*p$H)))/(2*p$r)
-  OUT$high = (p$r*p$K+sqrt(p$r*p$K*(p$r*p$K-4*p$H)))/(2*p$r)
-  return(OUT)
-}
-@
-
-\begin{frame}[fragile]\frametitle{Investigating the logistic with harvesting}
-Let us dig a little deeper into the logistic model with harvesting..
-\vfill
-First of all, note that with the parameters we chose, we find the equilibria
-\Sexpr{round(EPs_logistic_harvesting(p)$low,2)} and \Sexpr{round(EPs_logistic_harvesting(p)$high,2)}. That's why in the previous plot, where the initial condition was 1, there were no problems
-\vfill
-Let us raise the value of $H$ a little, see what happens
-<<echo=TRUE>>=
-p$H = 0.5
-print(EPs_logistic_harvesting(p))
-@
-\end{frame}
-
-\begin{frame}[fragile]
-With this value of $N_{\text{min}}^\star$, we can expect things to go bad when we use the initial condition $N(0)=1$
-\vfill
-<<>>=
-sol_logistic_harvesting_bad =
-  ode(y = IC, times = tspan, func = rhs_logistic_harvesting, parms = p)
-tail(sol_logistic_harvesting_bad)
-@
-\end{frame}
 
 %%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%
