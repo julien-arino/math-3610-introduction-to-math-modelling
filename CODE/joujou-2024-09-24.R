@@ -1,3 +1,20 @@
+require(deSolve)
+
+rhs_logistic_Allee <- function(t, N, p) {
+  with(as.list(p), {
+    dN <- r * N * (N/A - 1) * (1 - N/K)
+    return(list(dN))
+  })
+}
+p = list(
+  r = 0.1,
+  K = 100,
+  A = 50,
+  b = 0.1,
+  H = 0.05
+)
+IC = c(N = 1)
+
 sol = list()
 i = 1
 for (ic in 0:120) {
