@@ -2073,15 +2073,15 @@ First of all, note that with the parameters we chose, we find the equilibria
 Let us raise the value of $H$ a little, see what happens
 \begin{Schunk}
 \begin{Sinput}
-> p$H = 0.5
+> p$H = 0.15
 > print(EPs_logistic_harvesting(p))
 \end{Sinput}
 \begin{Soutput}
 $low
-[1] 5.27864
+[1] 1.523201
 
 $high
-[1] 94.72136
+[1] 98.4768
 \end{Soutput}
 \end{Schunk}
 \end{frame}
@@ -2091,59 +2091,59 @@ With this value of $N_{\text{min}}^\star$, we can expect things to go bad when w
 \vfill
 \begin{Schunk}
 \begin{Sinput}
-> sol_logistic_harvesting_bad =
-+   ode(y = IC, times = tspan, func = rhs_logistic_harvesting, parms = p)
+> sol_logistic_harvesting_bad = ode(y = IC, times = tspan,
++       func = rhs_logistic_harvesting, parms = p)
 \end{Sinput}
 \begin{Soutput}
 DLSODA-  Warning..Internal T (=R1) and H (=R2) are
       such that in the machine, T + H = T on the next step  
      (H = step size). Solver will continue anyway.
-In above message, R1 = 34.5102, R2 = 3.15199e-15
+In above message, R1 = 53.9164, R2 = 3.13622e-15
  
 DLSODA-  Warning..Internal T (=R1) and H (=R2) are
       such that in the machine, T + H = T on the next step  
      (H = step size). Solver will continue anyway.
-In above message, R1 = 34.5102, R2 = 3.15199e-15
+In above message, R1 = 53.9164, R2 = 3.13622e-15
  
 DLSODA-  Warning..Internal T (=R1) and H (=R2) are
       such that in the machine, T + H = T on the next step  
      (H = step size). Solver will continue anyway.
-In above message, R1 = 34.5102, R2 = 3.15199e-15
+In above message, R1 = 53.9164, R2 = 3.13622e-15
  
 DLSODA-  Warning..Internal T (=R1) and H (=R2) are
       such that in the machine, T + H = T on the next step  
      (H = step size). Solver will continue anyway.
-In above message, R1 = 34.5102, R2 = 2.5197e-15
+In above message, R1 = 53.9164, R2 = 2.50709e-15
  
 DLSODA-  Warning..Internal T (=R1) and H (=R2) are
       such that in the machine, T + H = T on the next step  
      (H = step size). Solver will continue anyway.
-In above message, R1 = 34.5102, R2 = 2.5197e-15
+In above message, R1 = 53.9164, R2 = 2.50709e-15
  
 DLSODA-  Warning..Internal T (=R1) and H (=R2) are
       such that in the machine, T + H = T on the next step  
      (H = step size). Solver will continue anyway.
-In above message, R1 = 34.5102, R2 = 2.08716e-15
+In above message, R1 = 53.9164, R2 = 2.07672e-15
  
 DLSODA-  Warning..Internal T (=R1) and H (=R2) are
       such that in the machine, T + H = T on the next step  
      (H = step size). Solver will continue anyway.
-In above message, R1 = 34.5102, R2 = 2.08716e-15
+In above message, R1 = 53.9164, R2 = 2.07672e-15
  
 DLSODA-  Warning..Internal T (=R1) and H (=R2) are
       such that in the machine, T + H = T on the next step  
      (H = step size). Solver will continue anyway.
-In above message, R1 = 34.5102, R2 = 2.08716e-15
+In above message, R1 = 53.9164, R2 = 2.07672e-15
  
 DLSODA-  Warning..Internal T (=R1) and H (=R2) are
       such that in the machine, T + H = T on the next step  
      (H = step size). Solver will continue anyway.
-In above message, R1 = 34.5102, R2 = 1.66847e-15
+In above message, R1 = 53.9164, R2 = 1.66013e-15
  
 DLSODA-  Warning..Internal T (=R1) and H (=R2) are
       such that in the machine, T + H = T on the next step  
      (H = step size). Solver will continue anyway.
-In above message, R1 = 34.5102, R2 = 1.66847e-15
+In above message, R1 = 53.9164, R2 = 1.66013e-15
  
 DLSODA-  Above warning has been issued I1 times.  
      It will not be issued again for this problem.
@@ -2151,19 +2151,19 @@ In above message, I1 = 10
  
 DLSODA-  At T (=R1), too much accuracy requested  
       for precision of machine..  See TOLSF (=R2) 
-In above message, R1 = 34.5102, R2 = nan
+In above message, R1 = 53.9164, R2 = nan
 \end{Soutput}
 \begin{Sinput}
 > tail(sol_logistic_harvesting_bad)
 \end{Sinput}
 \begin{Soutput}
           time          N
-[31,] 30.00000  -174.7190
-[32,] 31.00000  -237.2219
-[33,] 32.00000  -350.0509
-[34,] 33.00000  -613.1846
-[35,] 34.00000 -1910.5060
-[36,] 34.51016        NaN
+[50,] 49.00000  -157.2355
+[51,] 50.00000  -208.3942
+[52,] 51.00000  -295.1653
+[53,] 52.00000  -473.3032
+[54,] 53.00000 -1041.9128
+[55,] 53.91642        NaN
 \end{Soutput}
 \end{Schunk}
 \end{frame}
@@ -2176,6 +2176,134 @@ In above message, R1 = 34.5102, R2 = nan
 % The section page
 \newSectionSlide{FIGS/population-models-Gemini_Generated_Image_ainmrnainmrnainm.jpeg}
 
+
+\begin{frame}{Continuous-time Markov chains}
+    CTMC are roughly equivalent to ODE    
+\end{frame}
+
+
+\subsection{ODE $\leftrightarrow$ CTMC}
+
+\begin{frame}{Converting your compartmental ODE model to CTMC}
+    Easy as $\pi$ :)
+\vfill
+\begin{itemize}
+    \item Compartmental ODE model focuses on flows into and out of compartments
+    \item ODE model has as many equations as there are compartments
+    \item Compartmental CTMC model focuses on transitions
+    \item CTMC model has as many transitions as there are arrows between (or into or out of) compartments
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{ODE to CTMC : focus on different components}
+    \begin{center}
+        \begin{tikzpicture}[auto,
+            scale=1.2, every node/.style={transform shape},
+            cloud/.style={minimum width={width("N-1")+2pt},
+            draw, ellipse,fill=red!20}]
+            \node[cloud, fill=green!90, double=red] (S) at (0,0) {$S$};
+            \node[cloud, draw=none, fill=white] (h4) at (2,0) {};
+            \node[cloud, fill=red!90, double=red] (I) at (4,0) {$I$};
+            \node[cloud, fill=green!90] (S2) at (6,0) {$S$};
+            \node[cloud, fill=red!90] (I2) at (8,0) {$I$};
+            %% Flows (ODE)
+            \path [line, bend left, very thick, dashed] (S) to node [midway, above] (TextNode) {$-\beta SI$} (h4);
+            \path [line, bend left, very thick] (h4) to node [midway, below] (TextNode) {$+\gamma I$} (S);
+            \path [line, bend left, very thick] (h4) to node [midway, above] (TextNode) {$+\beta SI$} (I);
+            \path [line, bend left, very thick, dashed] (I) to node [midway, below] (TextNode) {$-\gamma I$} (h4);
+            %% Flows (CTMC)
+            \path [line, bend left, very thick, red] (S2) to node [midway, above, black] (TextNode) {$\beta SI$} (I2);
+            \path [line, bend left, very thick, red] (I2) to node [midway, below] (TextNode) {$\gamma I$} (S2);
+            %%
+            \draw[very thick, dotted] (5,-2) -- (5,2);
+            %%
+            \node[style=rectangle] at (2,2) {ODE};
+            \node[style=rectangle] at (7,2) {CTMC};
+            %%
+            \node[style=rectangle] (fODE) at (2,-2) {focus};
+            \path [line, dotted,red] (fODE) to  (S.south);
+            \path [line, dotted,red] (fODE) to  (I.south);
+            \node[style=rectangle] (fCTMC) at (6,-2) {focus};
+            \path [line, dotted,red] (fCTMC) to (6.75,0.3);
+            \path [line, dotted,red] (fCTMC) to  (6.75,-0.475);
+        \end{tikzpicture}        
+    \end{center}
+\end{frame}
+
+
+
+\begin{frame}[fragile]\frametitle{Gillespie algorithm for Malthus -- Setup}
+\begin{lstlisting}
+t0 = 0
+N0 = 100
+tf = 200
+b = 0.05
+d = 0.05
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{Gillespie algorithm for Malthus -- The main loop}
+\begin{lstlisting}
+t = c(t0)
+N = c(N0)
+
+while(t[length(t)] <= tf) {
+  xi_t = N[length(N)] * (b+d)
+  if (xi_t<1e-12) {
+    break
+  }
+  tau_t = rexp(1, rate = xi_t)
+  t = c(t, t[length(t)] + tau_t)
+  pi_t = runif(1)
+  if(pi_t <= b/(b+d)) {
+    N = c(N, N[length(N)] + 1)
+  } else {
+    N = c(N, N[length(N)] - 1)
+  }
+}
+\end{lstlisting}
+\end{frame}
+
+
+\maxFrameImage{FIGS/slides-02-birth-death-CTMC-1}
+
+\begin{frame}[fragile]\frametitle{Gillespie algorithm for the logistic -- Setup}
+\begin{lstlisting}
+t0 = 0
+N0 = 100
+tf = 200
+b = 0.05
+d = 0.02
+r = b-d
+K = 100
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{Gillespie algorithm for the logistic -- The main loop}
+\begin{lstlisting}
+t = c(t0)
+N = c(N0)
+
+while(t[length(t)] <= tf) {
+  xi_t = r*N[length(N)] + r*N[length(N)]^2/K
+  if (xi_t<1e-12) {
+    break
+  }
+  tau_t = rexp(1, rate = xi_t)
+  t = c(t, t[length(t)] + tau_t)
+  pi_t = runif(1)
+  if(pi_t <= 1/(1+N[length(N)]/K)) {
+    N = c(N, N[length(N)] + 1)
+  } else {
+    N = c(N, N[length(N)] - 1)
+  }
+}
+\end{lstlisting}
+\end{frame}
+
+
+\maxFrameImage{FIGS/slides-02-logistic-CTMC-1}
 
 %%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%
@@ -2208,7 +2336,7 @@ In the case of a time $\tau$ between inhibiting event and inhibition, the equati
 \vfill
 Using the change of variables introduced earlier, this is written
 \begin{equation}\label{eq:logistic_dde}
-N\pprime(t)=rN(t)\left(1-\frac{N(t-\tau)}K\right) \tag{DDE1}
+N\pprime(t)=rN(t)\left(1-\frac{N(t-\tau)}K\right)
 \end{equation}
 \vfill
 Such an equation is called a \defword{delay differential equation} (DDE). It is much more complicated to study than \eqref{eq:logistic-ode}. In fact, some things remain unknown about \eqref{eq:logistic_dde}
@@ -2220,11 +2348,11 @@ The IVP takes the form
 \begin{aligned}
 N\pprime(t)&= rN(t)\left(1-\frac{N(t-\tau)}K\right)\\
 N(t) &= \phi(t)\textrm{ for }t\in[-\tau,0]
-\end{aligned} \tag{IVP2}
+\end{aligned}
 \end{equation}
 where $\phi(t)$ is some continuous function
 \vfill
-Hence, initial conditions (called initial data in this case) must be specified on an interval, instead of being specified at a point, to guarantee existence and uniqueness of solutions
+Hence, initial conditions (called \defword{initial data} in this case) must be specified on an interval, instead of being specified at a point, to guarantee existence and uniqueness of solutions
 \vfill
 We will not learn how to study this type of equation (this is graduate level mathematics). I will give a few results
 }
@@ -2265,7 +2393,7 @@ Time could for example be days, years, etc.
 \frame{\frametitle{The logistic map}
 The logistic \defword{map} is, for $t\geq 0$,
 \begin{equation}\label{eq:logistic_discrete}
-N_{t+1}=rN_t\left(1-\frac{N_t}K\right) \tag{DT1}
+N_{t+1}=rN_t\left(1-\frac{N_t}K\right)
 \end{equation}
 \vfill
 To transform this into an initial value problem, we need to provide an initial condition $N_0\geq 0$ for $t=0$
@@ -2333,7 +2461,7 @@ Suppose that $p$ is a $n$-periodic point of $f$, with $f\in C^1$.
 \frame{\frametitle{Parametrized families of functions}
 Consider the equation \eqref{eq:logistic_discrete}, which for convenience we rewrite as
 \begin{equation}\label{eq:logistic_discrete_scaled}
-N_{t+1}=rN_t(1-N_t)\tag{DT2},
+N_{t+1}=rN_t(1-N_t)
 \end{equation}
 where $r$ is a parameter in $\IR_+$, and $N$ will typically be taken in $[0,1]$. Let
 \[
