@@ -215,24 +215,24 @@
 % }
 
 
-% Beginning of a section
-\AtBeginSubsubsection[]{
-	{
-	  \setbeamercolor{section in toc}{fg=subsub_header_section}
-	  \setbeamercolor{subsubsection in toc}{fg=mygold2}
-	  \setbeamercolor{subsubsection in toc shaded}{fg=mygrey2}
-		\setbeamercolor{background canvas}{bg=subsubsection_colour}
-		\begin{frame}[noframenumbering,plain]
-				\framesubtitle{\nameofthepart Chapter \insertromanpartnumber \ -- \iteminsert{\insertpart}}
-				\tableofcontents[
-					currentsection,
-					sectionstyle=show/hide,
-					currentsubsection,
-					subsectionstyle=show/hide/shaded
-					currentsubsubsection]%,
-					%subsubsectionstyle=hide/hide/shaded]
-					%currentsubsubsection]
-			\end{frame}
-		\addtocounter{page}{-1}
-	}
-}
+% % Beginning of a section
+% \AtBeginSubsubsection[]{
+% 	{
+% 	  \setbeamercolor{section in toc}{fg=subsub_header_section}
+% 	  \setbeamercolor{subsubsection in toc}{fg=mygold2}
+% 	  \setbeamercolor{subsubsection in toc shaded}{fg=mygrey2}
+% 		\setbeamercolor{background canvas}{bg=subsubsection_colour}
+% 		\begin{frame}[noframenumbering,plain]
+% 				\framesubtitle{\nameofthepart Chapter \insertromanpartnumber \ -- \iteminsert{\insertpart}}
+% 				\tableofcontents[
+% 					currentsection,
+% 					sectionstyle=show/hide,
+% 					currentsubsection,
+% 					subsectionstyle=show/hide/shaded
+% 					currentsubsubsection]%,
+% 					%subsubsectionstyle=hide/hide/shaded]
+% 					%currentsubsubsection]
+% 			\end{frame}
+% 		\addtocounter{page}{-1}
+% 	}
+% }

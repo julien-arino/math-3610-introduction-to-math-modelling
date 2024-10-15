@@ -42,6 +42,7 @@
 \def\bd{\bm{d}}
 \def\be{\bm{e}}
 \def\bf{\bm{f}}
+\def\bg{\bm{g}}
 \def\bh{\bm{h}}
 \def\bi{\bm{i}}
 \def\bj{\bm{j}}
@@ -380,6 +381,8 @@ minimum height=2em]
   \setbeamercolor{section in toc}{fg=subsub_header_section}
   \setbeamerfont{section in toc}{size=\Large,series=\bfseries}
   \setbeamertemplate{section in toc shaded}[default][60]
+  \setbeamerfont{subsection in toc}{series=\bfseries}
+  \setbeamertemplate{subsection in toc shaded}[default][50]
   %\setbeamercolor{background canvas}{bg=section_colour}
   \tableofcontents[
     currentsection,
@@ -390,6 +393,30 @@ minimum height=2em]
 \addtocounter{page}{-1}
 }
 
+
+% Beginning of a subsubsection
+\newcommand{\newSubSubSectionSlide}[1]{
+\begin{frame}[noframenumbering,plain]
+  \begin{tikzpicture}[remember picture,overlay]
+    \node[above right,inner sep=0pt,opacity=0.2] at (current page.south west)
+    {
+        \includegraphics[height=\paperheight,width=\paperwidth]{#1}
+    };
+  \end{tikzpicture}
+  \setbeamercolor{section in toc}{fg=subsub_header_section}
+  \setbeamerfont{section in toc}{size=\Large,series=\bfseries}
+  \setbeamertemplate{section in toc shaded}[default][60]
+  \setbeamerfont{subsection in toc}{series=\bfseries}
+  \setbeamertemplate{subsection in toc shaded}[default][50]
+  \setbeamertemplate{subsubsection in toc shaded}[default][50]
+  \tableofcontents[
+    currentsection,
+    sectionstyle=show/hide,
+    subsectionstyle=show/hide/hide,
+    subsubsectionstyle=show/shaded/hide]
+\end{frame}
+\addtocounter{page}{-1}
+}
 
 
    %%%%%%%%%%%
@@ -478,4 +505,9 @@ minimum height=2em]
 \end{frame}
 \addtocounter{page}{-1}
 }
+
+
+%\let\oldsection\section
+%\renewcommand{\section}[2]{\oldsection[#1]\newSectionSlide[#2]}
+
 
