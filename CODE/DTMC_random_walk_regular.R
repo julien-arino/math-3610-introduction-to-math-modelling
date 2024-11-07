@@ -1,7 +1,11 @@
 # Example simulation of a simple SIS model
-library(markovchain)
+if (!require(markovchain)) {
+  install.packages("markovchain")
+  library(markovchain)
+}
 
-# Source a file with a few helpful functions for plotting (nice axes labels, crop figure)
+# Source a file with a few helpful functions for plotting (nice axes labels, 
+# crop figure)
 source("useful_functions.R")
 
 # Total population

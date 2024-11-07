@@ -1,5 +1,6 @@
 # Example simulation of a simple SIS model
 library(markovchain)
+library(DTMCPack)
 
 # Source a file with a few helpful functions for plotting (nice axes labels, crop figure)
 source("useful_functions.R")
@@ -53,3 +54,9 @@ hittingProbabilities(mcSIS)
 
 # Mean absorption time
 meanAbsorptionTime(mcSIS)
+
+require(DTMCPack)
+IC = rep(0, nb_states)
+IC[1] = 1
+DTMC(T, IC, 81, trace=TRUE)
+
