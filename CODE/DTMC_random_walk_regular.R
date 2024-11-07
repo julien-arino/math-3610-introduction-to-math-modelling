@@ -27,7 +27,7 @@ T[1,2] = 1
 # Last row only has move left
 T[nb_states, (nb_states-1)] = 1
 
-mcRW <- new("markovchain", 
+mcRW <- new("markovchain",
             states = sprintf("S_%d", 1:nb_states),
             transitionMatrix = T,
             name = "RW_reg")
@@ -42,3 +42,9 @@ steadyStates(mcRW)
 meanRecurrenceTime(mcRW)
 
 meanFirstPassageTime(mcRW)
+
+require(DTMCPack)
+IC = rep(0, nb_states)
+IC[1] = 1
+DTMC(T, IC, 81, trace=TRUE)
+

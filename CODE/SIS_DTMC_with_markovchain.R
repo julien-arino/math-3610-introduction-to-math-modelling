@@ -55,8 +55,3 @@ hittingProbabilities(mcSIS)
 # Mean absorption time
 meanAbsorptionTime(mcSIS)
 
-require(DTMCPack)
-IC = rep(0, nb_states)
-IC[1] = 1
-DTMC(T, IC, 81, trace=TRUE)
-
