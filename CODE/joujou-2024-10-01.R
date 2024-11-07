@@ -15,3 +15,8 @@ for (i in 1:tf) {
 
 plot(0:tf, N, type = "b", lwd = 2, col = "red")
 #lines(0:tf, N2, type = "b", lwd = 2, col = "blue")
+
+f = function(x) {
+  return(x + 0.0001*(5000-x)*(x-100))
+}
+  

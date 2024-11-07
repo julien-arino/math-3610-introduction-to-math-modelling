@@ -1,8 +1,56 @@
-%\SweaveUTF8
 \documentclass[aspectratio=169]{beamer}
 
-\input{slides-setup-whiteBG.tex}
+<<set-options,echo=FALSE,warning=FALSE,message=FALSE>>=
+# Load required libraries
+required_packages = c("bmp",
+                      "dplyr", 
+                      "FactoMineR",
+                      "ggbiplot",
+                      "ggplot2", 
+                      "knitr", 
+                      "latex2exp",
+                      #"magick",
+                      "Matrix",
+                      "openxlsx",
+                      "pixmap",
+                      "pracma", 
+                      "readr", 
+                      "tidyr")
+for (p in required_packages) {
+  if (!require(p, character.only = TRUE)) {
+    install.packages(p, dependencies = TRUE)
+    require(p, character.only = TRUE)
+  }
+}
+# Knitr options
+opts_chunk$set(echo = TRUE, 
+               warning = FALSE, 
+               message = FALSE, 
+               dev = c("pdf", "png"),
+               fig.width = 6, 
+               fig.height = 4, 
+               fig.path = "FIGS/matrix-methods-",
+               fig.keep = "high",
+               fig.show = "hide")
+knitr::knit_hooks$set(crop = knitr::hook_pdfcrop)
+options(knitr.table.format = "latex")
+@
 
+
+<<set-slide-background,echo=FALSE,results='asis'>>=
+# Are we plotting for a dark background?
+plot_blackBG = FALSE
+if (plot_blackBG) {
+  bg_color = "black"
+  fg_color = "white"
+  input_setup = "\\input{slides-setup-blackBG.tex}"
+} else {
+  bg_color = "white"
+  fg_color = "black"
+  input_setup = "\\input{slides-setup-whiteBG.tex}"
+}
+cat(input_setup)
+@
 
 \title[Epidemic models]{MATH 3610 -- 04\\ A few epidemic models\\ Analysis of nonlinear systems of ODEs}
 \author{\texorpdfstring{Julien Arino\newline University of Manitoba\newline\url{julien.arino@umanitoba.ca}}{Julien Arino}}
@@ -11,20 +59,7 @@
 
 %%%%%%%%%%%%%%%%
 \begin{document}
-\SweaveOpts{concordance=TRUE}
-\SweaveOpts{prefix.string = FIGS/slides-04}
 
-
-<<set-options,echo=FALSE>>=
-# Are we plotting for a dark background
-plot_blackBG = FALSE
-# Load required libraries
-library(ggplot2)
-library(dplyr)
-library(tidyr)
-library(knitr)
-options(knitr.table.format = "latex")
-@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -41,9 +76,7 @@ options(knitr.table.format = "latex")
 %%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%
 \section{SIS model without vital dynamics}
-\frame[plain]{\tableofcontents[current]}
-%\frame[plain]{\addtocounter{page}{-1}\tableofcontents[current]}
-
+\newSubSectionSlide{FIGS/population-models-Gemini_Generated_Image_r55bccr55bccr55b.jpeg}
 
 \frame{\frametitle{A SIS model}
 Consider a disease that confers no immunity. In this case,
@@ -149,7 +182,7 @@ lim_{t\to\infty} I(t)=\left(1-\frac{1}{\R_0}\right)N.
 
 
 \section{SIR model of Kermack and McKendrick}
-\frame[plain]{\tableofcontents[current]}
+\newSubSectionSlide{FIGS/population-models-Gemini_Generated_Image_r55bccr55bccr55b.jpeg}
 
 \maxFrameImage{FIGS/KMK_title}
 \maxFrameImage{FIGS/KMK_model1}
@@ -212,7 +245,7 @@ I_0-\frac\gamma\beta\ln S_0=S_\infty -\frac\gamma\beta \ln S_\infty
 }
 
 \section{SIRS model with demography}
-\frame[plain]{\tableofcontents[current]}
+\newSubSectionSlide{FIGS/population-models-Gemini_Generated_Image_r55bccr55bccr55b.jpeg}
 
 \frame{\frametitle{The SIRS model -- Assumptions (1/2)}
 \begin{itemize}
