@@ -36,6 +36,10 @@ knitr::knit_hooks$set(crop = knitr::hook_pdfcrop)
 options(knitr.table.format = "latex")
 @
 
+<<set-date-for-title-page>>=
+yyyy = strsplit(Sys.Date()
+@
+
 
 <<set-slide-background,echo=FALSE,results='asis'>>=
 # Are we plotting for a dark background?
